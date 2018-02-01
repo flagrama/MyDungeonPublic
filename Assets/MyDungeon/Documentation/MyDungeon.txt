@@ -1,0 +1,1437 @@
+Welcome to the MyDungeon documentation
+This is the documentation for MyDungeon
+See Also
+Other Resources
+Version History
+
+Version History
+The topics in this section describe the various changes made to the MyDungeon over the life of the project.
+Version History
+Select a version below to see a description of its changes.
+Version 0.4.0.0
+See Also
+Other Resources
+Welcome to the MyDungeon documentation
+
+Version 0.4.0.0
+Version 0.4.0.0 was released on 2018-02-01.
+Changes in This Release
+Initial release
+See Also
+Other Resources
+Version History
+
+MyDungeon Namespace
+A Roguelike engine for Unity
+Classes
+	Class	Description
+ 	CameraController	Controller for the Main Camera
+ 	Cell	Class for setting up Cells in the Grid-Based dungeon map
+ 	Corridor	Class for creating Corridors
+ 	GridGenerator	Class for generating a pseudo-random grid-based dungeon
+ 	IntRange	Class to get a random value between two numbers (inclusive)
+ 	Item	Base class for Items
+ 	ItemBehaviour	Component intended to be attached to item prefabs to attach ScriptableObjects that derive fromt he type Item to them
+ 	Room	Class for creating dungeon rooms
+ 	SaveLoad	Contains the Save and Load methods
+
+Structures
+	Structure	Description
+ 	Coord	Data structure for Room starting coordinates
+
+Enumerations
+	Enumeration	Description
+ 	Direction	Directional values for Corridor
+ 	GridGenerator.TileType	Values of tiles that can be placed in dungeon grid
+
+
+CameraController Class
+Controller for the Main Camera
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.CameraController
+
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public class CameraController : MonoBehaviour
+
+The CameraController type exposes the following members.
+Constructors
+	Name	Description
+ 	CameraController	Initializes a new instance of the CameraController class
+
+See Also
+MyDungeon Namespace
+
+CameraController Constructor 
+Initializes a new instance of the CameraController class
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public CameraController()
+
+See Also
+CameraController Class
+MyDungeon Namespace
+
+Cell Class
+Class for setting up Cells in the Grid-Based dungeon map
+Inheritance Hierarchy
+System.Object
+  MyDungeon.Cell
+
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public class Cell
+
+The Cell type exposes the following members.
+Constructors
+	Name	Description
+ 	Cell	Initializes a new instance of the Cell class
+
+Methods
+	Name	Description
+ 	SetupCell	Sets up Cell location in map array
+
+Fields
+	Name	Description
+ 	Used	Indicates if a Cell has been used to prevent overlapping rooms
+ 	XPos	The starting X position of a Cell
+ 	YPos	The starting Y position of a Cell
+
+See Also
+MyDungeon Namespace
+
+Cell Constructor 
+Initializes a new instance of the Cell class
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public Cell()
+
+See Also
+Cell Class
+MyDungeon Namespace
+
+Cell.Cell Methods
+The Cell type exposes the following members.
+Methods
+	Name	Description
+ 	SetupCell	Sets up Cell location in map array
+
+See Also
+Cell Class
+MyDungeon Namespace
+
+Cell.SetupCell Method 
+Sets up Cell location in map array
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public void SetupCell(
+	int column,
+	int row
+)
+
+Parameters
+column
+Type: System.Int32
+Cell starting X position
+row
+Type: System.Int32
+Cell starting Y position
+See Also
+Cell Class
+MyDungeon Namespace
+
+Cell.Cell Fields
+The Cell type exposes the following members.
+Fields
+	Name	Description
+ 	Used	Indicates if a Cell has been used to prevent overlapping rooms
+ 	XPos	The starting X position of a Cell
+ 	YPos	The starting Y position of a Cell
+
+See Also
+Cell Class
+MyDungeon Namespace
+
+Cell.Used Field
+Indicates if a Cell has been used to prevent overlapping rooms
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public bool Used
+
+Field Value
+Type: Boolean
+See Also
+Cell Class
+MyDungeon Namespace
+
+Cell.XPos Field
+The starting X position of a Cell
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int XPos
+
+Field Value
+Type: Int32
+See Also
+Cell Class
+MyDungeon Namespace
+
+Cell.YPos Field
+The starting Y position of a Cell
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int YPos
+
+Field Value
+Type: Int32
+See Also
+Cell Class
+MyDungeon Namespace
+
+Coord Structure
+Data structure for Room starting coordinates
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public struct Coord
+
+The Coord type exposes the following members.
+Constructors
+	Name	Description
+ 	Coord	Starting coordinates for Rooms
+
+Fields
+	Name	Description
+ 	X	The starting X coordinate of a room
+ 	Y	The starting Y coordinate of a room
+
+See Also
+MyDungeon Namespace
+
+Coord Constructor 
+Starting coordinates for Rooms
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public Coord(
+	int p1,
+	int p2
+)
+
+Parameters
+p1
+Type: System.Int32
+Room starting X position
+p2
+Type: System.Int32
+Room starting Y position
+See Also
+Coord Structure
+MyDungeon Namespace
+
+Coord.Coord Fields
+The Coord type exposes the following members.
+Fields
+	Name	Description
+ 	X	The starting X coordinate of a room
+ 	Y	The starting Y coordinate of a room
+
+See Also
+Coord Structure
+MyDungeon Namespace
+
+Coord.X Field
+The starting X coordinate of a room
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int X
+
+Field Value
+Type: Int32
+See Also
+Coord Structure
+MyDungeon Namespace
+
+Coord.Y Field
+The starting Y coordinate of a room
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int Y
+
+Field Value
+Type: Int32
+See Also
+Coord Structure
+MyDungeon Namespace
+
+Corridor Class
+Class for creating Corridors
+Inheritance Hierarchy
+System.Object
+  MyDungeon.Corridor
+
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public class Corridor
+
+The Corridor type exposes the following members.
+Constructors
+	Name	Description
+ 	Corridor	Initializes a new instance of the Corridor class
+
+Methods
+	Name	Description
+ 	SetupCorridor	Sets up Corridor location in map array
+
+Fields
+	Name	Description
+ 	CorridorLength	How many units long the corridor is
+ 	Direction	Which direction the corridor is heading from it's room
+ 	StartXPos	The x coordinate for the start of the corridor
+ 	StartYPos	The y coordinate for the start of the corridor
+
+See Also
+MyDungeon Namespace
+
+Corridor Constructor 
+Initializes a new instance of the Corridor class
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public Corridor()
+
+See Also
+Corridor Class
+MyDungeon Namespace
+
+Corridor.Corridor Methods
+The Corridor type exposes the following members.
+Methods
+	Name	Description
+ 	SetupCorridor	Sets up Corridor location in map array
+
+See Also
+Corridor Class
+MyDungeon Namespace
+
+Corridor.SetupCorridor Method 
+Sets up Corridor location in map array
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public void SetupCorridor(
+	int x,
+	int y,
+	int length,
+	Direction direction
+)
+
+Parameters
+x
+Type: System.Int32
+Starting X position
+y
+Type: System.Int32
+Starting Y position
+length
+Type: System.Int32
+Length of the corridor
+direction
+Type: MyDungeon.Direction
+Direction of the corridor
+See Also
+Corridor Class
+MyDungeon Namespace
+
+Corridor.Corridor Fields
+The Corridor type exposes the following members.
+Fields
+	Name	Description
+ 	CorridorLength	How many units long the corridor is
+ 	Direction	Which direction the corridor is heading from it's room
+ 	StartXPos	The x coordinate for the start of the corridor
+ 	StartYPos	The y coordinate for the start of the corridor
+
+See Also
+Corridor Class
+MyDungeon Namespace
+
+Corridor.CorridorLength Field
+How many units long the corridor is
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int CorridorLength
+
+Field Value
+Type: Int32
+See Also
+Corridor Class
+MyDungeon Namespace
+
+Corridor.Direction Field
+Which direction the corridor is heading from it's room
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public Direction Direction
+
+Field Value
+Type: Direction
+See Also
+Corridor Class
+MyDungeon Namespace
+
+Corridor.StartXPos Field
+The x coordinate for the start of the corridor
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int StartXPos
+
+Field Value
+Type: Int32
+See Also
+Corridor Class
+MyDungeon Namespace
+
+Corridor.StartYPos Field
+The y coordinate for the start of the corridor
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int StartYPos
+
+Field Value
+Type: Int32
+See Also
+Corridor Class
+MyDungeon Namespace
+
+Direction Enumeration
+Directional values for Corridor
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public enum Direction
+
+Members
+	Member name	Value	Description
+	North	0	
+	East	1	
+	South	2	
+	West	3	
+
+See Also
+MyDungeon Namespace
+
+GridGenerator Class
+Class for generating a pseudo-random grid-based dungeon
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.GridGenerator
+
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public class GridGenerator : MonoBehaviour
+
+The GridGenerator type exposes the following members.
+Constructors
+	Name	Description
+ 	GridGenerator	Initializes a new instance of the GridGenerator class
+
+Methods
+	Name	Description
+ 	GenerateBoard	Generate a new grid-based dungeon map
+
+Fields
+	Name	Description
+ 	CellSizeH	The number of rows in a cell
+ 	CellSizeW	The number of columns in a cell
+ 	Columns	The number of columns on the board (how wide it will be)
+ 	CorridorLength	The range of lengths corridors between rooms can have
+ 	CreatureLevelMaxCount	The range of number of creatures that can appear in the board
+ 	Creatures	Array creature prefabs
+ 	Exit	Exit or staircase prefab
+ 	FloorTiles	An array of floor tile prefabs
+ 	ItemLevelMaxCount	The range of number of items that can appear in the board
+ 	Items	An array of item prefabs
+ 	NumRooms	The range of the number of rooms there can be
+ 	OuterWallTiles	An array of outer wall tile prefabs
+ 	Player	Player prefab to spawn into map
+ 	RoomMinHeight	The smallest a room's height can be
+ 	RoomMinWidth	The smallest a room's width can be
+ 	Rows	The number of rows on the board (how tall it will be)
+ 	Seed	The seed used to generate the board
+ 	WallTiles	An array of wall tile prefabs
+
+See Also
+MyDungeon Namespace
+
+GridGenerator Constructor 
+Initializes a new instance of the GridGenerator class
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public GridGenerator()
+
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.GridGenerator Methods
+The GridGenerator type exposes the following members.
+Methods
+	Name	Description
+ 	GenerateBoard	Generate a new grid-based dungeon map
+
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.GenerateBoard Method 
+Generate a new grid-based dungeon map
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public GridGenerator.TileType[,] GenerateBoard()
+
+Return Value
+Type: GridGenerator.TileType[,]
+An 2D array representing the dungeon map
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.GridGenerator Fields
+The GridGenerator type exposes the following members.
+Fields
+	Name	Description
+ 	CellSizeH	The number of rows in a cell
+ 	CellSizeW	The number of columns in a cell
+ 	Columns	The number of columns on the board (how wide it will be)
+ 	CorridorLength	The range of lengths corridors between rooms can have
+ 	CreatureLevelMaxCount	The range of number of creatures that can appear in the board
+ 	Creatures	Array creature prefabs
+ 	Exit	Exit or staircase prefab
+ 	FloorTiles	An array of floor tile prefabs
+ 	ItemLevelMaxCount	The range of number of items that can appear in the board
+ 	Items	An array of item prefabs
+ 	NumRooms	The range of the number of rooms there can be
+ 	OuterWallTiles	An array of outer wall tile prefabs
+ 	Player	Player prefab to spawn into map
+ 	RoomMinHeight	The smallest a room's height can be
+ 	RoomMinWidth	The smallest a room's width can be
+ 	Rows	The number of rows on the board (how tall it will be)
+ 	Seed	The seed used to generate the board
+ 	WallTiles	An array of wall tile prefabs
+
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.CellSizeH Field
+The number of rows in a cell
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int CellSizeH
+
+Field Value
+Type: Int32
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.CellSizeW Field
+The number of columns in a cell
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int CellSizeW
+
+Field Value
+Type: Int32
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.Columns Field
+The number of columns on the board (how wide it will be)
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int Columns
+
+Field Value
+Type: Int32
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.CorridorLength Field
+The range of lengths corridors between rooms can have
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public IntRange CorridorLength
+
+Field Value
+Type: IntRange
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.CreatureLevelMaxCount Field
+The range of number of creatures that can appear in the board
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public IntRange CreatureLevelMaxCount
+
+Field Value
+Type: IntRange
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.Creatures Field
+Array creature prefabs
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public GameObject[] Creatures
+
+Field Value
+Type: GameObject[]
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.Exit Field
+Exit or staircase prefab
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public GameObject Exit
+
+Field Value
+Type: GameObject
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.FloorTiles Field
+An array of floor tile prefabs
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public GameObject[] FloorTiles
+
+Field Value
+Type: GameObject[]
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.ItemLevelMaxCount Field
+The range of number of items that can appear in the board
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public IntRange ItemLevelMaxCount
+
+Field Value
+Type: IntRange
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.Items Field
+An array of item prefabs
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public GameObject[] Items
+
+Field Value
+Type: GameObject[]
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.NumRooms Field
+The range of the number of rooms there can be
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public IntRange NumRooms
+
+Field Value
+Type: IntRange
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.OuterWallTiles Field
+An array of outer wall tile prefabs
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public GameObject[] OuterWallTiles
+
+Field Value
+Type: GameObject[]
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.Player Field
+Player prefab to spawn into map
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public GameObject Player
+
+Field Value
+Type: GameObject
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.RoomMinHeight Field
+The smallest a room's height can be
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int RoomMinHeight
+
+Field Value
+Type: Int32
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.RoomMinWidth Field
+The smallest a room's width can be
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int RoomMinWidth
+
+Field Value
+Type: Int32
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.Rows Field
+The number of rows on the board (how tall it will be)
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int Rows
+
+Field Value
+Type: Int32
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.Seed Field
+The seed used to generate the board
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int Seed
+
+Field Value
+Type: Int32
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.WallTiles Field
+An array of wall tile prefabs
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public GameObject[] WallTiles
+
+Field Value
+Type: GameObject[]
+See Also
+GridGenerator Class
+MyDungeon Namespace
+
+GridGenerator.TileType Enumeration
+Values of tiles that can be placed in dungeon grid
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public enum TileType
+
+Members
+	Member name	Value	Description
+	Exit	0	
+	Item	1	
+	Floor	2	
+	Wall	3	
+	Creature	4	
+	Player	5	
+
+See Also
+MyDungeon Namespace
+
+IntRange Class
+Class to get a random value between two numbers (inclusive)
+Inheritance Hierarchy
+System.Object
+  MyDungeon.IntRange
+
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+[SerializableAttribute]
+public class IntRange
+
+The IntRange type exposes the following members.
+Constructors
+	Name	Description
+ 	IntRange	Set the Range values
+
+Properties
+	Name	Description
+ 	Random	Get a random value from the range.
+
+Fields
+	Name	Description
+ 	Max	The maximum value for a range
+ 	Min	The minimum value for a range
+
+See Also
+MyDungeon Namespace
+
+IntRange Constructor 
+Set the Range values
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public IntRange(
+	int min,
+	int max
+)
+
+Parameters
+min
+Type: System.Int32
+The minimum value in this range
+max
+Type: System.Int32
+The maximum value in this range
+See Also
+IntRange Class
+MyDungeon Namespace
+
+IntRange.IntRange Properties
+The IntRange type exposes the following members.
+Properties
+	Name	Description
+ 	Random	Get a random value from the range.
+
+See Also
+IntRange Class
+MyDungeon Namespace
+
+IntRange.Random Property 
+Get a random value from the range.
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int Random { get; }
+
+Property Value
+Type: Int32
+See Also
+IntRange Class
+MyDungeon Namespace
+
+IntRange.IntRange Fields
+The IntRange type exposes the following members.
+Fields
+	Name	Description
+ 	Max	The maximum value for a range
+ 	Min	The minimum value for a range
+
+See Also
+IntRange Class
+MyDungeon Namespace
+
+IntRange.Max Field
+The maximum value for a range
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int Max
+
+Field Value
+Type: Int32
+See Also
+IntRange Class
+MyDungeon Namespace
+
+IntRange.Min Field
+The minimum value for a range
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int Min
+
+Field Value
+Type: Int32
+See Also
+IntRange Class
+MyDungeon Namespace
+
+Item Class
+Base class for Items
+Inheritance Hierarchy
+System.Object
+  Object
+    ScriptableObject
+      MyDungeon.Item
+
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public abstract class Item : ScriptableObject
+
+The Item type exposes the following members.
+Constructors
+	Name	Description
+ 	Item	Initializes a new instance of the Item class
+
+Methods
+	Name	Description
+ 	Use	Implemntation method for UseItem
+ 	UseItem	Sets Target and calls Use() for inheriting classes
+
+Fields
+	Name	Description
+ 	Target	The target game object to affect with an item
+ 	UseSounds	An array of sounds an item can choose from when an item is used
+
+See Also
+MyDungeon Namespace
+
+Item Constructor 
+Initializes a new instance of the Item class
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+protected Item()
+
+See Also
+Item Class
+MyDungeon Namespace
+
+Item.Item Methods
+The Item type exposes the following members.
+Methods
+	Name	Description
+ 	Use	Implemntation method for UseItem
+ 	UseItem	Sets Target and calls Use() for inheriting classes
+
+See Also
+Item Class
+MyDungeon Namespace
+
+Item.Use Method 
+Implemntation method for UseItem
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+protected abstract void Use()
+
+See Also
+Item Class
+MyDungeon Namespace
+
+Item.UseItem Method 
+Sets Target and calls Use() for inheriting classes
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public virtual void UseItem(
+	Transform target
+)
+
+Parameters
+target
+Type: Transform
+Target transform to be passed to inheriting class
+See Also
+Item Class
+MyDungeon Namespace
+
+Item.Item Fields
+The Item type exposes the following members.
+Fields
+	Name	Description
+ 	Target	The target game object to affect with an item
+ 	UseSounds	An array of sounds an item can choose from when an item is used
+
+See Also
+Item Class
+MyDungeon Namespace
+
+Item.Target Field
+The target game object to affect with an item
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+protected Transform Target
+
+Field Value
+Type: Transform
+See Also
+Item Class
+MyDungeon Namespace
+
+Item.UseSounds Field
+An array of sounds an item can choose from when an item is used
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public AudioClip[] UseSounds
+
+Field Value
+Type: AudioClip[]
+See Also
+Item Class
+MyDungeon Namespace
+
+ItemBehaviour Class
+Component intended to be attached to item prefabs to attach ScriptableObjects that derive fromt he type Item to them
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.ItemBehaviour
+
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public class ItemBehaviour : MonoBehaviour
+
+The ItemBehaviour type exposes the following members.
+Constructors
+	Name	Description
+ 	ItemBehaviour	Initializes a new instance of the ItemBehaviour class
+
+Fields
+	Name	Description
+ 	Item	A ScriptableObject asset of type Item
+
+See Also
+MyDungeon Namespace
+
+ItemBehaviour Constructor 
+Initializes a new instance of the ItemBehaviour class
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public ItemBehaviour()
+
+See Also
+ItemBehaviour Class
+MyDungeon Namespace
+
+ItemBehaviour.ItemBehaviour Fields
+The ItemBehaviour type exposes the following members.
+Fields
+	Name	Description
+ 	Item	A ScriptableObject asset of type Item
+
+See Also
+ItemBehaviour Class
+MyDungeon Namespace
+
+ItemBehaviour.Item Field
+A ScriptableObject asset of type Item
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public Item Item
+
+Field Value
+Type: Item
+See Also
+ItemBehaviour Class
+MyDungeon Namespace
+
+Room Class
+Class for creating dungeon rooms
+Inheritance Hierarchy
+System.Object
+  MyDungeon.Room
+
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public class Room
+
+The Room type exposes the following members.
+Constructors
+	Name	Description
+ 	Room	Initializes a new instance of the Room class
+
+Methods
+	Name	Description
+ 	SetupRoom	Sets up Rooms in map array
+
+Fields
+	Name	Description
+ 	Connections	The tiles of the room walls that are connected to corridors
+ 	EnteringCorridor	The direction of the corridor that is entering this room
+ 	RoomHeight	How many tiles high the room is
+ 	RoomWidth	How many tiles wide the room is
+ 	XPos	The x coordinate of the lower left tile of the room
+ 	YPos	The y coordinate of the lower left tile of the room
+
+See Also
+MyDungeon Namespace
+
+Room Constructor 
+Initializes a new instance of the Room class
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public Room()
+
+See Also
+Room Class
+MyDungeon Namespace
+
+Room.Room Methods
+The Room type exposes the following members.
+Methods
+	Name	Description
+ 	SetupRoom	Sets up Rooms in map array
+
+See Also
+Room Class
+MyDungeon Namespace
+
+Room.SetupRoom Method 
+Sets up Rooms in map array
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public void SetupRoom(
+	IntRange widthRange,
+	IntRange heightRange,
+	int col,
+	int row
+)
+
+Parameters
+widthRange
+Type: MyDungeon.IntRange
+Int Range for Room width
+heightRange
+Type: MyDungeon.IntRange
+Int Range for Room height
+col
+Type: System.Int32
+Room starting X position
+row
+Type: System.Int32
+Room starting Y position
+See Also
+Room Class
+MyDungeon Namespace
+
+Room.Room Fields
+The Room type exposes the following members.
+Fields
+	Name	Description
+ 	Connections	The tiles of the room walls that are connected to corridors
+ 	EnteringCorridor	The direction of the corridor that is entering this room
+ 	RoomHeight	How many tiles high the room is
+ 	RoomWidth	How many tiles wide the room is
+ 	XPos	The x coordinate of the lower left tile of the room
+ 	YPos	The y coordinate of the lower left tile of the room
+
+See Also
+Room Class
+MyDungeon Namespace
+
+Room.Connections Field
+The tiles of the room walls that are connected to corridors
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public List<Coord> Connections
+
+Field Value
+Type: List(Coord)
+See Also
+Room Class
+MyDungeon Namespace
+
+Room.EnteringCorridor Field
+The direction of the corridor that is entering this room
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public Direction EnteringCorridor
+
+Field Value
+Type: Direction
+See Also
+Room Class
+MyDungeon Namespace
+
+Room.RoomHeight Field
+How many tiles high the room is
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int RoomHeight
+
+Field Value
+Type: Int32
+See Also
+Room Class
+MyDungeon Namespace
+
+Room.RoomWidth Field
+How many tiles wide the room is
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int RoomWidth
+
+Field Value
+Type: Int32
+See Also
+Room Class
+MyDungeon Namespace
+
+Room.XPos Field
+The x coordinate of the lower left tile of the room
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int XPos
+
+Field Value
+Type: Int32
+See Also
+Room Class
+MyDungeon Namespace
+
+Room.YPos Field
+The y coordinate of the lower left tile of the room
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public int YPos
+
+Field Value
+Type: Int32
+See Also
+Room Class
+MyDungeon Namespace
+
+SaveLoad Class
+Contains the Save and Load methods
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.SaveLoad
+
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public class SaveLoad : MonoBehaviour
+
+The SaveLoad type exposes the following members.
+Constructors
+	Name	Description
+ 	SaveLoad	Initializes a new instance of the SaveLoad class
+
+Methods
+	Name	Description
+ 	Load(T)	Reads a JSON file containing game save data
+ 	Save(T)	Creates or overwrites a JSON file containing game save data
+
+See Also
+MyDungeon Namespace
+
+SaveLoad Constructor 
+Initializes a new instance of the SaveLoad class
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public SaveLoad()
+
+See Also
+SaveLoad Class
+MyDungeon Namespace
+
+SaveLoad.SaveLoad Methods
+The SaveLoad type exposes the following members.
+Methods
+	Name	Description
+ 	Load(T)	Reads a JSON file containing game save data
+ 	Save(T)	Creates or overwrites a JSON file containing game save data
+
+See Also
+SaveLoad Class
+MyDungeon Namespace
+
+SaveLoad.Load(T) Method 
+Reads a JSON file containing game save data
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public T Load<T>(
+	string path
+)
+
+
+Parameters
+path
+Type: System.String
+The path to a save file
+Type Parameters
+T
+A SaveData class that inherits from MyDungeon.SaveData
+Return Value
+Type: T
+A SaveData object of type T deserialized from the JSON file located at the provided path if found else returns null
+See Also
+SaveLoad Class
+MyDungeon Namespace
+
+SaveLoad.Save(T) Method 
+Creates or overwrites a JSON file containing game save data
+Namespace: MyDungeon
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Syntax
+C#
+public void Save<T>(
+	T save,
+	string path
+)
+
+
+Parameters
+save
+Type: T
+A serializable class that represents data you wish to save
+path
+Type: System.String
+The path to a save file
+Type Parameters
+T
+[Missing <typeparam name="T"/> documentation for "M:MyDungeon.SaveLoad.Save``1(``0,System.String)"]
+See Also
+SaveLoad Class
+MyDungeon Namespace
