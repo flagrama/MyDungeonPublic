@@ -137,7 +137,7 @@ namespace MyDungeon.Demo
 
         public void SaveGame()
         {
-            MySaveData saveData = new MySaveData
+            SaveData saveData = new SaveData
             {
                 Inventory = PlayerManager.Instance.Inventory,
                 DisplayName = PlayerManager.Instance.PlayerName,
@@ -156,7 +156,7 @@ namespace MyDungeon.Demo
         {
             string path = Application.persistentDataPath + "/save.sav";
 
-            MySaveData save = gameObject.GetComponent<SaveLoad>().Load<MySaveData>(path);
+            SaveData save = gameObject.GetComponent<SaveLoad>().Load<SaveData>(path);
 
             if (save != null)
             {
