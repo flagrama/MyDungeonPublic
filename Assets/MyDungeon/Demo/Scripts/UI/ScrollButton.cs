@@ -14,7 +14,7 @@ namespace MyDungeon.Demo
         {
             _index = i;
             _name = itemName;
-            ButtonText.text = itemName;
+            ButtonText.text = _name;
         }
 
         public void Button_Click()
