@@ -1,0 +1,42 @@
+﻿using UnityEngine;
+
+namespace MyDungeon.Demo
+{
+    public class SoundManager : MonoBehaviour
+    {
+
+        public AudioSource sfxSource;
+        public AudioSource musicSource;
+        public static SoundManager instance = null;
+
+        public float lowPtichRange = .95f;
+        public float highPitchRange = 1.05f;
+
+        // Use this for initialization
+        void Awake()
+        {
+            if (instance == null)
+                instance = this;
+            else if (instance != this)
+                Destroy(gameObject);
+
+            DontDestroyOnLoad(gameObject);
+        }
+
+        public void PlaySingle(AudioClip clip)
+        {
+            sfxSource.clip = clip;
+            sfxSource.Play();
+        }
+
+        public void RandomizeSfx(params AudioClip[] clips)
+        {
+            int randomIndex = Random.Range(0, clips.Length);
+            float randomPitch = Random.Range(lowPtichRange, highPitchRange);
+
+            sfxSource.pitch = randomPitch;
+            sfxSource.clip = clips[randomIndex];
+            sfxSource.Play();
+        }
+    }
+}

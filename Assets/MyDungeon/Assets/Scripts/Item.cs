@@ -1,25 +1,19 @@
 ﻿using UnityEngine;
 
-public abstract class Item : ScriptableObject
+namespace MyDungeon
 {
-    public AudioClip[] useSounds;
-
-    protected Transform player;
-
-	public virtual void UseItem ()
-	{
-	    PlayerManager.instance.RemoveItem(this);
-	    player = GameObject.FindGameObjectWithTag("Player").transform;
-	    Use();
-	}
-
-    public virtual void ThrowItem()
+    public abstract class Item : ScriptableObject
     {
-        PlayerManager.instance.RemoveItem(this);
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        Throw();
+        public AudioClip[] useSounds;
+
+        protected Transform _target;
+
+        public virtual void UseItem(Transform target)
+        {
+            _target = target;
+            Use(target);
+        }
+
+        protected abstract void Use(Transform target);
     }
-	
-    protected abstract void Use();
-    protected abstract void Throw();
 }
