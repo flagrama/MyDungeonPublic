@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MyDungeon.Demo
 {
-    public class MySaveData : SaveData
+    [Serializable]
+    public class MySaveData
     {
         public string DisplayName = "";
         public List<Item> Inventory = new List<Item>();
