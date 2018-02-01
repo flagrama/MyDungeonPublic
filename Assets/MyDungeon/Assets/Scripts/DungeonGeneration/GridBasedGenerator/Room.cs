@@ -4,17 +4,24 @@ using UnityEngine;
 namespace MyDungeon
 {
     /// <summary>
-    /// Data structure for <c>Room</c> starting coordinates
+    /// Data structure for Room starting coordinates
     /// </summary>
     public struct Coord
     {
-        public int X, Y;
+        /// <summary>
+        /// The starting X coordinate of a room
+        /// </summary>
+        public int X;
+        /// <summary>
+        /// The starting Y coordinate of a room
+        /// </summary>
+        public int Y;
 
         /// <summary>
-        /// Starting coordinates for <c>Room</c>s
+        /// Starting coordinates for Rooms
         /// </summary>
         /// <param name="p1">Room starting X position</param>
-        /// <param name="p2">Toom starting Y position</param>
+        /// <param name="p2">Room starting Y position</param>
         public Coord(int p1, int p2)
         {
             X = p1;
@@ -27,12 +34,30 @@ namespace MyDungeon
     /// </summary>
     public class Room
     {
+        /// <summary>
+        /// The tiles of the room walls that are connected to corridors
+        /// </summary>
         public List<Coord> Connections;
-        public Direction EnteringCorridor; // The direction of the corridor that is entering this room.
-        public int RoomHeight; // How many tiles high the room is.
-        public int RoomWidth; // How many tiles wide the room is.
-        public int XPos; // The x coordinate of the lower left tile of the room.
-        public int YPos; // The y coordinate of the lower left tile of the room.
+        /// <summary>
+        /// The direction of the corridor that is entering this room
+        /// </summary>
+        public Direction EnteringCorridor;
+        /// <summary>
+        /// How many tiles high the room is
+        /// </summary>
+        public int RoomHeight;
+        /// <summary>
+        /// How many tiles wide the room is
+        /// </summary>
+        public int RoomWidth;
+        /// <summary>
+        /// The x coordinate of the lower left tile of the room
+        /// </summary>
+        public int XPos;
+        /// <summary>
+        /// The y coordinate of the lower left tile of the room
+        /// </summary>
+        public int YPos;
 
         /// <summary>
         /// Sets up Rooms in map array

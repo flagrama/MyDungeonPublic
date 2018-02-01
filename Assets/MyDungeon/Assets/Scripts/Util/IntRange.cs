@@ -8,7 +8,13 @@ namespace MyDungeon
     [Serializable]
     public class IntRange
     {
+        /// <summary>
+        /// The maximum value for a range
+        /// </summary>
         public int Max;
+        /// <summary>
+        /// The minimum value for a range
+        /// </summary>
         public int Min;
 
 

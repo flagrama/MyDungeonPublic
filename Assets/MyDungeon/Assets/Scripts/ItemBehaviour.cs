@@ -3,12 +3,12 @@
 namespace MyDungeon
 {
     /// <summary>
-    /// Component intended to be attached to item prefabs to attach <c>Item</c> <c>ScriptableObjects</c> to them
+    /// Component intended to be attached to item prefabs to attach ScriptableObjects that derive fromt he type Item to them
     /// </summary>
     public class ItemBehaviour : MonoBehaviour
     {
         /// <summary>
-        /// A <c>ScriptableObject</c> asset of type <c>Item</c>
+        /// A ScriptableObject asset of type Item
         /// </summary>
         public Item Item;
     }

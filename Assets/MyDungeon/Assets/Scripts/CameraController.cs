@@ -7,11 +7,17 @@ namespace MyDungeon
     /// </summary>
     public class CameraController : MonoBehaviour
     {
+        /// <summary>
+        /// The offset of the camera location
+        /// </summary>
         private Vector3 _offset;
+        /// <summary>
+        /// The game object the camera tracks
+        /// </summary>
         private GameObject _player;
 
         /// <summary>
-        /// Sets the position offset for the camera
+        /// Sets the position offset for the camera to the camera starting position
         /// </summary>
         private void Start()
         {
@@ -19,7 +25,7 @@ namespace MyDungeon
         }
 
         /// <summary>
-        /// Centers the camera on the object tagged as <c>Player</c>
+        /// Centers the camera on the object tagged as Player
         /// </summary>
         private void LateUpdate()
         {

@@ -23,33 +23,114 @@ namespace MyDungeon
             Player
         }
 
+        /// <summary>
+        /// Array representing the map
+        /// </summary>
         private TileType[,] _board;
-        private GameObject _boardHolder; // GameObject that acts as a container for all other tiles.
+        /// <summary>
+        /// GameObject that acts as a container for all other tiles
+        /// </summary>
+        private GameObject _boardHolder;
+        /// <summary>
+        /// All the cells available in map
+        /// </summary>
         private Cell[] _cells;
-        private List<Corridor> _corridors; // All the corridors that connect the rooms.
+        /// <summary>
+        /// All the corridors that connect the rooms
+        /// </summary>
+        private List<Corridor> _corridors;
+        /// <summary>
+        /// Total number of creatures to spawn in map
+        /// </summary>
         private int _creatureCount;
+        /// <summary>
+        /// Total number of items to spawn in map
+        /// </summary>
         private int _itemCount;
-        private IntRange _roomHeight; // The range of heights rooms can have.
-        private Room[] _rooms; // All the rooms that are created for this board.
-        private IntRange _roomWidth; // The range of widths rooms can have.
+        /// <summary>
+        /// The range of heights rooms can have
+        /// </summary>
+        private IntRange _roomHeight;
+        /// <summary>
+        /// All the rooms that are created for this board
+        /// </summary>
+        private Room[] _rooms;
+        /// <summary>
+        /// The range of widths rooms can have
+        /// </summary>
+        private IntRange _roomWidth;
+        /// <summary>
+        /// The number of rows in a cell
+        /// </summary>
         public int CellSizeH = 10;
+        /// <summary>
+        /// The number of columns in a cell
+        /// </summary>
         public int CellSizeW = 10;
-        public int Columns = 100; // The number of columns on the board (how wide it will be).
-        public IntRange CorridorLength = new IntRange(6, 10); // The range of lengths corridors between rooms can have.
+        /// <summary>
+        /// The number of columns on the board (how wide it will be)
+        /// </summary>
+        public int Columns = 100;
+        /// <summary>
+        /// The range of lengths corridors between rooms can have
+        /// </summary>
+        public IntRange CorridorLength = new IntRange(6, 10);
+        /// <summary>
+        /// The range of number of creatures that can appear in the board
+        /// </summary>
         public IntRange CreatureLevelMaxCount = new IntRange(6, 10);
+        /// <summary>
+        /// Array creature prefabs
+        /// </summary>
         public GameObject[] Creatures;
+        /// <summary>
+        /// Exit or staircase prefab
+        /// </summary>
         public GameObject Exit;
-        public GameObject[] FloorTiles; // An array of floor tile prefabs.
+        /// <summary>
+        /// An array of floor tile prefabs
+        /// </summary>
+        public GameObject[] FloorTiles;
+        /// <summary>
+        /// The range of number of items that can appear in the board
+        /// </summary>
         public IntRange ItemLevelMaxCount = new IntRange(6, 10);
+        /// <summary>
+        /// An array of item prefabs
+        /// </summary>
         public GameObject[] Items;
-        public IntRange NumRooms = new IntRange(15, 20); // The range of the number of rooms there can be.
-        public GameObject[] OuterWallTiles; // An array of outer wall tile prefabs.
+        /// <summary>
+        /// The range of the number of rooms there can be
+        /// </summary>
+        public IntRange NumRooms = new IntRange(15, 20);
+        /// <summary>
+        /// An array of outer wall tile prefabs
+        /// </summary>
+        public GameObject[] OuterWallTiles;
+        /// <summary>
+        /// Player prefab to spawn into map
+        /// </summary>
         public GameObject Player;
+        /// <summary>
+        /// The smallest a room's height can be
+        /// </summary>
         public int RoomMinHeight = 3;
+        /// <summary>
+        /// The smallest a room's width can be
+        /// </summary>
         public int RoomMinWidth = 3;
-        public int Rows = 100; // The number of rows on the board (how tall it will be).
+        /// <summary>
+        /// The number of rows on the board (how tall it will be)
+        /// </summary>
+        public int Rows = 100;
+        /// <summary>
+        /// The seed used to generate the board
+        /// </summary>
         public int Seed;
-        public GameObject[] WallTiles; // An array of wall tile prefabs.
+        /// <summary>
+        /// An array of wall tile prefabs
+        /// </summary>
+        public GameObject[] WallTiles;
 
         /// <summary>
         /// Generate a new grid-based dungeon map
@@ -83,7 +164,7 @@ namespace MyDungeon
         /// <summary>
         /// Creates the initial map array filled with impassible terrain
         /// </summary>
-        /// <returns>Map array filled with <c>TileType.Wall</c></returns>
+        /// <returns>Map array filled with TileType.Wall</returns>
         private TileType[,] SetupTilesArray()
         {
             // Set the tiles jagged array to the correct width.

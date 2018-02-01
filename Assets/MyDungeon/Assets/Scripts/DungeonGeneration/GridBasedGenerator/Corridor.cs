@@ -16,10 +16,22 @@
     /// </summary>
     public class Corridor
     {
-        public int CorridorLength; // How many units long the corridor is.
-        public Direction Direction; // Which direction the corridor is heading from it's room.
-        public int StartXPos; // The x coordinate for the start of the corridor.
-        public int StartYPos; // The y coordinate for the start of the corridor.
+        /// <summary>
+        /// How many units long the corridor is
+        /// </summary>
+        public int CorridorLength;
+        /// <summary>
+        /// Which direction the corridor is heading from it's room
+        /// </summary>
+        public Direction Direction;
+        /// <summary>
+        /// The x coordinate for the start of the corridor
+        /// </summary>
+        public int StartXPos;
+        /// <summary>
+        /// The y coordinate for the start of the corridor
+        /// </summary>
+        public int StartYPos;
 
         /// <summary>
         /// Sets up Corridor location in map array
