@@ -4,20 +4,18 @@ namespace MyDungeon.Demo
 {
     public class SoundManager : MonoBehaviour
     {
-
-        public AudioSource sfxSource;
-        public AudioSource musicSource;
-        public static SoundManager instance = null;
-
-        public float lowPtichRange = .95f;
-        public float highPitchRange = 1.05f;
+        public static SoundManager Instance;
+        public float HighPitchRange = 1.05f;
+        public float LowPtichRange = .95f;
+        public AudioSource MusicSource;
+        public AudioSource SfxSource;
 
         // Use this for initialization
-        void Awake()
+        private void Awake()
         {
-            if (instance == null)
-                instance = this;
-            else if (instance != this)
+            if (Instance == null)
+                Instance = this;
+            else if (Instance != this)
                 Destroy(gameObject);
 
             DontDestroyOnLoad(gameObject);
@@ -25,18 +23,18 @@ namespace MyDungeon.Demo
 
         public void PlaySingle(AudioClip clip)
         {
-            sfxSource.clip = clip;
-            sfxSource.Play();
+            SfxSource.clip = clip;
+            SfxSource.Play();
         }
 
         public void RandomizeSfx(params AudioClip[] clips)
         {
             int randomIndex = Random.Range(0, clips.Length);
-            float randomPitch = Random.Range(lowPtichRange, highPitchRange);
+            float randomPitch = Random.Range(LowPtichRange, HighPitchRange);
 
-            sfxSource.pitch = randomPitch;
-            sfxSource.clip = clips[randomIndex];
-            sfxSource.Play();
+            SfxSource.pitch = randomPitch;
+            SfxSource.clip = clips[randomIndex];
+            SfxSource.Play();
         }
     }
 }

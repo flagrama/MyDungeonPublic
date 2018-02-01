@@ -2,9 +2,9 @@
 {
     public class Cell
     {
+        public bool Used;
         public int XPos;
         public int YPos;
-        public bool Used;
 
         public void SetupCell(int column, int row)
         {

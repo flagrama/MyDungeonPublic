@@ -103,17 +103,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01431ae29f45a0d43b94a530fbbbb37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 0.2
-  blockingLayer:
+  BlockingLayer:
     serializedVersion: 2
     m_Bits: 256
-  level: 1
-  maxHealth: 4
-  strength: 1
-  displayName: Zombie
+  DisplayName: Zombie
+  Level: 1
+  MaxHealth: 4
+  MoveTime: 0.25
+  Strength: 1
+  EnemyAttack1: {fileID: 8300000, guid: 69dc9f2a4f2aa56489ee066195123248, type: 3}
+  EnemyAttack2: {fileID: 8300000, guid: 3ba28f5421ed1fa44902a7d40d692480, type: 3}
   XpValue: 1
-  enemyAttack1: {fileID: 8300000, guid: 69dc9f2a4f2aa56489ee066195123248, type: 3}
-  enemyAttack2: {fileID: 8300000, guid: 3ba28f5421ed1fa44902a7d40d692480, type: 3}
 --- !u!212 &212000012860780400
 SpriteRenderer:
   m_ObjectHideFlags: 1

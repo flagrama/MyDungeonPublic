@@ -4,16 +4,15 @@ namespace MyDungeon
 {
     public abstract class Item : ScriptableObject
     {
-        public AudioClip[] useSounds;
-
-        protected Transform _target;
+        protected Transform Target;
+        public AudioClip[] UseSounds;
 
         public virtual void UseItem(Transform target)
         {
-            _target = target;
-            Use(target);
+            Target = target;
+            Use();
         }
 
-        protected abstract void Use(Transform target);
+        protected abstract void Use();
     }
 }

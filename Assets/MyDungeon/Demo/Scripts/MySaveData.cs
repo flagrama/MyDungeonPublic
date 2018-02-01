@@ -4,8 +4,8 @@ namespace MyDungeon.Demo
 {
     public class MySaveData : SaveData
     {
-        public List<Item> inventory = new List<Item>();
-        public string displayName = "";
-        public int maxHealth = -1;
+        public string DisplayName = "";
+        public List<Item> Inventory = new List<Item>();
+        public int MaxHealth = -1;
     }
 }

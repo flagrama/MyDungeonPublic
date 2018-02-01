@@ -4,39 +4,37 @@ namespace MyDungeon.Demo
 {
     public class Loader : MonoBehaviour
     {
+        public GameObject GameManager;
+        public GameObject HudManager;
+        public GameObject MenuManager;
+        public GameObject PlayerManager;
+        public GameObject SoundManager;
 
-        public GameObject gameManager;
-        public GameObject soundManager;
-        public GameObject hudManager;
-        public GameObject playerManager;
-        public GameObject menuManager;
-
-        void Awake()
+        private void Awake()
         {
-
-            if (SoundManager.instance == null)
+            if (Demo.SoundManager.Instance == null)
             {
-                Instantiate(soundManager);
+                Instantiate(SoundManager);
             }
 
-            if (HudManager.instance == null)
+            if (Demo.HudManager.Instance == null)
             {
-                Instantiate(hudManager);
+                Instantiate(HudManager);
             }
 
-            if (GameManager.instance == null)
+            if (Demo.PlayerManager.Instance == null)
             {
-                Instantiate(gameManager);
+                Instantiate(PlayerManager);
             }
 
-            if (PlayerManager.instance == null)
+            if (Demo.MenuManager.Instance == null)
             {
-                Instantiate(playerManager);
+                Instantiate(MenuManager);
             }
 
-            if (MenuManager.instance == null)
+            if (Demo.GameManager.Instance == null)
             {
-                Instantiate(menuManager);
+                Instantiate(GameManager);
             }
         }
     }

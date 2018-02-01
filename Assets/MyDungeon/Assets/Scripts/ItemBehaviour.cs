@@ -4,6 +4,6 @@ namespace MyDungeon
 {
     public class ItemBehaviour : MonoBehaviour
     {
-        public Item item;
+        public Item Item;
     }
 }

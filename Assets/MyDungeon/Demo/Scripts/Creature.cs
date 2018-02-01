@@ -4,46 +4,46 @@ namespace MyDungeon.Demo
 {
     public class Creature : MovingObject
     {
-        public int XpValue;
-        public AudioClip enemyAttack1;
-        public AudioClip enemyAttack2;
+        private Animator _animator;
+        private bool _skipMove;
 
-        Transform target;
-        Animator animator;
-        bool skipMove;
+        private Transform _target;
+        public AudioClip EnemyAttack1;
+        public AudioClip EnemyAttack2;
+        public int XpValue;
 
         // Use this for initialization
         protected override void Start()
         {
-            GameManager.instance.AddCreatureToList(this);
-            animator = GetComponent<Animator>();
-            target = GameObject.FindGameObjectWithTag("Player").transform;
-            curHealth = maxHealth;
+            GameManager.Instance.AddCreatureToList(this);
+            _animator = GetComponent<Animator>();
+            _target = GameObject.FindGameObjectWithTag("Player").transform;
+            CurHealth = MaxHealth;
             base.Start();
         }
 
         private void Update()
         {
-            if (curHealth <= 0)
+            if (CurHealth <= 0)
             {
-                GameManager.instance.RemoveCreatureFromList(this);
-                GameManager.instance.board[posX, posY] = GridGenerator.TileType.Floor;
-                HudManager.instance.AddMessage(displayName + " was defeated!");
-                PlayerManager.instance.GainXp(XpValue);
+                GameManager.Instance.RemoveCreatureFromList(this);
+                GameManager.Instance.Board[PosX, PosY] = GridGenerator.TileType.Floor;
+                HudManager.Instance.AddMessage(DisplayName + " was defeated!");
+                PlayerManager.Instance.GainXp(XpValue);
                 Destroy(gameObject);
             }
         }
 
         protected override void AttemptMove<T>(int xDir, int yDir)
         {
-            if (skipMove)
+            if (_skipMove)
             {
-                skipMove = false;
+                _skipMove = false;
                 return;
             }
 
             base.AttemptMove<T>(xDir, yDir);
-            skipMove = true;
+            _skipMove = true;
         }
 
         public void MoveCreature()
@@ -51,20 +51,20 @@ namespace MyDungeon.Demo
             int xDir = 0;
             int yDir = 0;
 
-            if (Mathf.Abs(target.position.x - transform.position.x) < Mathf.Epsilon)
-                yDir = target.position.y > transform.position.y ? 1 : -1;
+            if (Mathf.Abs(_target.position.x - transform.position.x) < Mathf.Epsilon)
+                yDir = _target.position.y > transform.position.y ? 1 : -1;
             else
-                xDir = target.position.x > transform.position.x ? 1 : -1;
+                xDir = _target.position.x > transform.position.x ? 1 : -1;
 
             AttemptMove<Player>(xDir, yDir);
         }
 
-        protected override void OnCantMove<T>(T Component)
+        protected override void OnCantMove<T>(T component)
         {
-            Player hitPlayer = Component as Player;
-            hitPlayer.LoseHealth(strength);
-            animator.SetTrigger("enemy1Attack");
-            SoundManager.instance.RandomizeSfx(enemyAttack1, enemyAttack2);
+            Player hitPlayer = component as Player;
+            if (hitPlayer != null) hitPlayer.LoseHealth(Strength);
+            _animator.SetTrigger("enemy1Attack");
+            SoundManager.Instance.RandomizeSfx(EnemyAttack1, EnemyAttack2);
         }
     }
 }

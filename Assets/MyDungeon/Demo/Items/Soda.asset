@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66459b2d314daf74bb237e447db0a78c, type: 3}
   m_Name: Soda
   m_EditorClassIdentifier: 
-  useSounds:
+  UseSounds:
   - {fileID: 8300000, guid: 8692f791da34a9442bd20c899e62f2bf, type: 3}
   - {fileID: 8300000, guid: bcbfe63ef3f1fb8428847abebe4629da, type: 3}
-  recover: 2
+  Recover: 2

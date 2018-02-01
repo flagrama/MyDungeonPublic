@@ -1,96 +1,92 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace MyDungeon.Demo
 {
     public class HudManager : MonoBehaviour
     {
-
-        public static HudManager instance = null;
-        public GameObject hudCanvas;
-
-        Text messageLogText;
-        Text healthText;
-        private RectTransform healthBar;
-        private RectTransform healthBarForeground;
-        private RectTransform healthBarBackground;
-        private Text floorText;
-        private Text levelText;
-        private Text xpText;
-
-        private const int MAX_HEALTH = 1000;
-        private const int BASE_HEALTH = 50;
+        private const int MaxHealth = 1000;
+        private const int BaseHealth = 50;
+        public static HudManager Instance;
+        private Text _floorText;
+        private RectTransform _healthBar;
+        private RectTransform _healthBarBackground;
+        private RectTransform _healthBarForeground;
+        private Text _healthText;
+        private Text _levelText;
+        private Text _messageLogText;
+        private Text _xpText;
+        public GameObject HudCanvas;
 
         // Use this for initialization
-        void Awake()
+        private void Awake()
         {
-            if (instance == null)
-                instance = this;
-            else if (instance != this)
+            if (Instance == null)
+                Instance = this;
+            else if (Instance != this)
                 Destroy(gameObject);
 
             DontDestroyOnLoad(gameObject);
         }
 
-        void Start()
+        private void Start()
         {
             InitUi();
         }
 
         public void InitUi()
         {
-            hudCanvas = (GameObject) Instantiate(Resources.Load("hudCanvas"));
+            HudCanvas = (GameObject) Instantiate(Resources.Load("hudCanvas"));
 
-            instance.messageLogText = GameObject.Find("Message Log").GetComponent<Text>();
-            instance.healthBar = GameObject.Find("HealthBar").GetComponent<RectTransform>();
-            instance.healthText = GameObject.Find("HealthText").GetComponent<Text>();
-            instance.healthBarForeground = GameObject.Find("HealthForeground").GetComponent<RectTransform>();
-            instance.healthBarBackground = GameObject.Find("HealthBackground").GetComponent<RectTransform>();
-            instance.floorText = GameObject.Find("FloorText").GetComponent<Text>();
-            instance.levelText = GameObject.Find("LevelText").GetComponent<Text>();
-            instance.xpText = GameObject.Find("ExperienceText").GetComponent<Text>();
+            Instance._messageLogText = GameObject.Find("Message Log").GetComponent<Text>();
+            Instance._healthBar = GameObject.Find("HealthBar").GetComponent<RectTransform>();
+            Instance._healthText = GameObject.Find("HealthText").GetComponent<Text>();
+            Instance._healthBarForeground = GameObject.Find("HealthForeground").GetComponent<RectTransform>();
+            Instance._healthBarBackground = GameObject.Find("HealthBackground").GetComponent<RectTransform>();
+            Instance._floorText = GameObject.Find("FloorText").GetComponent<Text>();
+            Instance._levelText = GameObject.Find("LevelText").GetComponent<Text>();
+            Instance._xpText = GameObject.Find("ExperienceText").GetComponent<Text>();
 
-            if (MenuManager.instance.inMainMenu)
-                hudCanvas.SetActive(false);
+            if (MenuManager.Instance.InMainMenu)
+                HudCanvas.SetActive(false);
         }
 
         public void AddMessage(string message)
         {
-            messageLogText.text = message + "\n" + messageLogText.text;
+            _messageLogText.text = message + "\n" + _messageLogText.text;
         }
 
         public void AddDebugMessage(string message)
         {
-            messageLogText.text = "<color='yellow'>DEBUG: " + message + "</color>" + "\n" + messageLogText.text;
+            _messageLogText.text = "<color='yellow'>DEBUG: " + message + "</color>" + "\n" + _messageLogText.text;
         }
 
         public void UpdateHealth(int curHealth, int maxHealth)
         {
-            healthText.text = String.Format("HP:{0,3}/{1,3}", curHealth, maxHealth);
-            healthBarForeground.sizeDelta =
+            _healthText.text = string.Format("HP:{0,3}/{1,3}", curHealth, maxHealth);
+            _healthBarForeground.sizeDelta =
                 new Vector2(
-                    (float) curHealth / (float) maxHealth * (Mathf.RoundToInt(
-                        BASE_HEALTH + (healthBar.rect.width * Mathf.Sin(maxHealth / (float) MAX_HEALTH)) / 2)),
-                    healthBarForeground.sizeDelta.y);
-            instance.healthBarBackground.sizeDelta = new Vector2(
-                Mathf.RoundToInt(BASE_HEALTH + (healthBar.rect.width * Mathf.Sin(maxHealth / (float) MAX_HEALTH)) / 2),
-                instance.healthBarForeground.sizeDelta.y);
+                    curHealth / (float) maxHealth * Mathf.RoundToInt(
+                        BaseHealth + _healthBar.rect.width * Mathf.Sin(maxHealth / (float) MaxHealth) / 2),
+                    _healthBarForeground.sizeDelta.y);
+            Instance._healthBarBackground.sizeDelta = new Vector2(
+                Mathf.RoundToInt(BaseHealth + _healthBar.rect.width * Mathf.Sin(maxHealth / (float) MaxHealth) / 2),
+                Instance._healthBarForeground.sizeDelta.y);
         }
 
         public void UpdateFloor(int floor)
         {
-            floorText.text = String.Format("{0,3}F", floor);
+            _floorText.text = string.Format("{0,3}F", floor);
         }
 
         public void UpdateLevel(int level)
         {
-            levelText.text = String.Format("Lv{0,3}", level);
+            _levelText.text = string.Format("Lv{0,3}", level);
         }
 
         public void UpdateXp(int curXp, int nextXp)
         {
-            xpText.text = String.Format("{0,4}/{1,4}", curXp, nextXp);
+            _xpText.text = string.Format("{0,4}/{1,4}", curXp, nextXp);
         }
     }
 }

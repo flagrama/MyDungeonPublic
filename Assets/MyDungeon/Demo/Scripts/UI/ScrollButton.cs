@@ -5,21 +5,21 @@ namespace MyDungeon.Demo
 {
     public class ScrollButton : MonoBehaviour
     {
-        private string Name;
-        private int Index;
+        private int _index;
+        private string _name;
         public Text ButtonText;
         public ScrollView ScrollView;
 
-        public void SetNameAndIndex(string name, int i)
+        public void SetNameAndIndex(string itemName, int i)
         {
-            Index = i;
-            Name = name;
-            ButtonText.text = name;
+            _index = i;
+            _name = itemName;
+            ButtonText.text = itemName;
         }
 
         public void Button_Click()
         {
-            ScrollView.ButtonClicked(Name, Index);
+            ScrollView.ButtonClicked(_name, _index);
         }
     }
 }

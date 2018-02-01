@@ -103,22 +103,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0859222b60ae354a9f812ae96846acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 0.25
-  blockingLayer:
+  BlockingLayer:
     serializedVersion: 2
     m_Bits: 256
-  level: 1
-  maxHealth: 10
-  strength: 1
-  displayName: Player
-  restartLevelDelay: 0.2
-  moveSound1: {fileID: 8300000, guid: 558b103aabd25084eb0863682d0b32f8, type: 3}
-  moveSound2: {fileID: 8300000, guid: a3f42322f69cf6345b86a427d320daf2, type: 3}
-  chopSound1: {fileID: 8300000, guid: ce1a72957bcbae6458bbdf6cce79712a, type: 3}
-  chopSound2: {fileID: 8300000, guid: 8679fedeffde76443a8f633f75c1726f, type: 3}
-  swingSound1: {fileID: 8300000, guid: 5ffbb965b46a07948956e37116f7d4ab, type: 3}
-  swingSound2: {fileID: 8300000, guid: d2968769688b8f04c81151365bb6ba61, type: 3}
-  gameOverSound: {fileID: 8300000, guid: e069668bc2bc2ec42919a44888567a80, type: 3}
+  DisplayName: Player
+  Level: 1
+  MaxHealth: 10
+  MoveTime: 0.25
+  Strength: 1
+  ChopSound1: {fileID: 8300000, guid: ce1a72957bcbae6458bbdf6cce79712a, type: 3}
+  ChopSound2: {fileID: 8300000, guid: 8679fedeffde76443a8f633f75c1726f, type: 3}
+  GameOverSound: {fileID: 8300000, guid: e069668bc2bc2ec42919a44888567a80, type: 3}
+  MoveSound1: {fileID: 8300000, guid: 558b103aabd25084eb0863682d0b32f8, type: 3}
+  MoveSound2: {fileID: 8300000, guid: a3f42322f69cf6345b86a427d320daf2, type: 3}
+  RestartLevelDelay: 1
+  SwingSound1: {fileID: 8300000, guid: 5ffbb965b46a07948956e37116f7d4ab, type: 3}
+  SwingSound2: {fileID: 8300000, guid: d2968769688b8f04c81151365bb6ba61, type: 3}
 --- !u!212 &212000014258622478
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -8,41 +8,43 @@ namespace MyDungeon.Demo
 {
     public class GameManager : MonoBehaviour
     {
-
-        public float levelStartDelay = 2f;
-        public static GameManager instance = null;
-        public GameObject loadingCanvas;
-        public int seed;
-        public GameObject player;
-
-        [HideInInspector] public bool playersTurn = true;
-        [HideInInspector] public bool paused = false;
-        [HideInInspector] public GridGenerator.TileType[,] board;
-        [HideInInspector] public int floor = 0;
-
-        Text loadingText;
-        GameObject loadingImage;
-        GridGenerator boardScript;
-        List<Creature> creatures;
-        bool creaturesMoving;
-        bool doingSetup = true;
+        public static GameManager Instance;
+        private GridGenerator _boardScript;
+        private List<Creature> _creatures;
+        private bool _creaturesMoving;
+        private bool _doingSetup = true;
+        private GameObject _loadingImage;
+        private Text _loadingText;
+        [HideInInspector] public GridGenerator.TileType[,] Board;
+        [HideInInspector] public int Floor;
+        public float LevelStartDelay = 2f;
+        public GameObject LoadingCanvas;
+        [HideInInspector] public bool Paused = false;
+        public GameObject Player;
+        [HideInInspector] public bool PlayersTurn = true;
+        public int Seed;
 
         // Use this for initialization
-        void Awake()
+        private void Awake()
         {
-            if (instance == null)
-                instance = this;
-            else if (instance != this)
+            if (Instance == null)
+                Instance = this;
+            else if (Instance != this)
                 Destroy(gameObject);
 
             DontDestroyOnLoad(gameObject);
-            DontDestroyOnLoad(GameObject.Find("EventSystem"));
 
-            creatures = new List<Creature>();
-            boardScript = GetComponent<GridGenerator>();
+            _creatures = new List<Creature>();
+            _boardScript = GetComponent<GridGenerator>();
 
             if (SceneManager.GetActiveScene().name == "Dungeon")
                 InitGame();
+
+            if (SceneManager.GetActiveScene().name == "Town")
+            {
+                Instantiate(Instance.Player, new Vector2(0, 0), Quaternion.identity);
+                Instance.Floor = 0;
+            }
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
@@ -55,47 +57,47 @@ namespace MyDungeon.Demo
         private static void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
             if (arg0.name == "Dungeon")
-                instance.InitGame();
+                Instance.InitGame();
             else if (arg0.name == "Town")
             {
-                Instantiate(instance.player, new Vector2(0, 0), Quaternion.identity);
-                MenuManager.instance.InitMenus();
-                HudManager.instance.InitUi();
-                instance.floor = 0;
+                Instantiate(Instance.Player, new Vector2(0, 0), Quaternion.identity);
+                MenuManager.Instance.InitMenus();
+                HudManager.Instance.InitUi();
+                Instance.Floor = 0;
             }
         }
 
-        void InitGame()
+        private void InitGame()
         {
-            doingSetup = true;
-            MenuManager.instance.InitMenus();
-            HudManager.instance.InitUi();
-            loadingCanvas = (GameObject)Instantiate(Resources.Load("loadingCanvas"));
-            loadingImage = GameObject.Find("LoadingImage");
-            loadingText = GameObject.Find("LoadingText").GetComponent<Text>();
-            loadingImage.SetActive(true);
-            creatures.Clear();
-            board = new GridGenerator.TileType[boardScript.rows, boardScript.columns];
-            floor++;
-            Invoke("GenerateBoard", levelStartDelay);
-            Invoke("HideLoadingImage", levelStartDelay);
+            _doingSetup = true;
+            MenuManager.Instance.InitMenus();
+            HudManager.Instance.InitUi();
+            LoadingCanvas = (GameObject) Instantiate(Resources.Load("loadingCanvas"));
+            _loadingImage = GameObject.Find("LoadingImage");
+            _loadingText = GameObject.Find("LoadingText").GetComponent<Text>();
+            _loadingImage.SetActive(true);
+            _creatures.Clear();
+            Board = new GridGenerator.TileType[_boardScript.Rows, _boardScript.Columns];
+            Floor++;
+            Invoke("GenerateBoard", LevelStartDelay);
+            Invoke("HideLoadingImage", LevelStartDelay);
         }
 
-        void GenerateBoard()
+        private void GenerateBoard()
         {
-            board = boardScript.GenerateBoard();
+            Board = _boardScript.GenerateBoard();
         }
 
-        void HideLoadingImage()
+        private void HideLoadingImage()
         {
-            loadingImage.SetActive(false);
-            doingSetup = false;
+            _loadingImage.SetActive(false);
+            _doingSetup = false;
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            if (playersTurn || creaturesMoving || doingSetup)
+            if (PlayersTurn || _creaturesMoving || _doingSetup)
                 return;
 
             StartCoroutine(MoveCreatures());
@@ -103,46 +105,48 @@ namespace MyDungeon.Demo
 
         public void AddCreatureToList(Creature script)
         {
-            creatures.Add(script);
+            _creatures.Add(script);
         }
 
         public void RemoveCreatureFromList(Creature script)
         {
-            creatures.Remove(script);
+            _creatures.Remove(script);
         }
 
         public void GameOver()
         {
-            loadingText.text = "YOU DIED";
-            loadingImage.SetActive(true);
+            _loadingText.text = "YOU DIED";
+            _loadingImage.SetActive(true);
             enabled = false;
         }
 
-        IEnumerator MoveCreatures()
+        private IEnumerator MoveCreatures()
         {
-            creaturesMoving = true;
+            _creaturesMoving = true;
 
             yield return new WaitForSeconds(0.2f);
 
-            for (int i = 0; i < creatures.Count; i++)
-                creatures[i].MoveCreature();
+            foreach (Creature creature in _creatures)
+                creature.MoveCreature();
 
             yield return null;
 
-            creaturesMoving = false;
-            playersTurn = true;
+            _creaturesMoving = false;
+            PlayersTurn = true;
         }
 
         public void SaveGame()
         {
-            MySaveData saveData = new MySaveData();
-            saveData.inventory = PlayerManager.instance.inventory;
-            saveData.displayName = PlayerManager.instance.playerName;
-            saveData.maxHealth = PlayerManager.instance.maxHealth;
+            MySaveData saveData = new MySaveData
+            {
+                Inventory = PlayerManager.Instance.Inventory,
+                DisplayName = PlayerManager.Instance.PlayerName,
+                MaxHealth = PlayerManager.Instance.MaxHealth
+            };
 
             gameObject.GetComponent<SaveLoad>().Save(saveData, Application.persistentDataPath + "/save.sav");
 
-            HudManager.instance.AddMessage("Game Saved!");
+            HudManager.Instance.AddMessage("Game Saved!");
 #if UNITY_EDITOR
             Debug.Log("Game Saved to " + Application.persistentDataPath + "/save.sav");
 #endif
@@ -154,14 +158,14 @@ namespace MyDungeon.Demo
 
             MySaveData save = gameObject.GetComponent<SaveLoad>().Load<MySaveData>(path);
 
-            if(save != null)
+            if (save != null)
             {
-                PlayerManager.instance.InitPlayer(save.displayName, save.maxHealth);
-                PlayerManager.instance.inventory = save.inventory;
-                PlayerManager.instance.initialized = true;
+                PlayerManager.Instance.InitPlayer(save.DisplayName, save.MaxHealth);
+                PlayerManager.Instance.Inventory = save.Inventory;
+                PlayerManager.Instance.Initialized = true;
 
-                MenuManager.instance.inMenu = false;
-                MenuManager.instance.inMainMenu = false;
+                MenuManager.Instance.InMenu = false;
+                MenuManager.Instance.InMainMenu = false;
                 SceneManager.LoadScene("Town");
 
 #if UNITY_EDITOR

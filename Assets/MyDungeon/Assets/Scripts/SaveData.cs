@@ -1,6 +1,8 @@
-﻿namespace MyDungeon
+﻿using System;
+
+namespace MyDungeon
 {
-    [System.Serializable]
+    [Serializable]
     public abstract class SaveData
     {
     }

@@ -4,18 +4,18 @@ namespace MyDungeon.Demo
 {
     public class ScrollView : MonoBehaviour
     {
-        public GameObject Button_Template;
+        public GameObject ButtonTemplate;
 
         // Use this for initialization
         public void Populate()
         {
-            for (int i = 0; i < PlayerManager.instance.inventory.Count; i++)
+            for (int i = 0; i < PlayerManager.Instance.Inventory.Count; i++)
             {
-                GameObject go = Instantiate(Button_Template);
+                GameObject go = Instantiate(ButtonTemplate);
                 go.SetActive(true);
-                ScrollButton TB = go.GetComponent<ScrollButton>();
-                TB.SetNameAndIndex(PlayerManager.instance.inventory[i].name, i);
-                go.transform.SetParent(Button_Template.transform.parent);
+                ScrollButton tb = go.GetComponent<ScrollButton>();
+                tb.SetNameAndIndex(PlayerManager.Instance.Inventory[i].name, i);
+                go.transform.SetParent(ButtonTemplate.transform.parent);
             }
         }
 
@@ -33,15 +33,15 @@ namespace MyDungeon.Demo
             Player player = GameObject.Find("Player(Clone)").GetComponent<Player>();
             if (str == null)
             {
-                MenuManager.instance.Pause();
+                MenuManager.Instance.Pause();
                 player.enabled = true;
                 return;
             }
 
-            PlayerManager.instance.inventory[i].UseItem(player.transform);
-            PlayerManager.instance.inventory.Remove(PlayerManager.instance.inventory[i]);
-            GameManager.instance.playersTurn = false;
-            MenuManager.instance.Pause();
+            PlayerManager.Instance.Inventory[i].UseItem(player.transform);
+            PlayerManager.Instance.Inventory.Remove(PlayerManager.Instance.Inventory[i]);
+            GameManager.Instance.PlayersTurn = false;
+            MenuManager.Instance.Pause();
         }
     }
 }

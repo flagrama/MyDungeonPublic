@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66459b2d314daf74bb237e447db0a78c, type: 3}
   m_Name: Food
   m_EditorClassIdentifier: 
-  useSounds:
+  UseSounds:
   - {fileID: 8300000, guid: 4b5ea8846ec8935468ec649686e2d716, type: 3}
   - {fileID: 8300000, guid: ecdc0de7556165349931cd51b2651dc5, type: 3}
-  recover: 1
+  Recover: 1

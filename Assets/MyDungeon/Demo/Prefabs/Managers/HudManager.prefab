@@ -51,5 +51,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b2834fdff95114ab1d6fd4b5e2d189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hudCanvas: {fileID: 223000010641876008, guid: fe11baa8389a90c4e8b26e972578aae7,
-    type: 2}
+  HudCanvas: {fileID: 1000012451442034, guid: cd683d507b122b24b9352d0b7e9b8777, type: 2}

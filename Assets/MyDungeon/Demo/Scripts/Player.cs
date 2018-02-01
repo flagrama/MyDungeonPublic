@@ -6,72 +6,70 @@ namespace MyDungeon.Demo
 {
     public class Player : MovingObject
     {
-
-        public float restartLevelDelay = 1f;
-        public AudioClip moveSound1;
-        public AudioClip moveSound2;
-        public AudioClip chopSound1;
-        public AudioClip chopSound2;
-        public AudioClip swingSound1;
-        public AudioClip swingSound2;
-        public AudioClip gameOverSound;
-
-        private Animator animator;
-        private int horizontal;
-        private int vertical;
-        private bool hold;
-        private bool diag;
+        private Animator _animator;
+        private bool _diag;
+        private bool _hold;
+        private int _horizontal;
+        private int _vertical;
+        public AudioClip ChopSound1;
+        public AudioClip ChopSound2;
+        public AudioClip GameOverSound;
+        public AudioClip MoveSound1;
+        public AudioClip MoveSound2;
+        public float RestartLevelDelay = 1f;
+        public AudioClip SwingSound1;
+        public AudioClip SwingSound2;
 
         // Use this for initialization
         protected override void Start()
         {
-            if (!MenuManager.instance.inMainMenu)
+            if (!MenuManager.Instance.InMainMenu)
             {
-                animator = GetComponent<Animator>();
+                _animator = GetComponent<Animator>();
 
-                if (PlayerManager.instance.initialized == false)
+                if (PlayerManager.Instance.Initialized == false)
                 {
-                    PlayerManager.instance.InitPlayer(displayName, maxHealth);
-                    PlayerManager.instance.initialized = true;
+                    PlayerManager.Instance.InitPlayer(DisplayName, MaxHealth);
+                    PlayerManager.Instance.Initialized = true;
                 }
 
-                curHealth = PlayerManager.instance.curHealth;
-                HudManager.instance.UpdateLevel(PlayerManager.instance.level);
+                CurHealth = PlayerManager.Instance.CurHealth;
+                HudManager.Instance.UpdateLevel(PlayerManager.Instance.Level);
                 UpdateHealth();
                 base.Start();
             }
         }
 
-        void OnDisable()
+        private void OnDisable()
         {
-            PlayerManager.instance.curHealth = curHealth;
+            PlayerManager.Instance.CurHealth = CurHealth;
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            if (!GameManager.instance.playersTurn || GameManager.instance.paused || MenuManager.instance.inMainMenu)
+            if (!GameManager.Instance.PlayersTurn || GameManager.Instance.Paused || MenuManager.Instance.InMainMenu)
                 return;
 
-            horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
-            vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
+            _horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
+            _vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
             if (SceneManager.GetActiveScene().name == "Dungeon")
             {
-                diag = Input.GetButton("Diagonal Lock");
-                hold = Input.GetButton("Fire3");
-                if (Input.GetButtonDown("Fire1") && !moving)
+                _diag = Input.GetButton("Diagonal Lock");
+                _hold = Input.GetButton("Fire3");
+                if (Input.GetButtonDown("Fire1") && !Moving)
                     StartCoroutine(Attack());
-                if (horizontal != 0 || vertical != 0)
-                    AttemptMove<Creature>(horizontal, vertical);
+                if (_horizontal != 0 || _vertical != 0)
+                    AttemptMove<Creature>(_horizontal, _vertical);
             }
 
             if (SceneManager.GetActiveScene().name == "Town")
             {
-                if (horizontal != 0 || vertical != 0)
+                if (_horizontal != 0 || _vertical != 0)
                 {
                     transform.GetComponent<Rigidbody2D>().isKinematic = false;
-                    transform.position += new Vector3(horizontal, vertical) * Time.deltaTime * 5;
-                    SetAnimation(horizontal, vertical);
+                    transform.position += new Vector3(_horizontal, _vertical) * Time.deltaTime * 5;
+                    SetAnimation(_horizontal, _vertical);
                 }
                 if (Input.GetButtonDown("Fire1"))
                 {
@@ -79,21 +77,21 @@ namespace MyDungeon.Demo
                 }
             }
 
-            enabled = !MenuManager.instance.inMenu;
+            enabled = !MenuManager.Instance.InMenu;
         }
 
         protected override void AttemptMove<T>(int xDir, int yDir)
         {
-            int x = posX;
-            int y = posY;
+            int x = PosX;
+            int y = PosY;
 
-            if (hold)
+            if (_hold)
             {
                 SetAnimation(xDir, yDir);
                 return;
             }
 
-            if (diag)
+            if (_diag)
             {
                 if (xDir == 0 || yDir == 0)
                     return;
@@ -101,14 +99,14 @@ namespace MyDungeon.Demo
 
             base.AttemptMove<T>(xDir, yDir);
 
-            if (posX != x || posY != y)
+            if (PosX != x || PosY != y)
             {
-                SoundManager.instance.RandomizeSfx(moveSound1, moveSound2);
+                SoundManager.Instance.RandomizeSfx(MoveSound1, MoveSound2);
                 SetAnimation(xDir, yDir);
-                animator.SetTrigger("playerMove");
-                GameManager.instance.playersTurn = false;
+                _animator.SetTrigger("playerMove");
+                GameManager.Instance.PlayersTurn = false;
             }
-            if (!moving)
+            if (!Moving)
             {
                 SetAnimation(xDir, yDir);
             }
@@ -120,47 +118,47 @@ namespace MyDungeon.Demo
 
         private void SetAnimation(int xDir, int yDir)
         {
-            animator.SetFloat("MoveX", xDir);
-            animator.SetFloat("MoveY", yDir);
+            _animator.SetFloat("MoveX", xDir);
+            _animator.SetFloat("MoveY", yDir);
         }
 
         private IEnumerator Attack()
         {
             Vector2 start = transform.position;
-            Vector2 end = start + new Vector2(animator.GetFloat("MoveX"), animator.GetFloat("MoveY"));
+            Vector2 end = start + new Vector2(_animator.GetFloat("MoveX"), _animator.GetFloat("MoveY"));
             RaycastHit2D hit;
 
-            moving = true;
+            Moving = true;
 
             CheckHit(start, end, out hit);
 
-            SoundManager.instance.RandomizeSfx(swingSound1, swingSound2);
-            animator.SetTrigger("playerAttack");
+            SoundManager.Instance.RandomizeSfx(SwingSound1, SwingSound2);
+            _animator.SetTrigger("playerAttack");
 
             if (hit.transform == null)
             {
-                GameManager.instance.playersTurn = false;
-                yield return new WaitForSeconds(moveTime);
-                moving = false;
+                GameManager.Instance.PlayersTurn = false;
+                yield return new WaitForSeconds(MoveTime);
+                Moving = false;
                 yield break;
             }
 
             if (hit.transform.tag == "Enemy")
             {
                 Creature hitCreature = hit.transform.GetComponent<Creature>();
-                SoundManager.instance.RandomizeSfx(chopSound1, chopSound2);
-                hitCreature.LoseHealth(strength);
+                SoundManager.Instance.RandomizeSfx(ChopSound1, ChopSound2);
+                hitCreature.LoseHealth(Strength);
             }
 
-            GameManager.instance.playersTurn = false;
-            yield return new WaitForSeconds(moveTime);
-            moving = false;
+            GameManager.Instance.PlayersTurn = false;
+            yield return new WaitForSeconds(MoveTime);
+            Moving = false;
         }
 
         private void Interact()
         {
             Vector2 start = transform.position;
-            Vector2 end = start + new Vector2(animator.GetFloat("MoveX"), animator.GetFloat("MoveY"));
+            Vector2 end = start + new Vector2(_animator.GetFloat("MoveX"), _animator.GetFloat("MoveY"));
             RaycastHit2D hit;
 
             CheckHit(start, end, out hit);
@@ -172,7 +170,7 @@ namespace MyDungeon.Demo
 
             if (hit.transform.tag == "SaveNPC")
             {
-                GameManager.instance.SaveGame();
+                GameManager.Instance.SaveGame();
             }
         }
 
@@ -185,7 +183,7 @@ namespace MyDungeon.Demo
                 (int) Mathf.Round(transform.position.y))
             {
                 enabled = false;
-                MenuManager.instance.ContinueOrExitMenu();
+                MenuManager.Instance.ContinueOrExitMenu();
             }
 
             if (collision.tag == "Item"
@@ -194,8 +192,8 @@ namespace MyDungeon.Demo
                 && (int) Mathf.Round(collision.gameObject.transform.position.y) ==
                 (int) Mathf.Round(transform.position.y))
             {
-                Item item = collision.gameObject.GetComponent<ItemBehaviour>().item;
-                PlayerManager.instance.AddItem(item);
+                Item item = collision.gameObject.GetComponent<ItemBehaviour>().Item;
+                PlayerManager.Instance.AddItem(item);
                 collision.gameObject.SetActive(false);
             }
 
@@ -207,7 +205,7 @@ namespace MyDungeon.Demo
 
         public void Continue()
         {
-            Invoke("Restart", restartLevelDelay);
+            Invoke("Restart", RestartLevelDelay);
         }
 
         private void Restart()
@@ -218,35 +216,36 @@ namespace MyDungeon.Demo
         public override void LoseHealth(int damage)
         {
             base.LoseHealth(damage);
-            animator.SetTrigger("playerHit");
+            _animator.SetTrigger("playerHit");
             UpdateHealth();
         }
 
         public void RecoverHealth(int recover)
         {
-            curHealth += recover;
+            CurHealth += recover;
             UpdateHealth();
-            HudManager.instance.AddMessage(displayName + " recovered " + recover + " health");
+            HudManager.Instance.AddMessage(DisplayName + " recovered " + recover + " health");
         }
 
-        void CheckIfGameOver()
+        private void CheckIfGameOver()
         {
-            if (curHealth <= 0)
+            if (CurHealth <= 0)
             {
-                SoundManager.instance.PlaySingle(gameOverSound);
-                SoundManager.instance.musicSource.Stop();
-                GameManager.instance.GameOver();
+                enabled = false;
+                SoundManager.Instance.PlaySingle(GameOverSound);
+                SoundManager.Instance.MusicSource.Stop();
+                GameManager.Instance.GameOver();
             }
         }
 
-        void UpdateHealth()
+        private void UpdateHealth()
         {
-            if (curHealth > maxHealth)
-                curHealth = maxHealth;
-            if (curHealth < 0)
-                curHealth = 0;
+            if (CurHealth > MaxHealth)
+                CurHealth = MaxHealth;
+            if (CurHealth < 0)
+                CurHealth = 0;
 
-            HudManager.instance.UpdateHealth(curHealth, maxHealth);
+            HudManager.Instance.UpdateHealth(CurHealth, MaxHealth);
             CheckIfGameOver();
         }
     }
