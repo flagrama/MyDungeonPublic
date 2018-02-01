@@ -3,14 +3,28 @@ using UnityEngine;
 
 namespace MyDungeon
 {
+    /// <summary>
+    /// Contains the Save and Load methods
+    /// </summary>
     public class SaveLoad : MonoBehaviour
     {
-        public void Save(SaveData save, string path)
+        /// <summary>
+        /// Creates or overwrites a JSON file containing game save data
+        /// </summary>
+        /// <param name="save">A serializable class that represents data you wish to save</param>
+        /// <param name="path">The path to a save file</param>
+        public void Save<T>(T save, string path)
         {
             string json = JsonUtility.ToJson(save);
             File.WriteAllText(path, json);
         }
 
+        /// <summary>
+        /// Reads a JSON file containing game save data
+        /// </summary>
+        /// <typeparam name="T">A SaveData class that inherits from MyDungeon.SaveData</typeparam>
+        /// <param name="path">The path to a save file</param>
+        /// <returns>A SaveData object of type T deserialized from the JSON file located at the provided path if found else returns null</returns>
         public T Load<T>(string path)
         {
             if (File.Exists(path))

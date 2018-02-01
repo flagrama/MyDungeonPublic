@@ -3,10 +3,18 @@ using UnityEngine;
 
 namespace MyDungeon
 {
+    /// <summary>
+    /// Data structure for <c>Room</c> starting coordinates
+    /// </summary>
     public struct Coord
     {
         public int X, Y;
 
+        /// <summary>
+        /// Starting coordinates for <c>Room</c>s
+        /// </summary>
+        /// <param name="p1">Room starting X position</param>
+        /// <param name="p2">Toom starting Y position</param>
         public Coord(int p1, int p2)
         {
             X = p1;
@@ -14,6 +22,9 @@ namespace MyDungeon
         }
     }
 
+    /// <summary>
+    /// Class for creating dungeon rooms
+    /// </summary>
     public class Room
     {
         public List<Coord> Connections;
@@ -23,8 +34,13 @@ namespace MyDungeon
         public int XPos; // The x coordinate of the lower left tile of the room.
         public int YPos; // The y coordinate of the lower left tile of the room.
 
-
-        // This is used for the first room.  It does not have a Corridor parameter since there are no corridors yet.
+        /// <summary>
+        /// Sets up Rooms in map array
+        /// </summary>
+        /// <param name="widthRange">Int Range for Room width</param>
+        /// <param name="heightRange">Int Range for Room height</param>
+        /// <param name="col">Room starting X position</param>
+        /// <param name="row">Room starting Y position</param>
         public void SetupRoom(IntRange widthRange, IntRange heightRange, int col, int row)
         {
             Connections = new List<Coord>();

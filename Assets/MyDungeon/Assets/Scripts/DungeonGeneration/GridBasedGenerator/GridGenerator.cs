@@ -5,8 +5,14 @@ using Random = UnityEngine.Random;
 
 namespace MyDungeon
 {
+    /// <summary>
+    /// Class for generating a pseudo-random grid-based dungeon
+    /// </summary>
     public class GridGenerator : MonoBehaviour
     {
+        /// <summary>
+        /// Values of tiles that can be placed in dungeon grid
+        /// </summary>
         public enum TileType
         {
             Exit,
@@ -45,6 +51,10 @@ namespace MyDungeon
         public int Seed;
         public GameObject[] WallTiles; // An array of wall tile prefabs.
 
+        /// <summary>
+        /// Generate a new grid-based dungeon map
+        /// </summary>
+        /// <returns>An 2D array representing the dungeon map</returns>
         public TileType[,] GenerateBoard()
         {
 #if UNITY_EDITOR
@@ -70,8 +80,11 @@ namespace MyDungeon
             return _board;
         }
 
-
-        public TileType[,] SetupTilesArray()
+        /// <summary>
+        /// Creates the initial map array filled with impassible terrain
+        /// </summary>
+        /// <returns>Map array filled with <c>TileType.Wall</c></returns>
+        private TileType[,] SetupTilesArray()
         {
             // Set the tiles jagged array to the correct width.
             _board = new TileType[Columns, Rows];
@@ -88,6 +101,9 @@ namespace MyDungeon
             return _board;
         }
 
+        /// <summary>
+        /// Sets the number of cells contained on the map
+        /// </summary>
         private void SetupCells()
         {
             int numCellsHorizontal = Columns / CellSizeW;
@@ -106,6 +122,9 @@ namespace MyDungeon
             }
         }
 
+        /// <summary>
+        /// Creates the rooms in the map
+        /// </summary>
         private void CreateRooms()
         {
             _rooms = new Room[NumRooms.Random];
@@ -131,6 +150,9 @@ namespace MyDungeon
             }
         }
 
+        /// <summary>
+        /// Creates two connected corridors to connect rooms on the map
+        /// </summary>
         private void CreateCorridors()
         {
             _corridors = new List<Corridor>();
@@ -251,6 +273,10 @@ namespace MyDungeon
             }
         }
 
+        /// <summary>
+        /// <para>Sets values within rooms in map array to create spawn locations for various objects</para>
+        /// <para>Objects include Player, Exit, Monsters and Items</para>
+        /// </summary>
         private void SetTilesValuesForRooms()
         {
             int exitRoom = Mathf.RoundToInt(Random.Range(_rooms.Length / 2, _rooms.Length));
@@ -354,7 +380,9 @@ namespace MyDungeon
             _board[playerX, playerY] = TileType.Player;
         }
 
-
+        /// <summary>
+        /// Adds corridors to the map array
+        /// </summary>
         private void SetTilesValuesForCorridors()
         {
             // Go through every corridor...
@@ -391,7 +419,9 @@ namespace MyDungeon
             }
         }
 
-
+        /// <summary>
+        /// Instantiate all of the objects based on the value in the map array
+        /// </summary>
         private void InstantiateTiles()
         {
             // Go through all the tiles in the jagged array...
@@ -434,7 +464,9 @@ namespace MyDungeon
             }
         }
 
-
+        /// <summary>
+        /// Instantiate the outer wall of the map
+        /// </summary>
         private void InstantiateOuterWalls()
         {
             // The outer walls are one unit left, right, up and down from the board.
@@ -452,7 +484,12 @@ namespace MyDungeon
             InstantiateHorizontalOuterWall(leftEdgeX + 1f, rightEdgeX - 1f, topEdgeY);
         }
 
-
+        /// <summary>
+        /// Instantiate the vertical edges of the outer wall
+        /// </summary>
+        /// <param name="xCoord">The X position of the outer wall tile</param>
+        /// <param name="startingY">The starting Y coordinate for the outer wall tiles</param>
+        /// <param name="endingY">The ending Y coordinate for the outer wall tiles</param>
         private void InstantiateVerticalOuterWall(float xCoord, float startingY, float endingY)
         {
             // Start the loop at the starting value for Y.
@@ -468,7 +505,12 @@ namespace MyDungeon
             }
         }
 
-
+        /// <summary>
+        /// Instantiate the horizontal edges of the outer wall
+        /// </summary>
+        /// <param name="startingX">The starting X coordinate for the outer wall tiles</param>
+        /// <param name="endingX">The ending X coordinate for the outer wall tiles</param>
+        /// <param name="yCoord">The Y position of the outer wall tile<</param>
         private void InstantiateHorizontalOuterWall(float startingX, float endingX, float yCoord)
         {
             // Start the loop at the starting value for X.
@@ -484,7 +526,12 @@ namespace MyDungeon
             }
         }
 
-
+        /// <summary>
+        /// Instantiate random prefab from an array of prefabs
+        /// </summary>
+        /// <param name="prefabs">Array of possible prefabs to instantiate</param>
+        /// <param name="xCoord">X position of instantiated prefab</param>
+        /// <param name="yCoord">Y position of instantiated prefab</param>
         private void InstantiateFromArray(GameObject[] prefabs, float xCoord, float yCoord)
         {
             // Create a random index for the array.

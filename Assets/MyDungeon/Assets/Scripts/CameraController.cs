@@ -2,17 +2,25 @@
 
 namespace MyDungeon
 {
+    /// <summary>
+    /// Controller for the Main Camera
+    /// </summary>
     public class CameraController : MonoBehaviour
     {
         private Vector3 _offset;
         private GameObject _player;
 
-        // Use this for initialization
+        /// <summary>
+        /// Sets the position offset for the camera
+        /// </summary>
         private void Start()
         {
             _offset = transform.position;
         }
 
+        /// <summary>
+        /// Centers the camera on the object tagged as <c>Player</c>
+        /// </summary>
         private void LateUpdate()
         {
             if (_player == null)
