@@ -52,7 +52,7 @@ namespace MyDungeon.Demo
 
             InMainMenu = currentScene.name == "Main Menu";
 
-            _mainMenu = (GameObject) Instantiate(Resources.Load("BottomCanvas"));
+            _mainMenu = (GameObject) Instantiate(Resources.Load("MainMenuCanvas"));
             _pauseMenu = (GameObject) Instantiate(Resources.Load("PauseMenuCanvas"));
             _exitMenu = (GameObject) Instantiate(Resources.Load("ExitCanvas"));
 

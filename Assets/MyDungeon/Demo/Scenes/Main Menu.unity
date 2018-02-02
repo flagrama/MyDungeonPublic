@@ -420,7 +420,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Roguelike Prototype
+  m_Text: MyDungeon Demo
 --- !u!222 &1514701626
 CanvasRenderer:
   m_ObjectHideFlags: 0

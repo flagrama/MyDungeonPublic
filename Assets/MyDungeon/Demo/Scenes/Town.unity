@@ -520,15 +520,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8aeeee8d8d72ce46a7ef663852fc80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1000010714790116, guid: 78634c31298207144848c8066a380bca,
-    type: 2}
-  hudManager: {fileID: 1000011047281982, guid: 0b54f7b95b467654eadab4f239883242, type: 2}
-  menuManager: {fileID: 1000014080642494, guid: f20684b4fd8b1894fa2e767b1be74108,
-    type: 2}
-  playerManager: {fileID: 1000013762586568, guid: 4b17c532fbd77274f87911a2ed4d42f0,
-    type: 2}
-  soundManager: {fileID: 1000010051968014, guid: 4b1e249863571ef45807ed851c1754f3,
-    type: 2}
+  GameManager: {fileID: 0}
+  HudManager: {fileID: 0}
+  MenuManager: {fileID: 0}
+  PlayerManager: {fileID: 0}
+  SoundManager: {fileID: 0}
 --- !u!114 &443630194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -938,7 +934,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -939430721
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: a2aa93886c35dd04a94ddd884e8fd912, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
