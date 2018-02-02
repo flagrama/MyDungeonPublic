@@ -79,6 +79,7 @@ namespace MyDungeon.Demo
             _creatures.Clear();
             Board = new GridGenerator.TileType[_boardScript.Rows, _boardScript.Columns];
             Floor++;
+            HudManager.Instance.UpdateFloor(Floor);
             Invoke("GenerateBoard", LevelStartDelay);
             Invoke("HideLoadingImage", LevelStartDelay);
         }
