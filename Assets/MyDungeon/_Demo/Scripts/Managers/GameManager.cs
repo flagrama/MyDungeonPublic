@@ -15,13 +15,13 @@ namespace MyDungeon.Demo
         private bool _doingSetup = true;
         private GameObject _loadingImage;
         private Text _loadingText;
-        [HideInInspector] public GridGenerator.TileType[,] Board;
-        [HideInInspector] public int Floor;
+        public GridGenerator.TileType[,] Board;
+        public int Floor;
         public float LevelStartDelay = 2f;
         public GameObject LoadingCanvas;
-        [HideInInspector] public bool Paused = false;
+        public bool Paused = false;
         public GameObject Player;
-        [HideInInspector] public bool PlayersTurn = true;
+        public bool PlayersTurn = true;
         public int Seed;
 
         // Use this for initialization
@@ -42,7 +42,8 @@ namespace MyDungeon.Demo
 
             if (SceneManager.GetActiveScene().name == "Town")
             {
-                Instantiate(Instance.Player, new Vector2(0, 0), Quaternion.identity);
+                GameObject spawner = GameObject.Find("PlayerSpawn");
+                Instantiate(Instance.Player, spawner.transform.position, Quaternion.identity);
                 Instance.Floor = 0;
             }
         }
@@ -60,8 +61,9 @@ namespace MyDungeon.Demo
                 Instance.InitGame();
             else if (arg0.name == "Town")
             {
-                Instantiate(Instance.Player, new Vector2(0, 0), Quaternion.identity);
-                MenuManager.Instance.InitMenus();
+                GameObject spawner = GameObject.Find("PlayerSpawn");
+                Instantiate(Instance.Player, spawner.transform.position, Quaternion.identity);
+                //MenuManager.Instance.InitMenus();
                 HudManager.Instance.InitUi();
                 Instance.Floor = 0;
             }
@@ -70,7 +72,7 @@ namespace MyDungeon.Demo
         private void InitGame()
         {
             _doingSetup = true;
-            MenuManager.Instance.InitMenus();
+            //MenuManager.Instance.InitMenus();
             HudManager.Instance.InitUi();
             LoadingCanvas = (GameObject) Instantiate(Resources.Load("loadingCanvas"));
             _loadingImage = GameObject.Find("LoadingImage");

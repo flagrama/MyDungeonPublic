@@ -7,6 +7,8 @@ namespace MyDungeon.Demo
     public class Player : MovingObject
     {
         private Animator _animator;
+        private bool _collided;
+        private GameObject _collision;
         private bool _diag;
         private bool _hold;
         private int _horizontal;
@@ -48,7 +50,7 @@ namespace MyDungeon.Demo
         // Update is called once per frame
         private void Update()
         {
-            if (!GameManager.Instance.PlayersTurn || GameManager.Instance.Paused || MenuManager.Instance.InMainMenu)
+            if (!GameManager.Instance.PlayersTurn || GameManager.Instance.Paused)
                 return;
 
             _horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
@@ -57,6 +59,26 @@ namespace MyDungeon.Demo
             {
                 _diag = Input.GetButton("Diagonal Lock");
                 _hold = Input.GetButton("Fire3");
+                if(_collided && _collision != null && !Moving)
+                {
+                    if (_collision.tag == "Exit" && Mathf.Approximately(transform.position.x, _collision.transform.position.x)
+                        && Mathf.Approximately(transform.position.y, _collision.transform.position.y))
+                    {
+                        enabled = false;
+                        MenuManager.Instance.ContinueOrExitMenu();
+                    }
+
+                    if(_collision.tag == "Item" && Mathf.Approximately(transform.position.x, _collision.transform.position.x)
+                        && Mathf.Approximately(transform.position.y, _collision.transform.position.y))
+                    {
+                        Item item = _collision.GetComponent<ItemBehaviour>().Item;
+                        PlayerManager.Instance.AddItem(item);
+                        _collision.SetActive(false);
+                    }
+
+                    _collision = null;
+                    _collided = false;
+                }
                 if (Input.GetButtonDown("Fire1") && !Moving)
                     StartCoroutine(Attack());
                 if (_horizontal != 0 || _vertical != 0)
@@ -76,8 +98,6 @@ namespace MyDungeon.Demo
                     Interact();
                 }
             }
-
-            enabled = !MenuManager.Instance.InMenu;
         }
 
         protected override void AttemptMove<T>(int xDir, int yDir)
@@ -176,25 +196,16 @@ namespace MyDungeon.Demo
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == "Exit"
-                && (int) Mathf.Round(collision.gameObject.transform.position.x) ==
-                (int) Mathf.Round(transform.position.x)
-                && (int) Mathf.Round(collision.gameObject.transform.position.y) ==
-                (int) Mathf.Round(transform.position.y))
+            if (collision.tag == "Exit")
             {
-                enabled = false;
-                MenuManager.Instance.ContinueOrExitMenu();
+                _collided = true;
+                _collision = collision.gameObject;
             }
 
-            if (collision.tag == "Item"
-                && (int) Mathf.Round(collision.gameObject.transform.position.x) ==
-                (int) Mathf.Round(transform.position.x)
-                && (int) Mathf.Round(collision.gameObject.transform.position.y) ==
-                (int) Mathf.Round(transform.position.y))
+            if (collision.tag == "Item")
             {
-                Item item = collision.gameObject.GetComponent<ItemBehaviour>().Item;
-                PlayerManager.Instance.AddItem(item);
-                collision.gameObject.SetActive(false);
+                _collided = true;
+                _collision = collision.gameObject;
             }
 
             if (collision.tag == "Dungeon")

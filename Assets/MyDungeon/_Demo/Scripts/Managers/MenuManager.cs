@@ -29,7 +29,7 @@ namespace MyDungeon.Demo
             DontDestroyOnLoad(gameObject);
 
             EventSystem = EventSystem.current;
-            InitMenus();
+            //InitMenus();
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
@@ -45,38 +45,72 @@ namespace MyDungeon.Demo
                 Instance.EventSystem = EventSystem.current;
         }
 
-        // Use this for initialization
-        public void InitMenus()
+        //// Use this for initialization
+        //public void InitMenus()
+        //{
+        //    Scene currentScene = SceneManager.GetActiveScene();
+
+        //    _exitMenu = (GameObject)Instantiate(Resources.Load("ExitCanvas"));
+
+        //    InMainMenu = currentScene.name == "Main Menu";
+
+        //    if (InMainMenu)
+        //    {
+        //        InMenu = true;
+        //        _pauseMenu.SetActive(false);
+        //        _exitMenu.SetActive(false);
+        //        _mainMenu.SetActive(true);
+        //    }
+        //    else
+        //    {
+        //        _pauseMenu.SetActive(true);
+        //        _mainMenu.SetActive(false);
+        //        _exitMenu.SetActive(true);
+        //        _pauseMenu.GetComponent<Canvas>().enabled = false;
+        //        _exitMenu.GetComponent<Canvas>().enabled = false;
+        //        InMenu = false;
+        //    }
+        //}
+
+        public void InitMainMenu()
         {
-            Scene currentScene = SceneManager.GetActiveScene();
-
-            InMainMenu = currentScene.name == "Main Menu";
-
-            _mainMenu = (GameObject) Instantiate(Resources.Load("MainMenuCanvas"));
-            _pauseMenu = (GameObject) Instantiate(Resources.Load("PauseMenuCanvas"));
-            _exitMenu = (GameObject) Instantiate(Resources.Load("ExitCanvas"));
-
-            if (InMainMenu)
-            {
-                InMenu = true;
-                _pauseMenu.SetActive(false);
-                _exitMenu.SetActive(false);
-                _mainMenu.SetActive(true);
+            _mainMenu = (GameObject)Instantiate(Resources.Load("MainMenuCanvas"));
 #if UNITY_WEBGL
             GameObject.Find("QuitButton").SetActive(false);
 #endif
-                EventSystem.firstSelectedGameObject = GameObject.Find("StartGameButton");
-                _lastSelected = EventSystem.firstSelectedGameObject;
-            }
-            else
-            {
-                _pauseMenu.SetActive(true);
-                _mainMenu.SetActive(false);
-                _exitMenu.SetActive(true);
-                _pauseMenu.GetComponent<Canvas>().enabled = false;
-                _exitMenu.GetComponent<Canvas>().enabled = false;
-                InMenu = false;
-            }
+            EventSystem.firstSelectedGameObject = GameObject.Find("StartGameButton");
+            _lastSelected = EventSystem.firstSelectedGameObject;
+        }
+
+        public void DestroyMainMenu()
+        {
+            Destroy(_mainMenu);
+        }
+
+        private void InitPauseMenu()
+        {
+            _pauseMenu = (GameObject)Instantiate(Resources.Load("PauseMenuCanvas"));
+            EventSystem.firstSelectedGameObject = GameObject.Find("ExitButton");
+            EventSystem.SetSelectedGameObject(EventSystem.firstSelectedGameObject);
+            _lastSelected = EventSystem.firstSelectedGameObject;
+        }
+
+        private void DestroyPauseMenu()
+        {
+            Destroy(_pauseMenu);
+        }
+
+        private void InitExitMenu()
+        {
+            _exitMenu = (GameObject)Instantiate(Resources.Load("ExitCanvas"));
+            EventSystem.firstSelectedGameObject = GameObject.Find("ContinueButton");
+            EventSystem.SetSelectedGameObject(EventSystem.firstSelectedGameObject);
+            _lastSelected = EventSystem.firstSelectedGameObject;
+        }
+
+        private void DestroyExitMenu()
+        {
+            Destroy(_exitMenu);
         }
 
         // Update is called once per frame
@@ -98,38 +132,43 @@ namespace MyDungeon.Demo
             {
                 Pause();
             }
+
+            GameManager.Instance.Paused = InMenu;
         }
 
         public void Pause()
         {
             InMenu = !InMenu;
             Time.timeScale = Mathf.Approximately(Time.timeScale, 0f) ? 1 : 0;
-            GameManager.Instance.Paused = !GameManager.Instance.Paused;
-            GameObject.Find("Player(Clone)").GetComponent<Player>().enabled =
-                !GameObject.Find("Player(Clone)").GetComponent<Player>().enabled;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled =
+                !GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled;
             if (SceneManager.GetActiveScene().name != "Town")
             {
-                _pauseMenu.GetComponent<Canvas>().enabled = !_pauseMenu.GetComponent<Canvas>().enabled;
                 if (InMenu)
                 {
+                    InitPauseMenu();
                     ScrollView sv = GameObject.Find("ScrollView").GetComponent<ScrollView>();
                     EventSystem.SetSelectedGameObject(GameObject.Find("ExitButton"));
                     sv.Populate();
                 }
                 else
                 {
-                    ScrollView sv = GameObject.Find("ScrollView").GetComponent<ScrollView>();
-                    sv.Depopulate();
+                    DestroyPauseMenu();
                 }
             }
         }
 
         public void ContinueOrExitMenu()
         {
-            InMenu = !InMenu;
-            _exitMenu.GetComponent<Canvas>().enabled = !_exitMenu.GetComponent<Canvas>().enabled;
-            EventSystem.SetSelectedGameObject(GameObject.Find("ContinueButton"));
-            _lastSelected = EventSystem.currentSelectedGameObject;
+            InMenu = true;
+            InitExitMenu();
+        }
+
+        public void Continue()
+        {
+            Instance.InMenu = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Continue();
+            DestroyExitMenu();
         }
 
         public void Quit()
