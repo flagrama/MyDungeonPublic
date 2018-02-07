@@ -135,50 +135,5 @@ namespace MyDungeon.Demo
             _creaturesMoving = false;
             PlayersTurn = true;
         }
-
-        public void SaveGame()
-        {
-            SaveData saveData = new SaveData
-            {
-                Inventory = PlayerManager.Instance.Inventory,
-                DisplayName = PlayerManager.Instance.PlayerName,
-                MaxHealth = PlayerManager.Instance.MaxHealth
-            };
-
-            gameObject.GetComponent<SaveLoad>().Save(saveData, Application.persistentDataPath + "/save.sav");
-
-            HudManager.Instance.AddMessage("Game Saved!");
-#if UNITY_EDITOR
-            Debug.Log("Game Saved to " + Application.persistentDataPath + "/save.sav");
-#endif
-        }
-
-        public void LoadGame()
-        {
-            string path = Application.persistentDataPath + "/save.sav";
-
-            SaveData save = gameObject.GetComponent<SaveLoad>().Load<SaveData>(path);
-
-            if (save != null)
-            {
-                PlayerManager.Instance.InitPlayer(save.DisplayName, save.MaxHealth);
-                PlayerManager.Instance.Inventory = save.Inventory;
-                PlayerManager.Instance.Initialized = true;
-
-                MenuManager.Instance.InMenu = false;
-                MenuManager.Instance.InMainMenu = false;
-                SceneManager.LoadScene("Town");
-
-#if UNITY_EDITOR
-                Debug.Log("Game Loaded");
-#endif
-            }
-            else
-            {
-#if UNITY_EDITOR
-                Debug.Log("File " + path + " Not Found!");
-#endif
-            }
-        }
     }
 }

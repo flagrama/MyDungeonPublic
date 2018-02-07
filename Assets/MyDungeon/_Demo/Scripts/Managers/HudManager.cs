@@ -46,9 +46,6 @@ namespace MyDungeon.Demo
             Instance._floorText = GameObject.Find("FloorText").GetComponent<Text>();
             Instance._levelText = GameObject.Find("LevelText").GetComponent<Text>();
             Instance._xpText = GameObject.Find("ExperienceText").GetComponent<Text>();
-
-            if (MenuManager.Instance.InMainMenu)
-                HudCanvas.SetActive(false);
         }
 
         public void AddMessage(string message)

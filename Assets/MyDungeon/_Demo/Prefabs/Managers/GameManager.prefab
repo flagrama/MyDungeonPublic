@@ -21,7 +21,6 @@ GameObject:
   - 4: {fileID: 4000010230033208}
   - 114: {fileID: 114000010075987782}
   - 114: {fileID: 114000013917916278}
-  - 114: {fileID: 114000012049987118}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -61,17 +60,6 @@ MonoBehaviour:
   Player: {fileID: 1000012948256500, guid: db8d0c19d38247643a58d7585795caee, type: 2}
   PlayersTurn: 1
   Seed: 0
---- !u!114 &114000012049987118
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010714790116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3bd665cd26f914459fda8d7c25c2106, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000013917916278
 MonoBehaviour:
   m_ObjectHideFlags: 1

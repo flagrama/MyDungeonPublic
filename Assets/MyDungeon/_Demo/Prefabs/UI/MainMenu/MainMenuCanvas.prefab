@@ -190,7 +190,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114000010075987782, guid: 78634c31298207144848c8066a380bca,
+      - m_Target: {fileID: 114000010752333944, guid: f20684b4fd8b1894fa2e767b1be74108,
           type: 2}
         m_MethodName: LoadGame
         m_Mode: 1

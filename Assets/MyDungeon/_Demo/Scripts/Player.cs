@@ -25,21 +25,18 @@ namespace MyDungeon.Demo
         // Use this for initialization
         protected override void Start()
         {
-            if (!MenuManager.Instance.InMainMenu)
+            _animator = GetComponent<Animator>();
+
+            if (PlayerManager.Instance.Initialized == false)
             {
-                _animator = GetComponent<Animator>();
-
-                if (PlayerManager.Instance.Initialized == false)
-                {
-                    PlayerManager.Instance.InitPlayer(DisplayName, MaxHealth);
-                    PlayerManager.Instance.Initialized = true;
-                }
-
-                CurHealth = PlayerManager.Instance.CurHealth;
-                HudManager.Instance.UpdateLevel(PlayerManager.Instance.Level);
-                UpdateHealth();
-                base.Start();
+                PlayerManager.Instance.InitPlayer(DisplayName, MaxHealth);
+                PlayerManager.Instance.Initialized = true;
             }
+
+            CurHealth = PlayerManager.Instance.CurHealth;
+            HudManager.Instance.UpdateLevel(PlayerManager.Instance.Level);
+            UpdateHealth();
+            base.Start();
         }
 
         private void OnDisable()
@@ -183,7 +180,14 @@ namespace MyDungeon.Demo
 
             if (hit.transform.tag == "SaveNPC")
             {
-                GameManager.Instance.SaveGame();
+                SaveData saveData = new SaveData
+                {
+                    Inventory = PlayerManager.Instance.Inventory,
+                    DisplayName = PlayerManager.Instance.PlayerName,
+                    MaxHealth = PlayerManager.Instance.MaxHealth
+                };
+
+                MenuManager.Instance.SaveGame(saveData);
             }
         }
 
@@ -204,6 +208,13 @@ namespace MyDungeon.Demo
         public void Continue()
         {
             Invoke("Restart", RestartLevelDelay);
+        }
+
+        public void Load(SaveData saveData)
+        {
+            PlayerManager.Instance.InitPlayer(saveData.DisplayName, saveData.MaxHealth);
+            PlayerManager.Instance.Inventory = saveData.Inventory;
+            PlayerManager.Instance.Initialized = true;
         }
 
         private void Restart()
