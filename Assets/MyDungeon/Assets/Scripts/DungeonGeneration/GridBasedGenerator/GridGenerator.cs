@@ -140,7 +140,6 @@ namespace MyDungeon
         {
 #if UNITY_EDITOR
             Seed = (int) DateTime.Now.Ticks;
-            //seed = 0;
             Random.InitState(Seed);
 #endif
             // Create the board holder.
@@ -520,6 +519,9 @@ namespace MyDungeon
                         InstantiateFromArray(WallTiles, i, j);
                     }
 
+                    // TODO: Move to separate file
+                    #region Entity Spawning
+
                     if (_board[i, j] == TileType.Player)
                     {
                         Vector3 pos = new Vector3(i, j, 0);
@@ -541,6 +543,7 @@ namespace MyDungeon
                     {
                         InstantiateFromArray(Items, i, j);
                     }
+                    #endregion
                 }
             }
         }

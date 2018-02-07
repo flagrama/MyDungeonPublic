@@ -36,12 +36,14 @@ namespace MyDungeon.Demo
 
             CheckHit(start, end, out hit);
 
+
             if (PosX + xDir < 0 || PosX + xDir > GameManager.Instance.Board.GetLength(0) || PosY + yDir < 0 ||
                 PosY + yDir > GameManager.Instance.Board.GetLength(1))
             {
                 return false;
             }
 
+            // TODO: Stop relying on board array for movement
             if (GameManager.Instance.Board[PosX + xDir, PosY + yDir] < GridGenerator.TileType.Wall && !Moving)
             {
                 GameManager.Instance.Board[PosX, PosY] = GridGenerator.TileType.Floor;

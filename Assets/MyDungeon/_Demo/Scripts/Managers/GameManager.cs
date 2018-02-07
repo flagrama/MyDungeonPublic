@@ -63,7 +63,6 @@ namespace MyDungeon.Demo
             {
                 GameObject spawner = GameObject.Find("PlayerSpawn");
                 Instantiate(Instance.Player, spawner.transform.position, Quaternion.identity);
-                //MenuManager.Instance.InitMenus();
                 HudManager.Instance.InitUi();
                 Instance.Floor = 0;
             }
@@ -72,7 +71,6 @@ namespace MyDungeon.Demo
         private void InitGame()
         {
             _doingSetup = true;
-            //MenuManager.Instance.InitMenus();
             HudManager.Instance.InitUi();
             LoadingCanvas = (GameObject) Instantiate(Resources.Load("loadingCanvas"));
             _loadingImage = GameObject.Find("LoadingImage");
