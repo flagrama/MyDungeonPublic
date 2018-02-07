@@ -61,13 +61,6 @@ namespace MyDungeon.Demo
                 _hold = Input.GetButton("Fire3");
                 if(_collided && _collision != null && !Moving)
                 {
-                    if (_collision.tag == "Exit" && Mathf.Approximately(transform.position.x, _collision.transform.position.x)
-                        && Mathf.Approximately(transform.position.y, _collision.transform.position.y))
-                    {
-                        enabled = false;
-                        MenuManager.Instance.ContinueOrExitMenu();
-                    }
-
                     if(_collision.tag == "Item" && Mathf.Approximately(transform.position.x, _collision.transform.position.x)
                         && Mathf.Approximately(transform.position.y, _collision.transform.position.y))
                     {
@@ -196,12 +189,6 @@ namespace MyDungeon.Demo
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == "Exit")
-            {
-                _collided = true;
-                _collision = collision.gameObject;
-            }
-
             if (collision.tag == "Item")
             {
                 _collided = true;

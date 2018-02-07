@@ -19,29 +19,19 @@ namespace MyDungeon.Demo
             }
         }
 
-        public void Depopulate()
-        {
-            Transform scrollContent = transform.GetChild(0).transform;
-            for (int i = 1; i < scrollContent.childCount; i++)
-            {
-                Destroy(scrollContent.GetChild(i).gameObject);
-            }
-        }
-
         public void ButtonClicked(string str, int i)
         {
-            Player player = GameObject.Find("Player(Clone)").GetComponent<Player>();
+            Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
             if (str == null)
             {
-                MenuManager.Instance.Pause();
-                player.enabled = true;
+                player.GetComponent<MyPauseMenu>().PauseGame();
                 return;
             }
 
             PlayerManager.Instance.Inventory[i].UseItem(player.transform);
             PlayerManager.Instance.Inventory.Remove(PlayerManager.Instance.Inventory[i]);
             GameManager.Instance.PlayersTurn = false;
-            MenuManager.Instance.Pause();
+            player.GetComponent<MyPauseMenu>().PauseGame();
         }
     }
 }

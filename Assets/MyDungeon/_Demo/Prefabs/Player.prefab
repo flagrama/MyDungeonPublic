@@ -24,6 +24,7 @@ GameObject:
   - 61: {fileID: 61000012659435348}
   - 50: {fileID: 50000013142002278}
   - 114: {fileID: 114000010615709896}
+  - 114: {fileID: 114000014233043342}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -119,6 +120,21 @@ MonoBehaviour:
   RestartLevelDelay: 1
   SwingSound1: {fileID: 8300000, guid: 5ffbb965b46a07948956e37116f7d4ab, type: 3}
   SwingSound2: {fileID: 8300000, guid: d2968769688b8f04c81151365bb6ba61, type: 3}
+--- !u!114 &114000014233043342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012948256500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5a96225cfe44e4bb267e2c9f953b12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseMenuPrefab: {fileID: 1882456702271132, guid: fcde756e201b0c64e8e9427bc19e1725,
+    type: 2}
+  FirstSelectedGameObject: {fileID: 1000012780208266, guid: 1df661c0a43b8b4419f264a102b00dbf,
+    type: 2}
 --- !u!212 &212000014258622478
 SpriteRenderer:
   m_ObjectHideFlags: 1

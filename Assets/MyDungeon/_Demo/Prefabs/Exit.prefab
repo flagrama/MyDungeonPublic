@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000010468153486}
   - 212: {fileID: 212000010227527642}
   - 61: {fileID: 61000011499827484}
+  - 114: {fileID: 114000011611371716}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Exit
@@ -55,6 +56,21 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1}
+--- !u!114 &114000011611371716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012618777176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9a432e896c1b743b451490903421e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExitMenuPrefab: {fileID: 1041024268793260, guid: 5bec9dd6a30a10448a1c340572d39c13,
+    type: 2}
+  FirstSelectedGameObject: {fileID: 1000011349356502, guid: 18ee6a8e0eb5e0541b3f3203de5ac2db,
+    type: 2}
 --- !u!212 &212000010227527642
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -210,6 +210,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f284c9249970cf14d90fb82479ffd52e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainMenuPrefab: {fileID: 1000012127022824, guid: 0d2c21cd2eeacd146b95a0557aef63b6,
+    type: 2}
+  FirstSelectedGameObject: {fileID: 1000011107190628, guid: 82ed316553a874d46a3cdea94d75167c,
+    type: 2}
 --- !u!1 &1294033753
 GameObject:
   m_ObjectHideFlags: 0
