@@ -25,6 +25,7 @@ GameObject:
   - 50: {fileID: 50000013142002278}
   - 114: {fileID: 114000010615709896}
   - 114: {fileID: 114000014233043342}
+  - 114: {fileID: 114000013082481302}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -75,7 +76,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.9}
+  m_Size: {x: 0.8, y: 0.8}
 --- !u!95 &95000010461941520
 Animator:
   serializedVersion: 3
@@ -104,6 +105,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0859222b60ae354a9f812ae96846acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000013082481302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012948256500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053da448222a23e41b75df709a5e78f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   BlockingLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -112,8 +124,8 @@ MonoBehaviour:
   MaxHealth: 10
   MoveTime: 0.25
   Strength: 1
-  ChopSound1: {fileID: 8300000, guid: ce1a72957bcbae6458bbdf6cce79712a, type: 3}
-  ChopSound2: {fileID: 8300000, guid: 8679fedeffde76443a8f633f75c1726f, type: 3}
+  ChopSound1: {fileID: 8300000, guid: 1ef386349b0614f4ba2d6c4f6bcff21e, type: 3}
+  ChopSound2: {fileID: 8300000, guid: bd3c6cc63eb9da646a8269785e6b80f7, type: 3}
   GameOverSound: {fileID: 8300000, guid: e069668bc2bc2ec42919a44888567a80, type: 3}
   MoveSound1: {fileID: 8300000, guid: 558b103aabd25084eb0863682d0b32f8, type: 3}
   MoveSound2: {fileID: 8300000, guid: a3f42322f69cf6345b86a427d320daf2, type: 3}

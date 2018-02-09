@@ -37,23 +37,19 @@ namespace MyDungeon.Demo
             CheckHit(start, end, out hit);
 
 
-            if (PosX + xDir < 0 || PosX + xDir > GameManager.Instance.Board.GetLength(0) || PosY + yDir < 0 ||
-                PosY + yDir > GameManager.Instance.Board.GetLength(1))
+            if (PosX + xDir < 0 || PosX + xDir > GameManager.Instance.GetComponent<GridGenerator>().Columns || PosY + yDir < 0 ||
+                PosY + yDir > GameManager.Instance.GetComponent<GridGenerator>().Rows)
             {
                 return false;
             }
 
-            // TODO: Stop relying on board array for movement
-            if (GameManager.Instance.Board[PosX + xDir, PosY + yDir] < GridGenerator.TileType.Wall && !Moving)
-            {
-                GameManager.Instance.Board[PosX, PosY] = GridGenerator.TileType.Floor;
-                GameManager.Instance.Board[PosX += xDir, PosY += yDir] = GridGenerator.TileType.Creature;
+            if (hit || Moving) return false;
+
+            PosX += xDir;
+            PosY += yDir;
                 StartCoroutine(SmoothMovement(end));
                 return true;
             }
-
-            return false;
-        }
 
         protected void CheckHit(Vector2 start, Vector2 end, out RaycastHit2D hit)
         {
