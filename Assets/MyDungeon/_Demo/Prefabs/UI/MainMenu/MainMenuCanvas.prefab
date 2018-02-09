@@ -190,7 +190,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114000010752333944, guid: f20684b4fd8b1894fa2e767b1be74108,
+      - m_Target: {fileID: 114000012528916668, guid: 8e017cda46b01874b93688bfd365d90b,
           type: 2}
         m_MethodName: LoadGame
         m_Mode: 1
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114000010752333944, guid: f20684b4fd8b1894fa2e767b1be74108,
+      - m_Target: {fileID: 114000012528916668, guid: 8e017cda46b01874b93688bfd365d90b,
           type: 2}
         m_MethodName: Quit
         m_Mode: 1
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114000010752333944, guid: f20684b4fd8b1894fa2e767b1be74108,
+      - m_Target: {fileID: 114000012528916668, guid: 8e017cda46b01874b93688bfd365d90b,
           type: 2}
         m_MethodName: NewGame
         m_Mode: 1

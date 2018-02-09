@@ -61,7 +61,7 @@ namespace MyDungeon.Demo
             else
                 xDir = _target.position.x > transform.position.x ? 1 : -1;
 
-            AttemptMove<Player>(xDir, yDir);
+            AttemptMove<PlayerController>(xDir, yDir);
         }
 
         protected override void OnCantMove<T>(T component)

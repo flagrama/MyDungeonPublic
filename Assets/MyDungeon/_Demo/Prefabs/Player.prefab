@@ -23,9 +23,10 @@ GameObject:
   - 95: {fileID: 95000010461941520}
   - 61: {fileID: 61000012659435348}
   - 50: {fileID: 50000013142002278}
-  - 114: {fileID: 114000010615709896}
   - 114: {fileID: 114000014233043342}
   - 114: {fileID: 114000013082481302}
+  - 114: {fileID: 114000012575645530}
+  - 114: {fileID: 114000014279363388}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -94,7 +95,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000010615709896
+--- !u!114 &114000012575645530
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012948256500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0859222b60ae354a9f812ae96846acc, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b6889be6b9bc9c409cae309f07e9418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114000013082481302
@@ -132,6 +133,12 @@ MonoBehaviour:
   RestartLevelDelay: 1
   SwingSound1: {fileID: 8300000, guid: 5ffbb965b46a07948956e37116f7d4ab, type: 3}
   SwingSound2: {fileID: 8300000, guid: d2968769688b8f04c81151365bb6ba61, type: 3}
+  DungeonScene:
+    sceneAsset: {fileID: 102900000, guid: 40baed801de69e44d8eca27941f5ec99, type: 3}
+    sceneName: MyDungeon/_Demo/Scenes/Dungeon
+  TownScene:
+    sceneAsset: {fileID: 102900000, guid: 9726fe084ebd97e4ab430ab40ca25313, type: 3}
+    sceneName: MyDungeon/_Demo/Scenes/Town
 --- !u!114 &114000014233043342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,6 +154,17 @@ MonoBehaviour:
     type: 2}
   FirstSelectedGameObject: {fileID: 1000012780208266, guid: 1df661c0a43b8b4419f264a102b00dbf,
     type: 2}
+--- !u!114 &114000014279363388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012948256500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3bd665cd26f914459fda8d7c25c2106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212000014258622478
 SpriteRenderer:
   m_ObjectHideFlags: 1

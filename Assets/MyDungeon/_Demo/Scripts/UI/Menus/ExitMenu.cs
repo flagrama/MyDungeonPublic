@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 namespace MyDungeon.Demo
 {
     public class ExitMenu : MonoBehaviour
     {
         public GameObject ExitMenuPrefab;
+        public Utilities.SceneField ExitScene;
         public GameObject FirstSelectedGameObject;
         protected EventSystem EventSystem;
         protected GameObject LastSelected;
@@ -38,7 +40,7 @@ namespace MyDungeon.Demo
             if (_collided && Mathf.Approximately(transform.position.x, _collision.transform.position.x)
                 && Mathf.Approximately(transform.position.y, _collision.transform.position.y))
             {
-                _collision.GetComponent<Player>().enabled = false;
+                _collision.GetComponent<PlayerController>().enabled = false;
                 ShowMenu();
                 _collided = false;
             }
@@ -61,6 +63,16 @@ namespace MyDungeon.Demo
                 _collided = true;
                 _collision = collision.gameObject;
             }
+        }
+
+        public void Continue()
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Continue();
+        }
+
+        public void Exit()
+        {
+            SceneManager.LoadScene(ExitScene.SceneName);
         }
     }
 }

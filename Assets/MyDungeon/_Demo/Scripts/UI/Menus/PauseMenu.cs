@@ -48,8 +48,8 @@ namespace MyDungeon.Demo
             GameManager.Instance.Paused = !GameManager.Instance.Paused;
 
             Time.timeScale = Mathf.Approximately(Time.timeScale, 0f) ? 1 : 0;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled =
-                !GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled =
+                !GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled;
         }
     }
 }

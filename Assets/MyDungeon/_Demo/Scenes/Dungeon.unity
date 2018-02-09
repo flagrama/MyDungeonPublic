@@ -110,6 +110,8 @@ GameObject:
   - 114: {fileID: 1376753396}
   - 114: {fileID: 1376753395}
   - 114: {fileID: 1376753394}
+  - 114: {fileID: 1376753400}
+  - 114: {fileID: 1376753401}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -140,7 +142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 0}
-  MenuManager: {fileID: 0}
   PlayerManager: {fileID: 0}
   SoundManager: {fileID: 0}
 --- !u!81 &1376753389
@@ -278,6 +279,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hudPrefab: {fileID: 1000010928550892, guid: 02ea9bb355698034ab6b8a500e72e23d, type: 2}
+--- !u!114 &1376753400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1376753386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c07a895f608bd5a4f9e23dcc63cbfe37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelStartDelay: 2
+  LoadingCanvas: {fileID: 1000012166396096, guid: 1051dfc948b975b4e804f1515550f5c6,
+    type: 2}
+--- !u!114 &1376753401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1376753386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577b26cf0de37114db1cf1c88ea303d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CellSizeH: 10
+  CellSizeW: 10
+  Columns: 100
+  CorridorLength:
+    Max: 10
+    Min: 6
+  CreatureLevelMaxCount:
+    Max: 10
+    Min: 6
+  Creatures:
+  - {fileID: 1000012549901304, guid: 31db7eb2ff2ad3546a41f6301cb4d937, type: 2}
+  - {fileID: 1000011529070140, guid: 59b7c14aecefca84c91610f6576a1522, type: 2}
+  Exit: {fileID: 1000012618777176, guid: a77ee95976abbe74392a4e18c3e8c6ec, type: 2}
+  FloorTiles:
+  - {fileID: 1881111811521244, guid: aca83fe46ffed354f8a17dadbc7dff79, type: 2}
+  - {fileID: 1809557885220286, guid: 973c09b66ad06484c9fe22dd44d040af, type: 2}
+  - {fileID: 1000011205625106, guid: f8036c4756d82554fbf2d3f0c06a5761, type: 2}
+  - {fileID: 1821885960571438, guid: e91d5c2934276d34ebf97a7c473f08b4, type: 2}
+  - {fileID: 1987845330815008, guid: e68555999755b1541929810e0a67185e, type: 2}
+  - {fileID: 1000011213901940, guid: 12bbb0e9d9f26494eac7b9d18b1caf87, type: 2}
+  - {fileID: 1000014179069604, guid: c2f57a1d54f944d46a4cd067aa6628cc, type: 2}
+  - {fileID: 1984183327310830, guid: 69163b6eea452f8438653d415b09f582, type: 2}
+  ItemLevelMaxCount:
+    Max: 10
+    Min: 6
+  Items:
+  - {fileID: 1000011657879694, guid: 3ee0eeb265142c5498f636e9ecd9407b, type: 2}
+  - {fileID: 1000012284138848, guid: ff47d2bb4872d9c4a87cdf5aaa64339b, type: 2}
+  NumRooms:
+    Max: 20
+    Min: 15
+  OuterWallTiles:
+  - {fileID: 1000010841035224, guid: 1ec64e2156393da4bb2d0de4ea9d400b, type: 2}
+  - {fileID: 1000012469803660, guid: 6b5ad1545929b9b4b84c41e46381ca75, type: 2}
+  - {fileID: 1000014073404170, guid: 418139bd9be94cb4ab5b58a7f85b1e04, type: 2}
+  Player: {fileID: 1000012948256500, guid: db8d0c19d38247643a58d7585795caee, type: 2}
+  RoomMinHeight: 3
+  RoomMinWidth: 3
+  Rows: 100
+  Seed: 0
+  WallTiles:
+  - {fileID: 1161545745929854, guid: a521ea947ea9d73428008803092721ec, type: 2}
+  - {fileID: 1000010426319856, guid: 2b3617a55be0ba741bf2214f71325eab, type: 2}
+  - {fileID: 1000012766377824, guid: e3ee9976d9fb71647b80436050c501c7, type: 2}
+  - {fileID: 1000010279724370, guid: bf2e10999d9f1924e91e447b88e01f1d, type: 2}
+  - {fileID: 1731666822309390, guid: d1aebbd96a9707d4f9f1d19a5586abd5, type: 2}
+  - {fileID: 1000011797171404, guid: c71a365cd19bade4e98c6a50f539641b, type: 2}
+  - {fileID: 1000014056888204, guid: 2afd03bc3fbf91d478099189461d5a62, type: 2}
+  - {fileID: 1000012033603124, guid: b9948c6d42de2dc44bbb361d47a4025c, type: 2}
 --- !u!1 &2119458122
 GameObject:
   m_ObjectHideFlags: 0

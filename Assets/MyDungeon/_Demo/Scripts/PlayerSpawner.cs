@@ -5,7 +5,7 @@ namespace MyDungeon.Demo
 {
     public class PlayerSpawner : MonoBehaviour
     {
-        public Player Player;
+        public PlayerController Player;
 
         // Use this for initialization
         void Start()

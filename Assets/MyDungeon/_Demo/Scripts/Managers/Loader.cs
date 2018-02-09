@@ -5,7 +5,6 @@ namespace MyDungeon.Demo
     public class Loader : MonoBehaviour
     {
         public GameObject GameManager;
-        public GameObject MenuManager;
         public GameObject PlayerManager;
         public GameObject SoundManager;
 
@@ -19,11 +18,6 @@ namespace MyDungeon.Demo
             if (Demo.PlayerManager.Instance == null)
             {
                 Instantiate(PlayerManager);
-            }
-
-            if (Demo.MenuManager.Instance == null)
-            {
-                Instantiate(MenuManager);
             }
 
             if (Demo.GameManager.Instance == null)

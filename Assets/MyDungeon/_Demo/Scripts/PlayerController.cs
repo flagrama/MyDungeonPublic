@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using MyDungeon.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,8 @@ namespace MyDungeon.Demo
         public float RestartLevelDelay = 1f;
         public AudioClip SwingSound1;
         public AudioClip SwingSound2;
+        public SceneField DungeonScene;
+        public SceneField TownScene;
 
         // Use this for initialization
         protected override void Start()
@@ -44,7 +47,7 @@ namespace MyDungeon.Demo
             CurHealth = PlayerManager.Instance.CurHealth;
             UpdateHealth();
 
-            if (SceneManager.GetActiveScene().name == "Dungeon")
+            if (SceneManager.GetActiveScene().name == DungeonScene.SceneName)
             {
                 _mainCamera = Camera.main;
                 _mainCamera.GetComponent<LevelDisplay>().UpdateLevel(PlayerManager.Instance.Level);
@@ -67,7 +70,7 @@ namespace MyDungeon.Demo
 
             _horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
             _vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
-            if (SceneManager.GetActiveScene().name == "Dungeon")
+            if (SceneManager.GetActiveScene().name == DungeonScene.SceneName)
             {
                 _diag = Input.GetButton("Diagonal Lock");
                 _hold = Input.GetButton("Fire3");
@@ -90,7 +93,7 @@ namespace MyDungeon.Demo
                     AttemptMove<Creature>(_horizontal, _vertical);
             }
 
-            if (SceneManager.GetActiveScene().name == "Town")
+            if (SceneManager.GetActiveScene().name == TownScene.SceneName)
             {
                 if (_horizontal != 0 || _vertical != 0)
                 {
@@ -202,7 +205,7 @@ namespace MyDungeon.Demo
                     MaxHealth = PlayerManager.Instance.MaxHealth
                 };
 
-                MenuManager.Instance.SaveGame(saveData);
+                GetComponent<SaveMenu>().SaveGame(saveData);
             }
         }
 
@@ -216,7 +219,7 @@ namespace MyDungeon.Demo
 
             if (collision.tag == "Dungeon")
             {
-                SceneManager.LoadScene("Dungeon");
+                SceneManager.LoadScene(DungeonScene.SceneName);
             }
         }
 
@@ -252,7 +255,7 @@ namespace MyDungeon.Demo
                 enabled = false;
                 SoundManager.Instance.PlaySingle(GameOverSound);
                 SoundManager.Instance.MusicSource.Stop();
-                GameManager.Instance.GameOver();
+                Camera.main.GetComponent<InitGame>().GameOver();
             }
         }
 

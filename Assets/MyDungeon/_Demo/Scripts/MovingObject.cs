@@ -17,11 +17,13 @@ namespace MyDungeon.Demo
         protected bool Moving;
         protected int PosX;
         protected int PosY;
+        protected Camera MainCamera;
         public int Strength = 1;
 
         // Use this for initialization
         protected virtual void Start()
         {
+            MainCamera = Camera.main;
             PosX = (int) Mathf.Round(transform.position.x);
             PosY = (int) Mathf.Round(transform.position.y);
             _boxCollider = GetComponent<BoxCollider2D>();
@@ -37,8 +39,8 @@ namespace MyDungeon.Demo
             CheckHit(start, end, out hit);
 
 
-            if (PosX + xDir < 0 || PosX + xDir > GameManager.Instance.GetComponent<GridGenerator>().Columns || PosY + yDir < 0 ||
-                PosY + yDir > GameManager.Instance.GetComponent<GridGenerator>().Rows)
+            if (PosX + xDir < 0 || PosX + xDir > MainCamera.GetComponent<GridGenerator>().Columns || PosY + yDir < 0 ||
+                PosY + yDir > MainCamera.GetComponent<GridGenerator>().Rows)
             {
                 return false;
             }

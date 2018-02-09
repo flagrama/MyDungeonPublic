@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using MyDungeon.Utilities;
+using UnityEditor;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using SceneManager = UnityEngine.SceneManagement.SceneManager;
 
 namespace MyDungeon.Demo
 {
@@ -7,6 +10,8 @@ namespace MyDungeon.Demo
     {
         public GameObject MainMenuPrefab;
         public GameObject FirstSelectedGameObject;
+        public SceneField NewGameScene;
+        public SceneField LoadGameScene;
         protected EventSystem EventSystem;
         protected GameObject LastSelected;
 
@@ -35,6 +40,33 @@ namespace MyDungeon.Demo
                         LastSelected = EventSystem.currentSelectedGameObject;
                 }
             }
+        }
+
+        public void NewGame()
+        {
+            SceneManager.LoadScene(NewGameScene.SceneName);
+        }
+
+        public void LoadGame()
+        {
+            string path = Application.persistentDataPath + "/save.sav";
+            SaveData save = gameObject.GetComponent<SaveLoad>().Load<SaveData>(path);
+
+            if (save != null)
+            {
+                GameManager.saveLoaded = true;
+                GameManager.save = save;
+                SceneManager.LoadScene(LoadGameScene.SceneName);
+            }
+        }
+
+        public void Quit()
+        {
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
+        Application.Quit();
+#endif
         }
     }
 }

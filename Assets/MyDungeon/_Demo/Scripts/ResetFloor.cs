@@ -3,19 +3,13 @@ using System.Collections;
 
 namespace MyDungeon.Demo
 {
-    public class Player : MonoBehaviour
+    public class ResetFloor : MonoBehaviour
     {
 
         // Use this for initialization
         void Start()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            GameManager.Instance.Floor = 0;
         }
     }
 }
