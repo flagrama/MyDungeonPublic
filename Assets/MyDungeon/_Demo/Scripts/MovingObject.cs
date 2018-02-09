@@ -47,9 +47,9 @@ namespace MyDungeon.Demo
 
             PosX += xDir;
             PosY += yDir;
-                StartCoroutine(SmoothMovement(end));
-                return true;
-            }
+            StartCoroutine(SmoothMovement(end));
+            return true;
+        }
 
         protected void CheckHit(Vector2 start, Vector2 end, out RaycastHit2D hit)
         {
@@ -93,7 +93,7 @@ namespace MyDungeon.Demo
         public virtual void LoseHealth(int damage)
         {
             CurHealth -= damage;
-            HudManager.Instance.AddMessage(DisplayName + " took " + damage + " damage");
+            Camera.main.GetComponent<MessageLogDisplay>().AddMessage(DisplayName + " took " + damage + " damage");
         }
 
         protected abstract void OnCantMove<T>(T component)

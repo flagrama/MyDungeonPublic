@@ -23,7 +23,7 @@ namespace MyDungeon.Demo
 
         public void Continue()
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Continue();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Continue();
         }
 
         public void Quit()
@@ -43,7 +43,6 @@ namespace MyDungeon.Demo
         public void SaveGame(SaveData saveData)
         {
             gameObject.GetComponent<SaveLoad>().Save(saveData, Application.persistentDataPath + "/save.sav");
-            HudManager.Instance.AddMessage("Game Saved!");
         }
 
         public void LoadGame()
@@ -53,7 +52,8 @@ namespace MyDungeon.Demo
 
             if (save != null)
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Load(save);
+                GameManager.saveLoaded = true;
+                GameManager.save = save;
                 SceneManager.LoadScene("Town");
             }
         }

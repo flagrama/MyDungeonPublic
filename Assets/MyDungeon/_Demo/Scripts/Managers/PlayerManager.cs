@@ -44,7 +44,7 @@ namespace MyDungeon.Demo
         {
             Level++;
             UpdateLevel();
-            HudManager.Instance.AddMessage(PlayerName + " has reached level " + Level);
+            Camera.main.GetComponent<MessageLogDisplay>().AddMessage(PlayerName + " has reached level " + Level);
         }
 
         private int CalculateNextXp()
@@ -56,14 +56,7 @@ namespace MyDungeon.Demo
 
         private void UpdateLevel()
         {
-            HudManager.Instance.UpdateLevel(Level);
-        }
-
-        private void UpdateXp()
-        {
-#if UNITY_EDITOR
-            HudManager.Instance.UpdateXp(CurXp, NextXp);
-#endif
+            Camera.main.GetComponent<LevelDisplay>().UpdateLevel(Level);
         }
 
         public void GainXp(int xp)
@@ -75,9 +68,8 @@ namespace MyDungeon.Demo
                 CurXp -= NextXp;
                 NextXp = CalculateNextXp();
             }
-
-            UpdateXp();
-            HudManager.Instance.AddMessage(PlayerName + " gained " + xp + " experience points");
+            
+            Camera.main.GetComponent<MessageLogDisplay>().AddMessage(PlayerName + " gained " + xp + " experience points");
         }
 
         public void AddItem(Item item)
@@ -88,6 +80,13 @@ namespace MyDungeon.Demo
         public void RemoveItem(Item item)
         {
             Inventory.Remove(item);
+        }
+
+        public void Load(SaveData saveData)
+        {
+            Instance.InitPlayer(saveData.DisplayName, saveData.MaxHealth);
+            Instance.Inventory = saveData.Inventory;
+            Instance.Initialized = true;
         }
     }
 }

@@ -9,20 +9,18 @@ namespace MyDungeon.Demo
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
+        public static bool saveLoaded;
+        public static SaveData save;
+
         private GridGenerator _boardScript;
-        private List<Creature> _creatures;
-        private bool _creaturesMoving;
-        private bool _doingSetup = true;
         private GameObject _loadingImage;
         private Text _loadingText;
-        public GridGenerator.TileType[,] Board;
+        
         public int Floor;
         public float LevelStartDelay = 2f;
         public GameObject LoadingCanvas;
         public bool Paused = false;
-        public GameObject Player;
         public bool PlayersTurn = true;
-        public int Seed;
 
         // Use this for initialization
         private void Awake()
@@ -34,18 +32,13 @@ namespace MyDungeon.Demo
 
             DontDestroyOnLoad(gameObject);
 
-            _creatures = new List<Creature>();
             _boardScript = GetComponent<GridGenerator>();
 
             if (SceneManager.GetActiveScene().name == "Dungeon")
                 InitGame();
 
             if (SceneManager.GetActiveScene().name == "Town")
-            {
-                GameObject spawner = GameObject.Find("PlayerSpawn");
-                Instantiate(Instance.Player, spawner.transform.position, Quaternion.identity);
                 Instance.Floor = 0;
-            }
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
@@ -61,57 +54,30 @@ namespace MyDungeon.Demo
                 Instance.InitGame();
             else if (arg0.name == "Town")
             {
-                GameObject spawner = GameObject.Find("PlayerSpawn");
-                Instantiate(Instance.Player, spawner.transform.position, Quaternion.identity);
-                HudManager.Instance.InitUi();
                 Instance.Floor = 0;
             }
         }
 
         private void InitGame()
         {
-            _doingSetup = true;
-            HudManager.Instance.InitUi();
             LoadingCanvas = (GameObject) Instantiate(Resources.Load("loadingCanvas"));
             _loadingImage = GameObject.Find("LoadingImage");
             _loadingText = GameObject.Find("LoadingText").GetComponent<Text>();
             _loadingImage.SetActive(true);
-            _creatures.Clear();
-            Board = new GridGenerator.TileType[_boardScript.Rows, _boardScript.Columns];
             Floor++;
-            HudManager.Instance.UpdateFloor(Floor);
+            Camera.main.GetComponent<FloorDisplay>().UpdateFloor(Floor);
             Invoke("GenerateBoard", LevelStartDelay);
             Invoke("HideLoadingImage", LevelStartDelay);
         }
 
         private void GenerateBoard()
         {
-            Board = _boardScript.GenerateBoard();
+            _boardScript.GenerateBoard();
         }
 
         private void HideLoadingImage()
         {
             _loadingImage.SetActive(false);
-            _doingSetup = false;
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
-            if (PlayersTurn || _creaturesMoving || _doingSetup)
-                return;
-
-            StartCoroutine(MoveCreatures());
-        }
-
-        public void AddCreatureToList(Creature script)
-        {
-            _creatures.Add(script);
-        }
-
-        public void RemoveCreatureFromList(Creature script)
-        {
-            _creatures.Remove(script);
         }
 
         public void GameOver()
@@ -119,21 +85,6 @@ namespace MyDungeon.Demo
             _loadingText.text = "YOU DIED";
             _loadingImage.SetActive(true);
             enabled = false;
-        }
-
-        private IEnumerator MoveCreatures()
-        {
-            _creaturesMoving = true;
-
-            yield return new WaitForSeconds(0.2f);
-
-            foreach (Creature creature in _creatures)
-                creature.MoveCreature();
-
-            yield return null;
-
-            _creaturesMoving = false;
-            PlayersTurn = true;
         }
     }
 }

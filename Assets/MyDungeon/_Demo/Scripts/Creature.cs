@@ -5,17 +5,23 @@ namespace MyDungeon.Demo
     public class Creature : MovingObject
     {
         private Animator _animator;
+        private CreatureController _creatureController;
         private bool _skipMove;
-
         private Transform _target;
+
         public AudioClip EnemyAttack1;
         public AudioClip EnemyAttack2;
         public int XpValue;
 
+        private void Awake()
+        {
+            _creatureController = GameManager.Instance.GetComponent<CreatureController>();
+        }
+
         // Use this for initialization
         protected override void Start()
         {
-            GameManager.Instance.AddCreatureToList(this);
+            _creatureController.AddCreatureToList(this);
             _animator = GetComponent<Animator>();
             _target = GameObject.FindGameObjectWithTag("Player").transform;
             CurHealth = MaxHealth;
@@ -26,9 +32,8 @@ namespace MyDungeon.Demo
         {
             if (CurHealth <= 0)
             {
-                GameManager.Instance.RemoveCreatureFromList(this);
-                GameManager.Instance.Board[PosX, PosY] = GridGenerator.TileType.Floor;
-                HudManager.Instance.AddMessage(DisplayName + " was defeated!");
+                _creatureController.RemoveCreatureFromList(this);
+                Camera.main.GetComponent<MessageLogDisplay>().AddMessage(DisplayName + " was defeated!");
                 PlayerManager.Instance.GainXp(XpValue);
                 Destroy(gameObject);
             }
@@ -61,7 +66,7 @@ namespace MyDungeon.Demo
 
         protected override void OnCantMove<T>(T component)
         {
-            Player hitPlayer = component as Player;
+            PlayerController hitPlayer = component as PlayerController;
             if (hitPlayer != null) hitPlayer.LoseHealth(Strength);
             _animator.SetTrigger("enemy1Attack");
             SoundManager.Instance.RandomizeSfx(EnemyAttack1, EnemyAttack2);

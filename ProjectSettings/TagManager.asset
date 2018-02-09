@@ -11,6 +11,13 @@ TagManager:
   - Dungeon
   - Item
   - SaveNPC
+  - MessageLog
+  - FloorText
+  - LevelText
+  - HealthText
+  - HealthBar
+  - HealthBarForeground
+  - HealthBarBackground
   layers:
   - Default
   - TransparentFX
