@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace MyDungeon.Demo
+namespace MyDungeon
 {
     public class MessageLogDisplay : MonoBehaviour
     {
