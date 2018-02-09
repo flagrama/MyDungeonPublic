@@ -65,7 +65,7 @@ namespace MyDungeon.Demo
             _loadingText = GameObject.Find("LoadingText").GetComponent<Text>();
             _loadingImage.SetActive(true);
             Floor++;
-            Camera.main.GetComponent<FloorDisplay>().UpdateFloor(Floor);
+            Invoke("UpdateFloor", LevelStartDelay);
             Invoke("GenerateBoard", LevelStartDelay);
             Invoke("HideLoadingImage", LevelStartDelay);
         }
@@ -78,6 +78,11 @@ namespace MyDungeon.Demo
         private void HideLoadingImage()
         {
             _loadingImage.SetActive(false);
+        }
+
+        private void UpdateFloor()
+        {
+            Camera.main.GetComponent<FloorDisplay>().UpdateFloor(Floor);
         }
 
         public void GameOver()

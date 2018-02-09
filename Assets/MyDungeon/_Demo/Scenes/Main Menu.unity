@@ -192,7 +192,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameManager: {fileID: 1000010714790116, guid: 78634c31298207144848c8066a380bca,
     type: 2}
-  HudManager: {fileID: 1000011047281982, guid: 0b54f7b95b467654eadab4f239883242, type: 2}
   MenuManager: {fileID: 1000014080642494, guid: f20684b4fd8b1894fa2e767b1be74108,
     type: 2}
   PlayerManager: {fileID: 1000013762586568, guid: 4b17c532fbd77274f87911a2ed4d42f0,

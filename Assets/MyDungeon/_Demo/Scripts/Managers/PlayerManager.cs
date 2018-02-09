@@ -36,7 +36,6 @@ namespace MyDungeon.Demo
             CurHealth = MaxHealth;
             NextXp = Instance.CalculateNextXp();
             Invoke("UpdateLevel", GameManager.Instance.LevelStartDelay);
-            Invoke("UpdateXp", GameManager.Instance.LevelStartDelay);
             Inventory = new List<Item>();
         }
 
