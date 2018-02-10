@@ -42,7 +42,7 @@ namespace MyDungeon.Demo
         {
             Level++;
             UpdateLevel();
-            Camera.main.GetComponent<MessageLogDisplay>().AddMessage(PlayerName + " has reached level " + Level);
+            GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<MessageLogDisplay>().AddMessage(PlayerName + " has reached level " + Level);
         }
 
         private int CalculateNextXp()
@@ -54,7 +54,7 @@ namespace MyDungeon.Demo
 
         private void UpdateLevel()
         {
-            Camera.main.GetComponent<LevelDisplay>().UpdateLevel(Level);
+            GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<LevelDisplay>().UpdateLevel(Level);
         }
 
         public void GainXp(int xp)
@@ -66,8 +66,8 @@ namespace MyDungeon.Demo
                 CurXp -= NextXp;
                 NextXp = CalculateNextXp();
             }
-            
-            Camera.main.GetComponent<MessageLogDisplay>().AddMessage(PlayerName + " gained " + xp + " experience points");
+
+            GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<MessageLogDisplay>().AddMessage(PlayerName + " gained " + xp + " experience points");
         }
 
         public void AddItem(Item item)

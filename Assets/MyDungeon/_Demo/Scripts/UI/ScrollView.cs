@@ -30,7 +30,7 @@ namespace MyDungeon.Demo
 
             PlayerManager.Instance.Inventory[i].UseItem(player.transform);
             PlayerManager.Instance.Inventory.Remove(PlayerManager.Instance.Inventory[i]);
-            GameManager.Instance.PlayersTurn = false;
+            GameManager.PlayersTurn = false;
             player.GetComponent<MyPauseMenu>().PauseGame();
         }
     }

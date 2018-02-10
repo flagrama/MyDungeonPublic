@@ -15,10 +15,10 @@ namespace MyDungeon.Demo
 
             if (SceneManager.GetActiveScene().name != "Town")
             {
-                if (GameManager.Instance.Paused)
+                if (GameManager.Paused)
                 {
                     _menu = Instantiate(PauseMenuPrefab);
-                    GameObject firstSelected = GameObject.Find(FirstSelectedGameObject.name);
+                    GameObject firstSelected = GameObject.FindGameObjectWithTag("UIFirstSelected");
                     EventSystem.firstSelectedGameObject = firstSelected;
                     EventSystem.SetSelectedGameObject(firstSelected);
                     LastSelected = EventSystem.firstSelectedGameObject;

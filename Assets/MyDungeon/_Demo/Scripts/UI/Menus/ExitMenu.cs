@@ -9,14 +9,14 @@ namespace MyDungeon.Demo
     {
         public GameObject ExitMenuPrefab;
         public Utilities.SceneField ExitScene;
-        public GameObject FirstSelectedGameObject;
+        public Utilities.SceneField ContinueScene;
         protected EventSystem EventSystem;
         protected GameObject LastSelected;
         private bool _collided;
         private GameObject _collision;
 
         // Use this for initialization
-        void Awake()
+        void Start()
         {
             EventSystem = EventSystem.current;
         }
@@ -49,7 +49,7 @@ namespace MyDungeon.Demo
         protected virtual void ShowMenu()
         {
             Instantiate(ExitMenuPrefab);
-            GameObject firstSelected = GameObject.Find(FirstSelectedGameObject.name);
+            GameObject firstSelected = GameObject.FindGameObjectWithTag("UIFirstSelected");
             EventSystem = EventSystem.current;
             EventSystem.firstSelectedGameObject = firstSelected;
             EventSystem.SetSelectedGameObject(firstSelected);
@@ -67,7 +67,7 @@ namespace MyDungeon.Demo
 
         public void Continue()
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Continue();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Continue(ContinueScene.SceneName);
         }
 
         public void Exit()

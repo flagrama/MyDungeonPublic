@@ -72,8 +72,9 @@ MonoBehaviour:
   ExitScene:
     sceneAsset: {fileID: 102900000, guid: 9726fe084ebd97e4ab430ab40ca25313, type: 3}
     sceneName: MyDungeon/_Demo/Scenes/Town
-  FirstSelectedGameObject: {fileID: 1000011349356502, guid: 18ee6a8e0eb5e0541b3f3203de5ac2db,
-    type: 2}
+  ContinueScene:
+    sceneAsset: {fileID: 102900000, guid: 40baed801de69e44d8eca27941f5ec99, type: 3}
+    sceneName: MyDungeon/_Demo/Scenes/Dungeon
 --- !u!212 &212000010227527642
 SpriteRenderer:
   m_ObjectHideFlags: 1

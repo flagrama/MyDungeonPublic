@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,12 +10,12 @@ namespace MyDungeon.Demo
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
-        public static bool saveLoaded;
-        public static SaveData save;
+        public static bool SaveLoaded;
+        public static SaveData Save;
         
-        public int Floor;
-        public bool Paused = false;
-        public bool PlayersTurn = true;
+        public static int Floor;
+        public static bool Paused = false;
+        public static bool PlayersTurn = true;
 
         // Use this for initialization
         private void Awake()

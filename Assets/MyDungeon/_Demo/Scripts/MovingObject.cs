@@ -17,13 +17,13 @@ namespace MyDungeon.Demo
         protected bool Moving;
         protected int PosX;
         protected int PosY;
-        protected Camera MainCamera;
+        protected GameObject DungeonManager;
         public int Strength = 1;
 
         // Use this for initialization
         protected virtual void Start()
         {
-            MainCamera = Camera.main;
+            DungeonManager = GameObject.FindGameObjectWithTag("DungeonManager");
             PosX = (int) Mathf.Round(transform.position.x);
             PosY = (int) Mathf.Round(transform.position.y);
             _boxCollider = GetComponent<BoxCollider2D>();
@@ -39,8 +39,8 @@ namespace MyDungeon.Demo
             CheckHit(start, end, out hit);
 
 
-            if (PosX + xDir < 0 || PosX + xDir > MainCamera.GetComponent<GridGenerator>().Columns || PosY + yDir < 0 ||
-                PosY + yDir > MainCamera.GetComponent<GridGenerator>().Rows)
+            if (PosX + xDir < 0 || PosX + xDir > DungeonManager.GetComponent<GridGenerator>().Columns || PosY + yDir < 0 ||
+                PosY + yDir > DungeonManager.GetComponent<GridGenerator>().Rows)
             {
                 return false;
             }
@@ -95,7 +95,7 @@ namespace MyDungeon.Demo
         public virtual void LoseHealth(int damage)
         {
             CurHealth -= damage;
-            Camera.main.GetComponent<MessageLogDisplay>().AddMessage(DisplayName + " took " + damage + " damage");
+            GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<MessageLogDisplay>().AddMessage(DisplayName + " took " + damage + " damage");
         }
 
         protected abstract void OnCantMove<T>(T component)

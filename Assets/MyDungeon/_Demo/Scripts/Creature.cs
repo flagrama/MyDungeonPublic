@@ -15,7 +15,7 @@ namespace MyDungeon.Demo
 
         private void Awake()
         {
-            _creatureController = GameManager.Instance.GetComponent<CreatureController>();
+            _creatureController = GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<CreatureController>();
         }
 
         // Use this for initialization
@@ -33,7 +33,7 @@ namespace MyDungeon.Demo
             if (CurHealth <= 0)
             {
                 _creatureController.RemoveCreatureFromList(this);
-                Camera.main.GetComponent<MessageLogDisplay>().AddMessage(DisplayName + " was defeated!");
+                GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<MessageLogDisplay>().AddMessage(DisplayName + " was defeated!");
                 PlayerManager.Instance.GainXp(XpValue);
                 Destroy(gameObject);
             }

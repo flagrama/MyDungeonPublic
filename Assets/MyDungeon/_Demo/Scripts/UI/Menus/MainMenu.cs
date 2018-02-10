@@ -11,19 +11,17 @@ namespace MyDungeon.Demo
     public class MainMenu : MonoBehaviour
     {
         public GameObject MainMenuPrefab;
-        public GameObject FirstSelectedGameObject;
         public SceneField NewGameScene;
         public SceneField LoadGameScene;
         protected EventSystem EventSystem;
         protected GameObject LastSelected;
 
         // Use this for initialization
-        void Awake()
+        void Start()
         {
             Instantiate(MainMenuPrefab);
-            GameObject firstSelected = GameObject.Find(FirstSelectedGameObject.name);
             EventSystem = EventSystem.current;
-            EventSystem.firstSelectedGameObject = firstSelected;
+            EventSystem.firstSelectedGameObject = GameObject.FindGameObjectWithTag("UIFirstSelected");
             LastSelected = EventSystem.firstSelectedGameObject;
         }
 
@@ -56,8 +54,8 @@ namespace MyDungeon.Demo
 
             if (save != null)
             {
-                GameManager.saveLoaded = true;
-                GameManager.save = save;
+                GameManager.SaveLoaded = true;
+                GameManager.Save = save;
                 SceneManager.LoadScene(LoadGameScene.SceneName);
             }
         }

@@ -16,7 +16,7 @@ namespace MyDungeon.Demo
             _loadingImage = GameObject.Find("LoadingImage");
             _loadingText = GameObject.Find("LoadingText").GetComponent<UnityEngine.UI.Text>();
             _loadingImage.SetActive(true);
-            GameManager.Instance.Floor++;
+            GameManager.Floor++;
             Invoke("UpdateFloor", LevelStartDelay);
             Invoke("GenerateBoard", LevelStartDelay);
             Invoke("HideLoadingImage", LevelStartDelay);
@@ -34,7 +34,7 @@ namespace MyDungeon.Demo
 
         private void UpdateFloor()
         {
-            Camera.main.GetComponent<FloorDisplay>().UpdateFloor(GameManager.Instance.Floor);
+            GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<FloorDisplay>().UpdateFloor(GameManager.Floor);
         }
 
         public void GameOver()

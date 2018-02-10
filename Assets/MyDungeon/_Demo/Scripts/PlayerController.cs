@@ -13,7 +13,7 @@ namespace MyDungeon.Demo
         private bool _diag;
         private bool _hold;
         private int _horizontal;
-        private Camera _mainCamera;
+        private GameObject _dungeonManager;
         private int _vertical;
         public AudioClip ChopSound1;
         public AudioClip ChopSound2;
@@ -31,11 +31,11 @@ namespace MyDungeon.Demo
         {
             _animator = GetComponent<Animator>();
 
-            if (GameManager.saveLoaded)
+            if (GameManager.SaveLoaded)
             {
-                PlayerManager.Instance.Load(GameManager.save);
-                GameManager.save = null;
-                GameManager.saveLoaded = false;
+                PlayerManager.Instance.Load(GameManager.Save);
+                GameManager.Save = null;
+                GameManager.SaveLoaded = false;
             }
 
             if (PlayerManager.Instance.Initialized == false)
@@ -49,8 +49,8 @@ namespace MyDungeon.Demo
 
             if (SceneManager.GetActiveScene().name == DungeonScene.SceneName)
             {
-                _mainCamera = Camera.main;
-                _mainCamera.GetComponent<LevelDisplay>().UpdateLevel(PlayerManager.Instance.Level);
+                _dungeonManager = GameObject.FindGameObjectWithTag("DungeonManager");
+                _dungeonManager.GetComponent<LevelDisplay>().UpdateLevel(PlayerManager.Instance.Level);
                 UpdateHealthDisplay();
             }
 
@@ -65,7 +65,7 @@ namespace MyDungeon.Demo
         // Update is called once per frame
         private void Update()
         {
-            if (!GameManager.Instance.PlayersTurn || GameManager.Instance.Paused)
+            if (!GameManager.PlayersTurn || GameManager.Paused)
                 return;
 
             _horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
@@ -132,7 +132,7 @@ namespace MyDungeon.Demo
                 SoundManager.Instance.RandomizeSfx(MoveSound1, MoveSound2);
                 SetAnimation(xDir, yDir);
                 _animator.SetTrigger("playerMove");
-                GameManager.Instance.PlayersTurn = false;
+                GameManager.PlayersTurn = false;
             }
             if (!Moving)
             {
@@ -165,7 +165,7 @@ namespace MyDungeon.Demo
 
             if (hit.transform == null)
             {
-                GameManager.Instance.PlayersTurn = false;
+                GameManager.PlayersTurn = false;
                 yield return new WaitForSeconds(MoveTime);
                 Moving = false;
                 yield break;
@@ -178,7 +178,7 @@ namespace MyDungeon.Demo
                 hitCreature.LoseHealth(Strength);
             }
 
-            GameManager.Instance.PlayersTurn = false;
+            GameManager.PlayersTurn = false;
             yield return new WaitForSeconds(MoveTime);
             Moving = false;
         }
@@ -223,9 +223,9 @@ namespace MyDungeon.Demo
             }
         }
 
-        public void Continue()
+        public void Continue(string continueScene)
         {
-            Invoke("Restart", RestartLevelDelay);
+            SceneManager.LoadSceneAsync(continueScene, LoadSceneMode.Single);
         }
 
         private void Restart()
@@ -255,7 +255,7 @@ namespace MyDungeon.Demo
                 enabled = false;
                 SoundManager.Instance.PlaySingle(GameOverSound);
                 SoundManager.Instance.MusicSource.Stop();
-                Camera.main.GetComponent<InitGame>().GameOver();
+                GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<InitGame>().GameOver();
             }
         }
 
@@ -271,8 +271,8 @@ namespace MyDungeon.Demo
 
         private void UpdateHealthDisplay()
         {
-            _mainCamera.GetComponent<HealthDisplay>().UpdateHealth(CurHealth, MaxHealth);
-            _mainCamera.GetComponent<HealthBarDisplay>().UpdateHealthBar(CurHealth, MaxHealth);
+            _dungeonManager.GetComponent<HealthDisplay>().UpdateHealth(CurHealth, MaxHealth);
+            _dungeonManager.GetComponent<HealthBarDisplay>().UpdateHealthBar(CurHealth, MaxHealth);
         }
     }
 }

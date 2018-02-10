@@ -9,7 +9,7 @@ namespace MyDungeon.Demo
         // Use this for initialization
         void Start()
         {
-            GameManager.Instance.Floor = 0;
+            GameManager.Floor = 0;
         }
     }
 }

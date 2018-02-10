@@ -6,12 +6,11 @@ namespace MyDungeon.Demo
     public class PauseMenu : MonoBehaviour
     {
         public GameObject PauseMenuPrefab;
-        public GameObject FirstSelectedGameObject;
         protected EventSystem EventSystem;
         protected GameObject LastSelected;
 
         // Use this for initialization
-        void Awake()
+        void Start()
         {
             EventSystem = EventSystem.current;
         }
@@ -32,7 +31,7 @@ namespace MyDungeon.Demo
                 }
             }
 
-            if (Input.GetButtonDown("Cancel") && GameManager.Instance.PlayersTurn)
+            if (Input.GetButtonDown("Cancel") && GameManager.PlayersTurn)
             {
                 PauseGame();
             }
@@ -45,7 +44,7 @@ namespace MyDungeon.Demo
 
         protected virtual void Pause()
         {
-            GameManager.Instance.Paused = !GameManager.Instance.Paused;
+            GameManager.Paused = !GameManager.Paused;
 
             Time.timeScale = Mathf.Approximately(Time.timeScale, 0f) ? 1 : 0;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled =

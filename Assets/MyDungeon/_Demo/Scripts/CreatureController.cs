@@ -18,7 +18,7 @@ namespace MyDungeon.Demo
         // Update is called once per frame
         void Update()
         {
-            if (GameManager.Instance.PlayersTurn || _creaturesMoving)
+            if (GameManager.PlayersTurn || _creaturesMoving)
                 return;
 
             StartCoroutine(MoveCreatures());
@@ -46,7 +46,7 @@ namespace MyDungeon.Demo
             yield return null;
 
             _creaturesMoving = false;
-            GameManager.Instance.PlayersTurn = true;
+            GameManager.PlayersTurn = true;
         }
     }
 }

@@ -18,6 +18,8 @@ TagManager:
   - HealthBar
   - HealthBarForeground
   - HealthBarBackground
+  - UIFirstSelected
+  - DungeonManager
   layers:
   - Default
   - TransparentFX
