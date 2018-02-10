@@ -1,5 +1,7 @@
 ﻿using MyDungeon.Utilities;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.EventSystems;
 using SceneManager = UnityEngine.SceneManagement.SceneManager;
