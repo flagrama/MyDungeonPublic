@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using IntRange = MyDungeon.Utilities.IntRange;
 using UnityEngine;
 
 namespace MyDungeon

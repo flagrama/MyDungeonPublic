@@ -1,21 +1,38 @@
 ﻿using UnityEngine;
 using MyDungeon.Demo;
+using MyDungeon.Utilities;
 using UnityEngine.SceneManagement;
 
 namespace MyDungeon.Demo
 {
-    public class MyPauseMenu : MyDungeon.Demo.PauseMenu
+    public class MyPauseMenu : MyDungeon.PauseMenu
     {
+        [SerializeField] private SceneField NoInventoryScene;
         private GameObject _menu;
+
+        protected override void Update()
+        {
+            if (Input.GetButtonDown("Cancel") && GameManager.PlayersTurn)
+            {
+                PauseGame();
+            }
+        }
+
+        public virtual void PauseGame()
+        {
+            Pause();
+        }
 
         protected override void Pause()
         {
             base.Pause();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled =
+                !GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled;
 
 
-            if (SceneManager.GetActiveScene().name != "Town")
+            if (SceneManager.GetActiveScene().name != NoInventoryScene.SceneName)
             {
-                if (GameManager.Paused)
+                if (MyDungeon.GameManager.Paused)
                 {
                     _menu = Instantiate(PauseMenuPrefab);
                     GameObject firstSelected = GameObject.FindGameObjectWithTag("UIFirstSelected");

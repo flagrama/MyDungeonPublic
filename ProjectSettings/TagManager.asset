@@ -20,6 +20,7 @@ TagManager:
   - HealthBarBackground
   - UIFirstSelected
   - DungeonManager
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX

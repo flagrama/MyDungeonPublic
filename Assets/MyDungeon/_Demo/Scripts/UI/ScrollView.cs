@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace MyDungeon.Demo
 {
@@ -9,12 +10,14 @@ namespace MyDungeon.Demo
         // Use this for initialization
         public void Populate()
         {
-            for (int i = 0; i < PlayerManager.Instance.Inventory.Count; i++)
+            List<Item> items = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>().InventoryItems;
+
+            for (int i = 0; i < items.Count; i++)
             {
                 GameObject go = Instantiate(ButtonTemplate);
                 go.SetActive(true);
                 ScrollButton tb = go.GetComponent<ScrollButton>();
-                tb.SetNameAndIndex(PlayerManager.Instance.Inventory[i].name, i);
+                tb.SetNameAndIndex(items[i].name, i);
                 go.transform.SetParent(ButtonTemplate.transform.parent);
             }
         }
@@ -28,8 +31,9 @@ namespace MyDungeon.Demo
                 return;
             }
 
-            PlayerManager.Instance.Inventory[i].UseItem(player.transform);
-            PlayerManager.Instance.Inventory.Remove(PlayerManager.Instance.Inventory[i]);
+            Inventory inventory = player.GetComponent<Inventory>();
+            inventory.InventoryItems[i].UseItem(player.transform);
+            inventory.InventoryItems.Remove(inventory.InventoryItems[i]);
             GameManager.PlayersTurn = false;
             player.GetComponent<MyPauseMenu>().PauseGame();
         }

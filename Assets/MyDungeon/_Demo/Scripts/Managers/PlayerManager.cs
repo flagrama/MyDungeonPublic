@@ -8,15 +8,14 @@ namespace MyDungeon.Demo
         public static PlayerManager Instance;
 
         public int BaseXp = 100;
-        [HideInInspector] public int CurHealth;
-        [HideInInspector] public int CurXp;
-        [HideInInspector] public bool Initialized = false;
-        [HideInInspector] public List<Item> Inventory;
-        [HideInInspector] public int Level = 1;
+        public int CurHealth;
+        public int CurXp;
+        public bool Initialized = false;
+        public int Level = 1;
         public float LevelFactor = 2;
-        [HideInInspector] public int MaxHealth;
-        [HideInInspector] public int NextXp;
-        [HideInInspector] public string PlayerName;
+        public int MaxHealth;
+        public int NextXp;
+        public string PlayerName;
 
         // Use this for initialization
         private void Awake()
@@ -35,7 +34,7 @@ namespace MyDungeon.Demo
             MaxHealth = maxHp;
             CurHealth = MaxHealth;
             NextXp = Instance.CalculateNextXp();
-            Inventory = new List<Item>();
+            GameManager.Inventory = new List<Item>();
         }
 
         private void LevelUp()
@@ -70,20 +69,10 @@ namespace MyDungeon.Demo
             GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<MessageLogDisplay>().AddMessage(PlayerName + " gained " + xp + " experience points");
         }
 
-        public void AddItem(Item item)
-        {
-            Inventory.Add(item);
-        }
-
-        public void RemoveItem(Item item)
-        {
-            Inventory.Remove(item);
-        }
-
-        public void Load(SaveData saveData)
+        public void Load(MySaveData saveData)
         {
             Instance.InitPlayer(saveData.DisplayName, saveData.MaxHealth);
-            Instance.Inventory = saveData.Inventory;
+            GameManager.Inventory = saveData.Inventory;
             Instance.Initialized = true;
         }
     }

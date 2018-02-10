@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace MyDungeon.Demo
 {
-    public class PlayerController : MovingObject
+    public class PlayerController : MyDungeon.Player
     {
         private Animator _animator;
         private bool _collided;
@@ -31,11 +31,11 @@ namespace MyDungeon.Demo
         {
             _animator = GetComponent<Animator>();
 
-            if (GameManager.SaveLoaded)
+            if (MyDungeon.GameManager.SaveLoaded)
             {
-                PlayerManager.Instance.Load(GameManager.Save);
-                GameManager.Save = null;
-                GameManager.SaveLoaded = false;
+                PlayerManager.Instance.Load(MyGameManager.Save);
+                MyGameManager.Save = null;
+                MyDungeon.GameManager.SaveLoaded = false;
             }
 
             if (PlayerManager.Instance.Initialized == false)
@@ -65,7 +65,7 @@ namespace MyDungeon.Demo
         // Update is called once per frame
         private void Update()
         {
-            if (!GameManager.PlayersTurn || GameManager.Paused)
+            if (!MyDungeon.GameManager.PlayersTurn || MyDungeon.GameManager.Paused)
                 return;
 
             _horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
@@ -80,7 +80,7 @@ namespace MyDungeon.Demo
                         && Mathf.Approximately(transform.position.y, _collision.transform.position.y))
                     {
                         Item item = _collision.GetComponent<ItemBehaviour>().Item;
-                        PlayerManager.Instance.AddItem(item);
+                        GetComponent<Inventory>().AddItem(item);
                         _collision.SetActive(false);
                     }
 
@@ -132,7 +132,7 @@ namespace MyDungeon.Demo
                 SoundManager.Instance.RandomizeSfx(MoveSound1, MoveSound2);
                 SetAnimation(xDir, yDir);
                 _animator.SetTrigger("playerMove");
-                GameManager.PlayersTurn = false;
+                MyDungeon.GameManager.PlayersTurn = false;
             }
             if (!Moving)
             {
@@ -165,7 +165,7 @@ namespace MyDungeon.Demo
 
             if (hit.transform == null)
             {
-                GameManager.PlayersTurn = false;
+                MyDungeon.GameManager.PlayersTurn = false;
                 yield return new WaitForSeconds(MoveTime);
                 Moving = false;
                 yield break;
@@ -178,7 +178,7 @@ namespace MyDungeon.Demo
                 hitCreature.LoseHealth(Strength);
             }
 
-            GameManager.PlayersTurn = false;
+            MyDungeon.GameManager.PlayersTurn = false;
             yield return new WaitForSeconds(MoveTime);
             Moving = false;
         }
@@ -198,14 +198,14 @@ namespace MyDungeon.Demo
 
             if (hit.transform.tag == "SaveNPC")
             {
-                SaveData saveData = new SaveData
+                MySaveData saveData = new MySaveData
                 {
-                    Inventory = PlayerManager.Instance.Inventory,
+                    Inventory = GetComponent<Inventory>().InventoryItems,
                     DisplayName = PlayerManager.Instance.PlayerName,
                     MaxHealth = PlayerManager.Instance.MaxHealth
                 };
 
-                GetComponent<SaveMenu>().SaveGame(saveData);
+                GetComponent<SaveMenu>().SaveGame(saveData, Application.persistentDataPath + "/save.sav");
             }
         }
 
@@ -221,11 +221,6 @@ namespace MyDungeon.Demo
             {
                 SceneManager.LoadScene(DungeonScene.SceneName);
             }
-        }
-
-        public void Continue(string continueScene)
-        {
-            SceneManager.LoadSceneAsync(continueScene, LoadSceneMode.Single);
         }
 
         private void Restart()
@@ -255,7 +250,7 @@ namespace MyDungeon.Demo
                 enabled = false;
                 SoundManager.Instance.PlaySingle(GameOverSound);
                 SoundManager.Instance.MusicSource.Stop();
-                GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<InitGame>().GameOver();
+                GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<MyInitGame>().GameOver();
             }
         }
 

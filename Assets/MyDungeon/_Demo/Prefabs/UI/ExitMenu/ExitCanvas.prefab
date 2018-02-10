@@ -339,7 +339,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114000011611371716, guid: a77ee95976abbe74392a4e18c3e8c6ec,
+      - m_Target: {fileID: 114000012908429220, guid: 844ae6658ddb2cd4ba432a23abca3538,
           type: 2}
         m_MethodName: Continue
         m_Mode: 1
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114000011611371716, guid: a77ee95976abbe74392a4e18c3e8c6ec,
+      - m_Target: {fileID: 114000012908429220, guid: 844ae6658ddb2cd4ba432a23abca3538,
           type: 2}
         m_MethodName: Exit
         m_Mode: 1

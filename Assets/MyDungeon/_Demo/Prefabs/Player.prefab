@@ -27,6 +27,7 @@ GameObject:
   - 114: {fileID: 114000013082481302}
   - 114: {fileID: 114000012575645530}
   - 114: {fileID: 114000014279363388}
+  - 114: {fileID: 114000012938987836}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -106,6 +107,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b6889be6b9bc9c409cae309f07e9418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000012938987836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012948256500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f45eff1e9baa97458c49020f15059f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InventoryItems: []
 --- !u!114 &114000013082481302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,10 +148,10 @@ MonoBehaviour:
   SwingSound2: {fileID: 8300000, guid: d2968769688b8f04c81151365bb6ba61, type: 3}
   DungeonScene:
     sceneAsset: {fileID: 102900000, guid: 40baed801de69e44d8eca27941f5ec99, type: 3}
-    sceneName: MyDungeon/_Demo/Scenes/Dungeon
+    sceneName: MyDungeon/_Demo/_Scenes/Dungeon
   TownScene:
     sceneAsset: {fileID: 102900000, guid: 9726fe084ebd97e4ab430ab40ca25313, type: 3}
-    sceneName: MyDungeon/_Demo/Scenes/Town
+    sceneName: MyDungeon/_Demo/_Scenes/Town
 --- !u!114 &114000014233043342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,8 +165,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseMenuPrefab: {fileID: 1882456702271132, guid: fcde756e201b0c64e8e9427bc19e1725,
     type: 2}
-  FirstSelectedGameObject: {fileID: 1000012780208266, guid: 1df661c0a43b8b4419f264a102b00dbf,
-    type: 2}
+  NoInventoryScene:
+    sceneAsset: {fileID: 102900000, guid: 9726fe084ebd97e4ab430ab40ca25313, type: 3}
+    sceneName: MyDungeon/_Demo/_Scenes/Town
 --- !u!114 &114000014279363388
 MonoBehaviour:
   m_ObjectHideFlags: 1

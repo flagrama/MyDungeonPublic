@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using IntRange = MyDungeon.Utilities.IntRange;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
