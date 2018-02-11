@@ -26,8 +26,8 @@ namespace MyDungeon.Demo
         protected override void Pause()
         {
             base.Pause();
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled =
-                !GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().enabled;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDungeonController>().enabled =
+                !GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDungeonController>().enabled;
 
 
             if (SceneManager.GetActiveScene().name != NoInventoryScene.SceneName)

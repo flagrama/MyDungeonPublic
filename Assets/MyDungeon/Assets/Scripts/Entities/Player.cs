@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace MyDungeon
 {
-    public class Player : MovingObject
+    public class Player : MovingDungeonObject
     {
         protected override void OnCantMove<T>(T component)
         {

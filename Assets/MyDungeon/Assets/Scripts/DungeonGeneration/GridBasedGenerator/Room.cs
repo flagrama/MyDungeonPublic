@@ -67,7 +67,7 @@ namespace MyDungeon
         /// <param name="heightRange">Int Range for Room height</param>
         /// <param name="col">Room starting X position</param>
         /// <param name="row">Room starting Y position</param>
-        public void SetupRoom(IntRange widthRange, IntRange heightRange, int col, int row)
+        public virtual void SetupRoom(IntRange widthRange, IntRange heightRange, int col, int row)
         {
             Connections = new List<Coord>();
 

@@ -1,17 +1,16 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MyDungeon
 {
     public class PlayerSpawner : MonoBehaviour
     {
         public Player Player;
+        public PlayerSpawner Spawner;
 
         // Use this for initialization
         void Start()
         {
-            GameObject spawner = GameObject.FindGameObjectWithTag("PlayerSpawn");
-            Instantiate(Player, spawner.transform.position, Quaternion.identity);
+            Instantiate(Player, Spawner.transform.position, Quaternion.identity);
         }
     }
 }

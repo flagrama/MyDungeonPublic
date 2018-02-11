@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -6,10 +7,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MyDungeon")]
-[assembly: AssemblyDescription("A Roguelike engine for Unity")]
+[assembly: AssemblyDescription("A Roguelike Framework for the Unity engine")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("flagrama")]
-[assembly: AssemblyProduct("MyDungeon")]
+[assembly: AssemblyCompany("Vincent Cunningham")]
+[assembly: AssemblyProduct("MyDungeon - Roguelike Framework")]
 [assembly: AssemblyCopyright("Copyright © 2018 Vincent Cunningham")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -31,3 +32,5 @@ using System.Runtime.InteropServices;
 //
 [assembly: AssemblyVersion("0.4.0.0")]
 [assembly: AssemblyFileVersion("0.4.0.0")]
+[assembly: NeutralResourcesLanguage("en-US")]
+

@@ -6,46 +6,46 @@ namespace MyDungeon
 {
     public class CreatureController : MonoBehaviour
     {
-        private List<Creature> _creatures;
-        private bool _creaturesMoving;
+        protected List<Creature> Creatures;
+        protected bool CreaturesMoving;
 
         // Use this for initialization
-        void Awake()
+        protected virtual void Awake()
         {
-            _creatures = new List<Creature>();
+            Creatures = new List<Creature>();
         }
 
         // Update is called once per frame
-        void Update()
+        protected virtual void Update()
         {
-            if (MyDungeon.GameManager.PlayersTurn || _creaturesMoving)
+            if (MyDungeon.GameManager.PlayersTurn || CreaturesMoving)
                 return;
 
             StartCoroutine(MoveCreatures());
         }
 
-        public void AddCreatureToList(Creature script)
+        public virtual void AddCreatureToList(Creature script)
         {
-            _creatures.Add(script);
+            Creatures.Add(script);
         }
 
-        public void RemoveCreatureFromList(Creature script)
+        public virtual void RemoveCreatureFromList(Creature script)
         {
-            _creatures.Remove(script);
+            Creatures.Remove(script);
         }
 
-        private IEnumerator MoveCreatures()
+        protected virtual IEnumerator MoveCreatures()
         {
-            _creaturesMoving = true;
+            CreaturesMoving = true;
 
             yield return new WaitForSeconds(0.25f);
 
-            foreach (Creature creature in _creatures)
+            foreach (Creature creature in Creatures)
                 creature.MoveCreature();
 
             yield return null;
 
-            _creaturesMoving = false;
+            CreaturesMoving = false;
             MyDungeon.GameManager.PlayersTurn = true;
         }
     }

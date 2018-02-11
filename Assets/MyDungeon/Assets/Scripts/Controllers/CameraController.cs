@@ -10,29 +10,29 @@ namespace MyDungeon
         /// <summary>
         /// The offset of the camera location
         /// </summary>
-        private Vector3 _offset;
+        protected Vector3 Offset;
         /// <summary>
         /// The game object the camera tracks
         /// </summary>
-        private GameObject _player;
+        protected GameObject Player;
 
         /// <summary>
         /// Sets the position offset for the camera to the camera starting position
         /// </summary>
-        private void Start()
+        protected virtual void Start()
         {
-            _offset = transform.position;
+            Offset = transform.position;
         }
 
         /// <summary>
         /// Centers the camera on the object tagged as Player
         /// </summary>
-        private void LateUpdate()
+        protected virtual void LateUpdate()
         {
-            if (_player == null)
-                _player = GameObject.FindWithTag("Player");
+            if (Player == null)
+                Player = GameObject.FindWithTag("Player");
             else
-                transform.position = _player.transform.position + _offset;
+                transform.position = Player.transform.position + Offset;
         }
     }
 }

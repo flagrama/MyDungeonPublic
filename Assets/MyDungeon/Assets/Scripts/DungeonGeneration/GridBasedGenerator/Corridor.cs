@@ -40,7 +40,7 @@
         /// <param name="y">Starting Y position</param>
         /// <param name="length">Length of the corridor</param>
         /// <param name="direction">Direction of the corridor</param>
-        public void SetupCorridor(int x, int y, int length, Direction direction)
+        public virtual void SetupCorridor(int x, int y, int length, Direction direction)
         {
             StartXPos = x;
             StartYPos = y;

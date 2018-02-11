@@ -1,41 +1,59 @@
 ﻿using System.Collections;
+using MyDungeon.Utilities;
 using UnityEngine;
 
 namespace MyDungeon
 {
-    public abstract class MovingObject : MonoBehaviour
+    public abstract class MovingDungeonObject : MonoBehaviour
     {
-        private BoxCollider2D _boxCollider;
-        private float _inverseMoveTime;
-        private Rigidbody2D _rb2D;
         public LayerMask BlockingLayer;
-        protected int CurHealth;
-        public string DisplayName;
         public int Level = 1;
+        public int Strength = 1;
         public int MaxHealth = 10;
         public float MoveTime = 0.25f;
-        protected bool Moving;
+        public string DisplayName;
+
+        protected GameObject DungeonManager;
+        protected GridGenerator DungeonMap;
+        protected BoxCollider2D BoxCollider;
+        protected Rigidbody2D Rb2D;
+        protected int CurHealth;
         protected int PosX;
         protected int PosY;
-        protected GameObject DungeonManager;
-        public int Strength = 1;
+        protected float InverseMoveTime;
+        protected bool Moving;
 
         // Use this for initialization
         protected virtual void Start()
         {
+            DungeonManager = GameObject.FindGameObjectWithTag("DungeonManager");
+
             try
             {
-                DungeonManager = GameObject.FindGameObjectWithTag("DungeonManager");
+                DungeonMap = DungeonManager.GetComponent<GridGenerator>();
             }
             catch
             {
-                Debug.LogError("You must include a GameObject with the DungeonManager tag in the scene with any MovingObject including the Player");
+                if(DungeonManager != null)
+                    Utilities.MyDungeonErrors.GridGeneratorOnDungeonManagerNotFound(DungeonManager.name);
+                else
+                    Utilities.MyDungeonErrors.DungeonManagerNotFound();
             }
+
+            try
+            {
+                BoxCollider = GetComponent<BoxCollider2D>();
+                Rb2D = GetComponent<Rigidbody2D>();
+            }
+            catch
+            {
+                Utilities.MyDungeonErrors.RigidBody2DOrBoxCollider2DNotFound(gameObject.name);
+            }
+
             PosX = (int) Mathf.Round(transform.position.x);
             PosY = (int) Mathf.Round(transform.position.y);
-            _boxCollider = GetComponent<BoxCollider2D>();
-            _rb2D = GetComponent<Rigidbody2D>();
-            _inverseMoveTime = 1f / MoveTime;
+
+            InverseMoveTime = 1f / MoveTime;
         }
 
         protected bool Move(int xDir, int yDir, out RaycastHit2D hit)
@@ -45,9 +63,7 @@ namespace MyDungeon
 
             CheckHit(start, end, out hit);
 
-
-            if (PosX + xDir < 0 || PosX + xDir > DungeonManager.GetComponent<GridGenerator>().Columns || PosY + yDir < 0 ||
-                PosY + yDir > DungeonManager.GetComponent<GridGenerator>().Rows)
+            if (PosX + xDir < 0 || PosX + xDir > DungeonMap.Columns || PosY + yDir < 0 || PosY + yDir > DungeonMap.Rows)
             {
                 return false;
             }
@@ -62,9 +78,9 @@ namespace MyDungeon
 
         protected void CheckHit(Vector2 start, Vector2 end, out RaycastHit2D hit)
         {
-            _boxCollider.enabled = false;
+            BoxCollider.enabled = false;
             hit = Physics2D.Linecast(start, end, BlockingLayer);
-            _boxCollider.enabled = true;
+            BoxCollider.enabled = true;
         }
 
         protected IEnumerator SmoothMovement(Vector3 end)
@@ -75,8 +91,8 @@ namespace MyDungeon
 
             while (sqrRemainingDistance > float.Epsilon)
             {
-                Vector3 newPosition = Vector3.MoveTowards(_rb2D.position, end, _inverseMoveTime * Time.deltaTime);
-                _rb2D.MovePosition(newPosition);
+                Vector3 newPosition = Vector3.MoveTowards(Rb2D.position, end, InverseMoveTime * Time.deltaTime);
+                Rb2D.MovePosition(newPosition);
                 sqrRemainingDistance = (transform.position - end).sqrMagnitude;
                 yield return null;
             }
@@ -102,7 +118,6 @@ namespace MyDungeon
         public virtual void LoseHealth(int damage)
         {
             CurHealth -= damage;
-            GameObject.FindGameObjectWithTag("HudManager").GetComponent<MessageLogDisplay>().AddMessage(DisplayName + " took " + damage + " damage");
         }
 
         protected abstract void OnCantMove<T>(T component)

@@ -24,18 +24,18 @@ namespace MyDungeon.Demo
 
         public void ButtonClicked(string str, int i)
         {
-            PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            PlayerDungeonController playerDungeon = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDungeonController>();
             if (str == null)
             {
-                player.GetComponent<MyPauseMenu>().PauseGame();
+                playerDungeon.GetComponent<MyPauseMenu>().PauseGame();
                 return;
             }
 
-            Inventory inventory = player.GetComponent<Inventory>();
-            inventory.InventoryItems[i].UseItem(player.transform);
+            Inventory inventory = playerDungeon.GetComponent<Inventory>();
+            inventory.InventoryItems[i].UseItem(playerDungeon.transform);
             inventory.InventoryItems.Remove(inventory.InventoryItems[i]);
             GameManager.PlayersTurn = false;
-            player.GetComponent<MyPauseMenu>().PauseGame();
+            playerDungeon.GetComponent<MyPauseMenu>().PauseGame();
         }
     }
 }

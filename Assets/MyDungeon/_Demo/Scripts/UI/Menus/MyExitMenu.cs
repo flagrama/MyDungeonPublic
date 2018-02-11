@@ -16,7 +16,7 @@ namespace MyDungeon.Demo
             if (_collided && Mathf.Approximately(transform.position.x, _collision.transform.position.x)
                 && Mathf.Approximately(transform.position.y, _collision.transform.position.y))
             {
-                _collision.GetComponent<PlayerController>().enabled = false;
+                _collision.GetComponent<PlayerDungeonController>().enabled = false;
                 ShowMenu();
                 _collided = false;
             }

@@ -25,41 +25,9 @@ namespace MyDungeon
         }
 
         /// <summary>
-        /// Array representing the map
+        /// The seed used to generate the board
         /// </summary>
-        private TileType[,] _board;
-        /// <summary>
-        /// GameObject that acts as a container for all other tiles
-        /// </summary>
-        private GameObject _boardHolder;
-        /// <summary>
-        /// All the cells available in map
-        /// </summary>
-        private Cell[] _cells;
-        /// <summary>
-        /// All the corridors that connect the rooms
-        /// </summary>
-        private List<Corridor> _corridors;
-        /// <summary>
-        /// Total number of creatures to spawn in map
-        /// </summary>
-        private int _creatureCount;
-        /// <summary>
-        /// Total number of items to spawn in map
-        /// </summary>
-        private int _itemCount;
-        /// <summary>
-        /// The range of heights rooms can have
-        /// </summary>
-        private IntRange _roomHeight;
-        /// <summary>
-        /// All the rooms that are created for this board
-        /// </summary>
-        private Room[] _rooms;
-        /// <summary>
-        /// The range of widths rooms can have
-        /// </summary>
-        private IntRange _roomWidth;
+        public int Seed;
         /// <summary>
         /// The number of rows in a cell
         /// </summary>
@@ -69,49 +37,9 @@ namespace MyDungeon
         /// </summary>
         public int CellSizeW = 10;
         /// <summary>
-        /// The number of columns on the board (how wide it will be)
-        /// </summary>
-        public int Columns = 100;
-        /// <summary>
-        /// The range of lengths corridors between rooms can have
-        /// </summary>
-        public IntRange CorridorLength = new IntRange(6, 10);
-        /// <summary>
-        /// The range of number of creatures that can appear in the board
-        /// </summary>
-        public IntRange CreatureLevelMaxCount = new IntRange(6, 10);
-        /// <summary>
-        /// Array creature prefabs
-        /// </summary>
-        public GameObject[] Creatures;
-        /// <summary>
-        /// Exit or staircase prefab
-        /// </summary>
-        public GameObject Exit;
-        /// <summary>
-        /// An array of floor tile prefabs
-        /// </summary>
-        public GameObject[] FloorTiles;
-        /// <summary>
-        /// The range of number of items that can appear in the board
-        /// </summary>
-        public IntRange ItemLevelMaxCount = new IntRange(6, 10);
-        /// <summary>
-        /// An array of item prefabs
-        /// </summary>
-        public GameObject[] Items;
-        /// <summary>
         /// The range of the number of rooms there can be
         /// </summary>
         public IntRange NumRooms = new IntRange(15, 20);
-        /// <summary>
-        /// An array of outer wall tile prefabs
-        /// </summary>
-        public GameObject[] OuterWallTiles;
-        /// <summary>
-        /// Player prefab to spawn into map
-        /// </summary>
-        public GameObject Player;
         /// <summary>
         /// The smallest a room's height can be
         /// </summary>
@@ -121,32 +49,72 @@ namespace MyDungeon
         /// </summary>
         public int RoomMinWidth = 3;
         /// <summary>
+        /// The number of columns on the board (how wide it will be)
+        /// </summary>
+        public int Columns = 100;
+        /// <summary>
         /// The number of rows on the board (how tall it will be)
         /// </summary>
         public int Rows = 100;
         /// <summary>
-        /// The seed used to generate the board
+        /// The range of lengths corridors between rooms can have
         /// </summary>
-        public int Seed;
+        public IntRange CorridorLength = new IntRange(6, 10);
+        /// <summary>
+        /// An array of floor tile prefabs
+        /// </summary>
+        public GameObject[] FloorTiles;
+        /// <summary>
+        /// An array of outer wall tile prefabs
+        /// </summary>
+        public GameObject[] OuterWallTiles;
         /// <summary>
         /// An array of wall tile prefabs
         /// </summary>
         public GameObject[] WallTiles;
 
         /// <summary>
+        /// Array representing the map
+        /// </summary>
+        protected TileType[,] Board;
+        /// <summary>
+        /// GameObject that acts as a container for all other tiles
+        /// </summary>
+        protected GameObject BoardHolder;
+        /// <summary>
+        /// All the cells available in map
+        /// </summary>
+        protected Cell[] Cells;
+        /// <summary>
+        /// All the corridors that connect the rooms
+        /// </summary>
+        protected List<Corridor> Corridors;
+        /// <summary>
+        /// The range of heights rooms can have
+        /// </summary>
+        protected IntRange RoomHeight;
+        /// <summary>
+        /// All the rooms that are created for this board
+        /// </summary>
+        protected Room[] Rooms;
+        /// <summary>
+        /// The range of widths rooms can have
+        /// </summary>
+        protected IntRange RoomWidth;
+
+        /// <summary>
         /// Generate a new grid-based dungeon map
         /// </summary>
         /// <returns>An 2D array representing the dungeon map</returns>
-        public TileType[,] GenerateBoard()
+        public virtual TileType[,] GenerateBoard()
         {
-#if UNITY_EDITOR
             Seed = (int) DateTime.Now.Ticks;
             Random.InitState(Seed);
-#endif
-            // Create the board holder.
-            _boardHolder = new GameObject("BoardHolder");
 
-            _board = SetupTilesArray();
+            // Create the board holder.
+            BoardHolder = new GameObject("BoardHolder");
+
+            Board = SetupTilesArray();
             SetupCells();
 
             CreateRooms();
@@ -158,46 +126,46 @@ namespace MyDungeon
             InstantiateTiles();
             InstantiateOuterWalls();
 
-            return _board;
+            return Board;
         }
 
         /// <summary>
         /// Creates the initial map array filled with impassible terrain
         /// </summary>
         /// <returns>Map array filled with TileType.Wall</returns>
-        private TileType[,] SetupTilesArray()
+        protected virtual TileType[,] SetupTilesArray()
         {
             // Set the tiles jagged array to the correct width.
-            _board = new TileType[Columns, Rows];
+            Board = new TileType[Columns, Rows];
 
             // Go through all the tile arrays...
             for (int i = 0; i < Columns; i++)
             {
                 for (int j = 0; j < Rows; j++)
                 {
-                    _board[i, j] = TileType.Wall;
+                    Board[i, j] = TileType.Wall;
                 }
             }
 
-            return _board;
+            return Board;
         }
 
         /// <summary>
         /// Sets the number of cells contained on the map
         /// </summary>
-        private void SetupCells()
+        protected virtual void SetupCells()
         {
             int numCellsHorizontal = Columns / CellSizeW;
             int numCellsVertical = Rows / CellSizeH;
-            _cells = new Cell[numCellsHorizontal * numCellsVertical];
+            Cells = new Cell[numCellsHorizontal * numCellsVertical];
             int numcells = 0;
 
             for (int i = 0; i < numCellsHorizontal; i++)
             {
                 for (int j = 0; j < numCellsVertical; j++)
                 {
-                    _cells[numcells] = new Cell();
-                    _cells[numcells].SetupCell(CellSizeW * i, CellSizeH * j);
+                    Cells[numcells] = new Cell();
+                    Cells[numcells].SetupCell(CellSizeW * i, CellSizeH * j);
                     numcells++;
                 }
             }
@@ -206,27 +174,27 @@ namespace MyDungeon
         /// <summary>
         /// Creates the rooms in the map
         /// </summary>
-        private void CreateRooms()
+        protected virtual void CreateRooms()
         {
-            _rooms = new Room[NumRooms.Random];
+            Rooms = new Room[NumRooms.Random];
             int attempts = 3;
 
-            for (int i = 0; i < _rooms.Length; i++)
+            for (int i = 0; i < Rooms.Length; i++)
             {
-                int cell = Random.Range(0, _cells.Length - 1);
-                _roomWidth = new IntRange(RoomMinWidth, CellSizeW - 1);
-                _roomHeight = new IntRange(RoomMinHeight, CellSizeH - 1);
+                int cell = Random.Range(0, Cells.Length - 1);
+                RoomWidth = new IntRange(RoomMinWidth, CellSizeW - 1);
+                RoomHeight = new IntRange(RoomMinHeight, CellSizeH - 1);
 
-                if (_cells[cell].Used && attempts > 0)
+                if (Cells[cell].Used && attempts > 0)
                 {
                     attempts--;
                     i--;
                     continue;
                 }
 
-                _rooms[i] = new Room();
-                _rooms[i].SetupRoom(_roomWidth, _roomHeight, _cells[cell].YPos, _cells[cell].XPos);
-                _cells[cell].Used = true;
+                Rooms[i] = new Room();
+                Rooms[i].SetupRoom(RoomWidth, RoomHeight, Cells[cell].YPos, Cells[cell].XPos);
+                Cells[cell].Used = true;
                 attempts = 3;
             }
         }
@@ -234,19 +202,19 @@ namespace MyDungeon
         /// <summary>
         /// Creates two connected corridors to connect rooms on the map
         /// </summary>
-        private void CreateCorridors()
+        protected virtual void CreateCorridors()
         {
-            _corridors = new List<Corridor>();
+            Corridors = new List<Corridor>();
 
-            for (int i = 0; i < _rooms.Length - 1; i++)
+            for (int i = 0; i < Rooms.Length - 1; i++)
             {
                 int randomConnection = Random.Range(0, 3);
-                int x1 = _rooms[i].Connections[randomConnection].X;
-                int y1 = _rooms[i].Connections[randomConnection].Y;
+                int x1 = Rooms[i].Connections[randomConnection].X;
+                int y1 = Rooms[i].Connections[randomConnection].Y;
 
                 randomConnection = Random.Range(0, 3);
-                int x2 = _rooms[i + 1].Connections[randomConnection].X;
-                int y2 = _rooms[i + 1].Connections[randomConnection].Y;
+                int x2 = Rooms[i + 1].Connections[randomConnection].X;
+                int y2 = Rooms[i + 1].Connections[randomConnection].Y;
 
                 Direction direction;
                 if (Random.Range(0, 100) < 50) // Horizontal
@@ -256,7 +224,7 @@ namespace MyDungeon
                         direction = Direction.East;
                         Corridor currentCorridor = new Corridor();
                         currentCorridor.SetupCorridor(x1, y1, x2 - x1, direction);
-                        _corridors.Add(currentCorridor);
+                        Corridors.Add(currentCorridor);
 
                         x1 = x1 + (x2 - x1);
 
@@ -265,14 +233,14 @@ namespace MyDungeon
                             direction = Direction.North;
                             currentCorridor = new Corridor();
                             currentCorridor.SetupCorridor(x1, y1, y2 - y1, direction);
-                            _corridors.Add(currentCorridor);
+                            Corridors.Add(currentCorridor);
                         }
                         else
                         {
                             direction = Direction.South;
                             currentCorridor = new Corridor();
                             currentCorridor.SetupCorridor(x1, y1, y1 - y2, direction);
-                            _corridors.Add(currentCorridor);
+                            Corridors.Add(currentCorridor);
                         }
                     }
                     else
@@ -280,7 +248,7 @@ namespace MyDungeon
                         direction = Direction.West;
                         Corridor currentCorridor = new Corridor();
                         currentCorridor.SetupCorridor(x1, y1, x1 - x2, direction);
-                        _corridors.Add(currentCorridor);
+                        Corridors.Add(currentCorridor);
 
                         x1 = x1 - (x1 - x2);
 
@@ -289,14 +257,14 @@ namespace MyDungeon
                             direction = Direction.North;
                             currentCorridor = new Corridor();
                             currentCorridor.SetupCorridor(x1, y1, y2 - y1, direction);
-                            _corridors.Add(currentCorridor);
+                            Corridors.Add(currentCorridor);
                         }
                         else
                         {
                             direction = Direction.South;
                             currentCorridor = new Corridor();
                             currentCorridor.SetupCorridor(x1, y1, y1 - y2, direction);
-                            _corridors.Add(currentCorridor);
+                            Corridors.Add(currentCorridor);
                         }
                     }
                 }
@@ -307,7 +275,7 @@ namespace MyDungeon
                         direction = Direction.North;
                         Corridor currentCorridor = new Corridor();
                         currentCorridor.SetupCorridor(x1, y1, y2 - y1, direction);
-                        _corridors.Add(currentCorridor);
+                        Corridors.Add(currentCorridor);
 
                         y1 = y1 + (y2 - y1);
 
@@ -316,14 +284,14 @@ namespace MyDungeon
                             direction = Direction.East;
                             currentCorridor = new Corridor();
                             currentCorridor.SetupCorridor(x1, y1, x2 - x1, direction);
-                            _corridors.Add(currentCorridor);
+                            Corridors.Add(currentCorridor);
                         }
                         else
                         {
                             direction = Direction.West;
                             currentCorridor = new Corridor();
                             currentCorridor.SetupCorridor(x1, y1, x1 - x2, direction);
-                            _corridors.Add(currentCorridor);
+                            Corridors.Add(currentCorridor);
                         }
                     }
                     else
@@ -331,7 +299,7 @@ namespace MyDungeon
                         direction = Direction.South;
                         Corridor currentCorridor = new Corridor();
                         currentCorridor.SetupCorridor(x1, y1, y1 - y2, direction);
-                        _corridors.Add(currentCorridor);
+                        Corridors.Add(currentCorridor);
 
                         y1 = y1 - (y1 - y2);
 
@@ -340,14 +308,14 @@ namespace MyDungeon
                             direction = Direction.East;
                             currentCorridor = new Corridor();
                             currentCorridor.SetupCorridor(x1, y1, x2 - x1, direction);
-                            _corridors.Add(currentCorridor);
+                            Corridors.Add(currentCorridor);
                         }
                         else
                         {
                             direction = Direction.West;
                             currentCorridor = new Corridor();
                             currentCorridor.SetupCorridor(x1, y1, x1 - x2, direction);
-                            _corridors.Add(currentCorridor);
+                            Corridors.Add(currentCorridor);
                         }
                     }
                 }
@@ -358,23 +326,11 @@ namespace MyDungeon
         /// <para>Sets values within rooms in map array to create spawn locations for various objects</para>
         /// <para>Objects include Player, Exit, Monsters and Items</para>
         /// </summary>
-        private void SetTilesValuesForRooms()
+        protected virtual void SetTilesValuesForRooms()
         {
-            int exitRoom = Mathf.RoundToInt(Random.Range(_rooms.Length / 2, _rooms.Length));
-            int playerRoom = Mathf.RoundToInt(Random.Range(0, _rooms.Length / 2));
-            int playerX = 0;
-            int playerY = 0;
-            int exitX = 0;
-            int exitY = 0;
-
-            _creatureCount = CreatureLevelMaxCount.Random;
-            _itemCount = ItemLevelMaxCount.Random;
-
             // Go through all the rooms...
-            for (int i = 0; i < _rooms.Length; i++)
+            foreach (Room currentRoom in Rooms)
             {
-                Room currentRoom = _rooms[i];
-
                 // ... and for each room go through it's width.
                 for (int j = 0; j < currentRoom.RoomWidth; j++)
                 {
@@ -386,88 +342,19 @@ namespace MyDungeon
                         int yCoord = currentRoom.YPos + k;
 
                         // The coordinates in the jagged array are based on the room's position and it's width and height.
-                        _board[xCoord, yCoord] = TileType.Floor;
+                        Board[xCoord, yCoord] = TileType.Floor;
                     }
-                }
-
-                if (_itemCount > 0)
-                {
-                    int r = Random.Range(0, 100);
-                    int itemPosX;
-                    int itemPosY;
-
-                    if (r < 30)
-                    {
-                        itemPosX = Random.Range(currentRoom.XPos, currentRoom.XPos + currentRoom.RoomWidth);
-                        itemPosY = Random.Range(currentRoom.YPos, currentRoom.YPos + currentRoom.RoomHeight);
-                        _board[itemPosX, itemPosY] = TileType.Item;
-                        _itemCount--;
-                    }
-                    else if (r >= 30 && r < 60)
-                    {
-                        itemPosX = Random.Range(currentRoom.XPos, currentRoom.XPos + currentRoom.RoomWidth);
-                        itemPosY = Random.Range(currentRoom.YPos, currentRoom.YPos + currentRoom.RoomHeight);
-                        _board[itemPosX, itemPosY] = TileType.Item;
-                        _creatureCount--;
-
-                        itemPosX = Random.Range(currentRoom.XPos, currentRoom.XPos + currentRoom.RoomWidth);
-                        itemPosY = Random.Range(currentRoom.YPos, currentRoom.YPos + currentRoom.RoomHeight);
-                        _board[itemPosX, itemPosY] = TileType.Item;
-                        _itemCount--;
-                    }
-                }
-
-                if (_creatureCount > 0)
-                {
-                    int r = Random.Range(0, 100);
-                    int creaturePosX;
-                    int creaturePosY;
-
-                    if (r < 40)
-                    {
-                        creaturePosX = Random.Range(currentRoom.XPos, currentRoom.XPos + currentRoom.RoomWidth);
-                        creaturePosY = Random.Range(currentRoom.YPos, currentRoom.YPos + currentRoom.RoomHeight);
-                        _board[creaturePosX, creaturePosY] = TileType.Creature;
-                        _creatureCount--;
-                    }
-                    else if (r >= 40 && r < 50)
-                    {
-                        creaturePosX = Random.Range(currentRoom.XPos, currentRoom.XPos + currentRoom.RoomWidth);
-                        creaturePosY = Random.Range(currentRoom.YPos, currentRoom.YPos + currentRoom.RoomHeight);
-                        _board[creaturePosX, creaturePosY] = TileType.Creature;
-                        _creatureCount--;
-
-                        creaturePosX = Random.Range(currentRoom.XPos, currentRoom.XPos + currentRoom.RoomWidth);
-                        creaturePosY = Random.Range(currentRoom.YPos, currentRoom.YPos + currentRoom.RoomHeight);
-                        _board[creaturePosX, creaturePosY] = TileType.Creature;
-                        _creatureCount--;
-                    }
-                }
-
-                if (i == exitRoom)
-                {
-                    exitX = Mathf.RoundToInt(currentRoom.XPos + currentRoom.RoomWidth / 2);
-                    exitY = Mathf.RoundToInt(currentRoom.YPos + currentRoom.RoomHeight / 2);
-                }
-
-                if (i == playerRoom)
-                {
-                    playerX = currentRoom.XPos;
-                    playerY = currentRoom.YPos;
                 }
             }
-
-            _board[exitX, exitY] = TileType.Exit;
-            _board[playerX, playerY] = TileType.Player;
         }
 
         /// <summary>
         /// Adds corridors to the map array
         /// </summary>
-        private void SetTilesValuesForCorridors()
+        protected virtual void SetTilesValuesForCorridors()
         {
             // Go through every corridor...
-            foreach (Corridor currentCorridor in _corridors)
+            foreach (Corridor currentCorridor in Corridors)
             {
                 // and go through it's length.
                 for (int j = 0; j < currentCorridor.CorridorLength; j++)
@@ -495,7 +382,7 @@ namespace MyDungeon
                     }
 
                     // Set the tile at these coordinates to Floor.
-                    _board[xCoord, yCoord] = TileType.Floor;
+                    Board[xCoord, yCoord] = TileType.Floor;
                 }
             }
         }
@@ -503,48 +390,22 @@ namespace MyDungeon
         /// <summary>
         /// Instantiate all of the objects based on the value in the map array
         /// </summary>
-        private void InstantiateTiles()
+        protected virtual void InstantiateTiles()
         {
             // Go through all the tiles in the jagged array...
-            for (int i = 0; i < _board.GetLength(0); i++)
+            for (int i = 0; i < Board.GetLength(0); i++)
             {
-                for (int j = 0; j < _board.GetLength(1); j++)
+                for (int j = 0; j < Board.GetLength(1); j++)
                 {
                     // ... and instantiate a floor tile for it.
                     InstantiateFromArray(FloorTiles, i, j);
 
                     // If the tile type is Wall...
-                    if (_board[i, j] == TileType.Wall)
+                    if (Board[i, j] == TileType.Wall)
                     {
                         // ... instantiate a wall over the top.
                         InstantiateFromArray(WallTiles, i, j);
                     }
-
-                    // TODO: Move to separate file
-                    #region Entity Spawning
-
-                    if (_board[i, j] == TileType.Player)
-                    {
-                        Vector3 pos = new Vector3(i, j, 0);
-                        Instantiate(Player, pos, Quaternion.identity);
-                    }
-
-                    if (_board[i, j] == TileType.Exit)
-                    {
-                        Vector3 pos = new Vector3(i, j, 0);
-                        Instantiate(Exit, pos, Quaternion.identity);
-                    }
-
-                    if (_board[i, j] == TileType.Creature)
-                    {
-                        InstantiateFromArray(Creatures, i, j);
-                    }
-
-                    if (_board[i, j] == TileType.Item)
-                    {
-                        InstantiateFromArray(Items, i, j);
-                    }
-                    #endregion
                 }
             }
         }
@@ -552,7 +413,7 @@ namespace MyDungeon
         /// <summary>
         /// Instantiate the outer wall of the map
         /// </summary>
-        private void InstantiateOuterWalls()
+        protected virtual void InstantiateOuterWalls()
         {
             // The outer walls are one unit left, right, up and down from the board.
             float leftEdgeX = -1f;
@@ -575,7 +436,7 @@ namespace MyDungeon
         /// <param name="xCoord">The X position of the outer wall tile</param>
         /// <param name="startingY">The starting Y coordinate for the outer wall tiles</param>
         /// <param name="endingY">The ending Y coordinate for the outer wall tiles</param>
-        private void InstantiateVerticalOuterWall(float xCoord, float startingY, float endingY)
+        protected virtual void InstantiateVerticalOuterWall(float xCoord, float startingY, float endingY)
         {
             // Start the loop at the starting value for Y.
             float currentY = startingY;
@@ -596,7 +457,7 @@ namespace MyDungeon
         /// <param name="startingX">The starting X coordinate for the outer wall tiles</param>
         /// <param name="endingX">The ending X coordinate for the outer wall tiles</param>
         /// <param name="yCoord">The Y position of the outer wall tile<</param>
-        private void InstantiateHorizontalOuterWall(float startingX, float endingX, float yCoord)
+        protected virtual void InstantiateHorizontalOuterWall(float startingX, float endingX, float yCoord)
         {
             // Start the loop at the starting value for X.
             float currentX = startingX;
@@ -617,7 +478,7 @@ namespace MyDungeon
         /// <param name="prefabs">Array of possible prefabs to instantiate</param>
         /// <param name="xCoord">X position of instantiated prefab</param>
         /// <param name="yCoord">Y position of instantiated prefab</param>
-        private void InstantiateFromArray(GameObject[] prefabs, float xCoord, float yCoord)
+        protected virtual void InstantiateFromArray(GameObject[] prefabs, float xCoord, float yCoord)
         {
             // Create a random index for the array.
             int randomIndex = Random.Range(0, prefabs.Length);
@@ -629,7 +490,7 @@ namespace MyDungeon
             GameObject tileInstance = Instantiate(prefabs[randomIndex], position, Quaternion.identity) as GameObject;
 
             // Set the tile's parent to the board holder.
-            if (tileInstance != null) tileInstance.transform.parent = _boardHolder.transform;
+            if (tileInstance != null) tileInstance.transform.parent = BoardHolder.transform;
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace MyDungeon.Demo
 {
-    public class PlayerController : MyDungeon.Player
+    public class PlayerDungeonController : MyDungeon.Player
     {
         private Animator _animator;
         private bool _collided;

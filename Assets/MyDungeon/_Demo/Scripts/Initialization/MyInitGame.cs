@@ -17,6 +17,8 @@ namespace MyDungeon.Demo
             _loadingText = GameObject.Find("LoadingText").GetComponent<UnityEngine.UI.Text>();
             _loadingImage.SetActive(true);
             base.Start();
+            MyDungeon.GameManager.Floor++;
+            Invoke("UpdateFloor", LevelStartDelay);
             Invoke("HideLoadingImage", LevelStartDelay);
         }
 
@@ -29,6 +31,11 @@ namespace MyDungeon.Demo
         {
             _loadingText.text = "YOU DIED";
             enabled = false;
+        }
+
+        private void UpdateFloor()
+        {
+            GameObject.FindGameObjectWithTag("HudManager").GetComponent<FloorDisplay>().UpdateFloor(MyDungeon.GameManager.Floor);
         }
     }
 }

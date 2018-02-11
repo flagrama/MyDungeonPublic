@@ -23,7 +23,7 @@
         /// </summary>
         /// <param name="column">Cell starting X position</param>
         /// <param name="row">Cell starting Y position</param>
-        public void SetupCell(int column, int row)
+        public virtual void SetupCell(int column, int row)
         {
             XPos = column;
             YPos = row;
