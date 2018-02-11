@@ -18,9 +18,5 @@ namespace MyDungeon
 
             DontDestroyOnLoad(gameObject);
         }
-
-        protected virtual void Update()
-        {
-        }
     }
 }
