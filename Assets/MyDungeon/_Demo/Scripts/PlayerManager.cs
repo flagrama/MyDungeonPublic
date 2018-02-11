@@ -41,7 +41,7 @@ namespace MyDungeon.Demo
         {
             Level++;
             UpdateLevel();
-            GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<MessageLogDisplay>().AddMessage(PlayerName + " has reached level " + Level);
+            GameObject.FindGameObjectWithTag("HudManager").GetComponent<MessageLogDisplay>().AddMessage(PlayerName + " has reached level " + Level);
         }
 
         private int CalculateNextXp()
@@ -53,7 +53,7 @@ namespace MyDungeon.Demo
 
         private void UpdateLevel()
         {
-            GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<LevelDisplay>().UpdateLevel(Level);
+            GameObject.FindGameObjectWithTag("HudManager").GetComponent<LevelDisplay>().UpdateLevel(Level);
         }
 
         public void GainXp(int xp)
@@ -66,7 +66,7 @@ namespace MyDungeon.Demo
                 NextXp = CalculateNextXp();
             }
 
-            GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<MessageLogDisplay>().AddMessage(PlayerName + " gained " + xp + " experience points");
+            GameObject.FindGameObjectWithTag("HudManager").GetComponent<MessageLogDisplay>().AddMessage(PlayerName + " gained " + xp + " experience points");
         }
 
         public void Load(MySaveData saveData)

@@ -21,7 +21,7 @@ namespace MyDungeon
 
         protected virtual void UpdateFloor()
         {
-            GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<FloorDisplay>().UpdateFloor(MyDungeon.GameManager.Floor);
+            GameObject.FindGameObjectWithTag("HudManager").GetComponent<FloorDisplay>().UpdateFloor(MyDungeon.GameManager.Floor);
         }
     }
 }

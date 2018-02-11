@@ -7,7 +7,6 @@ namespace MyDungeon
         private Animator _animator;
         private CreatureController _creatureController;
         private bool _skipMove;
-        private Transform _target;
 
         public AudioClip EnemyAttack1;
         public AudioClip EnemyAttack2;
@@ -23,7 +22,6 @@ namespace MyDungeon
         {
             _creatureController.AddCreatureToList(this);
             _animator = GetComponent<Animator>();
-            _target = GameObject.FindGameObjectWithTag("Player").transform;
             CurHealth = MaxHealth;
             base.Start();
         }
@@ -33,7 +31,7 @@ namespace MyDungeon
             if (CurHealth <= 0)
             {
                 _creatureController.RemoveCreatureFromList(this);
-                GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<MessageLogDisplay>().AddMessage(DisplayName + " was defeated!");
+                GameObject.FindGameObjectWithTag("HudManager").GetComponent<MessageLogDisplay>().AddMessage(DisplayName + " was defeated!");
                 Destroy(gameObject);
             }
         }
@@ -50,25 +48,17 @@ namespace MyDungeon
             _skipMove = true;
         }
 
-        public void MoveCreature()
-        {
-            int xDir = 0;
-            int yDir = 0;
-
-            if (Mathf.Abs(_target.position.x - transform.position.x) < Mathf.Epsilon)
-                yDir = _target.position.y > transform.position.y ? 1 : -1;
-            else
-                xDir = _target.position.x > transform.position.x ? 1 : -1;
-
-            AttemptMove<Player>(xDir, yDir);
-        }
-
         protected override void OnCantMove<T>(T component)
         {
             Player hitPlayer = component as Player;
             if (hitPlayer != null) hitPlayer.LoseHealth(Strength);
             _animator.SetTrigger("enemy1Attack");
             SoundManager.Instance.RandomizeSfx(EnemyAttack1, EnemyAttack2);
+        }
+
+        public virtual void MoveCreature()
+        {
+            return;
         }
     }
 }

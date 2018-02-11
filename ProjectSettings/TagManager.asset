@@ -19,7 +19,7 @@ TagManager:
   - HealthBarForeground
   - HealthBarBackground
   - UIFirstSelected
-  - DungeonManager
+  - HudManager
   - PlayerSpawn
   layers:
   - Default

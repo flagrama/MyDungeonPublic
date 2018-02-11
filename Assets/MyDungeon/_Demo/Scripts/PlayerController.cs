@@ -13,7 +13,7 @@ namespace MyDungeon.Demo
         private bool _diag;
         private bool _hold;
         private int _horizontal;
-        private GameObject _dungeonManager;
+        private GameObject _hudManager;
         private int _vertical;
         public AudioClip ChopSound1;
         public AudioClip ChopSound2;
@@ -49,8 +49,9 @@ namespace MyDungeon.Demo
 
             if (SceneManager.GetActiveScene().name == DungeonScene.SceneName)
             {
-                _dungeonManager = GameObject.FindGameObjectWithTag("DungeonManager");
-                _dungeonManager.GetComponent<LevelDisplay>().UpdateLevel(PlayerManager.Instance.Level);
+                _hudManager = GameObject.FindGameObjectWithTag("HudManager");
+                
+                _hudManager.GetComponent<LevelDisplay>().UpdateLevel(PlayerManager.Instance.Level);
                 UpdateHealthDisplay();
             }
 
@@ -266,8 +267,8 @@ namespace MyDungeon.Demo
 
         private void UpdateHealthDisplay()
         {
-            _dungeonManager.GetComponent<HealthDisplay>().UpdateHealth(CurHealth, MaxHealth);
-            _dungeonManager.GetComponent<HealthBarDisplay>().UpdateHealthBar(CurHealth, MaxHealth);
+            _hudManager.GetComponent<HealthDisplay>().UpdateHealth(CurHealth, MaxHealth);
+            _hudManager.GetComponent<HealthBarDisplay>().UpdateHealthBar(CurHealth, MaxHealth);
         }
     }
 }

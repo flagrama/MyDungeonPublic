@@ -23,7 +23,14 @@ namespace MyDungeon
         // Use this for initialization
         protected virtual void Start()
         {
-            DungeonManager = GameObject.FindGameObjectWithTag("DungeonManager");
+            try
+            {
+                DungeonManager = GameObject.FindGameObjectWithTag("DungeonManager");
+            }
+            catch
+            {
+                Debug.LogError("You must include a GameObject with the DungeonManager tag in the scene with any MovingObject including the Player");
+            }
             PosX = (int) Mathf.Round(transform.position.x);
             PosY = (int) Mathf.Round(transform.position.y);
             _boxCollider = GetComponent<BoxCollider2D>();
@@ -95,7 +102,7 @@ namespace MyDungeon
         public virtual void LoseHealth(int damage)
         {
             CurHealth -= damage;
-            GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<MessageLogDisplay>().AddMessage(DisplayName + " took " + damage + " damage");
+            GameObject.FindGameObjectWithTag("HudManager").GetComponent<MessageLogDisplay>().AddMessage(DisplayName + " took " + damage + " damage");
         }
 
         protected abstract void OnCantMove<T>(T component)
