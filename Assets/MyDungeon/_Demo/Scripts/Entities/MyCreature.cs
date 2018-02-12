@@ -40,8 +40,8 @@ namespace MyDungeon.Demo
 
         protected override void OnCantMove<T>(T component)
         {
-            Player hitPlayer = component as Player;
-            if (hitPlayer != null) hitPlayer.LoseHealth(Strength);
+            PlayerDungeon hitPlayerDungeon = component as PlayerDungeon;
+            if (hitPlayerDungeon != null) hitPlayerDungeon.LoseHealth(Strength);
             SoundManager.Instance.RandomizeSfx(EnemyAttack1, EnemyAttack2);
             _animator.SetTrigger("enemy1Attack");
         }
@@ -56,7 +56,7 @@ namespace MyDungeon.Demo
             else
                 xDir = _target.position.x > transform.position.x ? 1 : -1;
 
-            AttemptMove<Player>(xDir, yDir);
+            AttemptMove<PlayerDungeon>(xDir, yDir);
         }
 
         public override void LoseHealth(int damage)

@@ -20,7 +20,7 @@ namespace MyDungeon.Demo
                 Instantiate(SoundManager);
             }
 
-            if (Demo.PlayerManager.Instance == null)
+            if (MyDungeon.PlayerManager.Instance == null)
             {
                 Instantiate(PlayerManager);
             }

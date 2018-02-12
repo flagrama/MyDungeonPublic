@@ -324,7 +324,7 @@ namespace MyDungeon
 
         /// <summary>
         /// <para>Sets values within rooms in map array to create spawn locations for various objects</para>
-        /// <para>Objects include Player, Exit, Monsters and Items</para>
+        /// <para>Objects include PlayerDungeon, Exit, Monsters and Items</para>
         /// </summary>
         protected virtual void SetTilesValuesForRooms()
         {

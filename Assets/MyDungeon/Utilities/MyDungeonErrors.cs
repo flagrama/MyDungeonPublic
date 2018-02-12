@@ -6,7 +6,7 @@ namespace MyDungeon.Utilities
     {
         internal static void DungeonManagerNotFound()
         {
-            UnityEngine.Debug.LogError("You must include a GameObject with the DungeonManager tag in the scene with any MovingDungeonObject including the Player");
+            UnityEngine.Debug.LogError("You must include a GameObject with the DungeonManager tag in the scene with any MovingDungeonObject including the PlayerDungeon");
         }
 
         internal static void RigidBody2DOrBoxCollider2DNotFound(string objectName)

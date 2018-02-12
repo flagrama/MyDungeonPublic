@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012606289536}
-  - 114: {fileID: 114000010909246574}
+  - 114: {fileID: 114000010960539086}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114000010909246574
+--- !u!114 &114000010960539086
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,15 +48,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013762586568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f676144e1e27524d9e724c636060103, type: 3}
+  m_Script: {fileID: 11500000, guid: 21caeaa1bbf50ba4b90f4f8f55c237fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseXp: 5
-  levelFactor: 1
-  initialized: 0
-  playerName: 
-  maxHealth: 0
-  curHealth: 0
-  level: 1
-  curXp: 0
-  nextXp: 0

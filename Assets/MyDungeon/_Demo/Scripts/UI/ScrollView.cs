@@ -24,7 +24,7 @@ namespace MyDungeon.Demo
 
         public void ButtonClicked(string str, int i)
         {
-            PlayerDungeonController playerDungeon = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDungeonController>();
+            PlayerDungeonController playerDungeon = GameObject.FindGameObjectWithTag("Player").GetComponent<MyPlayerDungeonController>();
             if (str == null)
             {
                 playerDungeon.GetComponent<MyPauseMenu>().PauseGame();

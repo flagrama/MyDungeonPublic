@@ -633,7 +633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb5df84747d0c84295d466f52b44bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 114000013082481302, guid: db8d0c19d38247643a58d7585795caee, type: 2}
+  PlayerOverworld: {fileID: 114000013730925740, guid: aa824d14949b7804fbdfd4ee5a3e7951,
+    type: 2}
   Spawner: {fileID: 534675242}
 --- !u!4 &547381854 stripped
 Transform:

@@ -17,6 +17,7 @@ namespace MyDungeon
         protected GridGenerator DungeonMap;
         protected BoxCollider2D BoxCollider;
         protected Rigidbody2D Rb2D;
+        protected Animator Animator;
         protected int CurHealth;
         protected int PosX;
         protected int PosY;
@@ -54,6 +55,12 @@ namespace MyDungeon
             PosY = (int) Mathf.Round(transform.position.y);
 
             InverseMoveTime = 1f / MoveTime;
+        }
+
+        protected void SetAnimation(int xDir, int yDir)
+        {
+            Animator.SetFloat("MoveX", xDir);
+            Animator.SetFloat("MoveY", yDir);
         }
 
         protected bool Move(int xDir, int yDir, out RaycastHit2D hit)
@@ -118,6 +125,11 @@ namespace MyDungeon
         public virtual void LoseHealth(int damage)
         {
             CurHealth -= damage;
+        }
+
+        public virtual void RecoverHealth(int recover)
+        {
+            CurHealth += recover;
         }
 
         protected abstract void OnCantMove<T>(T component)

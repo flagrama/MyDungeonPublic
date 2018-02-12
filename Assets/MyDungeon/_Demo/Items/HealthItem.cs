@@ -9,7 +9,7 @@ namespace MyDungeon.Demo
 
         protected override void Use()
         {
-            Target.GetComponent<PlayerDungeonController>().RecoverHealth(Recover);
+            Target.GetComponent<MyPlayerDungeonController>().RecoverHealth(Recover);
             SoundManager.Instance.RandomizeSfx(UseSounds);
         }
     }
