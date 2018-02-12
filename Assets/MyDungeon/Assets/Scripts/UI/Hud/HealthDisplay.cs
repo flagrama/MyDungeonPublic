@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MyDungeon
 {
     public class HealthDisplay : MonoBehaviour
     {
-        private UnityEngine.UI.Text _healthText;
+        protected UnityEngine.UI.Text HealthText;
 
         // Use this for initialization
-        void Start()
+        protected virtual void Start()
         {
-            _healthText = GameObject.FindGameObjectWithTag("HealthText").GetComponent<UnityEngine.UI.Text>();
+            HealthText = GameObject.FindGameObjectWithTag("HealthText").GetComponent<UnityEngine.UI.Text>();
         }
 
-        public void UpdateHealth(int curHealth, int maxHealth)
+        public virtual void UpdateHealth(int curHealth, int maxHealth)
         {
-            _healthText.text = string.Format("HP:{0,3}/{1,3}", curHealth, maxHealth);
+            HealthText.text = string.Format("HP:{0,3}/{1,3}", curHealth, maxHealth);
         }
     }
 }

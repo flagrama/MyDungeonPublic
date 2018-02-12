@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MyDungeon.Demo
 {
-    public class MyExitMenu : MyDungeon.ExitMenu
+    public class MyExitMenu : ExitMenu
     {
         private bool _collided;
         private GameObject _collision;

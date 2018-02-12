@@ -1,34 +1,33 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MyDungeon
 {
     public class HealthBarDisplay : MonoBehaviour
     {
-        private const int MaxHealth = 1000;
-        private const int BaseHealth = 50;
-        private RectTransform _healthBar;
-        private RectTransform _healthBarBackground;
-        private RectTransform _healthBarForeground;
+        protected const int MaxHealth = 1000;
+        protected const int BaseHealth = 50;
+        protected RectTransform HealthBar;
+        protected RectTransform HealthBarBackground;
+        protected RectTransform HealthBarForeground;
 
         // Use this for initialization
-        void Start()
+        protected virtual void Start()
         {
-            _healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<RectTransform>();
-            _healthBarBackground = GameObject.FindGameObjectWithTag("HealthBarBackground").GetComponent<RectTransform>();
-            _healthBarForeground = GameObject.FindGameObjectWithTag("HealthBarForeground").GetComponent<RectTransform>();
+            HealthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<RectTransform>();
+            HealthBarBackground = GameObject.FindGameObjectWithTag("HealthBarBackground").GetComponent<RectTransform>();
+            HealthBarForeground = GameObject.FindGameObjectWithTag("HealthBarForeground").GetComponent<RectTransform>();
         }
 
-        public void UpdateHealthBar(int curHealth, int maxHealth)
+        public virtual void UpdateHealthBar(int curHealth, int maxHealth)
         {
-            _healthBarForeground.sizeDelta =
+            HealthBarForeground.sizeDelta =
                 new Vector2(
                     curHealth / (float)maxHealth * Mathf.RoundToInt(
-                        BaseHealth + _healthBar.rect.width * Mathf.Sin(maxHealth / (float)MaxHealth) / 2),
-                    _healthBarForeground.sizeDelta.y);
-            _healthBarBackground.sizeDelta = new Vector2(
-                Mathf.RoundToInt(BaseHealth + _healthBar.rect.width * Mathf.Sin(maxHealth / (float)MaxHealth) / 2),
-                _healthBarForeground.sizeDelta.y);
+                        BaseHealth + HealthBar.rect.width * Mathf.Sin(maxHealth / (float)MaxHealth) / 2),
+                    HealthBarForeground.sizeDelta.y);
+            HealthBarBackground.sizeDelta = new Vector2(
+                Mathf.RoundToInt(BaseHealth + HealthBar.rect.width * Mathf.Sin(maxHealth / (float)MaxHealth) / 2),
+                HealthBarForeground.sizeDelta.y);
         }
     }
 }

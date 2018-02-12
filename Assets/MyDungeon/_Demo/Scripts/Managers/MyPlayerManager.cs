@@ -1,10 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MyDungeon.Demo
 {
-    public class MyPlayerManager : MyDungeon.PlayerManager
+    public class MyPlayerManager : PlayerManager
     {
         public static int CurrentHealth;
         public static bool Initialized;

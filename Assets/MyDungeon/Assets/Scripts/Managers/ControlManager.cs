@@ -9,7 +9,7 @@ namespace MyDungeon
         public static float MenuVertical;
 
         // Use this for initialization
-        private void Awake()
+        protected virtual void Awake()
         {
             if (Instance == null)
                 Instance = this;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace MyDungeon.Demo
 {
     [Serializable]
-    public class MySaveData : MyDungeon.SaveData
+    public class MySaveData : SaveData
     {
         public string DisplayName = "";
         public List<Item> Inventory = new List<Item>();

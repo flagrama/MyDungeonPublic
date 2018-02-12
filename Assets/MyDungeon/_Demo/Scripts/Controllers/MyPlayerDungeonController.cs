@@ -1,10 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 namespace MyDungeon.Demo
 {
-    public class MyPlayerDungeonController : MyDungeon.PlayerDungeonController
+    public class MyPlayerDungeonController : PlayerDungeonController
     {
         private GameObject _hudManager;
         private bool _collided;
@@ -19,11 +18,11 @@ namespace MyDungeon.Demo
         {
             Animator = GetComponent<Animator>();
 
-            if (MyDungeon.GameManager.SaveLoaded)
+            if (GameManager.SaveLoaded)
             {
                 MyPlayerManager.Load(MyGameManager.Save);
                 MyGameManager.Save = null;
-                MyDungeon.GameManager.SaveLoaded = false;
+                GameManager.SaveLoaded = false;
             }
 
             if (MyPlayerManager.Initialized == false)
@@ -47,9 +46,10 @@ namespace MyDungeon.Demo
         }
 
         // Update is called once per frame
-        protected override void Update()
+        protected virtual void Update()
         {
-            base.Update();
+            if (!GameManager.PlayersTurn || GameManager.Paused)
+                return;
 
             _horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
             _vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
@@ -120,7 +120,7 @@ namespace MyDungeon.Demo
 
             if (hit.transform == null)
             {
-                MyDungeon.GameManager.PlayersTurn = false;
+                GameManager.PlayersTurn = false;
                 yield return new WaitForSeconds(MoveTime);
                 Moving = false;
                 yield break;
@@ -133,7 +133,7 @@ namespace MyDungeon.Demo
                 hitCreature.LoseHealth(Strength);
             }
 
-            MyDungeon.GameManager.PlayersTurn = false;
+            GameManager.PlayersTurn = false;
             yield return new WaitForSeconds(MoveTime);
             Moving = false;
         }

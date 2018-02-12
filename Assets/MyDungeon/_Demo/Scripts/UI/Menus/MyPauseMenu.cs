@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-using MyDungeon.Demo;
 using MyDungeon.Utilities;
 using UnityEngine.SceneManagement;
 
 namespace MyDungeon.Demo
 {
-    public class MyPauseMenu : MyDungeon.PauseMenu
+    public class MyPauseMenu : PauseMenu
     {
-        [SerializeField] private SceneField NoInventoryScene;
+        public SceneField NoInventoryScene;
         private GameObject _menu;
 
         protected override void Update()
@@ -32,7 +31,7 @@ namespace MyDungeon.Demo
 
             if (SceneManager.GetActiveScene().name != NoInventoryScene.SceneName)
             {
-                if (MyDungeon.GameManager.Paused)
+                if (GameManager.Paused)
                 {
                     _menu = Instantiate(PauseMenuPrefab);
                     GameObject firstSelected = GameObject.FindGameObjectWithTag("UIFirstSelected");

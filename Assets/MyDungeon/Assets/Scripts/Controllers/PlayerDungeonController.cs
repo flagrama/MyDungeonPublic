@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace MyDungeon
 {
-    public class PlayerDungeonController : MyDungeon.PlayerDungeon
+    public class PlayerDungeonController : PlayerDungeon
     {
         public AudioClip ChopSound1;
         public AudioClip ChopSound2;
@@ -27,13 +27,6 @@ namespace MyDungeon
             base.Start();
         }
 
-        // Update is called once per frame
-        protected virtual void Update()
-        {
-            if (!MyDungeon.GameManager.PlayersTurn || MyDungeon.GameManager.Paused)
-                return;
-        }
-
         protected virtual void StartAttack()
         {
             StartCoroutine(Attack());
@@ -48,7 +41,7 @@ namespace MyDungeon
 
             if (PosX != x || PosY != y)
             {
-                MyDungeon.GameManager.PlayersTurn = false;
+                GameManager.PlayersTurn = false;
             }
         }
 
@@ -68,18 +61,18 @@ namespace MyDungeon
 
             if (hit.transform == null)
             {
-                MyDungeon.GameManager.PlayersTurn = false;
+                GameManager.PlayersTurn = false;
                 yield return new WaitForSeconds(MoveTime);
                 Moving = false;
                 yield break;
             }
 
-            MyDungeon.GameManager.PlayersTurn = false;
+            GameManager.PlayersTurn = false;
             yield return new WaitForSeconds(MoveTime);
             Moving = false;
         }
 
-        private void Restart()
+        protected virtual void Restart()
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
         }
@@ -103,7 +96,7 @@ namespace MyDungeon
             if (CurHealth <= 0) enabled = false;
         }
 
-        private void UpdateHealth()
+        protected virtual void UpdateHealth()
         {
             if (CurHealth > MaxHealth)
                 CurHealth = MaxHealth;

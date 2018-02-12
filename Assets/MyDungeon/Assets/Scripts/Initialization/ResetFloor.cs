@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MyDungeon
 {
@@ -7,9 +6,9 @@ namespace MyDungeon
     {
 
         // Use this for initialization
-        void Start()
+        protected virtual void Start()
         {
-            MyDungeon.GameManager.Floor = 0;
+            GameManager.Floor = 0;
         }
     }
 }

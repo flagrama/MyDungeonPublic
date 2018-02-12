@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MyDungeon
 {
@@ -8,7 +7,7 @@ namespace MyDungeon
         public static PlayerManager Instance;
 
         // Use this for initialization
-        private void Awake()
+        protected virtual void Awake()
         {
             if (Instance == null)
                 Instance = this;

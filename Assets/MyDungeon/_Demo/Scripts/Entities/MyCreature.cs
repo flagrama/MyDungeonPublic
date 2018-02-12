@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MyDungeon.Demo
 {
-    public class MyCreature : MyDungeon.Creature
+    public class MyCreature : Creature
     {
         private Animator _animator;
         private bool _skipMove;

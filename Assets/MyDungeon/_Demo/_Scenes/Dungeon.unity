@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9127cf7dd27591a40bd1cd00c036465a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hudPrefab: {fileID: 1000010928550892, guid: 02ea9bb355698034ab6b8a500e72e23d, type: 2}
+  HudPrefab: {fileID: 1000010928550892, guid: 02ea9bb355698034ab6b8a500e72e23d, type: 2}
 --- !u!4 &1940392799
 Transform:
   m_ObjectHideFlags: 0
@@ -334,9 +334,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4c7410b2a5a8841bfc14fd15dd9608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Seed: 0
   CellSizeH: 20
   CellSizeW: 20
+  NumRooms:
+    Max: 14
+    Min: 7
+  RoomMinHeight: 5
+  RoomMinWidth: 5
   Columns: 80
+  Rows: 80
   CorridorLength:
     Max: 10
     Min: 4
@@ -349,17 +356,10 @@ MonoBehaviour:
   - {fileID: 1000011213901940, guid: 12bbb0e9d9f26494eac7b9d18b1caf87, type: 2}
   - {fileID: 1000014179069604, guid: c2f57a1d54f944d46a4cd067aa6628cc, type: 2}
   - {fileID: 1984183327310830, guid: 69163b6eea452f8438653d415b09f582, type: 2}
-  NumRooms:
-    Max: 14
-    Min: 7
   OuterWallTiles:
   - {fileID: 1000010841035224, guid: 1ec64e2156393da4bb2d0de4ea9d400b, type: 2}
   - {fileID: 1000012469803660, guid: 6b5ad1545929b9b4b84c41e46381ca75, type: 2}
   - {fileID: 1000014073404170, guid: 418139bd9be94cb4ab5b58a7f85b1e04, type: 2}
-  RoomMinHeight: 5
-  RoomMinWidth: 5
-  Rows: 80
-  Seed: 0
   WallTiles:
   - {fileID: 1161545745929854, guid: a521ea947ea9d73428008803092721ec, type: 2}
   - {fileID: 1000010426319856, guid: 2b3617a55be0ba741bf2214f71325eab, type: 2}

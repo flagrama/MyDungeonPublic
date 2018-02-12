@@ -456,7 +456,7 @@ namespace MyDungeon
         /// </summary>
         /// <param name="startingX">The starting X coordinate for the outer wall tiles</param>
         /// <param name="endingX">The ending X coordinate for the outer wall tiles</param>
-        /// <param name="yCoord">The Y position of the outer wall tile<</param>
+        /// <param name="yCoord">The Y position of the outer wall tile</param>
         protected virtual void InstantiateHorizontalOuterWall(float startingX, float endingX, float yCoord)
         {
             // Start the loop at the starting value for X.

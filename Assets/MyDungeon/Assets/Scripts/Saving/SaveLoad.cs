@@ -13,7 +13,7 @@ namespace MyDungeon
         /// </summary>
         /// <param name="save">A serializable class that represents data you wish to save</param>
         /// <param name="path">The path to a save file</param>
-        public void Save<T>(T save, string path)
+        public virtual void Save<T>(T save, string path)
         {
             string json = JsonUtility.ToJson(save);
             File.WriteAllText(path, json);
@@ -25,7 +25,7 @@ namespace MyDungeon
         /// <typeparam name="T">A SaveData class that inherits from MyDungeon.SaveData</typeparam>
         /// <param name="path">The path to a save file</param>
         /// <returns>A SaveData object of type T deserialized from the JSON file located at the provided path if found else returns null</returns>
-        public T Load<T>(string path)
+        public virtual T Load<T>(string path)
         {
             if (File.Exists(path))
             {

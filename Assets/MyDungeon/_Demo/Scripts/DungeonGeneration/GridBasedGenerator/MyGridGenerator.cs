@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MyDungeon.Demo
 {
-    public class MyGridGenerator : MyDungeon.GridGenerator
+    public class MyGridGenerator : GridGenerator
     {
         public GameObject[] Creatures;
         public GameObject[] Items;
         public GameObject Exit;
         public GameObject Player;
-        public MyDungeon.Utilities.IntRange CreatureMaxCount = new MyDungeon.Utilities.IntRange(6, 10);
-        public MyDungeon.Utilities.IntRange ItemMaxCount = new MyDungeon.Utilities.IntRange(6, 10);
+        public Utilities.IntRange CreatureMaxCount = new Utilities.IntRange(6, 10);
+        public Utilities.IntRange ItemMaxCount = new Utilities.IntRange(6, 10);
 
         private int _creatureCount;
         private int _itemCount;

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MyDungeon.Utilities
+﻿namespace MyDungeon.Utilities
 {
     public static class MyDungeonErrors
     {

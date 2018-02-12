@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using JetBrains.Annotations;
 
 namespace MyDungeon.Demo
 {
@@ -23,7 +21,7 @@ namespace MyDungeon.Demo
 
             if (save != null)
             {
-                MyDungeon.GameManager.SaveLoaded = true;
+                GameManager.SaveLoaded = true;
                 MyGameManager.Save = save;
             }
 

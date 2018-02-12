@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MyDungeon
 {
     public class Hud : MonoBehaviour
     {
-        [SerializeField] private GameObject _hudPrefab;
+        [SerializeField] protected GameObject HudPrefab;
 
         // Use this for initialization
-        void Awake()
+        protected virtual void Awake()
         {
-            Instantiate(_hudPrefab);
+            Instantiate(HudPrefab);
         }
     }
 }

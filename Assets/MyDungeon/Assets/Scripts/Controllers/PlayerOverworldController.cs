@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
-namespace MyDungeon
+﻿namespace MyDungeon
 {
     public class PlayerOverworldController : PlayerOverworld
     {

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using MyDungeon.Utilities;
 using UnityEngine;
 
 namespace MyDungeon
@@ -57,13 +56,13 @@ namespace MyDungeon
             InverseMoveTime = 1f / MoveTime;
         }
 
-        protected void SetAnimation(int xDir, int yDir)
+        protected virtual void SetAnimation(int xDir, int yDir)
         {
             Animator.SetFloat("MoveX", xDir);
             Animator.SetFloat("MoveY", yDir);
         }
 
-        protected bool Move(int xDir, int yDir, out RaycastHit2D hit)
+        protected virtual bool Move(int xDir, int yDir, out RaycastHit2D hit)
         {
             Vector2 start = transform.position;
             Vector2 end = start + new Vector2(xDir, yDir);
@@ -83,14 +82,14 @@ namespace MyDungeon
             return true;
         }
 
-        protected void CheckHit(Vector2 start, Vector2 end, out RaycastHit2D hit)
+        protected virtual void CheckHit(Vector2 start, Vector2 end, out RaycastHit2D hit)
         {
             BoxCollider.enabled = false;
             hit = Physics2D.Linecast(start, end, BlockingLayer);
             BoxCollider.enabled = true;
         }
 
-        protected IEnumerator SmoothMovement(Vector3 end)
+        protected virtual IEnumerator SmoothMovement(Vector3 end)
         {
             float sqrRemainingDistance = (transform.position - end).sqrMagnitude;
 

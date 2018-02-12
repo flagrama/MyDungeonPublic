@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using Item = MyDungeon.Item;
 
 namespace MyDungeon
 {
@@ -12,12 +10,12 @@ namespace MyDungeon
         // Use this for initialization
         protected virtual void Start()
         {
-            InventoryItems = MyDungeon.GameManager.Inventory;
+            InventoryItems = GameManager.Inventory;
         }
 
         protected virtual void OnDestroy()
         {
-            MyDungeon.GameManager.Inventory = InventoryItems;
+            GameManager.Inventory = InventoryItems;
         }
 
         public virtual void AddItem(Item item)

@@ -1,26 +1,25 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MyDungeon
 {
     public class MessageLogDisplay : MonoBehaviour
     {
-        private UnityEngine.UI.Text _messageLogText;
+        protected UnityEngine.UI.Text MessageLogText;
 
         // Use this for initialization
-        void Start()
+        protected virtual void Start()
         {
-            _messageLogText = GameObject.FindGameObjectWithTag("MessageLog").GetComponent<UnityEngine.UI.Text>();
+            MessageLogText = GameObject.FindGameObjectWithTag("MessageLog").GetComponent<UnityEngine.UI.Text>();
         }
 
-        public void AddMessage(string message)
+        public virtual void AddMessage(string message)
         {
-            _messageLogText.text = message + "\n" + _messageLogText.text;
+            MessageLogText.text = message + "\n" + MessageLogText.text;
         }
 
-        public void AddDebugMessage(string message)
+        public virtual void AddDebugMessage(string message)
         {
-            _messageLogText.text = "<color='yellow'>DEBUG: " + message + "</color>" + "\n" + _messageLogText.text;
+            MessageLogText.text = "<color='yellow'>DEBUG: " + message + "</color>" + "\n" + MessageLogText.text;
         }
     }
 }

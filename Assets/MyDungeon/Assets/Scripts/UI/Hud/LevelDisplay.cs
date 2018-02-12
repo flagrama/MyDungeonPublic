@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MyDungeon
 {
     public class LevelDisplay : MonoBehaviour
     {
-        private UnityEngine.UI.Text _levelText;
+        protected UnityEngine.UI.Text LevelText;
 
         // Use this for initialization
-        void Start()
+        protected virtual void Start()
         {
-            _levelText = GameObject.FindGameObjectWithTag("LevelText").GetComponent<UnityEngine.UI.Text>();
+            LevelText = GameObject.FindGameObjectWithTag("LevelText").GetComponent<UnityEngine.UI.Text>();
         }
 
-        public void UpdateLevel(int level)
+        public virtual void UpdateLevel(int level)
         {
-            _levelText.text = string.Format("Lv{0,3}", level);
+            LevelText.text = string.Format("Lv{0,3}", level);
         }
     }
 }

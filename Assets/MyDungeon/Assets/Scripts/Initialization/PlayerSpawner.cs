@@ -8,7 +8,7 @@ namespace MyDungeon
         public PlayerSpawner Spawner;
 
         // Use this for initialization
-        void Start()
+        protected virtual void Start()
         {
             Instantiate(PlayerOverworld, Spawner.transform.position, Quaternion.identity);
         }

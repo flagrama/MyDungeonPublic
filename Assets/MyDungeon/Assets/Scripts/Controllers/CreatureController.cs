@@ -18,7 +18,7 @@ namespace MyDungeon
         // Update is called once per frame
         protected virtual void Update()
         {
-            if (MyDungeon.GameManager.PlayersTurn || CreaturesMoving)
+            if (GameManager.PlayersTurn || CreaturesMoving)
                 return;
 
             StartCoroutine(MoveCreatures());
@@ -46,7 +46,7 @@ namespace MyDungeon
             yield return null;
 
             CreaturesMoving = false;
-            MyDungeon.GameManager.PlayersTurn = true;
+            GameManager.PlayersTurn = true;
         }
     }
 }

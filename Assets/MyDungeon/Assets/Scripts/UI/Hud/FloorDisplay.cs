@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MyDungeon
 {
     public class FloorDisplay : MonoBehaviour
     {
-        private UnityEngine.UI.Text _floorText;
+        protected UnityEngine.UI.Text FloorText;
 
         // Use this for initialization
-        void Start()
+        protected virtual void Start()
         {
-            _floorText = GameObject.FindGameObjectWithTag("FloorText").GetComponent<UnityEngine.UI.Text>();
+            FloorText = GameObject.FindGameObjectWithTag("FloorText").GetComponent<UnityEngine.UI.Text>();
         }
 
-        public void UpdateFloor(int floor)
+        public virtual void UpdateFloor(int floor)
         {
-            _floorText.text = string.Format("{0,3}F", floor);
+            FloorText.text = string.Format("{0,3}F", floor);
         }
     }
 }

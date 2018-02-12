@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
-namespace MyDungeon.Demo
+﻿namespace MyDungeon.Demo
 {
     public class MyGameManager
     {

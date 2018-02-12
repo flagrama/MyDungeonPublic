@@ -4,6 +4,5 @@ namespace MyDungeon
 {
     [Serializable]
     public class SaveData
-    {
-    }
+    { }
 }

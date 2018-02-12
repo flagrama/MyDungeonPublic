@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MyDungeon
 {
@@ -15,13 +14,13 @@ namespace MyDungeon
             Animator = GetComponent<Animator>();
         }
 
-        protected void SetAnimation(int xDir, int yDir)
+        protected virtual void SetAnimation(int xDir, int yDir)
         {
             Animator.SetFloat("MoveX", xDir);
             Animator.SetFloat("MoveY", yDir);
         }
 
-        protected void CheckHit(Vector2 start, Vector2 end, out RaycastHit2D hit)
+        protected virtual void CheckHit(Vector2 start, Vector2 end, out RaycastHit2D hit)
         {
             BoxCollider.enabled = false;
             hit = Physics2D.Linecast(start, end, BlockingLayer);

@@ -7,7 +7,7 @@ using UnityEditor;
 
 namespace MyDungeon.Utilities
 {
-    [System.Serializable]
+    [Serializable]
     public class SceneField
     {
         [SerializeField] private Object sceneAsset;

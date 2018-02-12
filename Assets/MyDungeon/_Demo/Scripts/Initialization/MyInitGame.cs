@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace MyDungeon.Demo
 {
@@ -17,7 +16,7 @@ namespace MyDungeon.Demo
             _loadingText = GameObject.Find("LoadingText").GetComponent<UnityEngine.UI.Text>();
             _loadingImage.SetActive(true);
             base.Start();
-            MyDungeon.GameManager.Floor++;
+            GameManager.Floor++;
             Invoke("UpdateFloor", LevelStartDelay);
             Invoke("HideLoadingImage", LevelStartDelay);
         }
@@ -35,7 +34,7 @@ namespace MyDungeon.Demo
 
         private void UpdateFloor()
         {
-            GameObject.FindGameObjectWithTag("HudManager").GetComponent<FloorDisplay>().UpdateFloor(MyDungeon.GameManager.Floor);
+            GameObject.FindGameObjectWithTag("HudManager").GetComponent<FloorDisplay>().UpdateFloor(GameManager.Floor);
         }
     }
 }
