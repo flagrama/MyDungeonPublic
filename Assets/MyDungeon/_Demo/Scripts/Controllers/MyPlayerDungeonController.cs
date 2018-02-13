@@ -73,6 +73,38 @@ namespace MyDungeon.Demo
             if (_horizontal != 0 || _vertical != 0)
                 AttemptMove<Creature>(_horizontal, _vertical);
         }
+        protected override bool Move(int xDir, int yDir, out RaycastHit2D hit)
+        {
+            float xFloat = xDir;
+            float yFloat = yDir;
+
+            if (xFloat > 0)
+                xFloat += 0.5f;
+            else if (xFloat < 0)
+                xFloat -= 0.5f;
+            if (yFloat > 0)
+                yFloat += 0.5f;
+            else if (yDir < 0)
+                yFloat -= 0.5f;
+
+            Vector2 start = transform.position;
+            Vector2 end = start + new Vector2(xDir, yDir);
+            Vector2 endCheck = start + new Vector2(xFloat, yFloat);
+
+            CheckHit(start, endCheck, out hit);
+
+            if (PosX + xDir < 0 || PosX + xDir > DungeonMap.Columns || PosY + yDir < 0 || PosY + yDir > DungeonMap.Rows)
+            {
+                return false;
+            }
+
+            if (hit || Moving) return false;
+
+            PosX += xDir;
+            PosY += yDir;
+            StartCoroutine(SmoothMovement(end));
+            return true;
+        }
 
         protected override void AttemptMove<T>(int xDir, int yDir)
         {
@@ -155,17 +187,17 @@ namespace MyDungeon.Demo
 
         public override void RecoverHealth(int recover)
         {
-            UpdateHealthDisplay();
-
             base.RecoverHealth(recover);
+
+            UpdateHealthDisplay();
         }
 
         public override void LoseHealth(int damage)
         {
+            base.LoseHealth(damage);
+
             Animator.SetTrigger("playerHit");
             UpdateHealthDisplay();
-
-            base.LoseHealth(damage);
         }
 
         protected override void CheckIfGameOver()

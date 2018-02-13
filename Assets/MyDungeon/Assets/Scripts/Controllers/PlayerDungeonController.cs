@@ -79,16 +79,16 @@ namespace MyDungeon
 
         public override void LoseHealth(int damage)
         {
-            UpdateHealth();
-
             base.LoseHealth(damage);
+
+            UpdateHealth();
         }
 
         public override void RecoverHealth(int recover)
         {
-            UpdateHealth();
-
             base.RecoverHealth(recover);
+
+            UpdateHealth();
         }
 
         protected virtual void CheckIfGameOver()

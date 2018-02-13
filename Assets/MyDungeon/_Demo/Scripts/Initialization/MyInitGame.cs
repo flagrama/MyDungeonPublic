@@ -28,7 +28,11 @@ namespace MyDungeon.Demo
 
         public void GameOver()
         {
+            Instantiate(LoadingCanvas);
+            _loadingImage = GameObject.Find("LoadingImage");
+            _loadingText = GameObject.Find("LoadingText").GetComponent<UnityEngine.UI.Text>();
             _loadingText.text = "YOU DIED";
+            _loadingImage.SetActive(true);
             enabled = false;
         }
 
