@@ -348,14 +348,18 @@ MonoBehaviour:
     Max: 10
     Min: 4
   FloorTiles:
-  - {fileID: 1881111811521244, guid: aca83fe46ffed354f8a17dadbc7dff79, type: 2}
-  - {fileID: 1809557885220286, guid: 973c09b66ad06484c9fe22dd44d040af, type: 2}
+  - {fileID: 1000013558479326, guid: 210bf75eadbca064e8a6c25b37b7f013, type: 2}
+  - {fileID: 1000010562538290, guid: 462f1eab19a497a4c878254a283b44f1, type: 2}
   - {fileID: 1000011205625106, guid: f8036c4756d82554fbf2d3f0c06a5761, type: 2}
-  - {fileID: 1821885960571438, guid: e91d5c2934276d34ebf97a7c473f08b4, type: 2}
-  - {fileID: 1987845330815008, guid: e68555999755b1541929810e0a67185e, type: 2}
   - {fileID: 1000011213901940, guid: 12bbb0e9d9f26494eac7b9d18b1caf87, type: 2}
+  - {fileID: 1881111811521244, guid: aca83fe46ffed354f8a17dadbc7dff79, type: 2}
   - {fileID: 1000014179069604, guid: c2f57a1d54f944d46a4cd067aa6628cc, type: 2}
-  - {fileID: 1984183327310830, guid: 69163b6eea452f8438653d415b09f582, type: 2}
+  - {fileID: 1881111811521244, guid: aca83fe46ffed354f8a17dadbc7dff79, type: 2}
+  - {fileID: 1000014179069604, guid: c2f57a1d54f944d46a4cd067aa6628cc, type: 2}
+  - {fileID: 1881111811521244, guid: aca83fe46ffed354f8a17dadbc7dff79, type: 2}
+  - {fileID: 1000014179069604, guid: c2f57a1d54f944d46a4cd067aa6628cc, type: 2}
+  - {fileID: 1881111811521244, guid: aca83fe46ffed354f8a17dadbc7dff79, type: 2}
+  - {fileID: 1000014179069604, guid: c2f57a1d54f944d46a4cd067aa6628cc, type: 2}
   OuterWallTiles:
   - {fileID: 1000010841035224, guid: 1ec64e2156393da4bb2d0de4ea9d400b, type: 2}
   - {fileID: 1000012469803660, guid: 6b5ad1545929b9b4b84c41e46381ca75, type: 2}
