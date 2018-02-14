@@ -380,9 +380,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8aeeee8d8d72ce46a7ef663852fc80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlManager: {fileID: 0}
-  PlayerManager: {fileID: 0}
-  SoundManager: {fileID: 0}
+  ControlManager: {fileID: 1000014161966994, guid: 1a1a6899a9d135a4cab9ae7284c07952,
+    type: 2}
+  PlayerManager: {fileID: 1000013762586568, guid: 4b17c532fbd77274f87911a2ed4d42f0,
+    type: 2}
+  SoundManager: {fileID: 1000010051968014, guid: 4b1e249863571ef45807ed851c1754f3,
+    type: 2}
 --- !u!114 &443630194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1447,7 +1450,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1840223774}
   - 61: {fileID: 1840223773}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: DungeonEntrance
   m_TagString: Dungeon
   m_Icon: {fileID: 0}
