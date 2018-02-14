@@ -17,8 +17,8 @@ namespace MyDungeon.Demo
             _loadingImage.SetActive(true);
             base.Start();
             GameManager.Floor++;
-            Invoke("UpdateFloor", LevelStartDelay);
-            Invoke("HideLoadingImage", LevelStartDelay);
+            this.Invoke(UpdateFloor, LevelStartDelay);
+            this.Invoke(HideLoadingImage, LevelStartDelay);
         }
 
         private void HideLoadingImage()

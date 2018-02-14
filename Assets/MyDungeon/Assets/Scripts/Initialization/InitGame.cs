@@ -8,7 +8,7 @@ namespace MyDungeon
 
         protected virtual void Start()
         {
-            Invoke("GenerateBoard", LevelStartDelay);
+            this.Invoke(GenerateBoard, LevelStartDelay);
         }
 
         protected virtual void GenerateBoard()
