@@ -5,78 +5,38 @@ using UnityEngine.SceneManagement;
 
 namespace MyDungeon
 {
-    public class PlayerDungeonController : PlayerDungeon
+    public abstract class PlayerDungeonController : PlayerDungeon
     {
-        public AudioClip ChopSound1;
-        public AudioClip ChopSound2;
-        public AudioClip GameOverSound;
-        public AudioClip MoveSound1;
-        public AudioClip MoveSound2;
-        public float RestartLevelDelay = 1f;
-        public AudioClip SwingSound1;
-        public AudioClip SwingSound2;
-        public SceneField TownScene;
-
-        // Use this for initialization
+        /// <summary>
+        /// Sets the player's current health
+        /// </summary>
         protected override void Start()
         {
-            Animator = GetComponent<Animator>();
-
             UpdateHealth();
 
             base.Start();
         }
 
-        protected virtual void StartAttack()
+        /// <summary>
+        /// Attempts to move the player and ends the player's turn if they moved
+        /// </summary>
+        /// <param name="xDir">The X direction the player is attempting to move in</param>
+        /// <param name="yDir">The Y direction the player is attempting to move in</param>
+        protected override void AttemptMove(int xDir, int yDir)
         {
-            StartCoroutine(Attack());
-        }
-
-        protected override void AttemptMove<T>(int xDir, int yDir)
-        {
-            int x = PosX;
-            int y = PosY;
-
-            base.AttemptMove<T>(xDir, yDir);
-
-            if (PosX != x || PosY != y)
-            {
-                GameManager.PlayersTurn = false;
-            }
-        }
-
-        protected override void OnCantMove<T>(T component)
-        {
-        }
-
-        protected virtual IEnumerator Attack()
-        {
-            Vector2 start = transform.position;
-            Vector2 end = start + new Vector2(Animator.GetFloat("MoveX"), Animator.GetFloat("MoveY"));
             RaycastHit2D hit;
+            bool canMove = Move(xDir, yDir, out hit);
 
-            Moving = true;
-
-            CheckHit(start, end, out hit);
-
-            if (hit.transform == null)
+            if (canMove)
             {
                 GameManager.PlayersTurn = false;
-                yield return new WaitForSeconds(MoveTime);
-                Moving = false;
-                yield break;
             }
-
-            GameManager.PlayersTurn = false;
-            yield return new WaitForSeconds(MoveTime);
-            Moving = false;
         }
 
-        protected virtual void Restart()
-        {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
-        }
-
+        /// <summary>
+        /// Reduce player's current health and executes UpdateHealth
+        /// </summary>
+        /// <param name="damage"></param>
         public override void LoseHealth(int damage)
         {
             base.LoseHealth(damage);
@@ -84,6 +44,10 @@ namespace MyDungeon
             UpdateHealth();
         }
 
+        /// <summary>
+        /// Increase player's current health and executes UpdateHealth
+        /// </summary>
+        /// <param name="recover"></param>
         public override void RecoverHealth(int recover)
         {
             base.RecoverHealth(recover);
@@ -91,11 +55,17 @@ namespace MyDungeon
             UpdateHealth();
         }
 
+        /// <summary>
+        /// Check if player is out of HP and if so disable the PlayerDungeonController
+        /// </summary>
         protected virtual void CheckIfGameOver()
         {
             if (CurHealth <= 0) enabled = false;
         }
 
+        /// <summary>
+        /// Ensure health does not go above MaxHealth or below 0 then executes CheckIfGameOver
+        /// </summary>
         protected virtual void UpdateHealth()
         {
             if (CurHealth > MaxHealth)
@@ -105,5 +75,7 @@ namespace MyDungeon
 
             CheckIfGameOver();
         }
+
+        protected abstract IEnumerator Attack();
     }
 }

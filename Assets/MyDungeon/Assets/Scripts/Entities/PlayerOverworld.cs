@@ -1,5 +1,7 @@
 ﻿namespace MyDungeon
 {
-    public class PlayerOverworld : MovingOverworldObject
-    { }
+    public abstract class PlayerOverworld : MovingOverworldObject
+    {
+        protected abstract void Interact();
+    }
 }

@@ -15,7 +15,8 @@ namespace MyDungeon
         {
             try
             {
-                GetComponent<GridGenerator>().GenerateBoard();
+                DungeonManager.DungeonGenerationSettings = GetComponent<GridGenerator>();
+                DungeonManager.DungeonGenerationSettings.GenerateBoard();
             }
             catch
             {

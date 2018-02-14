@@ -11,9 +11,7 @@ namespace MyDungeon
         public int MaxHealth = 10;
         public float MoveTime = 0.25f;
         public string DisplayName;
-
-        protected GameObject DungeonManager;
-        protected GridGenerator DungeonMap;
+        
         protected BoxCollider2D BoxCollider;
         protected Rigidbody2D Rb2D;
         protected Animator Animator;
@@ -26,20 +24,6 @@ namespace MyDungeon
         // Use this for initialization
         protected virtual void Start()
         {
-            DungeonManager = GameObject.FindGameObjectWithTag("DungeonManager");
-
-            try
-            {
-                DungeonMap = DungeonManager.GetComponent<GridGenerator>();
-            }
-            catch
-            {
-                if(DungeonManager != null)
-                    Utilities.MyDungeonErrors.GridGeneratorOnDungeonManagerNotFound(DungeonManager.name);
-                else
-                    Utilities.MyDungeonErrors.DungeonManagerNotFound();
-            }
-
             try
             {
                 BoxCollider = GetComponent<BoxCollider2D>();
@@ -69,7 +53,7 @@ namespace MyDungeon
 
             CheckHit(start, end, out hit);
 
-            if (PosX + xDir < 0 || PosX + xDir > DungeonMap.Columns || PosY + yDir < 0 || PosY + yDir > DungeonMap.Rows)
+            if (PosX + xDir < 0 || PosX + xDir > DungeonManager.DungeonGenerationSettings.Columns || PosY + yDir < 0 || PosY + yDir > DungeonManager.DungeonGenerationSettings.Rows)
             {
                 return false;
             }
@@ -106,21 +90,6 @@ namespace MyDungeon
             Moving = false;
         }
 
-        protected virtual void AttemptMove<T>(int xDir, int yDir)
-            where T : Component
-        {
-            RaycastHit2D hit;
-            bool canMove = Move(xDir, yDir, out hit);
-
-            if (hit.transform == null)
-                return;
-
-            T hitComponent = hit.transform.GetComponent<T>();
-
-            if (!canMove && hitComponent != null)
-                OnCantMove(hitComponent);
-        }
-
         public virtual void LoseHealth(int damage)
         {
             CurHealth -= damage;
@@ -130,8 +99,5 @@ namespace MyDungeon
         {
             CurHealth += recover;
         }
-
-        protected abstract void OnCantMove<T>(T component)
-            where T : Component;
     }
 }

@@ -1,10 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace MyDungeon.Demo
 {
     public class MyPlayerDungeonController : PlayerDungeonController
     {
+        public AudioClip[] AttackHitSounds;
+        public AudioClip[] AttackSwingSounds;
+        public AudioClip[] MoveSounds;
+        public AudioClip GameOverSound;
+        public Utilities.SceneField TownScene;
+
+
         private GameObject _hudManager;
         private bool _collided;
         private GameObject _collision;
@@ -69,9 +77,9 @@ namespace MyDungeon.Demo
                 _collided = false;
             }
             if (Input.GetButtonDown("Fire1") && !Moving)
-                StartAttack();
+                StartCoroutine(Attack());
             if (_horizontal != 0 || _vertical != 0)
-                AttemptMove<Creature>(_horizontal, _vertical);
+                AttemptMove(_horizontal, _vertical);
         }
         protected override bool Move(int xDir, int yDir, out RaycastHit2D hit)
         {
@@ -93,7 +101,7 @@ namespace MyDungeon.Demo
 
             CheckHit(start, endCheck, out hit);
 
-            if (PosX + xDir < 0 || PosX + xDir > DungeonMap.Columns || PosY + yDir < 0 || PosY + yDir > DungeonMap.Rows)
+            if (PosX + xDir < 0 || PosX + xDir > DungeonManager.DungeonGenerationSettings.Columns || PosY + yDir < 0 || PosY + yDir > DungeonManager.DungeonGenerationSettings.Rows)
             {
                 return false;
             }
@@ -106,7 +114,7 @@ namespace MyDungeon.Demo
             return true;
         }
 
-        protected override void AttemptMove<T>(int xDir, int yDir)
+        protected override void AttemptMove(int xDir, int yDir)
         {
             int x = PosX;
             int y = PosY;
@@ -123,11 +131,11 @@ namespace MyDungeon.Demo
                     return;
             }
 
-            base.AttemptMove<T>(xDir, yDir);
+            base.AttemptMove(xDir, yDir);
 
             if (PosX != x || PosY != y)
             {
-                SoundManager.Instance.RandomizeSfx(MoveSound1, MoveSound2);
+                SoundManager.Instance.RandomizeSfx(MoveSounds);
                 SetAnimation(xDir, yDir);
                 Animator.SetTrigger("playerMove");
             }
@@ -147,7 +155,7 @@ namespace MyDungeon.Demo
 
             CheckHit(start, end, out hit);
 
-            SoundManager.Instance.RandomizeSfx(SwingSound1, SwingSound2);
+            SoundManager.Instance.RandomizeSfx(AttackSwingSounds);
             Animator.SetTrigger("playerAttack");
 
             if (hit.transform == null)
@@ -161,7 +169,7 @@ namespace MyDungeon.Demo
             if (hit.transform.tag == "Enemy")
             {
                 Creature hitCreature = hit.transform.GetComponent<Creature>();
-                SoundManager.Instance.RandomizeSfx(ChopSound1, ChopSound2);
+                SoundManager.Instance.RandomizeSfx(AttackHitSounds);
                 hitCreature.LoseHealth(Strength);
             }
 
@@ -210,6 +218,11 @@ namespace MyDungeon.Demo
             }
 
             base.CheckIfGameOver();
+        }
+
+        protected virtual void Restart()
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
         }
     }
 }

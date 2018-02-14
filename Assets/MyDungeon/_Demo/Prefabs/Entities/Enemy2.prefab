@@ -111,8 +111,9 @@ MonoBehaviour:
   MaxHealth: 4
   MoveTime: 0.25
   DisplayName: Fresh Zombie
-  EnemyAttack1: {fileID: 8300000, guid: 69dc9f2a4f2aa56489ee066195123248, type: 3}
-  EnemyAttack2: {fileID: 8300000, guid: 3ba28f5421ed1fa44902a7d40d692480, type: 3}
+  EnemyAttackSounds:
+  - {fileID: 8300000, guid: 69dc9f2a4f2aa56489ee066195123248, type: 3}
+  - {fileID: 8300000, guid: 3ba28f5421ed1fa44902a7d40d692480, type: 3}
 --- !u!212 &212000010466912278
 SpriteRenderer:
   m_ObjectHideFlags: 1

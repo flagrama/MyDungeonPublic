@@ -1,8 +1,9 @@
-﻿namespace MyDungeon
+﻿using UnityEngine;
+
+namespace MyDungeon
 {
-    public class PlayerDungeon : MovingDungeonObject
+    public abstract class PlayerDungeon : MovingDungeonObject
     {
-        protected override void OnCantMove<T>(T component)
-        { }
+        protected abstract void AttemptMove(int xDir, int yDir);
     }
 }

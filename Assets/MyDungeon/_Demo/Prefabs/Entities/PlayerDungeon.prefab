@@ -24,8 +24,6 @@ GameObject:
   - 61: {fileID: 61000012659435348}
   - 50: {fileID: 50000013142002278}
   - 114: {fileID: 114000014233043342}
-  - 114: {fileID: 114000012575645530}
-  - 114: {fileID: 114000014279363388}
   - 114: {fileID: 114000012938987836}
   - 114: {fileID: 114000010441790586}
   m_Layer: 8
@@ -115,28 +113,19 @@ MonoBehaviour:
   MaxHealth: 10
   MoveTime: 0.25
   DisplayName: Player
-  ChopSound1: {fileID: 8300000, guid: 1ef386349b0614f4ba2d6c4f6bcff21e, type: 3}
-  ChopSound2: {fileID: 8300000, guid: bd3c6cc63eb9da646a8269785e6b80f7, type: 3}
+  AttackHitSounds:
+  - {fileID: 8300000, guid: 1ef386349b0614f4ba2d6c4f6bcff21e, type: 3}
+  - {fileID: 8300000, guid: bd3c6cc63eb9da646a8269785e6b80f7, type: 3}
+  AttackSwingSounds:
+  - {fileID: 8300000, guid: 5ffbb965b46a07948956e37116f7d4ab, type: 3}
+  - {fileID: 8300000, guid: d2968769688b8f04c81151365bb6ba61, type: 3}
+  MoveSounds:
+  - {fileID: 8300000, guid: 558b103aabd25084eb0863682d0b32f8, type: 3}
+  - {fileID: 8300000, guid: a3f42322f69cf6345b86a427d320daf2, type: 3}
   GameOverSound: {fileID: 8300000, guid: e069668bc2bc2ec42919a44888567a80, type: 3}
-  MoveSound1: {fileID: 8300000, guid: 558b103aabd25084eb0863682d0b32f8, type: 3}
-  MoveSound2: {fileID: 8300000, guid: a3f42322f69cf6345b86a427d320daf2, type: 3}
-  RestartLevelDelay: 1
-  SwingSound1: {fileID: 8300000, guid: 5ffbb965b46a07948956e37116f7d4ab, type: 3}
-  SwingSound2: {fileID: 8300000, guid: d2968769688b8f04c81151365bb6ba61, type: 3}
   TownScene:
     sceneAsset: {fileID: 102900000, guid: 9726fe084ebd97e4ab430ab40ca25313, type: 3}
     sceneName: MyDungeon/_Demo/_Scenes/Town
---- !u!114 &114000012575645530
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012948256500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6889be6b9bc9c409cae309f07e9418, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000012938987836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,17 +154,6 @@ MonoBehaviour:
   NoInventoryScene:
     sceneAsset: {fileID: 102900000, guid: 9726fe084ebd97e4ab430ab40ca25313, type: 3}
     sceneName: MyDungeon/_Demo/_Scenes/Town
---- !u!114 &114000014279363388
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012948256500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3bd665cd26f914459fda8d7c25c2106, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212000014258622478
 SpriteRenderer:
   m_ObjectHideFlags: 1

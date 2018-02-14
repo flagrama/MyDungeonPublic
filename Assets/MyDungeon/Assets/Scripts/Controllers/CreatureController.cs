@@ -4,18 +4,27 @@ using System.Collections.Generic;
 
 namespace MyDungeon
 {
+    /// <summary>
+    /// The Creature Controller component tracks all creatures on the map and executes their AI during their turn
+    /// </summary>
     public class CreatureController : MonoBehaviour
     {
-        protected List<Creature> Creatures;
+        /// <summary>
+        /// Indicates whether or not it is currently the creatures' turn
+        /// </summary>
         protected bool CreaturesMoving;
 
-        // Use this for initialization
+        /// <summary>
+        /// Initializes the creatures list
+        /// </summary>
         protected virtual void Awake()
         {
-            Creatures = new List<Creature>();
+            DungeonManager.Creatures = new List<Creature>();
         }
 
-        // Update is called once per frame
+        /// <summary>
+        /// Checks that it is not currently the player's turn then executes the MoveCreatures coroutine
+        /// </summary>
         protected virtual void Update()
         {
             if (GameManager.PlayersTurn || CreaturesMoving)
@@ -24,23 +33,16 @@ namespace MyDungeon
             StartCoroutine(MoveCreatures());
         }
 
-        public virtual void AddCreatureToList(Creature script)
-        {
-            Creatures.Add(script);
-        }
-
-        public virtual void RemoveCreatureFromList(Creature script)
-        {
-            Creatures.Remove(script);
-        }
-
+        /// <summary>
+        /// Executes each creature's AI via their MoveCreature method
+        /// </summary>
         protected virtual IEnumerator MoveCreatures()
         {
             CreaturesMoving = true;
 
             yield return new WaitForSeconds(0.25f);
 
-            foreach (Creature creature in Creatures)
+            foreach (Creature creature in DungeonManager.Creatures)
                 creature.MoveCreature();
 
             yield return null;

@@ -6,18 +6,10 @@ namespace MyDungeon
     {
         public LayerMask BlockingLayer;
         protected BoxCollider2D BoxCollider;
-        protected Rigidbody2D Rb2D;
-        protected Animator Animator;
 
         protected virtual void Start()
         {
-            Animator = GetComponent<Animator>();
-        }
-
-        protected virtual void SetAnimation(int xDir, int yDir)
-        {
-            Animator.SetFloat("MoveX", xDir);
-            Animator.SetFloat("MoveY", yDir);
+            BoxCollider = GetComponent<BoxCollider2D>();
         }
 
         protected virtual void CheckHit(Vector2 start, Vector2 end, out RaycastHit2D hit)

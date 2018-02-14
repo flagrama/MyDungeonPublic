@@ -25,12 +25,12 @@ namespace MyDungeon.Demo
         protected override void Pause()
         {
             base.Pause();
-            GameObject.FindGameObjectWithTag("Player").GetComponent<MyPlayerDungeonController>().enabled =
-                !GameObject.FindGameObjectWithTag("Player").GetComponent<MyPlayerDungeonController>().enabled;
-
 
             if (SceneManager.GetActiveScene().name != NoInventoryScene.SceneName)
             {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<MyPlayerDungeonController>().enabled =
+                    !GameObject.FindGameObjectWithTag("Player").GetComponent<MyPlayerDungeonController>().enabled;
+
                 if (GameManager.Paused)
                 {
                     _menu = Instantiate(PauseMenuPrefab);
@@ -46,6 +46,11 @@ namespace MyDungeon.Demo
                 {
                     Destroy(_menu);
                 }
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<MyPlayerOverworldController>().enabled =
+                    !GameObject.FindGameObjectWithTag("Player").GetComponent<MyPlayerOverworldController>().enabled;
             }
         }
     }

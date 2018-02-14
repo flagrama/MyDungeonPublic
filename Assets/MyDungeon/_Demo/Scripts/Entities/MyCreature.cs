@@ -4,6 +4,7 @@ namespace MyDungeon.Demo
 {
     public class MyCreature : Creature
     {
+        public AudioClip[] EnemyAttackSounds;
         private Animator _animator;
         private bool _skipMove;
         private Transform _target;
@@ -41,7 +42,7 @@ namespace MyDungeon.Demo
         {
             PlayerDungeon hitPlayerDungeon = component as PlayerDungeon;
             if (hitPlayerDungeon != null) hitPlayerDungeon.LoseHealth(Strength);
-            SoundManager.Instance.RandomizeSfx(EnemyAttack1, EnemyAttack2);
+            SoundManager.Instance.RandomizeSfx(EnemyAttackSounds);
             _animator.SetTrigger("enemy1Attack");
         }
 

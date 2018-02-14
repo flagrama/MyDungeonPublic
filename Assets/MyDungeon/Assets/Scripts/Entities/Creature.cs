@@ -2,46 +2,74 @@
 
 namespace MyDungeon
 {
-    public class Creature : MovingDungeonObject
+    /// <summary>
+    /// Base class for entities other than the player in the dungoen
+    /// </summary>
+    public abstract class Creature : MovingDungeonObject
     {
-        public AudioClip EnemyAttack1;
-        public AudioClip EnemyAttack2;
-
-        protected CreatureController CreatureController;
-
-        // Use this for initialization
+        /// <summary>
+        /// Add the creature to the creature list and sets its health value
+        /// </summary>
         protected override void Start()
         {
             base.Start();
 
-            try
-            {
-                CreatureController = DungeonManager.GetComponent<CreatureController>();
-            }
-            catch
-            {
-                if(DungeonManager != null)
-                    Utilities.MyDungeonErrors.CreatureControllerNotFound(DungeonManager.name);
-                else
-                    Utilities.MyDungeonErrors.DungeonManagerNotFound();
-            }
-
-            CreatureController.AddCreatureToList(this);
+            AddCreatureToList(this);
             CurHealth = MaxHealth;
         }
 
+        /// <summary>
+        /// Checks if a creature has lost all its HP and removes it from the list if so
+        /// </summary>
         protected virtual void Update()
         {
             if (CurHealth > 0) return;
 
-            CreatureController.RemoveCreatureFromList(this);
+            RemoveCreatureFromList(this);
             Destroy(gameObject);
         }
 
-        protected override void OnCantMove<T>(T component)
-        { }
+        /// <summary>
+        /// Adds a creature to the list
+        /// </summary>
+        /// <param name="script">The creature instance</param>
+        public virtual void AddCreatureToList(Creature script)
+        {
+            DungeonManager.Creatures.Add(script);
+        }
 
-        public virtual void MoveCreature()
-        { }
+        /// <summary>
+        /// Removes a creature from the list
+        /// </summary>
+        /// <param name="script">The creature instance</param>
+        public virtual void RemoveCreatureFromList(Creature script)
+        {
+            DungeonManager.Creatures.Remove(script);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T">A type that inherits from Component</typeparam>
+        /// <param name="xDir">The X direction the creature is attempting to move in</param>
+        /// <param name="yDir">The Y direction the creature is attempting to move in</param>
+        protected virtual void AttemptMove<T>(int xDir, int yDir)
+            where T : Component
+        {
+            RaycastHit2D hit;
+            bool canMove = Move(xDir, yDir, out hit);
+
+            if (hit.transform == null)
+                return;
+
+            T hitComponent = hit.transform.GetComponent<T>();
+
+            if (!canMove && hitComponent != null)
+                OnCantMove(hitComponent);
+        }
+
+        protected abstract void OnCantMove<T>(T component);
+
+        public abstract void MoveCreature();
     }
 }
