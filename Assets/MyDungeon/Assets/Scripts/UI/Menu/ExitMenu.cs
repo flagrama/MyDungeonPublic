@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using MyDungeon.Managers;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-namespace MyDungeon
+namespace MyDungeon.UI.Menu
 {
     public class ExitMenu : MonoBehaviour
     {

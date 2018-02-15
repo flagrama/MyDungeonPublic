@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using MyDungeon.Entities;
+using MyDungeon.Managers;
+using MyDungeon.UI.Hud;
+using UnityEngine;
 
-namespace MyDungeon.Demo
+namespace MyDungeon._Demo.Entities
 {
     public class MyCreature : Creature
     {

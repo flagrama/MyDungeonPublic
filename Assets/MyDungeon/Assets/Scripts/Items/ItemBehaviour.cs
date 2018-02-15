@@ -1,7 +1,7 @@
-﻿namespace MyDungeon
-{
-    using UnityEngine;
+﻿using UnityEngine;
 
+namespace MyDungeon.Items
+{
     /// <summary>
     /// ItemBheaviour is a component intended to be attached to item prefabs to attach ScriptableObjects that derive from the type Item to them
     /// </summary>

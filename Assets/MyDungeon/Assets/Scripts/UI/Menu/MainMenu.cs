@@ -1,4 +1,6 @@
-﻿#if UNITY_EDITOR
+﻿
+using MyDungeon.Managers;
+#if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
@@ -6,7 +8,7 @@ using SceneField = MyDungeon.Utilities.SceneField;
 using EventSystem = UnityEngine.EventSystems.EventSystem;
 using SceneManager = UnityEngine.SceneManagement.SceneManager;
 
-namespace MyDungeon
+namespace MyDungeon.UI.Menu
 {
     public class MainMenu : MonoBehaviour
     {

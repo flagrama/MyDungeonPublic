@@ -1,8 +1,9 @@
-﻿namespace MyDungeon
-{
-    using UnityEngine;
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MyDungeon.Managers;
+using UnityEngine;
 
+namespace MyDungeon.Items
+{
     /// <summary>
     /// Inventory holds a list of items the player currently possesses
     /// </summary>

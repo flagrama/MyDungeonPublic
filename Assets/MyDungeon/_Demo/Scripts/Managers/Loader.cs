@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MyDungeon.Demo
+namespace MyDungeon._Demo.Managers
 {
     public class Loader : MonoBehaviour
     {
@@ -10,17 +10,17 @@ namespace MyDungeon.Demo
 
         private void Awake()
         {
-            if (MyDungeon.ControlManager.Instance == null)
+            if (MyDungeon.Managers.ControlManager.Instance == null)
             {
                 Instantiate(ControlManager);
             }
 
-            if (MyDungeon.SoundManager.Instance == null)
+            if (MyDungeon.Managers.SoundManager.Instance == null)
             {
                 Instantiate(SoundManager);
             }
 
-            if (MyDungeon.PlayerManager.Instance == null)
+            if (MyDungeon.Managers.PlayerManager.Instance == null)
             {
                 Instantiate(PlayerManager);
             }

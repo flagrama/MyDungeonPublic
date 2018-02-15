@@ -1,8 +1,16 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using MyDungeon.Controllers;
+using MyDungeon.Entities;
+using MyDungeon.Items;
+using MyDungeon.Managers;
+using MyDungeon.UI.Hud;
+using MyDungeon.Utilities;
+using MyDungeon._Demo.Initialization;
+using MyDungeon._Demo.Managers;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MyDungeon.Demo
+namespace MyDungeon._Demo.Controllers
 {
     public class MyPlayerDungeonController : PlayerDungeonController
     {

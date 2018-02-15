@@ -1,7 +1,5 @@
-﻿namespace MyDungeon
+﻿namespace MyDungeon.Managers
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// GameManager stores the current game state that must be retained between scene transitions
     /// </summary>

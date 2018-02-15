@@ -1,7 +1,12 @@
 ﻿using System.Collections.Generic;
+using MyDungeon.Controllers;
+using MyDungeon.Items;
+using MyDungeon.Managers;
+using MyDungeon._Demo.Controllers;
+using MyDungeon._Demo.UI.Menus;
 using UnityEngine;
 
-namespace MyDungeon.Demo
+namespace MyDungeon._Demo.UI
 {
     public class ScrollView : MonoBehaviour
     {

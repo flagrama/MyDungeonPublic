@@ -1,6 +1,10 @@
-﻿using UnityEngine;
+﻿using MyDungeon.Initialization;
+using MyDungeon.Managers;
+using MyDungeon.UI.Hud;
+using MyDungeon.Utilities;
+using UnityEngine;
 
-namespace MyDungeon.Demo
+namespace MyDungeon._Demo.Initialization
 {
     public class MyInitGame : InitGame
     {

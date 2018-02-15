@@ -1,7 +1,7 @@
-﻿namespace MyDungeon
-{
-    using UnityEngine;
+﻿using UnityEngine;
 
+namespace MyDungeon.Entities
+{
     /// <summary>
     /// Base class for entities that move in the overworld
     /// </summary>

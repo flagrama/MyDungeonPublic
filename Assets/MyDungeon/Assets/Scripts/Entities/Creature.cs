@@ -1,7 +1,8 @@
-﻿namespace MyDungeon
-{
-    using UnityEngine;
+﻿using MyDungeon.Managers;
+using UnityEngine;
 
+namespace MyDungeon.Entities
+{
     /// <inheritdoc />
     /// <summary>
     /// Base class for entities other than the player in the dungoen

@@ -1,4 +1,4 @@
-﻿namespace MyDungeon
+﻿namespace MyDungeon.Entities
 {
     /// <summary>
     /// Base class for the Player in Overworld scenes

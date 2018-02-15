@@ -1,7 +1,9 @@
-﻿namespace MyDungeon
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MyDungeon.DungeonGeneration.GridBasedGenerator;
+using MyDungeon.Entities;
 
+namespace MyDungeon.Managers
+{
     /// <summary>
     /// DungeonManager holds information of a dungeon
     /// </summary>

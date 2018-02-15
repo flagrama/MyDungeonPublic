@@ -1,7 +1,12 @@
-﻿using UnityEngine;
+﻿using MyDungeon.Entities;
+using MyDungeon.Items;
+using MyDungeon.UI.Menu;
+using MyDungeon._Demo.Managers;
+using MyDungeon._Demo.Saving;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MyDungeon.Demo
+namespace MyDungeon._Demo.Controllers
 {
     public class MyPlayerOverworldController : PlayerOverworld
     {

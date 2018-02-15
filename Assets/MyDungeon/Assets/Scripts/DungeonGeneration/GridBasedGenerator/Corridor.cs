@@ -1,4 +1,4 @@
-﻿namespace MyDungeon
+﻿namespace MyDungeon.DungeonGeneration.GridBasedGenerator
 {
     /// <summary>
     /// Directional values for Corridor

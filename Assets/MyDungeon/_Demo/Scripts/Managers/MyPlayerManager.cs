@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using MyDungeon.Items;
+using MyDungeon.Managers;
+using MyDungeon._Demo.Saving;
 
-namespace MyDungeon.Demo
+namespace MyDungeon._Demo.Managers
 {
     public class MyPlayerManager : PlayerManager
     {

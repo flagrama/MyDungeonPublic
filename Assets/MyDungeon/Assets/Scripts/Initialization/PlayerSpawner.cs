@@ -1,7 +1,8 @@
-﻿namespace MyDungeon
-{
-    using UnityEngine;
+﻿using MyDungeon.Entities;
+using UnityEngine;
 
+namespace MyDungeon.Initialization
+{
     /// <summary>
     /// PlayerSpawner spawns a PlayerOverworld at the position of the PlayerSpawner
     /// </summary>

@@ -1,8 +1,9 @@
-﻿namespace MyDungeon
-{
-    using System.Collections.Generic;
-    using UnityEngine;
+﻿using System.Collections.Generic;
+using MyDungeon.Items;
+using UnityEngine;
 
+namespace MyDungeon.Managers
+{
     /// <summary>
     /// PlayerManager holds player specific properties that must be retained between scene transitions
     /// </summary>

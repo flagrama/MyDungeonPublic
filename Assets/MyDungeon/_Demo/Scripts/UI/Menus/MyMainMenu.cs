@@ -1,6 +1,11 @@
-﻿using UnityEngine;
+﻿using MyDungeon.Managers;
+using MyDungeon.Saving;
+using MyDungeon.UI.Menu;
+using MyDungeon._Demo.Managers;
+using MyDungeon._Demo.Saving;
+using UnityEngine;
 
-namespace MyDungeon.Demo
+namespace MyDungeon._Demo.UI.Menus
 {
     public class MyMainMenu : MainMenu
     {

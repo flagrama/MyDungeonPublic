@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using MyDungeon.UI.Menu;
+using MyDungeon._Demo.Controllers;
+using UnityEngine;
 
-namespace MyDungeon.Demo
+namespace MyDungeon._Demo.UI.Menus
 {
     public class MyExitMenu : ExitMenu
     {

@@ -1,4 +1,6 @@
-﻿namespace MyDungeon.Demo
+﻿using MyDungeon._Demo.Saving;
+
+namespace MyDungeon._Demo.Managers
 {
     public class MyGameManager
     {

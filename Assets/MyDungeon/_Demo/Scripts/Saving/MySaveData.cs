@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using MyDungeon.Items;
+using MyDungeon.Saving;
 
-namespace MyDungeon.Demo
+namespace MyDungeon._Demo.Saving
 {
     [Serializable]
     public class MySaveData : SaveData

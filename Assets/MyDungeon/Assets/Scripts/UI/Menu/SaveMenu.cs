@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using MyDungeon.Saving;
+using UnityEngine;
 
-namespace MyDungeon
+namespace MyDungeon.UI.Menu
 {
     public class SaveMenu : MonoBehaviour
     {

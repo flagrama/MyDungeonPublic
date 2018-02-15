@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace MyDungeon.Demo
+namespace MyDungeon._Demo.UI
 {
     public class ScrollButton : MonoBehaviour
     {

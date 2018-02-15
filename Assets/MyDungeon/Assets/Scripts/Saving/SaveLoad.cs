@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using UnityEngine;
 
-namespace MyDungeon
+namespace MyDungeon.Saving
 {
     /// <summary>
     /// SaveLoad contains the Save and Load methods

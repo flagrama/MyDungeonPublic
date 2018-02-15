@@ -1,4 +1,4 @@
-﻿namespace MyDungeon
+﻿namespace MyDungeon.DungeonGeneration.GridBasedGenerator
 {
     /// <summary>
     /// Class for setting up Cells in the Grid-Based dungeon map

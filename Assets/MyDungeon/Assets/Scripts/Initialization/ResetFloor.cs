@@ -1,7 +1,8 @@
-﻿namespace MyDungeon
-{
-    using UnityEngine;
+﻿using MyDungeon.Managers;
+using UnityEngine;
 
+namespace MyDungeon.Initialization
+{
     /// <summary>
     /// ResetFloor resets the current floor in GameManager to 0
     /// </summary>

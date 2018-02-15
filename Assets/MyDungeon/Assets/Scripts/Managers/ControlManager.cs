@@ -1,7 +1,7 @@
-﻿namespace MyDungeon
-{
-    using UnityEngine;
+﻿using UnityEngine;
 
+namespace MyDungeon.Managers
+{
     /// <summary>
     /// ControlManager is used to check if directional input is recieved while in a menu
     /// </summary>

@@ -1,11 +1,15 @@
-﻿using UnityEngine;
+﻿using MyDungeon.Managers;
+using UnityEngine;
 
-public class MyControlManager : MyDungeon.ControlManager {
+namespace MyDungeon._Demo.Managers
+{
+    public class MyControlManager : ControlManager {
 	
-	// Update is called once per frame
-	protected void Update ()
-	{
-	    MenuHorizontal = Input.GetAxisRaw("Horizontal");
-	    MenuVertical = Input.GetAxisRaw("Vertical");
+        // Update is called once per frame
+        protected void Update ()
+        {
+            MenuHorizontal = Input.GetAxisRaw("Horizontal");
+            MenuVertical = Input.GetAxisRaw("Vertical");
+        }
     }
 }

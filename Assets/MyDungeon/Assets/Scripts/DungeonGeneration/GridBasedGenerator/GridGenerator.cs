@@ -1,11 +1,10 @@
-﻿using Random = System.Random;
+﻿using System;
+using System.Collections.Generic;
+using MyDungeon.Utilities;
+using UnityEngine;
 
-namespace MyDungeon
+namespace MyDungeon.DungeonGeneration.GridBasedGenerator
 {
-    using System;
-    using System.Collections.Generic;
-    using Utilities;
-    using UnityEngine;
     using Random = UnityEngine.Random;
 
     /// <summary>

@@ -1,7 +1,7 @@
-﻿namespace MyDungeon
-{
-    using UnityEngine;
+﻿using UnityEngine;
 
+namespace MyDungeon.Managers
+{
     /// <summary>
     /// SoundManager is the class that handles audio
     /// </summary>

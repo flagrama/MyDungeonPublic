@@ -1,7 +1,7 @@
-﻿namespace MyDungeon
-{
-    using UnityEngine;
+﻿using UnityEngine;
 
+namespace MyDungeon.Controllers
+{
     /// <summary>
     /// Controller for the Main Camera
     /// </summary>

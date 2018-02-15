@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using MyDungeon.Managers;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace MyDungeon
+namespace MyDungeon.UI.Menu
 {
     public class PauseMenu : MonoBehaviour
     {

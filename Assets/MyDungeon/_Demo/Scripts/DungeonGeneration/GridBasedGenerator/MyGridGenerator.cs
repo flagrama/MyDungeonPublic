@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using MyDungeon.DungeonGeneration.GridBasedGenerator;
+using UnityEngine;
 
-namespace MyDungeon.Demo
+namespace MyDungeon._Demo.DungeonGeneration.GridBasedGenerator
 {
     public class MyGridGenerator : GridGenerator
     {

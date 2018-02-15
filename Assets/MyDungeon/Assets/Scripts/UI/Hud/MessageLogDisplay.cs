@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MyDungeon
+namespace MyDungeon.UI.Hud
 {
     public class MessageLogDisplay : MonoBehaviour
     {

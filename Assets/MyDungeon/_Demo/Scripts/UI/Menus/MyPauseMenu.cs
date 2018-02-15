@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using MyDungeon.Managers;
+using MyDungeon.UI.Menu;
 using MyDungeon.Utilities;
+using MyDungeon._Demo.Controllers;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MyDungeon.Demo
+namespace MyDungeon._Demo.UI.Menus
 {
     public class MyPauseMenu : PauseMenu
     {
