@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using IntRange = MyDungeon.Utilities.IntRange;
-using UnityEngine;
-
-namespace MyDungeon
+﻿namespace MyDungeon
 {
+    using System.Collections.Generic;
+    using Utilities;
+    using UnityEngine;
+
     /// <summary>
     /// Data structure for Room starting coordinates
     /// </summary>

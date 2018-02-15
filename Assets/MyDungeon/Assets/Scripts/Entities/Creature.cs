@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-
-namespace MyDungeon
+﻿namespace MyDungeon
 {
+    using UnityEngine;
+
+    /// <inheritdoc />
     /// <summary>
     /// Base class for entities other than the player in the dungoen
     /// </summary>
@@ -64,8 +65,10 @@ namespace MyDungeon
 
             T hitComponent = hit.transform.GetComponent<T>();
 
-            if (!canMove && hitComponent != null)
-                OnCantMove(hitComponent);
+            if (canMove || hitComponent == null) return;
+
+            OnCantMove(hitComponent);
+            StartCoroutine(WaitForTurnEnd());
         }
 
         protected abstract void OnCantMove<T>(T component);

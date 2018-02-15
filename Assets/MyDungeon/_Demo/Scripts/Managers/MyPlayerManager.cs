@@ -15,14 +15,20 @@ namespace MyDungeon.Demo
             PlayerName = playerName;
             MaxHealth = maxHealth;
             CurrentHealth = MaxHealth;
-            GameManager.Inventory = new List<Item>();
+            Inventory = new List<Item>();
         }
 
         public static void Load(MySaveData saveData)
         {
             InitPlayer(saveData.DisplayName, saveData.MaxHealth);
-            GameManager.Inventory = saveData.Inventory;
+            Inventory = saveData.Inventory;
             Initialized = true;
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
+            Initialized = false;
         }
     }
 }

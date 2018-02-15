@@ -1,8 +1,11 @@
-﻿using System;
-
-namespace MyDungeon
+﻿namespace MyDungeon
 {
+    using System;
+
+    /// <summary>
+    /// SaveData is the base data for saving and loading data
+    /// </summary>
     [Serializable]
-    public class SaveData
+    public abstract class SaveData
     { }
 }

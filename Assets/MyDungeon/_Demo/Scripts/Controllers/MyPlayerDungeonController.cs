@@ -11,9 +11,11 @@ namespace MyDungeon.Demo
         public AudioClip[] MoveSounds;
         public AudioClip GameOverSound;
         public Utilities.SceneField TownScene;
+        public Utilities.SceneField GameOverScene;
 
 
         private GameObject _hudManager;
+        private Animator _animator;
         private bool _collided;
         private GameObject _collision;
         private bool _diag;
@@ -24,7 +26,7 @@ namespace MyDungeon.Demo
         // Use this for initialization
         protected override void Start()
         {
-            Animator = GetComponent<Animator>();
+            _animator = GetComponent<Animator>();
 
             if (GameManager.SaveLoaded)
             {
@@ -65,7 +67,7 @@ namespace MyDungeon.Demo
             _hold = Input.GetButton("Fire3");
             if (_collided && _collision != null && !Moving)
             {
-                if (_collision.tag == "Item" && Mathf.Approximately(transform.position.x, _collision.transform.position.x)
+                if (_collision.CompareTag("Item") && Mathf.Approximately(transform.position.x, _collision.transform.position.x)
                     && Mathf.Approximately(transform.position.y, _collision.transform.position.y))
                 {
                     Item item = _collision.GetComponent<ItemBehaviour>().Item;
@@ -83,23 +85,10 @@ namespace MyDungeon.Demo
         }
         protected override bool Move(int xDir, int yDir, out RaycastHit2D hit)
         {
-            float xFloat = xDir;
-            float yFloat = yDir;
-
-            if (xFloat > 0)
-                xFloat += 0.5f;
-            else if (xFloat < 0)
-                xFloat -= 0.5f;
-            if (yFloat > 0)
-                yFloat += 0.5f;
-            else if (yDir < 0)
-                yFloat -= 0.5f;
-
             Vector2 start = transform.position;
             Vector2 end = start + new Vector2(xDir, yDir);
-            Vector2 endCheck = start + new Vector2(xFloat, yFloat);
 
-            CheckHit(start, endCheck, out hit);
+            CheckHit(start, end, out hit);
 
             if (PosX + xDir < 0 || PosX + xDir > DungeonManager.DungeonGenerationSettings.Columns || PosY + yDir < 0 || PosY + yDir > DungeonManager.DungeonGenerationSettings.Rows)
             {
@@ -137,7 +126,7 @@ namespace MyDungeon.Demo
             {
                 SoundManager.Instance.RandomizeSfx(MoveSounds);
                 SetAnimation(xDir, yDir);
-                Animator.SetTrigger("playerMove");
+                _animator.SetTrigger("playerMove");
             }
             if (!Moving)
             {
@@ -148,7 +137,7 @@ namespace MyDungeon.Demo
         protected override IEnumerator Attack()
         {
             Vector2 start = transform.position;
-            Vector2 end = start + new Vector2(Animator.GetFloat("MoveX"), Animator.GetFloat("MoveY"));
+            Vector2 end = start + new Vector2(_animator.GetFloat("MoveX"), _animator.GetFloat("MoveY"));
             RaycastHit2D hit;
 
             Moving = true;
@@ -156,7 +145,7 @@ namespace MyDungeon.Demo
             CheckHit(start, end, out hit);
 
             SoundManager.Instance.RandomizeSfx(AttackSwingSounds);
-            Animator.SetTrigger("playerAttack");
+            _animator.SetTrigger("playerAttack");
 
             if (hit.transform == null)
             {
@@ -166,7 +155,7 @@ namespace MyDungeon.Demo
                 yield break;
             }
 
-            if (hit.transform.tag == "Enemy")
+            if (hit.transform.CompareTag("Enemy"))
             {
                 Creature hitCreature = hit.transform.GetComponent<Creature>();
                 SoundManager.Instance.RandomizeSfx(AttackHitSounds);
@@ -180,11 +169,17 @@ namespace MyDungeon.Demo
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == "Item")
+            if (collision.CompareTag("Item"))
             {
                 _collided = true;
                 _collision = collision.gameObject;
             }
+        }
+
+        private void SetAnimation(int xDir, int yDir)
+        {
+            _animator.SetFloat("MoveX", xDir);
+            _animator.SetFloat("MoveY", yDir);
         }
 
         private void UpdateHealthDisplay()
@@ -204,7 +199,7 @@ namespace MyDungeon.Demo
         {
             base.LoseHealth(damage);
 
-            Animator.SetTrigger("playerHit");
+            _animator.SetTrigger("playerHit");
             UpdateHealthDisplay();
         }
 
@@ -215,6 +210,7 @@ namespace MyDungeon.Demo
                 SoundManager.Instance.PlaySingle(GameOverSound);
                 SoundManager.Instance.MusicSource.Stop();
                 GameObject.FindGameObjectWithTag("DungeonManager").GetComponent<MyInitGame>().GameOver();
+                this.Invoke(EndGame, 2f);
             }
 
             base.CheckIfGameOver();
@@ -223,6 +219,14 @@ namespace MyDungeon.Demo
         protected virtual void Restart()
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+        }
+
+        protected virtual void EndGame()
+        {
+            PlayerManager.Instance.Reset();
+            GameManager.Reset();
+            SoundManager.Instance.MusicSource.Play();
+            SceneManager.LoadScene(GameOverScene.SceneName);
         }
     }
 }

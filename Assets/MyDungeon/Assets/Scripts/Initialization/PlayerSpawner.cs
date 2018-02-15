@@ -1,16 +1,24 @@
-﻿using UnityEngine;
-
-namespace MyDungeon
+﻿namespace MyDungeon
 {
+    using UnityEngine;
+
+    /// <summary>
+    /// PlayerSpawner spawns a PlayerOverworld at the position of the PlayerSpawner
+    /// </summary>
     public class PlayerSpawner : MonoBehaviour
     {
+        /// <summary>
+        /// PlayerOverworld prefab
+        /// </summary>
         public PlayerOverworld PlayerOverworld;
-        public PlayerSpawner Spawner;
 
+        /// <summary>
+        /// Instantiates PlayerOverworld at the location of the PlayerSpawner
+        /// </summary>
         // Use this for initialization
         protected virtual void Start()
         {
-            Instantiate(PlayerOverworld, Spawner.transform.position, Quaternion.identity);
+            Instantiate(PlayerOverworld, gameObject.transform.position, Quaternion.identity);
         }
     }
 }

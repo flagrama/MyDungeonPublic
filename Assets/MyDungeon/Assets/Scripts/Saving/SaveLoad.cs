@@ -4,7 +4,7 @@ using UnityEngine;
 namespace MyDungeon
 {
     /// <summary>
-    /// Contains the Save and Load methods
+    /// SaveLoad contains the Save and Load methods
     /// </summary>
     public class SaveLoad : MonoBehaviour
     {

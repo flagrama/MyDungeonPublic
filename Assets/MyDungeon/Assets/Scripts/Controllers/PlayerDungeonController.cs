@@ -1,12 +1,14 @@
-﻿using System.Collections;
-using MyDungeon.Utilities;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
-namespace MyDungeon
+﻿namespace MyDungeon
 {
+    using System.Collections;
+    using UnityEngine;
+
+    /// <summary>
+    /// Base class for controller for the Player in the Dungeon scenes
+    /// </summary>
     public abstract class PlayerDungeonController : PlayerDungeon
     {
+        /// <inheritdoc />
         /// <summary>
         /// Sets the player's current health
         /// </summary>
@@ -33,6 +35,7 @@ namespace MyDungeon
             }
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Reduce player's current health and executes UpdateHealth
         /// </summary>
@@ -44,6 +47,7 @@ namespace MyDungeon
             UpdateHealth();
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// Increase player's current health and executes UpdateHealth
         /// </summary>

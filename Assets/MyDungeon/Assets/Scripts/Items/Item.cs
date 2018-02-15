@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-
-namespace MyDungeon
+﻿namespace MyDungeon
 {
+    using UnityEngine;
+
     /// <summary>
-    /// Base class for Items
+    /// Item is the base class for Items
     /// </summary>
     public abstract class Item : ScriptableObject
     {
@@ -25,10 +25,7 @@ namespace MyDungeon
             Target = target;
             Use();
         }
-
-        /// <summary>
-        /// Implemntation method for UseItem
-        /// </summary>
+        
         protected abstract void Use();
     }
 }

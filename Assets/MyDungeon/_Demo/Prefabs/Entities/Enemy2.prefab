@@ -106,10 +106,9 @@ MonoBehaviour:
   BlockingLayer:
     serializedVersion: 2
     m_Bits: 256
-  Level: 1
   Strength: 1
   MaxHealth: 4
-  MoveTime: 0.25
+  MoveTime: 0.2
   DisplayName: Fresh Zombie
   EnemyAttackSounds:
   - {fileID: 8300000, guid: 69dc9f2a4f2aa56489ee066195123248, type: 3}

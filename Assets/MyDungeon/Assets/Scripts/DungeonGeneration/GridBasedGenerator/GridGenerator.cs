@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using IntRange = MyDungeon.Utilities.IntRange;
-using UnityEngine;
-using Random = UnityEngine.Random;
+﻿using Random = System.Random;
 
 namespace MyDungeon
 {
+    using System;
+    using System.Collections.Generic;
+    using Utilities;
+    using UnityEngine;
+    using Random = UnityEngine.Random;
+
     /// <summary>
     /// Class for generating a pseudo-random grid-based dungeon
     /// </summary>

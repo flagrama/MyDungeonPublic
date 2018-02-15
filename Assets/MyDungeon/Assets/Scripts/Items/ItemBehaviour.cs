@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-
-namespace MyDungeon
+﻿namespace MyDungeon
 {
+    using UnityEngine;
+
     /// <summary>
-    /// Component intended to be attached to item prefabs to attach ScriptableObjects that derive fromt he type Item to them
+    /// ItemBheaviour is a component intended to be attached to item prefabs to attach ScriptableObjects that derive from the type Item to them
     /// </summary>
     public class ItemBehaviour : MonoBehaviour
     {

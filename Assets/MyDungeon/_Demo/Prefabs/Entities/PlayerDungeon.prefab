@@ -108,10 +108,9 @@ MonoBehaviour:
   BlockingLayer:
     serializedVersion: 2
     m_Bits: 256
-  Level: 1
   Strength: 1
   MaxHealth: 10
-  MoveTime: 0.25
+  MoveTime: 0.15
   DisplayName: Player
   AttackHitSounds:
   - {fileID: 8300000, guid: 1ef386349b0614f4ba2d6c4f6bcff21e, type: 3}
@@ -126,6 +125,9 @@ MonoBehaviour:
   TownScene:
     sceneAsset: {fileID: 102900000, guid: 9726fe084ebd97e4ab430ab40ca25313, type: 3}
     sceneName: MyDungeon/_Demo/_Scenes/Town
+  GameOverScene:
+    sceneAsset: {fileID: 102900000, guid: e5964c62f9ed0a94f85c41749ee9102e, type: 3}
+    sceneName: MyDungeon/_Demo/_Scenes/Main Menu
 --- !u!114 &114000012938987836
 MonoBehaviour:
   m_ObjectHideFlags: 1
