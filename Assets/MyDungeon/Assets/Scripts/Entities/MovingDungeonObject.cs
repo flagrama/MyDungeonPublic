@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using MyDungeon.Managers;
-using UnityEngine;
-
-namespace MyDungeon.Entities
+﻿namespace MyDungeon.Entities
 {
+    using System.Collections;
+    using Managers;
+    using UnityEngine;
+
     /// <summary>
     /// Base class for objects that move in the Dungeon scenes
     /// </summary>

@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace MyDungeon.Utilities
+﻿namespace MyDungeon.Utilities
 {
+    using System;
+
     /// <summary>
     /// Class to get a random value between two numbers (inclusive)
     /// </summary>

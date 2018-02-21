@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-
-namespace MyDungeon.Items
+﻿namespace MyDungeon.Items
 {
+    using UnityEngine;
+
     /// <summary>
     /// Item is the base class for Items
     /// </summary>

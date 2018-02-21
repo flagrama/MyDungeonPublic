@@ -31,5 +31,11 @@
             if (!UnityEngine.Debug.isDebugBuild) return;
             UnityEngine.Debug.LogError("GameObject with type inherited from PlayerDungeon must be spawned in a dungeon");
         }
+
+        internal static void SaveLoadComponentNotFound(string objectName)
+        {
+            if (!UnityEngine.Debug.isDebugBuild) return;
+            UnityEngine.Debug.LogError(objectName + " must contain a SaveLoad component");
+        }
     }
 }

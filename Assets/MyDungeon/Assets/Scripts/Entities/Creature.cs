@@ -1,8 +1,8 @@
-﻿using MyDungeon.Managers;
-using UnityEngine;
-
-namespace MyDungeon.Entities
+﻿namespace MyDungeon.Entities
 {
+    using Managers;
+    using UnityEngine;
+
     /// <inheritdoc />
     /// <summary>
     /// Base class for entities other than the player in the dungoen

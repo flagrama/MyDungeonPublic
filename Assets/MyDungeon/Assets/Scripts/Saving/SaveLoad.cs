@@ -1,8 +1,8 @@
-﻿using System.IO;
-using UnityEngine;
-
-namespace MyDungeon.Saving
+﻿namespace MyDungeon.Saving
 {
+    using System.IO;
+    using UnityEngine;
+
     /// <summary>
     /// SaveLoad contains the Save and Load methods
     /// </summary>

@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using MyDungeon.Entities;
-using MyDungeon.Managers;
-using UnityEngine;
-
-namespace MyDungeon.Controllers
+﻿namespace MyDungeon.Controllers
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using Entities;
+    using Managers;
+    using UnityEngine;
+
     /// <summary>
     /// The Creature Controller component tracks all creatures on the map and executes their AI during their turn
     /// </summary>

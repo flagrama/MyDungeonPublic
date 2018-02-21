@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using MyDungeon.Utilities;
-using UnityEngine;
-
-namespace MyDungeon.DungeonGeneration.GridBasedGenerator
+﻿namespace MyDungeon.DungeonGeneration.GridBasedGenerator
 {
+    using System.Collections.Generic;
+    using Utilities;
+    using UnityEngine;
+
     /// <summary>
     /// Data structure for Room starting coordinates
     /// </summary>

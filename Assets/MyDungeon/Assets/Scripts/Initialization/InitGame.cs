@@ -1,11 +1,11 @@
-﻿using MyDungeon.DungeonGeneration.GridBasedGenerator;
-using MyDungeon.Entities;
-using MyDungeon.Managers;
-using MyDungeon.Utilities;
-using UnityEngine;
-
-namespace MyDungeon.Initialization
+﻿namespace MyDungeon.Initialization
 {
+    using DungeonGeneration.GridBasedGenerator;
+    using Entities;
+    using Managers;
+    using Utilities;
+    using UnityEngine;
+
     /// <summary>
     /// Initializes the dungeon scenes
     /// </summary>

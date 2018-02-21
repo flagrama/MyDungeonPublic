@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using MyDungeon.Items;
-using UnityEngine;
-
-namespace MyDungeon.Managers
+﻿namespace MyDungeon.Managers
 {
+    using System.Collections.Generic;
+    using Items;
+    using UnityEngine;
+
     /// <summary>
     /// PlayerManager holds player specific properties that must be retained between scene transitions
     /// </summary>

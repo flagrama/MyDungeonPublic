@@ -1,12 +1,12 @@
-﻿using System;
-using UnityEngine;
-using Object = UnityEngine.Object;
+﻿namespace MyDungeon.Utilities
+{
+    using System;
+    using UnityEngine;
+    using Object = UnityEngine.Object;
 #if UNITY_EDITOR
-using UnityEditor;
+    using UnityEditor;
 #endif
 
-namespace MyDungeon.Utilities
-{
     [Serializable]
     public class SceneField
     {

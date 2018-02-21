@@ -1,14 +1,23 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
-
-namespace MyDungeon.Utilities
+﻿namespace MyDungeon.Utilities
 {
+    using System;
+    using System.Collections;
+    using UnityEngine;
+
+    /// <summary>
+    /// Extensions to the MonoBehaviour class
+    /// </summary>
     public static class MonoBehaviourExtensions
     {
-        public static void Invoke(this MonoBehaviour me, Action theDelegate, float time)
+        /// <summary>
+        /// Invoke using a delegate
+        /// </summary>
+        /// <param name="me"></param>
+        /// <param name="delegateName">Name of a function to invoke</param>
+        /// <param name="time">Time to wait before invoking the delegate</param>
+        public static void Invoke(this MonoBehaviour me, Action delegateName, float time)
         {
-            me.StartCoroutine(ExecuteAfterTime(theDelegate, time));
+            me.StartCoroutine(ExecuteAfterTime(delegateName, time));
         }
 
         private static IEnumerator ExecuteAfterTime(Action theDelegate, float delay)

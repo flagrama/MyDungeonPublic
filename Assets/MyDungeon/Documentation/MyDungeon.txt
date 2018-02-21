@@ -8,32 +8,518 @@ Version History
 The topics in this section describe the various changes made to the MyDungeon over the life of the project.
 Version History
 Select a version below to see a description of its changes.
-Version 0.4.0.0
+Version 1.0.0.0
 See Also
 Other Resources
 Welcome to the MyDungeon documentation
 
-Version 0.4.0.0
-Version 0.4.0.0 was released on 2018-02-01.
+Version 1.0.0.0
+Version 1.0.0.0 was released on 2018-02-01.
 Changes in This Release
 Initial release
 See Also
 Other Resources
 Version History
 
-MyDungeon Namespace
-A Roguelike engine for Unity
+MyDungeon.Controllers Namespace
+[Missing <summary> documentation for "N:MyDungeon.Controllers"]
 Classes
 	Class	Description
  	CameraController	Controller for the Main Camera
+ 	CreatureController	The Creature Controller component tracks all creatures on the map and executes their AI during their turn
+ 	PlayerDungeonController	Base class for controller for the Player in the Dungeon scenes
+
+
+CameraController Class
+Controller for the Main Camera
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Controllers.CameraController
+
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class CameraController : MonoBehaviour
+
+The CameraController type exposes the following members.
+Constructors
+	Name	Description
+ 	CameraController	Initializes a new instance of the CameraController class
+
+Methods
+	Name	Description
+ 	LateUpdate	Centers the camera on the object tagged as Player
+ 	Start	Sets the position offset for the camera to the camera starting position
+
+Fields
+	Name	Description
+ 	Offset	The offset of the camera location
+ 	Player	The game object the camera tracks
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Controllers Namespace
+
+CameraController Constructor 
+Initializes a new instance of the CameraController class
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public CameraController()
+
+See Also
+CameraController Class
+MyDungeon.Controllers Namespace
+
+CameraController.CameraController Methods
+The CameraController type exposes the following members.
+Methods
+	Name	Description
+ 	LateUpdate	Centers the camera on the object tagged as Player
+ 	Start	Sets the position offset for the camera to the camera starting position
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+CameraController Class
+MyDungeon.Controllers Namespace
+
+CameraController.LateUpdate Method 
+Centers the camera on the object tagged as Player
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void LateUpdate()
+
+See Also
+CameraController Class
+MyDungeon.Controllers Namespace
+
+CameraController.Start Method 
+Sets the position offset for the camera to the camera starting position
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+CameraController Class
+MyDungeon.Controllers Namespace
+
+CameraController.CameraController Fields
+The CameraController type exposes the following members.
+Fields
+	Name	Description
+ 	Offset	The offset of the camera location
+ 	Player	The game object the camera tracks
+
+See Also
+CameraController Class
+MyDungeon.Controllers Namespace
+
+CameraController.Offset Field
+The offset of the camera location
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected Vector3 Offset
+
+Field Value
+Type: Vector3
+See Also
+CameraController Class
+MyDungeon.Controllers Namespace
+
+CameraController.Player Field
+The game object the camera tracks
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected GameObject Player
+
+Field Value
+Type: GameObject
+See Also
+CameraController Class
+MyDungeon.Controllers Namespace
+
+CreatureController Class
+The Creature Controller component tracks all creatures on the map and executes their AI during their turn
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Controllers.CreatureController
+
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class CreatureController : MonoBehaviour
+
+The CreatureController type exposes the following members.
+Constructors
+	Name	Description
+ 	CreatureController	Initializes a new instance of the CreatureController class
+
+Methods
+	Name	Description
+ 	Awake	Initializes the creatures list
+ 	MoveCreatures	Executes each creature's AI via their MoveCreature method
+ 	Update	Checks that it is not currently the player's turn then executes the MoveCreatures coroutine
+
+Fields
+	Name	Description
+ 	CreaturesMoving	Indicates whether or not it is currently the creatures' turn
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Controllers Namespace
+
+CreatureController Constructor 
+Initializes a new instance of the CreatureController class
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public CreatureController()
+
+See Also
+CreatureController Class
+MyDungeon.Controllers Namespace
+
+CreatureController.CreatureController Methods
+The CreatureController type exposes the following members.
+Methods
+	Name	Description
+ 	Awake	Initializes the creatures list
+ 	MoveCreatures	Executes each creature's AI via their MoveCreature method
+ 	Update	Checks that it is not currently the player's turn then executes the MoveCreatures coroutine
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+CreatureController Class
+MyDungeon.Controllers Namespace
+
+CreatureController.Awake Method 
+Initializes the creatures list
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Awake()
+
+See Also
+CreatureController Class
+MyDungeon.Controllers Namespace
+
+CreatureController.MoveCreatures Method 
+Executes each creature's AI via their MoveCreature method
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual IEnumerator MoveCreatures()
+
+Return Value
+Type: IEnumerator
+[Missing <returns> documentation for "M:MyDungeon.Controllers.CreatureController.MoveCreatures"]
+See Also
+CreatureController Class
+MyDungeon.Controllers Namespace
+
+CreatureController.Update Method 
+Checks that it is not currently the player's turn then executes the MoveCreatures coroutine
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Update()
+
+See Also
+CreatureController Class
+MyDungeon.Controllers Namespace
+
+CreatureController.CreatureController Fields
+The CreatureController type exposes the following members.
+Fields
+	Name	Description
+ 	CreaturesMoving	Indicates whether or not it is currently the creatures' turn
+
+See Also
+CreatureController Class
+MyDungeon.Controllers Namespace
+
+CreatureController.CreaturesMoving Field
+Indicates whether or not it is currently the creatures' turn
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected bool CreaturesMoving
+
+Field Value
+Type: Boolean
+See Also
+CreatureController Class
+MyDungeon.Controllers Namespace
+
+PlayerDungeonController Class
+Base class for controller for the Player in the Dungeon scenes
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Entities.MovingDungeonObject
+            MyDungeon.Entities.PlayerDungeon
+              MyDungeon.Controllers.PlayerDungeonController
+
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public abstract class PlayerDungeonController : PlayerDungeon
+
+The PlayerDungeonController type exposes the following members.
+Constructors
+	Name	Description
+ 	PlayerDungeonController	Initializes a new instance of the PlayerDungeonController class
+
+Methods
+	Name	Description
+ 	Attack	
+ 	AttemptMove	Attempts to move the player and ends the player's turn if they moved (Overrides PlayerDungeon.AttemptMove(Int32, Int32).)
+ 	CheckHit	Checks if entity is blocked by an object on the blocking layer in a desired direction (Inherited from MovingDungeonObject.)
+ 	CheckIfGameOver	Check if player is out of HP and if so disable the PlayerDungeonController
+ 	LoseHealth	Reduce player's current health and executes UpdateHealth (Overrides MovingDungeonObject.LoseHealth(Int32).)
+ 	Move	Checks if the entity can move in the provided direction (Inherited from MovingDungeonObject.)
+ 	RecoverHealth	Increase player's current health and executes UpdateHealth (Overrides MovingDungeonObject.RecoverHealth(Int32).)
+ 	SmoothMovement	Moves entity from their current position to their desired position with a smooth animation (Inherited from MovingDungeonObject.)
+ 	Start	Sets the player's current health (Overrides MovingDungeonObject.Start().)
+ 	UpdateHealth	Ensure health does not go above MaxHealth or below 0 then executes CheckIfGameOver
+ 	WaitForTurnEnd	Used to ensure a turn does not end early (Inherited from MovingDungeonObject.)
+
+Fields
+	Name	Description
+ 	BlockingLayer	Layer used for collision checking in dungeons (Inherited from MovingDungeonObject.)
+ 	BoxCollider	 (Inherited from MovingDungeonObject.)
+ 	CurHealth	Entity's current health (Inherited from MovingDungeonObject.)
+ 	DisplayName	Name of the entity (Inherited from MovingDungeonObject.)
+ 	InverseMoveTime	Inverse of MoveTime used for SmoothMovement (Inherited from MovingDungeonObject.)
+ 	MaxHealth	Entity's maximum HP value (Inherited from MovingDungeonObject.)
+ 	MoveTime	How long the entity's turn lasts (Inherited from MovingDungeonObject.)
+ 	Moving	Entity's current moving state (Inherited from MovingDungeonObject.)
+ 	PosX	Entity's current X position (Inherited from MovingDungeonObject.)
+ 	PosY	Entity's current Y position (Inherited from MovingDungeonObject.)
+ 	Rb2D	 (Inherited from MovingDungeonObject.)
+ 	Strength	Base damage value attacks will do (Inherited from MovingDungeonObject.)
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Controllers Namespace
+
+PlayerDungeonController Constructor 
+Initializes a new instance of the PlayerDungeonController class
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected PlayerDungeonController()
+
+See Also
+PlayerDungeonController Class
+MyDungeon.Controllers Namespace
+
+PlayerDungeonController.PlayerDungeonController Methods
+The PlayerDungeonController type exposes the following members.
+Methods
+	Name	Description
+ 	Attack	
+ 	AttemptMove	Attempts to move the player and ends the player's turn if they moved (Overrides PlayerDungeon.AttemptMove(Int32, Int32).)
+ 	CheckHit	Checks if entity is blocked by an object on the blocking layer in a desired direction (Inherited from MovingDungeonObject.)
+ 	CheckIfGameOver	Check if player is out of HP and if so disable the PlayerDungeonController
+ 	LoseHealth	Reduce player's current health and executes UpdateHealth (Overrides MovingDungeonObject.LoseHealth(Int32).)
+ 	Move	Checks if the entity can move in the provided direction (Inherited from MovingDungeonObject.)
+ 	RecoverHealth	Increase player's current health and executes UpdateHealth (Overrides MovingDungeonObject.RecoverHealth(Int32).)
+ 	SmoothMovement	Moves entity from their current position to their desired position with a smooth animation (Inherited from MovingDungeonObject.)
+ 	Start	Sets the player's current health (Overrides MovingDungeonObject.Start().)
+ 	UpdateHealth	Ensure health does not go above MaxHealth or below 0 then executes CheckIfGameOver
+ 	WaitForTurnEnd	Used to ensure a turn does not end early (Inherited from MovingDungeonObject.)
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+PlayerDungeonController Class
+MyDungeon.Controllers Namespace
+
+PlayerDungeonController.Attack Method 
+[Missing <summary> documentation for "M:MyDungeon.Controllers.PlayerDungeonController.Attack"]
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected abstract IEnumerator Attack()
+
+Return Value
+Type: IEnumerator
+[Missing <returns> documentation for "M:MyDungeon.Controllers.PlayerDungeonController.Attack"]
+See Also
+PlayerDungeonController Class
+MyDungeon.Controllers Namespace
+
+PlayerDungeonController.AttemptMove Method 
+Attempts to move the player and ends the player's turn if they moved
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected override void AttemptMove(
+	int xDir,
+	int yDir
+)
+
+Parameters
+xDir
+Type: System.Int32
+The X direction the player is attempting to move in
+yDir
+Type: System.Int32
+The Y direction the player is attempting to move in
+See Also
+PlayerDungeonController Class
+MyDungeon.Controllers Namespace
+
+PlayerDungeonController.CheckIfGameOver Method 
+Check if player is out of HP and if so disable the PlayerDungeonController
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void CheckIfGameOver()
+
+See Also
+PlayerDungeonController Class
+MyDungeon.Controllers Namespace
+
+PlayerDungeonController.LoseHealth Method 
+Reduce player's current health and executes UpdateHealth
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public override void LoseHealth(
+	int damage
+)
+
+Parameters
+damage
+Type: System.Int32
+[Missing <param name="damage"/> documentation for "M:MyDungeon.Controllers.PlayerDungeonController.LoseHealth(System.Int32)"]
+See Also
+PlayerDungeonController Class
+MyDungeon.Controllers Namespace
+
+PlayerDungeonController.RecoverHealth Method 
+Increase player's current health and executes UpdateHealth
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public override void RecoverHealth(
+	int recover
+)
+
+Parameters
+recover
+Type: System.Int32
+[Missing <param name="recover"/> documentation for "M:MyDungeon.Controllers.PlayerDungeonController.RecoverHealth(System.Int32)"]
+See Also
+PlayerDungeonController Class
+MyDungeon.Controllers Namespace
+
+PlayerDungeonController.Start Method 
+Sets the player's current health
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected override void Start()
+
+See Also
+PlayerDungeonController Class
+MyDungeon.Controllers Namespace
+
+PlayerDungeonController.UpdateHealth Method 
+Ensure health does not go above MaxHealth or below 0 then executes CheckIfGameOver
+Namespace: MyDungeon.Controllers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void UpdateHealth()
+
+See Also
+PlayerDungeonController Class
+MyDungeon.Controllers Namespace
+
+PlayerDungeonController.PlayerDungeonController Fields
+The PlayerDungeonController type exposes the following members.
+Fields
+	Name	Description
+ 	BlockingLayer	Layer used for collision checking in dungeons (Inherited from MovingDungeonObject.)
+ 	BoxCollider	 (Inherited from MovingDungeonObject.)
+ 	CurHealth	Entity's current health (Inherited from MovingDungeonObject.)
+ 	DisplayName	Name of the entity (Inherited from MovingDungeonObject.)
+ 	InverseMoveTime	Inverse of MoveTime used for SmoothMovement (Inherited from MovingDungeonObject.)
+ 	MaxHealth	Entity's maximum HP value (Inherited from MovingDungeonObject.)
+ 	MoveTime	How long the entity's turn lasts (Inherited from MovingDungeonObject.)
+ 	Moving	Entity's current moving state (Inherited from MovingDungeonObject.)
+ 	PosX	Entity's current X position (Inherited from MovingDungeonObject.)
+ 	PosY	Entity's current Y position (Inherited from MovingDungeonObject.)
+ 	Rb2D	 (Inherited from MovingDungeonObject.)
+ 	Strength	Base damage value attacks will do (Inherited from MovingDungeonObject.)
+
+See Also
+PlayerDungeonController Class
+MyDungeon.Controllers Namespace
+
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+[Missing <summary> documentation for "N:MyDungeon.DungeonGeneration.GridBasedGenerator"]
+Classes
+	Class	Description
  	Cell	Class for setting up Cells in the Grid-Based dungeon map
  	Corridor	Class for creating Corridors
  	GridGenerator	Class for generating a pseudo-random grid-based dungeon
- 	IntRange	Class to get a random value between two numbers (inclusive)
- 	Item	Base class for Items
- 	ItemBehaviour	Component intended to be attached to item prefabs to attach ScriptableObjects that derive fromt he type Item to them
  	Room	Class for creating dungeon rooms
- 	SaveLoad	Contains the Save and Load methods
 
 Structures
 	Structure	Description
@@ -45,50 +531,14 @@ Enumerations
  	GridGenerator.TileType	Values of tiles that can be placed in dungeon grid
 
 
-CameraController Class
-Controller for the Main Camera
-Inheritance Hierarchy
-System.Object
-  Object
-    Component
-      Behaviour
-        MonoBehaviour
-          MyDungeon.CameraController
-
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public class CameraController : MonoBehaviour
-
-The CameraController type exposes the following members.
-Constructors
-	Name	Description
- 	CameraController	Initializes a new instance of the CameraController class
-
-See Also
-MyDungeon Namespace
-
-CameraController Constructor 
-Initializes a new instance of the CameraController class
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public CameraController()
-
-See Also
-CameraController Class
-MyDungeon Namespace
-
 Cell Class
 Class for setting up Cells in the Grid-Based dungeon map
 Inheritance Hierarchy
 System.Object
-  MyDungeon.Cell
+  MyDungeon.DungeonGeneration.GridBasedGenerator.Cell
 
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public class Cell
@@ -109,19 +559,19 @@ Fields
  	YPos	The starting Y position of a Cell
 
 See Also
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Cell Constructor 
 Initializes a new instance of the Cell class
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public Cell()
 
 See Also
 Cell Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Cell.Cell Methods
 The Cell type exposes the following members.
@@ -131,15 +581,15 @@ Methods
 
 See Also
 Cell Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Cell.SetupCell Method 
 Sets up Cell location in map array
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
-public void SetupCell(
+public virtual void SetupCell(
 	int column,
 	int row
 )
@@ -153,7 +603,7 @@ Type: System.Int32
 Cell starting Y position
 See Also
 Cell Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Cell.Cell Fields
 The Cell type exposes the following members.
@@ -165,12 +615,12 @@ Fields
 
 See Also
 Cell Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Cell.Used Field
 Indicates if a Cell has been used to prevent overlapping rooms
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public bool Used
@@ -179,12 +629,12 @@ Field Value
 Type: Boolean
 See Also
 Cell Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Cell.XPos Field
 The starting X position of a Cell
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int XPos
@@ -193,12 +643,12 @@ Field Value
 Type: Int32
 See Also
 Cell Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Cell.YPos Field
 The starting Y position of a Cell
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int YPos
@@ -207,12 +657,12 @@ Field Value
 Type: Int32
 See Also
 Cell Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Coord Structure
 Data structure for Room starting coordinates
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public struct Coord
@@ -228,12 +678,12 @@ Fields
  	Y	The starting Y coordinate of a room
 
 See Also
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Coord Constructor 
 Starting coordinates for Rooms
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public Coord(
@@ -250,7 +700,7 @@ Type: System.Int32
 Room starting Y position
 See Also
 Coord Structure
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Coord.Coord Fields
 The Coord type exposes the following members.
@@ -261,12 +711,12 @@ Fields
 
 See Also
 Coord Structure
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Coord.X Field
 The starting X coordinate of a room
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int X
@@ -275,12 +725,12 @@ Field Value
 Type: Int32
 See Also
 Coord Structure
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Coord.Y Field
 The starting Y coordinate of a room
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int Y
@@ -289,16 +739,16 @@ Field Value
 Type: Int32
 See Also
 Coord Structure
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Corridor Class
 Class for creating Corridors
 Inheritance Hierarchy
 System.Object
-  MyDungeon.Corridor
+  MyDungeon.DungeonGeneration.GridBasedGenerator.Corridor
 
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public class Corridor
@@ -320,19 +770,19 @@ Fields
  	StartYPos	The y coordinate for the start of the corridor
 
 See Also
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Corridor Constructor 
 Initializes a new instance of the Corridor class
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public Corridor()
 
 See Also
 Corridor Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Corridor.Corridor Methods
 The Corridor type exposes the following members.
@@ -342,15 +792,15 @@ Methods
 
 See Also
 Corridor Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Corridor.SetupCorridor Method 
 Sets up Corridor location in map array
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
-public void SetupCorridor(
+public virtual void SetupCorridor(
 	int x,
 	int y,
 	int length,
@@ -368,11 +818,11 @@ length
 Type: System.Int32
 Length of the corridor
 direction
-Type: MyDungeon.Direction
+Type: MyDungeon.DungeonGeneration.GridBasedGenerator.Direction
 Direction of the corridor
 See Also
 Corridor Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Corridor.Corridor Fields
 The Corridor type exposes the following members.
@@ -385,12 +835,12 @@ Fields
 
 See Also
 Corridor Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Corridor.CorridorLength Field
 How many units long the corridor is
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int CorridorLength
@@ -399,12 +849,12 @@ Field Value
 Type: Int32
 See Also
 Corridor Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Corridor.Direction Field
 Which direction the corridor is heading from it's room
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public Direction Direction
@@ -413,12 +863,12 @@ Field Value
 Type: Direction
 See Also
 Corridor Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Corridor.StartXPos Field
 The x coordinate for the start of the corridor
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int StartXPos
@@ -427,12 +877,12 @@ Field Value
 Type: Int32
 See Also
 Corridor Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Corridor.StartYPos Field
 The y coordinate for the start of the corridor
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int StartYPos
@@ -441,12 +891,12 @@ Field Value
 Type: Int32
 See Also
 Corridor Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Direction Enumeration
 Directional values for Corridor
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public enum Direction
@@ -459,7 +909,7 @@ Members
 	West	3	
 
 See Also
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator Class
 Class for generating a pseudo-random grid-based dungeon
@@ -469,10 +919,10 @@ System.Object
     Component
       Behaviour
         MonoBehaviour
-          MyDungeon.GridGenerator
+          MyDungeon.DungeonGeneration.GridBasedGenerator.GridGenerator
 
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public class GridGenerator : MonoBehaviour
@@ -484,100 +934,354 @@ Constructors
 
 Methods
 	Name	Description
+ 	CreateCorridors	Creates two connected corridors to connect rooms on the map
+ 	CreateRooms	Creates the rooms in the map
  	GenerateBoard	Generate a new grid-based dungeon map
+ 	InstantiateFromArray	Instantiate random prefab from an array of prefabs
+ 	InstantiateHorizontalOuterWall	Instantiate the horizontal edges of the outer wall
+ 	InstantiateOuterWalls	Instantiate the outer wall of the map
+ 	InstantiateTiles	Instantiate all of the objects based on the value in the map array
+ 	InstantiateVerticalOuterWall	Instantiate the vertical edges of the outer wall
+ 	SetTilesValuesForCorridors	Adds corridors to the map array
+ 	SetTilesValuesForRooms	Sets values within rooms in map array to create spawn locations for various objects
+Objects include PlayerDungeon, Exit, Monsters and Items
+ 	SetupCells	Sets the number of cells contained on the map
+ 	SetupTilesArray	Creates the initial map array filled with impassible terrain
 
 Fields
 	Name	Description
+ 	Board	Array representing the map
+ 	BoardHolder	GameObject that acts as a container for all other tiles
+ 	Cells	All the cells available in map
  	CellSizeH	The number of rows in a cell
  	CellSizeW	The number of columns in a cell
  	Columns	The number of columns on the board (how wide it will be)
  	CorridorLength	The range of lengths corridors between rooms can have
- 	CreatureLevelMaxCount	The range of number of creatures that can appear in the board
- 	Creatures	Array creature prefabs
- 	Exit	Exit or staircase prefab
+ 	Corridors	All the corridors that connect the rooms
  	FloorTiles	An array of floor tile prefabs
- 	ItemLevelMaxCount	The range of number of items that can appear in the board
- 	Items	An array of item prefabs
  	NumRooms	The range of the number of rooms there can be
  	OuterWallTiles	An array of outer wall tile prefabs
- 	Player	Player prefab to spawn into map
+ 	RoomHeight	The range of heights rooms can have
  	RoomMinHeight	The smallest a room's height can be
  	RoomMinWidth	The smallest a room's width can be
+ 	Rooms	All the rooms that are created for this board
+ 	RoomWidth	The range of widths rooms can have
  	Rows	The number of rows on the board (how tall it will be)
  	Seed	The seed used to generate the board
  	WallTiles	An array of wall tile prefabs
 
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
 See Also
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator Constructor 
 Initializes a new instance of the GridGenerator class
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public GridGenerator()
 
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.GridGenerator Methods
 The GridGenerator type exposes the following members.
 Methods
 	Name	Description
+ 	CreateCorridors	Creates two connected corridors to connect rooms on the map
+ 	CreateRooms	Creates the rooms in the map
  	GenerateBoard	Generate a new grid-based dungeon map
+ 	InstantiateFromArray	Instantiate random prefab from an array of prefabs
+ 	InstantiateHorizontalOuterWall	Instantiate the horizontal edges of the outer wall
+ 	InstantiateOuterWalls	Instantiate the outer wall of the map
+ 	InstantiateTiles	Instantiate all of the objects based on the value in the map array
+ 	InstantiateVerticalOuterWall	Instantiate the vertical edges of the outer wall
+ 	SetTilesValuesForCorridors	Adds corridors to the map array
+ 	SetTilesValuesForRooms	Sets values within rooms in map array to create spawn locations for various objects
+Objects include PlayerDungeon, Exit, Monsters and Items
+ 	SetupCells	Sets the number of cells contained on the map
+ 	SetupTilesArray	Creates the initial map array filled with impassible terrain
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
 
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.CreateCorridors Method 
+Creates two connected corridors to connect rooms on the map
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void CreateCorridors()
+
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.CreateRooms Method 
+Creates the rooms in the map
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void CreateRooms()
+
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.GenerateBoard Method 
 Generate a new grid-based dungeon map
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
-public GridGenerator.TileType[,] GenerateBoard()
+public virtual GridGenerator.TileType[,] GenerateBoard()
 
 Return Value
 Type: GridGenerator.TileType[,]
 An 2D array representing the dungeon map
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.InstantiateFromArray Method 
+Instantiate random prefab from an array of prefabs
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void InstantiateFromArray(
+	GameObject[] prefabs,
+	float xCoord,
+	float yCoord
+)
+
+Parameters
+prefabs
+Type: GameObject[]
+Array of possible prefabs to instantiate
+xCoord
+Type: System.Single
+X position of instantiated prefab
+yCoord
+Type: System.Single
+Y position of instantiated prefab
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.InstantiateHorizontalOuterWall Method 
+Instantiate the horizontal edges of the outer wall
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void InstantiateHorizontalOuterWall(
+	float startingX,
+	float endingX,
+	float yCoord
+)
+
+Parameters
+startingX
+Type: System.Single
+The starting X coordinate for the outer wall tiles
+endingX
+Type: System.Single
+The ending X coordinate for the outer wall tiles
+yCoord
+Type: System.Single
+The Y position of the outer wall tile
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.InstantiateOuterWalls Method 
+Instantiate the outer wall of the map
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void InstantiateOuterWalls()
+
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.InstantiateTiles Method 
+Instantiate all of the objects based on the value in the map array
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void InstantiateTiles()
+
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.InstantiateVerticalOuterWall Method 
+Instantiate the vertical edges of the outer wall
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void InstantiateVerticalOuterWall(
+	float xCoord,
+	float startingY,
+	float endingY
+)
+
+Parameters
+xCoord
+Type: System.Single
+The X position of the outer wall tile
+startingY
+Type: System.Single
+The starting Y coordinate for the outer wall tiles
+endingY
+Type: System.Single
+The ending Y coordinate for the outer wall tiles
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.SetTilesValuesForCorridors Method 
+Adds corridors to the map array
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void SetTilesValuesForCorridors()
+
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.SetTilesValuesForRooms Method 
+Sets values within rooms in map array to create spawn locations for various objects
+Objects include PlayerDungeon, Exit, Monsters and Items
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void SetTilesValuesForRooms()
+
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.SetupCells Method 
+Sets the number of cells contained on the map
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void SetupCells()
+
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.SetupTilesArray Method 
+Creates the initial map array filled with impassible terrain
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual GridGenerator.TileType[,] SetupTilesArray()
+
+Return Value
+Type: GridGenerator.TileType[,]
+Map array filled with TileType.Wall
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.GridGenerator Fields
 The GridGenerator type exposes the following members.
 Fields
 	Name	Description
+ 	Board	Array representing the map
+ 	BoardHolder	GameObject that acts as a container for all other tiles
+ 	Cells	All the cells available in map
  	CellSizeH	The number of rows in a cell
  	CellSizeW	The number of columns in a cell
  	Columns	The number of columns on the board (how wide it will be)
  	CorridorLength	The range of lengths corridors between rooms can have
- 	CreatureLevelMaxCount	The range of number of creatures that can appear in the board
- 	Creatures	Array creature prefabs
- 	Exit	Exit or staircase prefab
+ 	Corridors	All the corridors that connect the rooms
  	FloorTiles	An array of floor tile prefabs
- 	ItemLevelMaxCount	The range of number of items that can appear in the board
- 	Items	An array of item prefabs
  	NumRooms	The range of the number of rooms there can be
  	OuterWallTiles	An array of outer wall tile prefabs
- 	Player	Player prefab to spawn into map
+ 	RoomHeight	The range of heights rooms can have
  	RoomMinHeight	The smallest a room's height can be
  	RoomMinWidth	The smallest a room's width can be
+ 	Rooms	All the rooms that are created for this board
+ 	RoomWidth	The range of widths rooms can have
  	Rows	The number of rows on the board (how tall it will be)
  	Seed	The seed used to generate the board
  	WallTiles	An array of wall tile prefabs
 
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.Board Field
+Array representing the map
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected GridGenerator.TileType[,] Board
+
+Field Value
+Type: GridGenerator.TileType[,]
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.BoardHolder Field
+GameObject that acts as a container for all other tiles
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected GameObject BoardHolder
+
+Field Value
+Type: GameObject
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.Cells Field
+All the cells available in map
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected Cell[] Cells
+
+Field Value
+Type: Cell[]
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.CellSizeH Field
 The number of rows in a cell
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int CellSizeH
@@ -586,12 +1290,12 @@ Field Value
 Type: Int32
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.CellSizeW Field
 The number of columns in a cell
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int CellSizeW
@@ -600,12 +1304,12 @@ Field Value
 Type: Int32
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.Columns Field
 The number of columns on the board (how wide it will be)
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int Columns
@@ -614,12 +1318,12 @@ Field Value
 Type: Int32
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.CorridorLength Field
 The range of lengths corridors between rooms can have
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public IntRange CorridorLength
@@ -628,54 +1332,26 @@ Field Value
 Type: IntRange
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
-GridGenerator.CreatureLevelMaxCount Field
-The range of number of creatures that can appear in the board
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+GridGenerator.Corridors Field
+All the corridors that connect the rooms
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
-public IntRange CreatureLevelMaxCount
+protected List<Corridor> Corridors
 
 Field Value
-Type: IntRange
+Type: List(Corridor)
 See Also
 GridGenerator Class
-MyDungeon Namespace
-
-GridGenerator.Creatures Field
-Array creature prefabs
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public GameObject[] Creatures
-
-Field Value
-Type: GameObject[]
-See Also
-GridGenerator Class
-MyDungeon Namespace
-
-GridGenerator.Exit Field
-Exit or staircase prefab
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public GameObject Exit
-
-Field Value
-Type: GameObject
-See Also
-GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.FloorTiles Field
 An array of floor tile prefabs
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public GameObject[] FloorTiles
@@ -684,40 +1360,12 @@ Field Value
 Type: GameObject[]
 See Also
 GridGenerator Class
-MyDungeon Namespace
-
-GridGenerator.ItemLevelMaxCount Field
-The range of number of items that can appear in the board
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public IntRange ItemLevelMaxCount
-
-Field Value
-Type: IntRange
-See Also
-GridGenerator Class
-MyDungeon Namespace
-
-GridGenerator.Items Field
-An array of item prefabs
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public GameObject[] Items
-
-Field Value
-Type: GameObject[]
-See Also
-GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.NumRooms Field
 The range of the number of rooms there can be
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public IntRange NumRooms
@@ -726,12 +1374,12 @@ Field Value
 Type: IntRange
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.OuterWallTiles Field
 An array of outer wall tile prefabs
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public GameObject[] OuterWallTiles
@@ -740,26 +1388,26 @@ Field Value
 Type: GameObject[]
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
-GridGenerator.Player Field
-Player prefab to spawn into map
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+GridGenerator.RoomHeight Field
+The range of heights rooms can have
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
-public GameObject Player
+protected IntRange RoomHeight
 
 Field Value
-Type: GameObject
+Type: IntRange
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.RoomMinHeight Field
 The smallest a room's height can be
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int RoomMinHeight
@@ -768,12 +1416,12 @@ Field Value
 Type: Int32
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.RoomMinWidth Field
 The smallest a room's width can be
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int RoomMinWidth
@@ -782,12 +1430,40 @@ Field Value
 Type: Int32
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.Rooms Field
+All the rooms that are created for this board
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected Room[] Rooms
+
+Field Value
+Type: Room[]
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
+
+GridGenerator.RoomWidth Field
+The range of widths rooms can have
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected IntRange RoomWidth
+
+Field Value
+Type: IntRange
+See Also
+GridGenerator Class
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.Rows Field
 The number of rows on the board (how tall it will be)
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int Rows
@@ -796,12 +1472,12 @@ Field Value
 Type: Int32
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.Seed Field
 The seed used to generate the board
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int Seed
@@ -810,12 +1486,12 @@ Field Value
 Type: Int32
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.WallTiles Field
 An array of wall tile prefabs
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public GameObject[] WallTiles
@@ -824,12 +1500,12 @@ Field Value
 Type: GameObject[]
 See Also
 GridGenerator Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 GridGenerator.TileType Enumeration
 Values of tiles that can be placed in dungeon grid
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public enum TileType
@@ -844,319 +1520,16 @@ Members
 	Player	5	
 
 See Also
-MyDungeon Namespace
-
-IntRange Class
-Class to get a random value between two numbers (inclusive)
-Inheritance Hierarchy
-System.Object
-  MyDungeon.IntRange
-
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-[SerializableAttribute]
-public class IntRange
-
-The IntRange type exposes the following members.
-Constructors
-	Name	Description
- 	IntRange	Set the Range values
-
-Properties
-	Name	Description
- 	Random	Get a random value from the range.
-
-Fields
-	Name	Description
- 	Max	The maximum value for a range
- 	Min	The minimum value for a range
-
-See Also
-MyDungeon Namespace
-
-IntRange Constructor 
-Set the Range values
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public IntRange(
-	int min,
-	int max
-)
-
-Parameters
-min
-Type: System.Int32
-The minimum value in this range
-max
-Type: System.Int32
-The maximum value in this range
-See Also
-IntRange Class
-MyDungeon Namespace
-
-IntRange.IntRange Properties
-The IntRange type exposes the following members.
-Properties
-	Name	Description
- 	Random	Get a random value from the range.
-
-See Also
-IntRange Class
-MyDungeon Namespace
-
-IntRange.Random Property 
-Get a random value from the range.
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public int Random { get; }
-
-Property Value
-Type: Int32
-See Also
-IntRange Class
-MyDungeon Namespace
-
-IntRange.IntRange Fields
-The IntRange type exposes the following members.
-Fields
-	Name	Description
- 	Max	The maximum value for a range
- 	Min	The minimum value for a range
-
-See Also
-IntRange Class
-MyDungeon Namespace
-
-IntRange.Max Field
-The maximum value for a range
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public int Max
-
-Field Value
-Type: Int32
-See Also
-IntRange Class
-MyDungeon Namespace
-
-IntRange.Min Field
-The minimum value for a range
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public int Min
-
-Field Value
-Type: Int32
-See Also
-IntRange Class
-MyDungeon Namespace
-
-Item Class
-Base class for Items
-Inheritance Hierarchy
-System.Object
-  Object
-    ScriptableObject
-      MyDungeon.Item
-
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public abstract class Item : ScriptableObject
-
-The Item type exposes the following members.
-Constructors
-	Name	Description
- 	Item	Initializes a new instance of the Item class
-
-Methods
-	Name	Description
- 	Use	Implemntation method for UseItem
- 	UseItem	Sets Target and calls Use() for inheriting classes
-
-Fields
-	Name	Description
- 	Target	The target game object to affect with an item
- 	UseSounds	An array of sounds an item can choose from when an item is used
-
-See Also
-MyDungeon Namespace
-
-Item Constructor 
-Initializes a new instance of the Item class
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-protected Item()
-
-See Also
-Item Class
-MyDungeon Namespace
-
-Item.Item Methods
-The Item type exposes the following members.
-Methods
-	Name	Description
- 	Use	Implemntation method for UseItem
- 	UseItem	Sets Target and calls Use() for inheriting classes
-
-See Also
-Item Class
-MyDungeon Namespace
-
-Item.Use Method 
-Implemntation method for UseItem
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-protected abstract void Use()
-
-See Also
-Item Class
-MyDungeon Namespace
-
-Item.UseItem Method 
-Sets Target and calls Use() for inheriting classes
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public virtual void UseItem(
-	Transform target
-)
-
-Parameters
-target
-Type: Transform
-Target transform to be passed to inheriting class
-See Also
-Item Class
-MyDungeon Namespace
-
-Item.Item Fields
-The Item type exposes the following members.
-Fields
-	Name	Description
- 	Target	The target game object to affect with an item
- 	UseSounds	An array of sounds an item can choose from when an item is used
-
-See Also
-Item Class
-MyDungeon Namespace
-
-Item.Target Field
-The target game object to affect with an item
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-protected Transform Target
-
-Field Value
-Type: Transform
-See Also
-Item Class
-MyDungeon Namespace
-
-Item.UseSounds Field
-An array of sounds an item can choose from when an item is used
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public AudioClip[] UseSounds
-
-Field Value
-Type: AudioClip[]
-See Also
-Item Class
-MyDungeon Namespace
-
-ItemBehaviour Class
-Component intended to be attached to item prefabs to attach ScriptableObjects that derive fromt he type Item to them
-Inheritance Hierarchy
-System.Object
-  Object
-    Component
-      Behaviour
-        MonoBehaviour
-          MyDungeon.ItemBehaviour
-
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public class ItemBehaviour : MonoBehaviour
-
-The ItemBehaviour type exposes the following members.
-Constructors
-	Name	Description
- 	ItemBehaviour	Initializes a new instance of the ItemBehaviour class
-
-Fields
-	Name	Description
- 	Item	A ScriptableObject asset of type Item
-
-See Also
-MyDungeon Namespace
-
-ItemBehaviour Constructor 
-Initializes a new instance of the ItemBehaviour class
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public ItemBehaviour()
-
-See Also
-ItemBehaviour Class
-MyDungeon Namespace
-
-ItemBehaviour.ItemBehaviour Fields
-The ItemBehaviour type exposes the following members.
-Fields
-	Name	Description
- 	Item	A ScriptableObject asset of type Item
-
-See Also
-ItemBehaviour Class
-MyDungeon Namespace
-
-ItemBehaviour.Item Field
-A ScriptableObject asset of type Item
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
-Syntax
-C#
-public Item Item
-
-Field Value
-Type: Item
-See Also
-ItemBehaviour Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Room Class
 Class for creating dungeon rooms
 Inheritance Hierarchy
 System.Object
-  MyDungeon.Room
+  MyDungeon.DungeonGeneration.GridBasedGenerator.Room
 
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public class Room
@@ -1180,19 +1553,19 @@ Fields
  	YPos	The y coordinate of the lower left tile of the room
 
 See Also
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Room Constructor 
 Initializes a new instance of the Room class
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public Room()
 
 See Also
 Room Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Room.Room Methods
 The Room type exposes the following members.
@@ -1202,15 +1575,15 @@ Methods
 
 See Also
 Room Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Room.SetupRoom Method 
 Sets up Rooms in map array
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
-public void SetupRoom(
+public virtual void SetupRoom(
 	IntRange widthRange,
 	IntRange heightRange,
 	int col,
@@ -1219,10 +1592,10 @@ public void SetupRoom(
 
 Parameters
 widthRange
-Type: MyDungeon.IntRange
+Type: MyDungeon.Utilities.IntRange
 Int Range for Room width
 heightRange
-Type: MyDungeon.IntRange
+Type: MyDungeon.Utilities.IntRange
 Int Range for Room height
 col
 Type: System.Int32
@@ -1232,7 +1605,7 @@ Type: System.Int32
 Room starting Y position
 See Also
 Room Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Room.Room Fields
 The Room type exposes the following members.
@@ -1247,12 +1620,12 @@ Fields
 
 See Also
 Room Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Room.Connections Field
 The tiles of the room walls that are connected to corridors
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public List<Coord> Connections
@@ -1261,12 +1634,12 @@ Field Value
 Type: List(Coord)
 See Also
 Room Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Room.EnteringCorridor Field
 The direction of the corridor that is entering this room
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public Direction EnteringCorridor
@@ -1275,12 +1648,12 @@ Field Value
 Type: Direction
 See Also
 Room Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Room.RoomHeight Field
 How many tiles high the room is
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int RoomHeight
@@ -1289,12 +1662,12 @@ Field Value
 Type: Int32
 See Also
 Room Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Room.RoomWidth Field
 How many tiles wide the room is
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int RoomWidth
@@ -1303,12 +1676,12 @@ Field Value
 Type: Int32
 See Also
 Room Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Room.XPos Field
 The x coordinate of the lower left tile of the room
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int XPos
@@ -1317,12 +1690,12 @@ Field Value
 Type: Int32
 See Also
 Room Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
 Room.YPos Field
 The y coordinate of the lower left tile of the room
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.DungeonGeneration.GridBasedGenerator
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public int YPos
@@ -1331,20 +1704,2394 @@ Field Value
 Type: Int32
 See Also
 Room Class
-MyDungeon Namespace
+MyDungeon.DungeonGeneration.GridBasedGenerator Namespace
 
-SaveLoad Class
-Contains the Save and Load methods
+MyDungeon.Entities Namespace
+[Missing <summary> documentation for "N:MyDungeon.Entities"]
+Classes
+	Class	Description
+ 	Creature	Base class for entities other than the player in the dungoen
+ 	MovingDungeonObject	Base class for objects that move in the Dungeon scenes
+ 	MovingOverworldObject	Base class for entities that move in the overworld
+ 	PlayerDungeon	Base class for the Player in Dungeon scenes
+ 	PlayerOverworld	Base class for the Player in Overworld scenes
+
+
+Creature Class
+Base class for entities other than the player in the dungoen
 Inheritance Hierarchy
 System.Object
   Object
     Component
       Behaviour
         MonoBehaviour
-          MyDungeon.SaveLoad
+          MyDungeon.Entities.MovingDungeonObject
+            MyDungeon.Entities.Creature
 
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public abstract class Creature : MovingDungeonObject
+
+The Creature type exposes the following members.
+Constructors
+	Name	Description
+ 	Creature	Initializes a new instance of the Creature class
+
+Methods
+	Name	Description
+ 	AddCreatureToList	Adds a creature to the list
+ 	AttemptMove(T)	
+ 	CheckHit	Checks if entity is blocked by an object on the blocking layer in a desired direction (Inherited from MovingDungeonObject.)
+ 	LoseHealth	Subtracts health from the entity (Inherited from MovingDungeonObject.)
+ 	Move	Checks if the entity can move in the provided direction (Inherited from MovingDungeonObject.)
+ 	MoveCreature	
+ 	OnCantMove(T)	
+ 	RecoverHealth	Adds health to the entity (Inherited from MovingDungeonObject.)
+ 	RemoveCreatureFromList	Removes a creature from the list
+ 	SmoothMovement	Moves entity from their current position to their desired position with a smooth animation (Inherited from MovingDungeonObject.)
+ 	Start	Add the creature to the creature list and sets its health value (Overrides MovingDungeonObject.Start().)
+ 	Update	Checks if a creature has lost all its HP and removes it from the list if so
+ 	WaitForTurnEnd	Used to ensure a turn does not end early (Inherited from MovingDungeonObject.)
+
+Fields
+	Name	Description
+ 	BlockingLayer	Layer used for collision checking in dungeons (Inherited from MovingDungeonObject.)
+ 	BoxCollider	 (Inherited from MovingDungeonObject.)
+ 	CurHealth	Entity's current health (Inherited from MovingDungeonObject.)
+ 	DisplayName	Name of the entity (Inherited from MovingDungeonObject.)
+ 	InverseMoveTime	Inverse of MoveTime used for SmoothMovement (Inherited from MovingDungeonObject.)
+ 	MaxHealth	Entity's maximum HP value (Inherited from MovingDungeonObject.)
+ 	MoveTime	How long the entity's turn lasts (Inherited from MovingDungeonObject.)
+ 	Moving	Entity's current moving state (Inherited from MovingDungeonObject.)
+ 	PosX	Entity's current X position (Inherited from MovingDungeonObject.)
+ 	PosY	Entity's current Y position (Inherited from MovingDungeonObject.)
+ 	Rb2D	 (Inherited from MovingDungeonObject.)
+ 	Strength	Base damage value attacks will do (Inherited from MovingDungeonObject.)
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Entities Namespace
+
+Creature Constructor 
+Initializes a new instance of the Creature class
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected Creature()
+
+See Also
+Creature Class
+MyDungeon.Entities Namespace
+
+Creature.Creature Methods
+The Creature type exposes the following members.
+Methods
+	Name	Description
+ 	AddCreatureToList	Adds a creature to the list
+ 	AttemptMove(T)	
+ 	CheckHit	Checks if entity is blocked by an object on the blocking layer in a desired direction (Inherited from MovingDungeonObject.)
+ 	LoseHealth	Subtracts health from the entity (Inherited from MovingDungeonObject.)
+ 	Move	Checks if the entity can move in the provided direction (Inherited from MovingDungeonObject.)
+ 	MoveCreature	
+ 	OnCantMove(T)	
+ 	RecoverHealth	Adds health to the entity (Inherited from MovingDungeonObject.)
+ 	RemoveCreatureFromList	Removes a creature from the list
+ 	SmoothMovement	Moves entity from their current position to their desired position with a smooth animation (Inherited from MovingDungeonObject.)
+ 	Start	Add the creature to the creature list and sets its health value (Overrides MovingDungeonObject.Start().)
+ 	Update	Checks if a creature has lost all its HP and removes it from the list if so
+ 	WaitForTurnEnd	Used to ensure a turn does not end early (Inherited from MovingDungeonObject.)
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+Creature Class
+MyDungeon.Entities Namespace
+
+Creature.AddCreatureToList Method 
+Adds a creature to the list
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void AddCreatureToList(
+	Creature script
+)
+
+Parameters
+script
+Type: MyDungeon.Entities.Creature
+The creature instance
+See Also
+Creature Class
+MyDungeon.Entities Namespace
+
+Creature.AttemptMove(T) Method 
+[Missing <summary> documentation for "M:MyDungeon.Entities.Creature.AttemptMove``1(System.Int32,System.Int32)"]
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void AttemptMove<T>(
+	int xDir,
+	int yDir
+)
+where T : Component
+
+
+Parameters
+xDir
+Type: System.Int32
+The X direction the creature is attempting to move in
+yDir
+Type: System.Int32
+The Y direction the creature is attempting to move in
+Type Parameters
+T
+A type that inherits from Component
+See Also
+Creature Class
+MyDungeon.Entities Namespace
+
+Creature.MoveCreature Method 
+[Missing <summary> documentation for "M:MyDungeon.Entities.Creature.MoveCreature"]
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public abstract void MoveCreature()
+
+See Also
+Creature Class
+MyDungeon.Entities Namespace
+
+Creature.OnCantMove(T) Method 
+[Missing <summary> documentation for "M:MyDungeon.Entities.Creature.OnCantMove``1(``0)"]
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected abstract void OnCantMove<T>(
+	T component
+)
+
+
+Parameters
+component
+Type: T
+[Missing <param name="component"/> documentation for "M:MyDungeon.Entities.Creature.OnCantMove``1(``0)"]
+Type Parameters
+T
+[Missing <typeparam name="T"/> documentation for "M:MyDungeon.Entities.Creature.OnCantMove``1(``0)"]
+See Also
+Creature Class
+MyDungeon.Entities Namespace
+
+Creature.RemoveCreatureFromList Method 
+Removes a creature from the list
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void RemoveCreatureFromList(
+	Creature script
+)
+
+Parameters
+script
+Type: MyDungeon.Entities.Creature
+The creature instance
+See Also
+Creature Class
+MyDungeon.Entities Namespace
+
+Creature.Start Method 
+Add the creature to the creature list and sets its health value
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected override void Start()
+
+See Also
+Creature Class
+MyDungeon.Entities Namespace
+
+Creature.Update Method 
+Checks if a creature has lost all its HP and removes it from the list if so
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Update()
+
+See Also
+Creature Class
+MyDungeon.Entities Namespace
+
+Creature.Creature Fields
+The Creature type exposes the following members.
+Fields
+	Name	Description
+ 	BlockingLayer	Layer used for collision checking in dungeons (Inherited from MovingDungeonObject.)
+ 	BoxCollider	 (Inherited from MovingDungeonObject.)
+ 	CurHealth	Entity's current health (Inherited from MovingDungeonObject.)
+ 	DisplayName	Name of the entity (Inherited from MovingDungeonObject.)
+ 	InverseMoveTime	Inverse of MoveTime used for SmoothMovement (Inherited from MovingDungeonObject.)
+ 	MaxHealth	Entity's maximum HP value (Inherited from MovingDungeonObject.)
+ 	MoveTime	How long the entity's turn lasts (Inherited from MovingDungeonObject.)
+ 	Moving	Entity's current moving state (Inherited from MovingDungeonObject.)
+ 	PosX	Entity's current X position (Inherited from MovingDungeonObject.)
+ 	PosY	Entity's current Y position (Inherited from MovingDungeonObject.)
+ 	Rb2D	 (Inherited from MovingDungeonObject.)
+ 	Strength	Base damage value attacks will do (Inherited from MovingDungeonObject.)
+
+See Also
+Creature Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject Class
+Base class for objects that move in the Dungeon scenes
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Entities.MovingDungeonObject
+            MyDungeon.Entities.Creature
+            MyDungeon.Entities.PlayerDungeon
+
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public abstract class MovingDungeonObject : MonoBehaviour
+
+The MovingDungeonObject type exposes the following members.
+Constructors
+	Name	Description
+ 	MovingDungeonObject	Initializes a new instance of the MovingDungeonObject class
+
+Methods
+	Name	Description
+ 	CheckHit	Checks if entity is blocked by an object on the blocking layer in a desired direction
+ 	LoseHealth	Subtracts health from the entity
+ 	Move	Checks if the entity can move in the provided direction
+ 	RecoverHealth	Adds health to the entity
+ 	SmoothMovement	Moves entity from their current position to their desired position with a smooth animation
+ 	Start	Initializes the 2DPhysics components, the entity's position, and animation movement multiplier
+ 	WaitForTurnEnd	Used to ensure a turn does not end early
+
+Fields
+	Name	Description
+ 	BlockingLayer	Layer used for collision checking in dungeons
+ 	BoxCollider	
+ 	CurHealth	Entity's current health
+ 	DisplayName	Name of the entity
+ 	InverseMoveTime	Inverse of MoveTime used for SmoothMovement
+ 	MaxHealth	Entity's maximum HP value
+ 	MoveTime	How long the entity's turn lasts
+ 	Moving	Entity's current moving state
+ 	PosX	Entity's current X position
+ 	PosY	Entity's current Y position
+ 	Rb2D	
+ 	Strength	Base damage value attacks will do
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Entities Namespace
+
+MovingDungeonObject Constructor 
+Initializes a new instance of the MovingDungeonObject class
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected MovingDungeonObject()
+
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.MovingDungeonObject Methods
+The MovingDungeonObject type exposes the following members.
+Methods
+	Name	Description
+ 	CheckHit	Checks if entity is blocked by an object on the blocking layer in a desired direction
+ 	LoseHealth	Subtracts health from the entity
+ 	Move	Checks if the entity can move in the provided direction
+ 	RecoverHealth	Adds health to the entity
+ 	SmoothMovement	Moves entity from their current position to their desired position with a smooth animation
+ 	Start	Initializes the 2DPhysics components, the entity's position, and animation movement multiplier
+ 	WaitForTurnEnd	Used to ensure a turn does not end early
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.CheckHit Method 
+Checks if entity is blocked by an object on the blocking layer in a desired direction
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void CheckHit(
+	Vector2 start,
+	Vector2 end,
+	out RaycastHit2D hit
+)
+
+Parameters
+start
+Type: Vector2
+Entity's current position
+end
+Type: Vector2
+Entity's desired position
+hit
+Type: RaycastHit2D
+Output result of the Linecast
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.LoseHealth Method 
+Subtracts health from the entity
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void LoseHealth(
+	int damage
+)
+
+Parameters
+damage
+Type: System.Int32
+Amount of health to subtract from current health
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.Move Method 
+Checks if the entity can move in the provided direction
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual bool Move(
+	int xDir,
+	int yDir,
+	out RaycastHit2D hit
+)
+
+Parameters
+xDir
+Type: System.Int32
+X direction the entity is attempting to move in
+yDir
+Type: System.Int32
+Y direction the entity is attempting to move in
+hit
+Type: RaycastHit2D
+Output variable for Raycast collision check
+Return Value
+Type: Boolean
+True if direction is clear for movement or False if entity is currently moving or blocked
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.RecoverHealth Method 
+Adds health to the entity
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void RecoverHealth(
+	int recover
+)
+
+Parameters
+recover
+Type: System.Int32
+Amount of health to add to the current health
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.SmoothMovement Method 
+Moves entity from their current position to their desired position with a smooth animation
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual IEnumerator SmoothMovement(
+	Vector3 end
+)
+
+Parameters
+end
+Type: Vector3
+Desired position
+Return Value
+Type: IEnumerator
+[Missing <returns> documentation for "M:MyDungeon.Entities.MovingDungeonObject.SmoothMovement(UnityEngine.Vector3)"]
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.Start Method 
+Initializes the 2DPhysics components, the entity's position, and animation movement multiplier
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.WaitForTurnEnd Method 
+Used to ensure a turn does not end early
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual IEnumerator WaitForTurnEnd()
+
+Return Value
+Type: IEnumerator
+[Missing <returns> documentation for "M:MyDungeon.Entities.MovingDungeonObject.WaitForTurnEnd"]
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.MovingDungeonObject Fields
+The MovingDungeonObject type exposes the following members.
+Fields
+	Name	Description
+ 	BlockingLayer	Layer used for collision checking in dungeons
+ 	BoxCollider	
+ 	CurHealth	Entity's current health
+ 	DisplayName	Name of the entity
+ 	InverseMoveTime	Inverse of MoveTime used for SmoothMovement
+ 	MaxHealth	Entity's maximum HP value
+ 	MoveTime	How long the entity's turn lasts
+ 	Moving	Entity's current moving state
+ 	PosX	Entity's current X position
+ 	PosY	Entity's current Y position
+ 	Rb2D	
+ 	Strength	Base damage value attacks will do
+
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.BlockingLayer Field
+Layer used for collision checking in dungeons
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public LayerMask BlockingLayer
+
+Field Value
+Type: LayerMask
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.BoxCollider Field
+[Missing <summary> documentation for "F:MyDungeon.Entities.MovingDungeonObject.BoxCollider"]
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected BoxCollider2D BoxCollider
+
+Field Value
+Type: BoxCollider2D
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.CurHealth Field
+Entity's current health
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected int CurHealth
+
+Field Value
+Type: Int32
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.DisplayName Field
+Name of the entity
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public string DisplayName
+
+Field Value
+Type: String
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.InverseMoveTime Field
+Inverse of MoveTime used for SmoothMovement
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected float InverseMoveTime
+
+Field Value
+Type: Single
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.MaxHealth Field
+Entity's maximum HP value
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public int MaxHealth
+
+Field Value
+Type: Int32
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.MoveTime Field
+How long the entity's turn lasts
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public float MoveTime
+
+Field Value
+Type: Single
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.Moving Field
+Entity's current moving state
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected bool Moving
+
+Field Value
+Type: Boolean
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.PosX Field
+Entity's current X position
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected int PosX
+
+Field Value
+Type: Int32
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.PosY Field
+Entity's current Y position
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected int PosY
+
+Field Value
+Type: Int32
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.Rb2D Field
+[Missing <summary> documentation for "F:MyDungeon.Entities.MovingDungeonObject.Rb2D"]
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected Rigidbody2D Rb2D
+
+Field Value
+Type: Rigidbody2D
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingDungeonObject.Strength Field
+Base damage value attacks will do
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public int Strength
+
+Field Value
+Type: Int32
+See Also
+MovingDungeonObject Class
+MyDungeon.Entities Namespace
+
+MovingOverworldObject Class
+Base class for entities that move in the overworld
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Entities.MovingOverworldObject
+            MyDungeon.Entities.PlayerOverworld
+
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class MovingOverworldObject : MonoBehaviour
+
+The MovingOverworldObject type exposes the following members.
+Constructors
+	Name	Description
+ 	MovingOverworldObject	Initializes a new instance of the MovingOverworldObject class
+
+Methods
+	Name	Description
+ 	CheckHit	Checks if entity is blocked by an object on the blocking layer in a desired direction
+ 	Start	Initializes the entity's BoxCollider2D
+
+Fields
+	Name	Description
+ 	BlockingLayer	Layer used in collision checks to block movement
+ 	BoxCollider	
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Entities Namespace
+
+MovingOverworldObject Constructor 
+Initializes a new instance of the MovingOverworldObject class
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public MovingOverworldObject()
+
+See Also
+MovingOverworldObject Class
+MyDungeon.Entities Namespace
+
+MovingOverworldObject.MovingOverworldObject Methods
+The MovingOverworldObject type exposes the following members.
+Methods
+	Name	Description
+ 	CheckHit	Checks if entity is blocked by an object on the blocking layer in a desired direction
+ 	Start	Initializes the entity's BoxCollider2D
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MovingOverworldObject Class
+MyDungeon.Entities Namespace
+
+MovingOverworldObject.CheckHit Method 
+Checks if entity is blocked by an object on the blocking layer in a desired direction
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void CheckHit(
+	Vector2 start,
+	Vector2 end,
+	out RaycastHit2D hit
+)
+
+Parameters
+start
+Type: Vector2
+Entity's current position
+end
+Type: Vector2
+Entity's desired position
+hit
+Type: RaycastHit2D
+Output result of the Linecast
+See Also
+MovingOverworldObject Class
+MyDungeon.Entities Namespace
+
+MovingOverworldObject.Start Method 
+Initializes the entity's BoxCollider2D
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+MovingOverworldObject Class
+MyDungeon.Entities Namespace
+
+MovingOverworldObject.MovingOverworldObject Fields
+The MovingOverworldObject type exposes the following members.
+Fields
+	Name	Description
+ 	BlockingLayer	Layer used in collision checks to block movement
+ 	BoxCollider	
+
+See Also
+MovingOverworldObject Class
+MyDungeon.Entities Namespace
+
+MovingOverworldObject.BlockingLayer Field
+Layer used in collision checks to block movement
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public LayerMask BlockingLayer
+
+Field Value
+Type: LayerMask
+See Also
+MovingOverworldObject Class
+MyDungeon.Entities Namespace
+
+MovingOverworldObject.BoxCollider Field
+[Missing <summary> documentation for "F:MyDungeon.Entities.MovingOverworldObject.BoxCollider"]
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected BoxCollider2D BoxCollider
+
+Field Value
+Type: BoxCollider2D
+See Also
+MovingOverworldObject Class
+MyDungeon.Entities Namespace
+
+PlayerDungeon Class
+Base class for the Player in Dungeon scenes
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Entities.MovingDungeonObject
+            MyDungeon.Entities.PlayerDungeon
+              MyDungeon.Controllers.PlayerDungeonController
+
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public abstract class PlayerDungeon : MovingDungeonObject
+
+The PlayerDungeon type exposes the following members.
+Constructors
+	Name	Description
+ 	PlayerDungeon	Initializes a new instance of the PlayerDungeon class
+
+Methods
+	Name	Description
+ 	AttemptMove	
+ 	CheckHit	Checks if entity is blocked by an object on the blocking layer in a desired direction (Inherited from MovingDungeonObject.)
+ 	LoseHealth	Subtracts health from the entity (Inherited from MovingDungeonObject.)
+ 	Move	Checks if the entity can move in the provided direction (Inherited from MovingDungeonObject.)
+ 	RecoverHealth	Adds health to the entity (Inherited from MovingDungeonObject.)
+ 	SmoothMovement	Moves entity from their current position to their desired position with a smooth animation (Inherited from MovingDungeonObject.)
+ 	Start	Initializes the 2DPhysics components, the entity's position, and animation movement multiplier (Inherited from MovingDungeonObject.)
+ 	WaitForTurnEnd	Used to ensure a turn does not end early (Inherited from MovingDungeonObject.)
+
+Fields
+	Name	Description
+ 	BlockingLayer	Layer used for collision checking in dungeons (Inherited from MovingDungeonObject.)
+ 	BoxCollider	 (Inherited from MovingDungeonObject.)
+ 	CurHealth	Entity's current health (Inherited from MovingDungeonObject.)
+ 	DisplayName	Name of the entity (Inherited from MovingDungeonObject.)
+ 	InverseMoveTime	Inverse of MoveTime used for SmoothMovement (Inherited from MovingDungeonObject.)
+ 	MaxHealth	Entity's maximum HP value (Inherited from MovingDungeonObject.)
+ 	MoveTime	How long the entity's turn lasts (Inherited from MovingDungeonObject.)
+ 	Moving	Entity's current moving state (Inherited from MovingDungeonObject.)
+ 	PosX	Entity's current X position (Inherited from MovingDungeonObject.)
+ 	PosY	Entity's current Y position (Inherited from MovingDungeonObject.)
+ 	Rb2D	 (Inherited from MovingDungeonObject.)
+ 	Strength	Base damage value attacks will do (Inherited from MovingDungeonObject.)
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Entities Namespace
+
+PlayerDungeon Constructor 
+Initializes a new instance of the PlayerDungeon class
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected PlayerDungeon()
+
+See Also
+PlayerDungeon Class
+MyDungeon.Entities Namespace
+
+PlayerDungeon.PlayerDungeon Methods
+The PlayerDungeon type exposes the following members.
+Methods
+	Name	Description
+ 	AttemptMove	
+ 	CheckHit	Checks if entity is blocked by an object on the blocking layer in a desired direction (Inherited from MovingDungeonObject.)
+ 	LoseHealth	Subtracts health from the entity (Inherited from MovingDungeonObject.)
+ 	Move	Checks if the entity can move in the provided direction (Inherited from MovingDungeonObject.)
+ 	RecoverHealth	Adds health to the entity (Inherited from MovingDungeonObject.)
+ 	SmoothMovement	Moves entity from their current position to their desired position with a smooth animation (Inherited from MovingDungeonObject.)
+ 	Start	Initializes the 2DPhysics components, the entity's position, and animation movement multiplier (Inherited from MovingDungeonObject.)
+ 	WaitForTurnEnd	Used to ensure a turn does not end early (Inherited from MovingDungeonObject.)
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+PlayerDungeon Class
+MyDungeon.Entities Namespace
+
+PlayerDungeon.AttemptMove Method 
+[Missing <summary> documentation for "M:MyDungeon.Entities.PlayerDungeon.AttemptMove(System.Int32,System.Int32)"]
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected abstract void AttemptMove(
+	int xDir,
+	int yDir
+)
+
+Parameters
+xDir
+Type: System.Int32
+[Missing <param name="xDir"/> documentation for "M:MyDungeon.Entities.PlayerDungeon.AttemptMove(System.Int32,System.Int32)"]
+yDir
+Type: System.Int32
+[Missing <param name="yDir"/> documentation for "M:MyDungeon.Entities.PlayerDungeon.AttemptMove(System.Int32,System.Int32)"]
+See Also
+PlayerDungeon Class
+MyDungeon.Entities Namespace
+
+PlayerDungeon.PlayerDungeon Fields
+The PlayerDungeon type exposes the following members.
+Fields
+	Name	Description
+ 	BlockingLayer	Layer used for collision checking in dungeons (Inherited from MovingDungeonObject.)
+ 	BoxCollider	 (Inherited from MovingDungeonObject.)
+ 	CurHealth	Entity's current health (Inherited from MovingDungeonObject.)
+ 	DisplayName	Name of the entity (Inherited from MovingDungeonObject.)
+ 	InverseMoveTime	Inverse of MoveTime used for SmoothMovement (Inherited from MovingDungeonObject.)
+ 	MaxHealth	Entity's maximum HP value (Inherited from MovingDungeonObject.)
+ 	MoveTime	How long the entity's turn lasts (Inherited from MovingDungeonObject.)
+ 	Moving	Entity's current moving state (Inherited from MovingDungeonObject.)
+ 	PosX	Entity's current X position (Inherited from MovingDungeonObject.)
+ 	PosY	Entity's current Y position (Inherited from MovingDungeonObject.)
+ 	Rb2D	 (Inherited from MovingDungeonObject.)
+ 	Strength	Base damage value attacks will do (Inherited from MovingDungeonObject.)
+
+See Also
+PlayerDungeon Class
+MyDungeon.Entities Namespace
+
+PlayerOverworld Class
+Base class for the Player in Overworld scenes
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Entities.MovingOverworldObject
+            MyDungeon.Entities.PlayerOverworld
+
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public abstract class PlayerOverworld : MovingOverworldObject
+
+The PlayerOverworld type exposes the following members.
+Constructors
+	Name	Description
+ 	PlayerOverworld	Initializes a new instance of the PlayerOverworld class
+
+Methods
+	Name	Description
+ 	CheckHit	Checks if entity is blocked by an object on the blocking layer in a desired direction (Inherited from MovingOverworldObject.)
+ 	Interact	
+ 	Start	Initializes the entity's BoxCollider2D (Inherited from MovingOverworldObject.)
+
+Fields
+	Name	Description
+ 	BlockingLayer	Layer used in collision checks to block movement (Inherited from MovingOverworldObject.)
+ 	BoxCollider	 (Inherited from MovingOverworldObject.)
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Entities Namespace
+
+PlayerOverworld Constructor 
+Initializes a new instance of the PlayerOverworld class
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected PlayerOverworld()
+
+See Also
+PlayerOverworld Class
+MyDungeon.Entities Namespace
+
+PlayerOverworld.PlayerOverworld Methods
+The PlayerOverworld type exposes the following members.
+Methods
+	Name	Description
+ 	CheckHit	Checks if entity is blocked by an object on the blocking layer in a desired direction (Inherited from MovingOverworldObject.)
+ 	Interact	
+ 	Start	Initializes the entity's BoxCollider2D (Inherited from MovingOverworldObject.)
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+PlayerOverworld Class
+MyDungeon.Entities Namespace
+
+PlayerOverworld.Interact Method 
+[Missing <summary> documentation for "M:MyDungeon.Entities.PlayerOverworld.Interact"]
+Namespace: MyDungeon.Entities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected abstract void Interact()
+
+See Also
+PlayerOverworld Class
+MyDungeon.Entities Namespace
+
+PlayerOverworld.PlayerOverworld Fields
+The PlayerOverworld type exposes the following members.
+Fields
+	Name	Description
+ 	BlockingLayer	Layer used in collision checks to block movement (Inherited from MovingOverworldObject.)
+ 	BoxCollider	 (Inherited from MovingOverworldObject.)
+
+See Also
+PlayerOverworld Class
+MyDungeon.Entities Namespace
+
+MyDungeon.Initialization Namespace
+[Missing <summary> documentation for "N:MyDungeon.Initialization"]
+Classes
+	Class	Description
+ 	InitGame	Initializes the dungeon scenes
+ 	PlayerSpawner	PlayerSpawner spawns a PlayerOverworld at the position of the PlayerSpawner
+ 	ResetFloor	ResetFloor resets the current floor in GameManager to 0
+
+
+InitGame Class
+Initializes the dungeon scenes
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Initialization.InitGame
+
+Namespace: MyDungeon.Initialization
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class InitGame : MonoBehaviour
+
+The InitGame type exposes the following members.
+Constructors
+	Name	Description
+ 	InitGame	Initializes a new instance of the InitGame class
+
+Methods
+	Name	Description
+ 	EnableDungeonPlayer	Enable the DungeonPlayer
+ 	GenerateBoard	Start dungeon generation
+ 	Start	Initialize dungeon and PlayerDungeon
+
+Fields
+	Name	Description
+ 	LevelStartDelay	Time to wait before enabling player
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Initialization Namespace
+
+InitGame Constructor 
+Initializes a new instance of the InitGame class
+Namespace: MyDungeon.Initialization
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public InitGame()
+
+See Also
+InitGame Class
+MyDungeon.Initialization Namespace
+
+InitGame.InitGame Methods
+The InitGame type exposes the following members.
+Methods
+	Name	Description
+ 	EnableDungeonPlayer	Enable the DungeonPlayer
+ 	GenerateBoard	Start dungeon generation
+ 	Start	Initialize dungeon and PlayerDungeon
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+InitGame Class
+MyDungeon.Initialization Namespace
+
+InitGame.EnableDungeonPlayer Method 
+Enable the DungeonPlayer
+Namespace: MyDungeon.Initialization
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void EnableDungeonPlayer()
+
+See Also
+InitGame Class
+MyDungeon.Initialization Namespace
+
+InitGame.GenerateBoard Method 
+Start dungeon generation
+Namespace: MyDungeon.Initialization
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void GenerateBoard()
+
+See Also
+InitGame Class
+MyDungeon.Initialization Namespace
+
+InitGame.Start Method 
+Initialize dungeon and PlayerDungeon
+Namespace: MyDungeon.Initialization
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+InitGame Class
+MyDungeon.Initialization Namespace
+
+InitGame.InitGame Fields
+The InitGame type exposes the following members.
+Fields
+	Name	Description
+ 	LevelStartDelay	Time to wait before enabling player
+
+See Also
+InitGame Class
+MyDungeon.Initialization Namespace
+
+InitGame.LevelStartDelay Field
+Time to wait before enabling player
+Namespace: MyDungeon.Initialization
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public float LevelStartDelay
+
+Field Value
+Type: Single
+See Also
+InitGame Class
+MyDungeon.Initialization Namespace
+
+PlayerSpawner Class
+PlayerSpawner spawns a PlayerOverworld at the position of the PlayerSpawner
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Initialization.PlayerSpawner
+
+Namespace: MyDungeon.Initialization
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class PlayerSpawner : MonoBehaviour
+
+The PlayerSpawner type exposes the following members.
+Constructors
+	Name	Description
+ 	PlayerSpawner	Initializes a new instance of the PlayerSpawner class
+
+Methods
+	Name	Description
+ 	Start	Instantiates PlayerOverworld at the location of the PlayerSpawner
+
+Fields
+	Name	Description
+ 	PlayerOverworld	PlayerOverworld prefab
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Initialization Namespace
+
+PlayerSpawner Constructor 
+Initializes a new instance of the PlayerSpawner class
+Namespace: MyDungeon.Initialization
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public PlayerSpawner()
+
+See Also
+PlayerSpawner Class
+MyDungeon.Initialization Namespace
+
+PlayerSpawner.PlayerSpawner Methods
+The PlayerSpawner type exposes the following members.
+Methods
+	Name	Description
+ 	Start	Instantiates PlayerOverworld at the location of the PlayerSpawner
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+PlayerSpawner Class
+MyDungeon.Initialization Namespace
+
+PlayerSpawner.Start Method 
+Instantiates PlayerOverworld at the location of the PlayerSpawner
+Namespace: MyDungeon.Initialization
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+PlayerSpawner Class
+MyDungeon.Initialization Namespace
+
+PlayerSpawner.PlayerSpawner Fields
+The PlayerSpawner type exposes the following members.
+Fields
+	Name	Description
+ 	PlayerOverworld	PlayerOverworld prefab
+
+See Also
+PlayerSpawner Class
+MyDungeon.Initialization Namespace
+
+PlayerSpawner.PlayerOverworld Field
+PlayerOverworld prefab
+Namespace: MyDungeon.Initialization
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public PlayerOverworld PlayerOverworld
+
+Field Value
+Type: PlayerOverworld
+See Also
+PlayerSpawner Class
+MyDungeon.Initialization Namespace
+
+ResetFloor Class
+ResetFloor resets the current floor in GameManager to 0
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Initialization.ResetFloor
+
+Namespace: MyDungeon.Initialization
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class ResetFloor : MonoBehaviour
+
+The ResetFloor type exposes the following members.
+Constructors
+	Name	Description
+ 	ResetFloor	Initializes a new instance of the ResetFloor class
+
+Methods
+	Name	Description
+ 	Start	Resets the current floor in GameManager to 0
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Initialization Namespace
+
+ResetFloor Constructor 
+Initializes a new instance of the ResetFloor class
+Namespace: MyDungeon.Initialization
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public ResetFloor()
+
+See Also
+ResetFloor Class
+MyDungeon.Initialization Namespace
+
+ResetFloor.ResetFloor Methods
+The ResetFloor type exposes the following members.
+Methods
+	Name	Description
+ 	Start	Resets the current floor in GameManager to 0
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+ResetFloor Class
+MyDungeon.Initialization Namespace
+
+ResetFloor.Start Method 
+Resets the current floor in GameManager to 0
+Namespace: MyDungeon.Initialization
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+ResetFloor Class
+MyDungeon.Initialization Namespace
+
+MyDungeon.Items Namespace
+[Missing <summary> documentation for "N:MyDungeon.Items"]
+Classes
+	Class	Description
+ 	Inventory	Inventory holds a list of items the player currently possesses
+ 	Item	Item is the base class for Items
+ 	ItemBehaviour	ItemBheaviour is a component intended to be attached to item prefabs to attach ScriptableObjects that derive from the type Item to them
+
+
+Inventory Class
+Inventory holds a list of items the player currently possesses
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Items.Inventory
+
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class Inventory : MonoBehaviour
+
+The Inventory type exposes the following members.
+Constructors
+	Name	Description
+ 	Inventory	Initializes a new instance of the Inventory class
+
+Methods
+	Name	Description
+ 	AddItem	Adds item to inventory
+ 	OnDestroy	Stores inventory in GameManager to retain during scene transitions
+ 	RemoveItem	Removes item from inventory
+ 	Start	Grabs inventory from GameManager
+
+Fields
+	Name	Description
+ 	InventoryItems	List of items in inventory
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Items Namespace
+
+Inventory Constructor 
+Initializes a new instance of the Inventory class
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public Inventory()
+
+See Also
+Inventory Class
+MyDungeon.Items Namespace
+
+Inventory.Inventory Methods
+The Inventory type exposes the following members.
+Methods
+	Name	Description
+ 	AddItem	Adds item to inventory
+ 	OnDestroy	Stores inventory in GameManager to retain during scene transitions
+ 	RemoveItem	Removes item from inventory
+ 	Start	Grabs inventory from GameManager
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+Inventory Class
+MyDungeon.Items Namespace
+
+Inventory.AddItem Method 
+Adds item to inventory
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void AddItem(
+	Item item
+)
+
+Parameters
+item
+Type: MyDungeon.Items.Item
+[Missing <param name="item"/> documentation for "M:MyDungeon.Items.Inventory.AddItem(MyDungeon.Items.Item)"]
+See Also
+Inventory Class
+MyDungeon.Items Namespace
+
+Inventory.OnDestroy Method 
+Stores inventory in GameManager to retain during scene transitions
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void OnDestroy()
+
+See Also
+Inventory Class
+MyDungeon.Items Namespace
+
+Inventory.RemoveItem Method 
+Removes item from inventory
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void RemoveItem(
+	Item item
+)
+
+Parameters
+item
+Type: MyDungeon.Items.Item
+[Missing <param name="item"/> documentation for "M:MyDungeon.Items.Inventory.RemoveItem(MyDungeon.Items.Item)"]
+See Also
+Inventory Class
+MyDungeon.Items Namespace
+
+Inventory.Start Method 
+Grabs inventory from GameManager
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+Inventory Class
+MyDungeon.Items Namespace
+
+Inventory.Inventory Fields
+The Inventory type exposes the following members.
+Fields
+	Name	Description
+ 	InventoryItems	List of items in inventory
+
+See Also
+Inventory Class
+MyDungeon.Items Namespace
+
+Inventory.InventoryItems Field
+List of items in inventory
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public List<Item> InventoryItems
+
+Field Value
+Type: List(Item)
+See Also
+Inventory Class
+MyDungeon.Items Namespace
+
+Item Class
+Item is the base class for Items
+Inheritance Hierarchy
+System.Object
+  Object
+    ScriptableObject
+      MyDungeon.Items.Item
+
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public abstract class Item : ScriptableObject
+
+The Item type exposes the following members.
+Constructors
+	Name	Description
+ 	Item	Initializes a new instance of the Item class
+
+Methods
+	Name	Description
+ 	Use	
+ 	UseItem	Sets Target and calls Use() for inheriting classes
+
+Fields
+	Name	Description
+ 	Target	The target game object to affect with an item
+ 	UseSounds	An array of sounds an item can choose from when an item is used
+
+See Also
+MyDungeon.Items Namespace
+
+Item Constructor 
+Initializes a new instance of the Item class
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected Item()
+
+See Also
+Item Class
+MyDungeon.Items Namespace
+
+Item.Item Methods
+The Item type exposes the following members.
+Methods
+	Name	Description
+ 	Use	
+ 	UseItem	Sets Target and calls Use() for inheriting classes
+
+See Also
+Item Class
+MyDungeon.Items Namespace
+
+Item.Use Method 
+[Missing <summary> documentation for "M:MyDungeon.Items.Item.Use"]
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected abstract void Use()
+
+See Also
+Item Class
+MyDungeon.Items Namespace
+
+Item.UseItem Method 
+Sets Target and calls Use() for inheriting classes
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void UseItem(
+	Transform target
+)
+
+Parameters
+target
+Type: Transform
+Target transform to be passed to inheriting class
+See Also
+Item Class
+MyDungeon.Items Namespace
+
+Item.Item Fields
+The Item type exposes the following members.
+Fields
+	Name	Description
+ 	Target	The target game object to affect with an item
+ 	UseSounds	An array of sounds an item can choose from when an item is used
+
+See Also
+Item Class
+MyDungeon.Items Namespace
+
+Item.Target Field
+The target game object to affect with an item
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected Transform Target
+
+Field Value
+Type: Transform
+See Also
+Item Class
+MyDungeon.Items Namespace
+
+Item.UseSounds Field
+An array of sounds an item can choose from when an item is used
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public AudioClip[] UseSounds
+
+Field Value
+Type: AudioClip[]
+See Also
+Item Class
+MyDungeon.Items Namespace
+
+ItemBehaviour Class
+ItemBheaviour is a component intended to be attached to item prefabs to attach ScriptableObjects that derive from the type Item to them
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Items.ItemBehaviour
+
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class ItemBehaviour : MonoBehaviour
+
+The ItemBehaviour type exposes the following members.
+Constructors
+	Name	Description
+ 	ItemBehaviour	Initializes a new instance of the ItemBehaviour class
+
+Fields
+	Name	Description
+ 	Item	A ScriptableObject asset of type Item
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Items Namespace
+
+ItemBehaviour Constructor 
+Initializes a new instance of the ItemBehaviour class
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public ItemBehaviour()
+
+See Also
+ItemBehaviour Class
+MyDungeon.Items Namespace
+
+ItemBehaviour.ItemBehaviour Methods
+The ItemBehaviour type exposes the following members.
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+ItemBehaviour Class
+MyDungeon.Items Namespace
+
+ItemBehaviour.ItemBehaviour Fields
+The ItemBehaviour type exposes the following members.
+Fields
+	Name	Description
+ 	Item	A ScriptableObject asset of type Item
+
+See Also
+ItemBehaviour Class
+MyDungeon.Items Namespace
+
+ItemBehaviour.Item Field
+A ScriptableObject asset of type Item
+Namespace: MyDungeon.Items
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public Item Item
+
+Field Value
+Type: Item
+See Also
+ItemBehaviour Class
+MyDungeon.Items Namespace
+
+MyDungeon.Managers Namespace
+[Missing <summary> documentation for "N:MyDungeon.Managers"]
+Classes
+	Class	Description
+ 	ControlManager	ControlManager is used to check if directional input is recieved while in a menu
+ 	DungeonManager	DungeonManager holds information of a dungeon
+ 	GameManager	GameManager stores the current game state that must be retained between scene transitions
+ 	PlayerManager	PlayerManager holds player specific properties that must be retained between scene transitions
+ 	SoundManager	SoundManager is the class that handles audio
+
+
+ControlManager Class
+ControlManager is used to check if directional input is recieved while in a menu
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Managers.ControlManager
+
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class ControlManager : MonoBehaviour
+
+The ControlManager type exposes the following members.
+Constructors
+	Name	Description
+ 	ControlManager	Initializes a new instance of the ControlManager class
+
+Methods
+	Name	Description
+ 	Awake	Initializes the ControlManager
+
+Fields
+	Name	Description
+  	Instance	The current ControlManager instance
+  	MenuHorizontal	The Horizontal value while in a menu
+  	MenuVertical	The Vertical value while in a menu
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Managers Namespace
+
+ControlManager Constructor 
+Initializes a new instance of the ControlManager class
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public ControlManager()
+
+See Also
+ControlManager Class
+MyDungeon.Managers Namespace
+
+ControlManager.ControlManager Methods
+The ControlManager type exposes the following members.
+Methods
+	Name	Description
+ 	Awake	Initializes the ControlManager
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+ControlManager Class
+MyDungeon.Managers Namespace
+
+ControlManager.Awake Method 
+Initializes the ControlManager
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Awake()
+
+See Also
+ControlManager Class
+MyDungeon.Managers Namespace
+
+ControlManager.ControlManager Fields
+The ControlManager type exposes the following members.
+Fields
+	Name	Description
+  	Instance	The current ControlManager instance
+  	MenuHorizontal	The Horizontal value while in a menu
+  	MenuVertical	The Vertical value while in a menu
+
+See Also
+ControlManager Class
+MyDungeon.Managers Namespace
+
+ControlManager.Instance Field
+The current ControlManager instance
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static ControlManager Instance
+
+Field Value
+Type: ControlManager
+See Also
+ControlManager Class
+MyDungeon.Managers Namespace
+
+ControlManager.MenuHorizontal Field
+The Horizontal value while in a menu
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static float MenuHorizontal
+
+Field Value
+Type: Single
+See Also
+ControlManager Class
+MyDungeon.Managers Namespace
+
+ControlManager.MenuVertical Field
+The Vertical value while in a menu
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static float MenuVertical
+
+Field Value
+Type: Single
+See Also
+ControlManager Class
+MyDungeon.Managers Namespace
+
+DungeonManager Class
+DungeonManager holds information of a dungeon
+Inheritance Hierarchy
+System.Object
+  MyDungeon.Managers.DungeonManager
+
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static class DungeonManager
+
+The DungeonManager type exposes the following members.
+Fields
+	Name	Description
+  	Creatures	The list of all the creatures in the current dungeon
+  	DungeonGenerationSettings	The generation settings of the current dungeon
+
+See Also
+MyDungeon.Managers Namespace
+
+DungeonManager.DungeonManager Fields
+The DungeonManager type exposes the following members.
+Fields
+	Name	Description
+  	Creatures	The list of all the creatures in the current dungeon
+  	DungeonGenerationSettings	The generation settings of the current dungeon
+
+See Also
+DungeonManager Class
+MyDungeon.Managers Namespace
+
+DungeonManager.Creatures Field
+The list of all the creatures in the current dungeon
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static List<Creature> Creatures
+
+Field Value
+Type: List(Creature)
+See Also
+DungeonManager Class
+MyDungeon.Managers Namespace
+
+DungeonManager.DungeonGenerationSettings Field
+The generation settings of the current dungeon
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static GridGenerator DungeonGenerationSettings
+
+Field Value
+Type: GridGenerator
+See Also
+DungeonManager Class
+MyDungeon.Managers Namespace
+
+GameManager Class
+GameManager stores the current game state that must be retained between scene transitions
+Inheritance Hierarchy
+System.Object
+  MyDungeon.Managers.GameManager
+
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static class GameManager
+
+The GameManager type exposes the following members.
+Methods
+	Name	Description
+  	Reset	Resets all GameManager properties to default values
+
+Fields
+	Name	Description
+  	Floor	The current dungeon floor
+  	Paused	Whether the game is paused or not
+  	PlayersTurn	Whether it is currently the player's turn or not
+  	SaveLoaded	Whether a game save was loaded or not
+
+See Also
+MyDungeon.Managers Namespace
+
+GameManager.GameManager Methods
+The GameManager type exposes the following members.
+Methods
+	Name	Description
+  	Reset	Resets all GameManager properties to default values
+
+See Also
+GameManager Class
+MyDungeon.Managers Namespace
+
+GameManager.Reset Method 
+Resets all GameManager properties to default values
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static void Reset()
+
+See Also
+GameManager Class
+MyDungeon.Managers Namespace
+
+GameManager.GameManager Fields
+The GameManager type exposes the following members.
+Fields
+	Name	Description
+  	Floor	The current dungeon floor
+  	Paused	Whether the game is paused or not
+  	PlayersTurn	Whether it is currently the player's turn or not
+  	SaveLoaded	Whether a game save was loaded or not
+
+See Also
+GameManager Class
+MyDungeon.Managers Namespace
+
+GameManager.Floor Field
+The current dungeon floor
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static int Floor
+
+Field Value
+Type: Int32
+See Also
+GameManager Class
+MyDungeon.Managers Namespace
+
+GameManager.Paused Field
+Whether the game is paused or not
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static bool Paused
+
+Field Value
+Type: Boolean
+See Also
+GameManager Class
+MyDungeon.Managers Namespace
+
+GameManager.PlayersTurn Field
+Whether it is currently the player's turn or not
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static bool PlayersTurn
+
+Field Value
+Type: Boolean
+See Also
+GameManager Class
+MyDungeon.Managers Namespace
+
+GameManager.SaveLoaded Field
+Whether a game save was loaded or not
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static bool SaveLoaded
+
+Field Value
+Type: Boolean
+See Also
+GameManager Class
+MyDungeon.Managers Namespace
+
+PlayerManager Class
+PlayerManager holds player specific properties that must be retained between scene transitions
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Managers.PlayerManager
+
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class PlayerManager : MonoBehaviour
+
+The PlayerManager type exposes the following members.
+Constructors
+	Name	Description
+ 	PlayerManager	Initializes a new instance of the PlayerManager class
+
+Methods
+	Name	Description
+ 	Awake	Initializes the PlayerManager instance
+ 	Reset	Resets all PlayerManager properties to default values
+
+Fields
+	Name	Description
+  	Instance	The current PlayerManager instance
+  	Inventory	List of items in the player's inventory
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Managers Namespace
+
+PlayerManager Constructor 
+Initializes a new instance of the PlayerManager class
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public PlayerManager()
+
+See Also
+PlayerManager Class
+MyDungeon.Managers Namespace
+
+PlayerManager.PlayerManager Methods
+The PlayerManager type exposes the following members.
+Methods
+	Name	Description
+ 	Awake	Initializes the PlayerManager instance
+ 	Reset	Resets all PlayerManager properties to default values
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+PlayerManager Class
+MyDungeon.Managers Namespace
+
+PlayerManager.Awake Method 
+Initializes the PlayerManager instance
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Awake()
+
+See Also
+PlayerManager Class
+MyDungeon.Managers Namespace
+
+PlayerManager.Reset Method 
+Resets all PlayerManager properties to default values
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void Reset()
+
+See Also
+PlayerManager Class
+MyDungeon.Managers Namespace
+
+PlayerManager.PlayerManager Fields
+The PlayerManager type exposes the following members.
+Fields
+	Name	Description
+  	Instance	The current PlayerManager instance
+  	Inventory	List of items in the player's inventory
+
+See Also
+PlayerManager Class
+MyDungeon.Managers Namespace
+
+PlayerManager.Instance Field
+The current PlayerManager instance
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static PlayerManager Instance
+
+Field Value
+Type: PlayerManager
+See Also
+PlayerManager Class
+MyDungeon.Managers Namespace
+
+PlayerManager.Inventory Field
+List of items in the player's inventory
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static List<Item> Inventory
+
+Field Value
+Type: List(Item)
+See Also
+PlayerManager Class
+MyDungeon.Managers Namespace
+
+SoundManager Class
+SoundManager is the class that handles audio
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Managers.SoundManager
+
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class SoundManager : MonoBehaviour
+
+The SoundManager type exposes the following members.
+Constructors
+	Name	Description
+ 	SoundManager	Initializes a new instance of the SoundManager class
+
+Methods
+	Name	Description
+ 	PlaySingle	Plays a provided audio clip once
+ 	RandomizeSfx	Randomizes the pitch of a sound effect
+
+Fields
+	Name	Description
+ 	HighPitchRange	High pitch shift range for sound pitch randomization
+  	Instance	The current instance of SoundManager
+ 	LowPtichRange	Low pitch shift range for sound pitch randomization
+ 	MusicSource	An AudioSource attached to the SoundManager used for music
+ 	SfxSource	An AudioSource attached to the SoundManager used for sound effects
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.Managers Namespace
+
+SoundManager Constructor 
+Initializes a new instance of the SoundManager class
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public SoundManager()
+
+See Also
+SoundManager Class
+MyDungeon.Managers Namespace
+
+SoundManager.SoundManager Methods
+The SoundManager type exposes the following members.
+Methods
+	Name	Description
+ 	PlaySingle	Plays a provided audio clip once
+ 	RandomizeSfx	Randomizes the pitch of a sound effect
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+SoundManager Class
+MyDungeon.Managers Namespace
+
+SoundManager.PlaySingle Method 
+Plays a provided audio clip once
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public void PlaySingle(
+	AudioClip clip
+)
+
+Parameters
+clip
+Type: AudioClip
+AudioClip to play once
+See Also
+SoundManager Class
+MyDungeon.Managers Namespace
+
+SoundManager.RandomizeSfx Method 
+Randomizes the pitch of a sound effect
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public void RandomizeSfx(
+	params AudioClip[] clips
+)
+
+Parameters
+clips
+Type: AudioClip[]
+An array of AudioClips to randomly choose to play
+See Also
+SoundManager Class
+MyDungeon.Managers Namespace
+
+SoundManager.SoundManager Fields
+The SoundManager type exposes the following members.
+Fields
+	Name	Description
+ 	HighPitchRange	High pitch shift range for sound pitch randomization
+  	Instance	The current instance of SoundManager
+ 	LowPtichRange	Low pitch shift range for sound pitch randomization
+ 	MusicSource	An AudioSource attached to the SoundManager used for music
+ 	SfxSource	An AudioSource attached to the SoundManager used for sound effects
+
+See Also
+SoundManager Class
+MyDungeon.Managers Namespace
+
+SoundManager.HighPitchRange Field
+High pitch shift range for sound pitch randomization
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public float HighPitchRange
+
+Field Value
+Type: Single
+See Also
+SoundManager Class
+MyDungeon.Managers Namespace
+
+SoundManager.Instance Field
+The current instance of SoundManager
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static SoundManager Instance
+
+Field Value
+Type: SoundManager
+See Also
+SoundManager Class
+MyDungeon.Managers Namespace
+
+SoundManager.LowPtichRange Field
+Low pitch shift range for sound pitch randomization
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public float LowPtichRange
+
+Field Value
+Type: Single
+See Also
+SoundManager Class
+MyDungeon.Managers Namespace
+
+SoundManager.MusicSource Field
+An AudioSource attached to the SoundManager used for music
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public AudioSource MusicSource
+
+Field Value
+Type: AudioSource
+See Also
+SoundManager Class
+MyDungeon.Managers Namespace
+
+SoundManager.SfxSource Field
+An AudioSource attached to the SoundManager used for sound effects
+Namespace: MyDungeon.Managers
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public AudioSource SfxSource
+
+Field Value
+Type: AudioSource
+See Also
+SoundManager Class
+MyDungeon.Managers Namespace
+
+MyDungeon.Saving Namespace
+[Missing <summary> documentation for "N:MyDungeon.Saving"]
+Classes
+	Class	Description
+ 	SaveData	SaveData is the base data for saving and loading data
+ 	SaveLoad	SaveLoad contains the Save and Load methods
+
+
+SaveData Class
+SaveData is the base data for saving and loading data
+Inheritance Hierarchy
+System.Object
+  MyDungeon.Saving.SaveData
+
+Namespace: MyDungeon.Saving
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+[SerializableAttribute]
+public abstract class SaveData
+
+The SaveData type exposes the following members.
+Constructors
+	Name	Description
+ 	SaveData	Initializes a new instance of the SaveData class
+
+See Also
+MyDungeon.Saving Namespace
+
+SaveData Constructor 
+Initializes a new instance of the SaveData class
+Namespace: MyDungeon.Saving
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected SaveData()
+
+See Also
+SaveData Class
+MyDungeon.Saving Namespace
+
+SaveLoad Class
+SaveLoad contains the Save and Load methods
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.Saving.SaveLoad
+
+Namespace: MyDungeon.Saving
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public class SaveLoad : MonoBehaviour
@@ -1359,20 +4106,24 @@ Methods
  	Load(T)	Reads a JSON file containing game save data
  	Save(T)	Creates or overwrites a JSON file containing game save data
 
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
 See Also
-MyDungeon Namespace
+MyDungeon.Saving Namespace
 
 SaveLoad Constructor 
 Initializes a new instance of the SaveLoad class
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.Saving
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
 public SaveLoad()
 
 See Also
 SaveLoad Class
-MyDungeon Namespace
+MyDungeon.Saving Namespace
 
 SaveLoad.SaveLoad Methods
 The SaveLoad type exposes the following members.
@@ -1381,17 +4132,21 @@ Methods
  	Load(T)	Reads a JSON file containing game save data
  	Save(T)	Creates or overwrites a JSON file containing game save data
 
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
 See Also
 SaveLoad Class
-MyDungeon Namespace
+MyDungeon.Saving Namespace
 
 SaveLoad.Load(T) Method 
 Reads a JSON file containing game save data
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.Saving
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
-public T Load<T>(
+public virtual T Load<T>(
 	string path
 )
 
@@ -1408,15 +4163,15 @@ Type: T
 A SaveData object of type T deserialized from the JSON file located at the provided path if found else returns null
 See Also
 SaveLoad Class
-MyDungeon Namespace
+MyDungeon.Saving Namespace
 
 SaveLoad.Save(T) Method 
 Creates or overwrites a JSON file containing game save data
-Namespace: MyDungeon
-Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.4.0.0 (0.4.0.0)
+Namespace: MyDungeon.Saving
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
 Syntax
 C#
-public void Save<T>(
+public virtual void Save<T>(
 	T save,
 	string path
 )
@@ -1431,7 +4186,1877 @@ Type: System.String
 The path to a save file
 Type Parameters
 T
-[Missing <typeparam name="T"/> documentation for "M:MyDungeon.SaveLoad.Save``1(``0,System.String)"]
+[Missing <typeparam name="T"/> documentation for "M:MyDungeon.Saving.SaveLoad.Save``1(``0,System.String)"]
 See Also
 SaveLoad Class
-MyDungeon Namespace
+MyDungeon.Saving Namespace
+
+MyDungeon.UI.Hud Namespace
+[Missing <summary> documentation for "N:MyDungeon.UI.Hud"]
+Classes
+	Class	Description
+ 	FloorDisplay	FloorDisplay is the class that manages updating the current floor display in the HUD
+ 	HealthBarDisplay	HealthBarDisplay is the class that manages updating the current health bar display in the HUD
+ 	HealthDisplay	HealthDisplay is the class that manages updating the current health display in the HUD
+ 	Hud	Hud is the class that instantiates the HUD prefab
+ 	LevelDisplay	LevelDisplay is the class that manages updating the current level display in the HUD
+ 	MessageLogDisplay	MessageLogDisplay is the class that manages updating the message log in the HUD
+
+
+FloorDisplay Class
+FloorDisplay is the class that manages updating the current floor display in the HUD
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.UI.Hud.FloorDisplay
+
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class FloorDisplay : MonoBehaviour
+
+The FloorDisplay type exposes the following members.
+Constructors
+	Name	Description
+ 	FloorDisplay	Initializes a new instance of the FloorDisplay class
+
+Methods
+	Name	Description
+ 	Start	Finds the UI Text object that displays the current floor in the HUD
+ 	UpdateFloor	Updates the floor displayed in the HUD and adds padding if the floor is less than 3 digits
+
+Fields
+	Name	Description
+ 	FloorText	The UI Text object displaying the current floor
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.UI.Hud Namespace
+
+FloorDisplay Constructor 
+Initializes a new instance of the FloorDisplay class
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public FloorDisplay()
+
+See Also
+FloorDisplay Class
+MyDungeon.UI.Hud Namespace
+
+FloorDisplay.FloorDisplay Methods
+The FloorDisplay type exposes the following members.
+Methods
+	Name	Description
+ 	Start	Finds the UI Text object that displays the current floor in the HUD
+ 	UpdateFloor	Updates the floor displayed in the HUD and adds padding if the floor is less than 3 digits
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+FloorDisplay Class
+MyDungeon.UI.Hud Namespace
+
+FloorDisplay.Start Method 
+Finds the UI Text object that displays the current floor in the HUD
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+FloorDisplay Class
+MyDungeon.UI.Hud Namespace
+
+FloorDisplay.UpdateFloor Method 
+Updates the floor displayed in the HUD and adds padding if the floor is less than 3 digits
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void UpdateFloor(
+	int floor
+)
+
+Parameters
+floor
+Type: System.Int32
+The new floor value
+See Also
+FloorDisplay Class
+MyDungeon.UI.Hud Namespace
+
+FloorDisplay.FloorDisplay Fields
+The FloorDisplay type exposes the following members.
+Fields
+	Name	Description
+ 	FloorText	The UI Text object displaying the current floor
+
+See Also
+FloorDisplay Class
+MyDungeon.UI.Hud Namespace
+
+FloorDisplay.FloorText Field
+The UI Text object displaying the current floor
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected Text FloorText
+
+Field Value
+Type: Text
+See Also
+FloorDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthBarDisplay Class
+HealthBarDisplay is the class that manages updating the current health bar display in the HUD
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.UI.Hud.HealthBarDisplay
+
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class HealthBarDisplay : MonoBehaviour
+
+The HealthBarDisplay type exposes the following members.
+Constructors
+	Name	Description
+ 	HealthBarDisplay	Initializes a new instance of the HealthBarDisplay class
+
+Methods
+	Name	Description
+ 	Start	Finds and stores the health bar, it's foreground, and it's background objects in the HUD
+
+ 	UpdateHealthBar	Updates the health bar in the HUD
+
+Fields
+	Name	Description
+  	BaseHealth	
+ 	HealthBar	The RectTransform holding the foreground and background elements of the health bar
+ 	HealthBarBackground	The RectTransform displaying the background image of the health bar
+ 	HealthBarForeground	The RectTransform displaying the foreground image of the health bar
+  	MaxHealth	
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.UI.Hud Namespace
+
+HealthBarDisplay Constructor 
+Initializes a new instance of the HealthBarDisplay class
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public HealthBarDisplay()
+
+See Also
+HealthBarDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthBarDisplay.HealthBarDisplay Methods
+The HealthBarDisplay type exposes the following members.
+Methods
+	Name	Description
+ 	Start	Finds and stores the health bar, it's foreground, and it's background objects in the HUD
+ 	UpdateHealthBar	Updates the health bar in the HUD
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+HealthBarDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthBarDisplay.Start Method 
+Finds and stores the health bar, it's foreground, and it's background objects in the HUD
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+HealthBarDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthBarDisplay.UpdateHealthBar Method 
+Updates the health bar in the HUD
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void UpdateHealthBar(
+	int curHealth,
+	int maxHealth
+)
+
+Parameters
+curHealth
+Type: System.Int32
+The current health value
+maxHealth
+Type: System.Int32
+The max health value
+See Also
+HealthBarDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthBarDisplay.HealthBarDisplay Fields
+The HealthBarDisplay type exposes the following members.
+Fields
+	Name	Description
+  	BaseHealth	
+ 	HealthBar	The RectTransform holding the foreground and background elements of the health bar
+ 	HealthBarBackground	The RectTransform displaying the background image of the health bar
+ 	HealthBarForeground	The RectTransform displaying the foreground image of the health bar
+  	MaxHealth	
+
+See Also
+HealthBarDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthBarDisplay.BaseHealth Field
+[Missing <summary> documentation for "F:MyDungeon.UI.Hud.HealthBarDisplay.BaseHealth"]
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected const int BaseHealth = 50
+
+Field Value
+Type: Int32
+See Also
+HealthBarDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthBarDisplay.HealthBar Field
+The RectTransform holding the foreground and background elements of the health bar
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected RectTransform HealthBar
+
+Field Value
+Type: RectTransform
+See Also
+HealthBarDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthBarDisplay.HealthBarBackground Field
+The RectTransform displaying the background image of the health bar
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected RectTransform HealthBarBackground
+
+Field Value
+Type: RectTransform
+See Also
+HealthBarDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthBarDisplay.HealthBarForeground Field
+The RectTransform displaying the foreground image of the health bar
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected RectTransform HealthBarForeground
+
+Field Value
+Type: RectTransform
+See Also
+HealthBarDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthBarDisplay.MaxHealth Field
+[Missing <summary> documentation for "F:MyDungeon.UI.Hud.HealthBarDisplay.MaxHealth"]
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected const int MaxHealth = 1000
+
+Field Value
+Type: Int32
+See Also
+HealthBarDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthDisplay Class
+HealthDisplay is the class that manages updating the current health display in the HUD
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.UI.Hud.HealthDisplay
+
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class HealthDisplay : MonoBehaviour
+
+The HealthDisplay type exposes the following members.
+Constructors
+	Name	Description
+ 	HealthDisplay	Initializes a new instance of the HealthDisplay class
+
+Methods
+	Name	Description
+ 	Start	Finds the UI Text object that displays the current health in the HUD
+ 	UpdateHealth	Updates the health displayed in the HUD and adds padding if the health is less than 3 digits
+
+Fields
+	Name	Description
+ 	HealthText	The UI Text object displaying the current floor
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.UI.Hud Namespace
+
+HealthDisplay Constructor 
+Initializes a new instance of the HealthDisplay class
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public HealthDisplay()
+
+See Also
+HealthDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthDisplay.HealthDisplay Methods
+The HealthDisplay type exposes the following members.
+Methods
+	Name	Description
+ 	Start	Finds the UI Text object that displays the current health in the HUD
+ 	UpdateHealth	Updates the health displayed in the HUD and adds padding if the health is less than 3 digits
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+HealthDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthDisplay.Start Method 
+Finds the UI Text object that displays the current health in the HUD
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+HealthDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthDisplay.UpdateHealth Method 
+Updates the health displayed in the HUD and adds padding if the health is less than 3 digits
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void UpdateHealth(
+	int curHealth,
+	int maxHealth
+)
+
+Parameters
+curHealth
+Type: System.Int32
+The current health value
+maxHealth
+Type: System.Int32
+The max health value
+See Also
+HealthDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthDisplay.HealthDisplay Fields
+The HealthDisplay type exposes the following members.
+Fields
+	Name	Description
+ 	HealthText	The UI Text object displaying the current floor
+
+See Also
+HealthDisplay Class
+MyDungeon.UI.Hud Namespace
+
+HealthDisplay.HealthText Field
+The UI Text object displaying the current floor
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected Text HealthText
+
+Field Value
+Type: Text
+See Also
+HealthDisplay Class
+MyDungeon.UI.Hud Namespace
+
+Hud Class
+Hud is the class that instantiates the HUD prefab
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.UI.Hud.Hud
+
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class Hud : MonoBehaviour
+
+The Hud type exposes the following members.
+Constructors
+	Name	Description
+ 	Hud	Initializes a new instance of the Hud class
+
+Methods
+	Name	Description
+ 	Awake	Instantiate the HUD prefab
+
+Fields
+	Name	Description
+ 	HudPrefab	The HUD prefab
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.UI.Hud Namespace
+
+Hud Constructor 
+Initializes a new instance of the Hud class
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public Hud()
+
+See Also
+Hud Class
+MyDungeon.UI.Hud Namespace
+
+Hud.Hud Methods
+The Hud type exposes the following members.
+Methods
+	Name	Description
+ 	Awake	Instantiate the HUD prefab
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+Hud Class
+MyDungeon.UI.Hud Namespace
+
+Hud.Awake Method 
+Instantiate the HUD prefab
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Awake()
+
+See Also
+Hud Class
+MyDungeon.UI.Hud Namespace
+
+Hud.Hud Fields
+The Hud type exposes the following members.
+Fields
+	Name	Description
+ 	HudPrefab	The HUD prefab
+
+See Also
+Hud Class
+MyDungeon.UI.Hud Namespace
+
+Hud.HudPrefab Field
+The HUD prefab
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected GameObject HudPrefab
+
+Field Value
+Type: GameObject
+See Also
+Hud Class
+MyDungeon.UI.Hud Namespace
+
+LevelDisplay Class
+LevelDisplay is the class that manages updating the current level display in the HUD
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.UI.Hud.LevelDisplay
+
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class LevelDisplay : MonoBehaviour
+
+The LevelDisplay type exposes the following members.
+Constructors
+	Name	Description
+ 	LevelDisplay	Initializes a new instance of the LevelDisplay class
+
+Methods
+	Name	Description
+ 	Start	Finds the UI Text object that displays the current floor in the HUD
+ 	UpdateLevel	Updates the level displayed in the HUD and adds padding if the level is less than 3 digits
+
+Fields
+	Name	Description
+ 	LevelText	The UI Text object displaying the current level
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.UI.Hud Namespace
+
+LevelDisplay Constructor 
+Initializes a new instance of the LevelDisplay class
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public LevelDisplay()
+
+See Also
+LevelDisplay Class
+MyDungeon.UI.Hud Namespace
+
+LevelDisplay.LevelDisplay Methods
+The LevelDisplay type exposes the following members.
+Methods
+	Name	Description
+ 	Start	Finds the UI Text object that displays the current floor in the HUD
+ 	UpdateLevel	Updates the level displayed in the HUD and adds padding if the level is less than 3 digits
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+LevelDisplay Class
+MyDungeon.UI.Hud Namespace
+
+LevelDisplay.Start Method 
+Finds the UI Text object that displays the current floor in the HUD
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+LevelDisplay Class
+MyDungeon.UI.Hud Namespace
+
+LevelDisplay.UpdateLevel Method 
+Updates the level displayed in the HUD and adds padding if the level is less than 3 digits
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void UpdateLevel(
+	int level
+)
+
+Parameters
+level
+Type: System.Int32
+The new level value
+See Also
+LevelDisplay Class
+MyDungeon.UI.Hud Namespace
+
+LevelDisplay.LevelDisplay Fields
+The LevelDisplay type exposes the following members.
+Fields
+	Name	Description
+ 	LevelText	The UI Text object displaying the current level
+
+See Also
+LevelDisplay Class
+MyDungeon.UI.Hud Namespace
+
+LevelDisplay.LevelText Field
+The UI Text object displaying the current level
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected Text LevelText
+
+Field Value
+Type: Text
+See Also
+LevelDisplay Class
+MyDungeon.UI.Hud Namespace
+
+MessageLogDisplay Class
+MessageLogDisplay is the class that manages updating the message log in the HUD
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.UI.Hud.MessageLogDisplay
+
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class MessageLogDisplay : MonoBehaviour
+
+The MessageLogDisplay type exposes the following members.
+Constructors
+	Name	Description
+ 	MessageLogDisplay	Initializes a new instance of the MessageLogDisplay class
+
+Methods
+	Name	Description
+ 	AddDebugMessage	Adds a debug line to the message log
+ 	AddMessage	Adds a line to the message log
+ 	Start	Finds the UI Text object that displays the message log in the HUD
+
+Fields
+	Name	Description
+ 	MessageLogText	The UI Text object displaying the message log
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.UI.Hud Namespace
+
+MessageLogDisplay Constructor 
+Initializes a new instance of the MessageLogDisplay class
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public MessageLogDisplay()
+
+See Also
+MessageLogDisplay Class
+MyDungeon.UI.Hud Namespace
+
+MessageLogDisplay.MessageLogDisplay Methods
+The MessageLogDisplay type exposes the following members.
+Methods
+	Name	Description
+ 	AddDebugMessage	Adds a debug line to the message log
+ 	AddMessage	Adds a line to the message log
+ 	Start	Finds the UI Text object that displays the message log in the HUD
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MessageLogDisplay Class
+MyDungeon.UI.Hud Namespace
+
+MessageLogDisplay.AddDebugMessage Method 
+Adds a debug line to the message log
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void AddDebugMessage(
+	string message
+)
+
+Parameters
+message
+Type: System.String
+Message to display in the message log
+See Also
+MessageLogDisplay Class
+MyDungeon.UI.Hud Namespace
+
+MessageLogDisplay.AddMessage Method 
+Adds a line to the message log
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void AddMessage(
+	string message
+)
+
+Parameters
+message
+Type: System.String
+Message to display in the message log
+See Also
+MessageLogDisplay Class
+MyDungeon.UI.Hud Namespace
+
+MessageLogDisplay.Start Method 
+Finds the UI Text object that displays the message log in the HUD
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+MessageLogDisplay Class
+MyDungeon.UI.Hud Namespace
+
+MessageLogDisplay.MessageLogDisplay Fields
+The MessageLogDisplay type exposes the following members.
+Fields
+	Name	Description
+ 	MessageLogText	The UI Text object displaying the message log
+
+See Also
+MessageLogDisplay Class
+MyDungeon.UI.Hud Namespace
+
+MessageLogDisplay.MessageLogText Field
+The UI Text object displaying the message log
+Namespace: MyDungeon.UI.Hud
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected Text MessageLogText
+
+Field Value
+Type: Text
+See Also
+MessageLogDisplay Class
+MyDungeon.UI.Hud Namespace
+
+MyDungeon.UI.Menu Namespace
+[Missing <summary> documentation for "N:MyDungeon.UI.Menu"]
+Classes
+	Class	Description
+ 	ExitMenu	ExitMenu is the class that handles the menu that allows the player to leave the dungeon or continue to the next floor
+ 	MainMenu	MainMenu is the class that handles the menu that allows the player to start a new game, load a saved game, and quit the game
+ 	PauseMenu	PauseMenu is the class that handles the menu that pauses the game
+ 	SaveMenu	SaveMenu is the class that handles the menu that allows the player to save their game
+
+
+ExitMenu Class
+ExitMenu is the class that handles the menu that allows the player to leave the dungeon or continue to the next floor
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.UI.Menu.ExitMenu
+
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class ExitMenu : MonoBehaviour
+
+The ExitMenu type exposes the following members.
+Constructors
+	Name	Description
+ 	ExitMenu	Initializes a new instance of the ExitMenu class
+
+Methods
+	Name	Description
+ 	Continue	Called when the Continue button is clicked
+ 	Exit	Called when the Exit button is clicked
+ 	ShowMenu	Instantiates the menu prefab and sets up EventSystem selections
+ 	Start	Grabs reference to the current EventSystem
+ 	Update	Places selection back on the menu if movement controls are pressed after losing menu focus
+
+Fields
+	Name	Description
+ 	ContinueScene	Scene that is loaded when Continue is clicked
+ 	EventSystem	
+ 	ExitMenuPrefab	Prefab of the Exit Menu
+ 	ExitScene	Scene that is loaded when Exit is clicked
+ 	LastSelected	
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.UI.Menu Namespace
+
+ExitMenu Constructor 
+Initializes a new instance of the ExitMenu class
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public ExitMenu()
+
+See Also
+ExitMenu Class
+MyDungeon.UI.Menu Namespace
+
+ExitMenu.ExitMenu Methods
+The ExitMenu type exposes the following members.
+Methods
+	Name	Description
+ 	Continue	Called when the Continue button is clicked
+ 	Exit	Called when the Exit button is clicked
+ 	ShowMenu	Instantiates the menu prefab and sets up EventSystem selections
+ 	Start	Grabs reference to the current EventSystem
+ 	Update	Places selection back on the menu if movement controls are pressed after losing menu focus
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+ExitMenu Class
+MyDungeon.UI.Menu Namespace
+
+ExitMenu.Continue Method 
+Called when the Continue button is clicked
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void Continue()
+
+See Also
+ExitMenu Class
+MyDungeon.UI.Menu Namespace
+
+ExitMenu.Exit Method 
+Called when the Exit button is clicked
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void Exit()
+
+See Also
+ExitMenu Class
+MyDungeon.UI.Menu Namespace
+
+ExitMenu.ShowMenu Method 
+Instantiates the menu prefab and sets up EventSystem selections
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void ShowMenu()
+
+See Also
+ExitMenu Class
+MyDungeon.UI.Menu Namespace
+
+ExitMenu.Start Method 
+Grabs reference to the current EventSystem
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+ExitMenu Class
+MyDungeon.UI.Menu Namespace
+
+ExitMenu.Update Method 
+Places selection back on the menu if movement controls are pressed after losing menu focus
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Update()
+
+See Also
+ExitMenu Class
+MyDungeon.UI.Menu Namespace
+
+ExitMenu.ExitMenu Fields
+The ExitMenu type exposes the following members.
+Fields
+	Name	Description
+ 	ContinueScene	Scene that is loaded when Continue is clicked
+ 	EventSystem	
+ 	ExitMenuPrefab	Prefab of the Exit Menu
+ 	ExitScene	Scene that is loaded when Exit is clicked
+ 	LastSelected	
+
+See Also
+ExitMenu Class
+MyDungeon.UI.Menu Namespace
+
+ExitMenu.ContinueScene Field
+Scene that is loaded when Continue is clicked
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public SceneField ContinueScene
+
+Field Value
+Type: SceneField
+See Also
+ExitMenu Class
+MyDungeon.UI.Menu Namespace
+
+ExitMenu.EventSystem Field
+[Missing <summary> documentation for "F:MyDungeon.UI.Menu.ExitMenu.EventSystem"]
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected EventSystem EventSystem
+
+Field Value
+Type: EventSystem
+See Also
+ExitMenu Class
+MyDungeon.UI.Menu Namespace
+
+ExitMenu.ExitMenuPrefab Field
+Prefab of the Exit Menu
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public GameObject ExitMenuPrefab
+
+Field Value
+Type: GameObject
+See Also
+ExitMenu Class
+MyDungeon.UI.Menu Namespace
+
+ExitMenu.ExitScene Field
+Scene that is loaded when Exit is clicked
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public SceneField ExitScene
+
+Field Value
+Type: SceneField
+See Also
+ExitMenu Class
+MyDungeon.UI.Menu Namespace
+
+ExitMenu.LastSelected Field
+[Missing <summary> documentation for "F:MyDungeon.UI.Menu.ExitMenu.LastSelected"]
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected GameObject LastSelected
+
+Field Value
+Type: GameObject
+See Also
+ExitMenu Class
+MyDungeon.UI.Menu Namespace
+
+MainMenu Class
+MainMenu is the class that handles the menu that allows the player to start a new game, load a saved game, and quit the game
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.UI.Menu.MainMenu
+
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class MainMenu : MonoBehaviour
+
+The MainMenu type exposes the following members.
+Constructors
+	Name	Description
+ 	MainMenu	Initializes a new instance of the MainMenu class
+
+Methods
+	Name	Description
+ 	LoadGame	Called when the Load Game button is clicked
+ 	NewGame	Called when the New Game button is clicked
+ 	Quit	Called when the Quit Game button is clicked
+ 	Start	Instantiates the menu prefab and sets up EventSystem selections
+ 	Update	Places selection back on the menu if movement controls are pressed after losing menu focus
+
+Fields
+	Name	Description
+ 	EventSystem	
+ 	LastSelected	
+ 	LoadGameScene	Scene that is loaded when Load Game is clicked
+ 	MainMenuPrefab	Prefab of the Main Menu
+ 	NewGameScene	Scene that is loaded when New Game is clicked
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.UI.Menu Namespace
+
+MainMenu Constructor 
+Initializes a new instance of the MainMenu class
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public MainMenu()
+
+See Also
+MainMenu Class
+MyDungeon.UI.Menu Namespace
+
+MainMenu.MainMenu Methods
+The MainMenu type exposes the following members.
+Methods
+	Name	Description
+ 	LoadGame	Called when the Load Game button is clicked
+ 	NewGame	Called when the New Game button is clicked
+ 	Quit	Called when the Quit Game button is clicked
+ 	Start	Instantiates the menu prefab and sets up EventSystem selections
+ 	Update	Places selection back on the menu if movement controls are pressed after losing menu focus
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MainMenu Class
+MyDungeon.UI.Menu Namespace
+
+MainMenu.LoadGame Method 
+Called when the Load Game button is clicked
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void LoadGame()
+
+See Also
+MainMenu Class
+MyDungeon.UI.Menu Namespace
+
+MainMenu.NewGame Method 
+Called when the New Game button is clicked
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void NewGame()
+
+See Also
+MainMenu Class
+MyDungeon.UI.Menu Namespace
+
+MainMenu.Quit Method 
+Called when the Quit Game button is clicked
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void Quit()
+
+See Also
+MainMenu Class
+MyDungeon.UI.Menu Namespace
+
+MainMenu.Start Method 
+Instantiates the menu prefab and sets up EventSystem selections
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+MainMenu Class
+MyDungeon.UI.Menu Namespace
+
+MainMenu.Update Method 
+Places selection back on the menu if movement controls are pressed after losing menu focus
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Update()
+
+See Also
+MainMenu Class
+MyDungeon.UI.Menu Namespace
+
+MainMenu.MainMenu Fields
+The MainMenu type exposes the following members.
+Fields
+	Name	Description
+ 	EventSystem	
+ 	LastSelected	
+ 	LoadGameScene	Scene that is loaded when Load Game is clicked
+ 	MainMenuPrefab	Prefab of the Main Menu
+ 	NewGameScene	Scene that is loaded when New Game is clicked
+
+See Also
+MainMenu Class
+MyDungeon.UI.Menu Namespace
+
+MainMenu.EventSystem Field
+[Missing <summary> documentation for "F:MyDungeon.UI.Menu.MainMenu.EventSystem"]
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected EventSystem EventSystem
+
+Field Value
+Type: EventSystem
+See Also
+MainMenu Class
+MyDungeon.UI.Menu Namespace
+
+MainMenu.LastSelected Field
+[Missing <summary> documentation for "F:MyDungeon.UI.Menu.MainMenu.LastSelected"]
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected GameObject LastSelected
+
+Field Value
+Type: GameObject
+See Also
+MainMenu Class
+MyDungeon.UI.Menu Namespace
+
+MainMenu.LoadGameScene Field
+Scene that is loaded when Load Game is clicked
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public SceneField LoadGameScene
+
+Field Value
+Type: SceneField
+See Also
+MainMenu Class
+MyDungeon.UI.Menu Namespace
+
+MainMenu.MainMenuPrefab Field
+Prefab of the Main Menu
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public GameObject MainMenuPrefab
+
+Field Value
+Type: GameObject
+See Also
+MainMenu Class
+MyDungeon.UI.Menu Namespace
+
+MainMenu.NewGameScene Field
+Scene that is loaded when New Game is clicked
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public SceneField NewGameScene
+
+Field Value
+Type: SceneField
+See Also
+MainMenu Class
+MyDungeon.UI.Menu Namespace
+
+PauseMenu Class
+PauseMenu is the class that handles the menu that pauses the game
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.UI.Menu.PauseMenu
+
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class PauseMenu : MonoBehaviour
+
+The PauseMenu type exposes the following members.
+Constructors
+	Name	Description
+ 	PauseMenu	Initializes a new instance of the PauseMenu class
+
+Methods
+	Name	Description
+ 	Pause	Called when the Pause control is pressed
+ 	Start	Grabs reference to the current EventSystem
+ 	Update	Places selection back on the menu if movement controls are pressed after losing menu focus
+
+Fields
+	Name	Description
+ 	EventSystem	
+ 	LastSelected	
+ 	PauseMenuPrefab	Prefab of the Pause Menu
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.UI.Menu Namespace
+
+PauseMenu Constructor 
+Initializes a new instance of the PauseMenu class
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public PauseMenu()
+
+See Also
+PauseMenu Class
+MyDungeon.UI.Menu Namespace
+
+PauseMenu.PauseMenu Methods
+The PauseMenu type exposes the following members.
+Methods
+	Name	Description
+ 	Pause	Called when the Pause control is pressed
+ 	Start	Grabs reference to the current EventSystem
+ 	Update	Places selection back on the menu if movement controls are pressed after losing menu focus
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+PauseMenu Class
+MyDungeon.UI.Menu Namespace
+
+PauseMenu.Pause Method 
+Called when the Pause control is pressed
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Pause()
+
+See Also
+PauseMenu Class
+MyDungeon.UI.Menu Namespace
+
+PauseMenu.Start Method 
+Grabs reference to the current EventSystem
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Start()
+
+See Also
+PauseMenu Class
+MyDungeon.UI.Menu Namespace
+
+PauseMenu.Update Method 
+Places selection back on the menu if movement controls are pressed after losing menu focus
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected virtual void Update()
+
+See Also
+PauseMenu Class
+MyDungeon.UI.Menu Namespace
+
+PauseMenu.PauseMenu Fields
+The PauseMenu type exposes the following members.
+Fields
+	Name	Description
+ 	EventSystem	
+ 	LastSelected	
+ 	PauseMenuPrefab	Prefab of the Pause Menu
+
+See Also
+PauseMenu Class
+MyDungeon.UI.Menu Namespace
+
+PauseMenu.EventSystem Field
+[Missing <summary> documentation for "F:MyDungeon.UI.Menu.PauseMenu.EventSystem"]
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected EventSystem EventSystem
+
+Field Value
+Type: EventSystem
+See Also
+PauseMenu Class
+MyDungeon.UI.Menu Namespace
+
+PauseMenu.LastSelected Field
+[Missing <summary> documentation for "F:MyDungeon.UI.Menu.PauseMenu.LastSelected"]
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+protected GameObject LastSelected
+
+Field Value
+Type: GameObject
+See Also
+PauseMenu Class
+MyDungeon.UI.Menu Namespace
+
+PauseMenu.PauseMenuPrefab Field
+Prefab of the Pause Menu
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public GameObject PauseMenuPrefab
+
+Field Value
+Type: GameObject
+See Also
+PauseMenu Class
+MyDungeon.UI.Menu Namespace
+
+SaveMenu Class
+SaveMenu is the class that handles the menu that allows the player to save their game
+Inheritance Hierarchy
+System.Object
+  Object
+    Component
+      Behaviour
+        MonoBehaviour
+          MyDungeon.UI.Menu.SaveMenu
+
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class SaveMenu : MonoBehaviour
+
+The SaveMenu type exposes the following members.
+Constructors
+	Name	Description
+ 	SaveMenu	Initializes a new instance of the SaveMenu class
+
+Methods
+	Name	Description
+ 	SaveGame	Calls the Save method of a sibling SaveLoad component
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+MyDungeon.UI.Menu Namespace
+
+SaveMenu Constructor 
+Initializes a new instance of the SaveMenu class
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public SaveMenu()
+
+See Also
+SaveMenu Class
+MyDungeon.UI.Menu Namespace
+
+SaveMenu.SaveMenu Methods
+The SaveMenu type exposes the following members.
+Methods
+	Name	Description
+ 	SaveGame	Calls the Save method of a sibling SaveLoad component
+
+Extension Methods
+	Name	Description
+ 	Invoke	Invoke using a delegate (Defined by MonoBehaviourExtensions.)
+
+See Also
+SaveMenu Class
+MyDungeon.UI.Menu Namespace
+
+SaveMenu.SaveGame Method 
+Calls the Save method of a sibling SaveLoad component
+Namespace: MyDungeon.UI.Menu
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public virtual void SaveGame(
+	SaveData saveData,
+	string path
+)
+
+Parameters
+saveData
+Type: MyDungeon.Saving.SaveData
+The serialized data to be saved to a JSON save file
+path
+Type: System.String
+The path of the save file (eg: C:\Game\Game1.sav)
+See Also
+SaveMenu Class
+MyDungeon.UI.Menu Namespace
+
+MyDungeon.Utilities Namespace
+[Missing <summary> documentation for "N:MyDungeon.Utilities"]
+Classes
+	Class	Description
+ 	IntRange	Class to get a random value between two numbers (inclusive)
+ 	MonoBehaviourExtensions	Extensions to the MonoBehaviour class
+ 	MyDungeonErrors	
+ 	SceneField	
+ 	SceneFieldPropertyDrawer	
+
+
+IntRange Class
+Class to get a random value between two numbers (inclusive)
+Inheritance Hierarchy
+System.Object
+  MyDungeon.Utilities.IntRange
+
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+[SerializableAttribute]
+public class IntRange
+
+The IntRange type exposes the following members.
+Constructors
+	Name	Description
+ 	IntRange	Set the Range values
+
+Properties
+	Name	Description
+ 	Random	Get a random value from the range.
+
+Fields
+	Name	Description
+ 	Max	The maximum value for a range
+ 	Min	The minimum value for a range
+
+See Also
+MyDungeon.Utilities Namespace
+
+IntRange Constructor 
+Set the Range values
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public IntRange(
+	int min,
+	int max
+)
+
+Parameters
+min
+Type: System.Int32
+The minimum value in this range
+max
+Type: System.Int32
+The maximum value in this range
+See Also
+IntRange Class
+MyDungeon.Utilities Namespace
+
+IntRange.IntRange Properties
+The IntRange type exposes the following members.
+Properties
+	Name	Description
+ 	Random	Get a random value from the range.
+
+See Also
+IntRange Class
+MyDungeon.Utilities Namespace
+
+IntRange.Random Property 
+Get a random value from the range.
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public int Random { get; }
+
+Property Value
+Type: Int32
+See Also
+IntRange Class
+MyDungeon.Utilities Namespace
+
+IntRange.IntRange Fields
+The IntRange type exposes the following members.
+Fields
+	Name	Description
+ 	Max	The maximum value for a range
+ 	Min	The minimum value for a range
+
+See Also
+IntRange Class
+MyDungeon.Utilities Namespace
+
+IntRange.Max Field
+The maximum value for a range
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public int Max
+
+Field Value
+Type: Int32
+See Also
+IntRange Class
+MyDungeon.Utilities Namespace
+
+IntRange.Min Field
+The minimum value for a range
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public int Min
+
+Field Value
+Type: Int32
+See Also
+IntRange Class
+MyDungeon.Utilities Namespace
+
+MonoBehaviourExtensions Class
+Extensions to the MonoBehaviour class
+Inheritance Hierarchy
+System.Object
+  MyDungeon.Utilities.MonoBehaviourExtensions
+
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static class MonoBehaviourExtensions
+
+The MonoBehaviourExtensions type exposes the following members.
+Methods
+	Name	Description
+  	Invoke	Invoke using a delegate
+
+See Also
+MyDungeon.Utilities Namespace
+
+MonoBehaviourExtensions.MonoBehaviourExtensions Methods
+The MonoBehaviourExtensions type exposes the following members.
+Methods
+	Name	Description
+  	Invoke	Invoke using a delegate
+
+See Also
+MonoBehaviourExtensions Class
+MyDungeon.Utilities Namespace
+
+MonoBehaviourExtensions.Invoke Method 
+Invoke using a delegate
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static void Invoke(
+	this MonoBehaviour me,
+	Action delegateName,
+	float time
+)
+
+Parameters
+me
+Type: MonoBehaviour
+[Missing <param name="me"/> documentation for "M:MyDungeon.Utilities.MonoBehaviourExtensions.Invoke(UnityEngine.MonoBehaviour,System.Action,System.Single)"]
+delegateName
+Type: System.Action
+Name of a function to invoke
+time
+Type: System.Single
+Time to wait before invoking the delegate
+Usage Note
+In Visual Basic and C#, you can call this method as an instance method on any object of type MonoBehaviour. When you use instance method syntax to call this method, omit the first parameter. For more information, see Extension Methods (Visual Basic) or Extension Methods (C# Programming Guide).
+See Also
+MonoBehaviourExtensions Class
+MyDungeon.Utilities Namespace
+
+MyDungeonErrors Class
+[Missing <summary> documentation for "T:MyDungeon.Utilities.MyDungeonErrors"]
+Inheritance Hierarchy
+System.Object
+  MyDungeon.Utilities.MyDungeonErrors
+
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static class MyDungeonErrors
+
+See Also
+MyDungeon.Utilities Namespace
+
+SceneField Class
+[Missing <summary> documentation for "T:MyDungeon.Utilities.SceneField"]
+Inheritance Hierarchy
+System.Object
+  MyDungeon.Utilities.SceneField
+
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+[SerializableAttribute]
+public class SceneField
+
+The SceneField type exposes the following members.
+Constructors
+	Name	Description
+ 	SceneField	Initializes a new instance of the SceneField class
+
+Properties
+	Name	Description
+ 	SceneName	
+
+Operators
+	Name	Description
+  	Implicit(SceneField to String)	
+
+See Also
+MyDungeon.Utilities Namespace
+
+SceneField Constructor 
+Initializes a new instance of the SceneField class
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public SceneField()
+
+See Also
+SceneField Class
+MyDungeon.Utilities Namespace
+
+SceneField.SceneField Properties
+The SceneField type exposes the following members.
+Properties
+	Name	Description
+ 	SceneName	
+
+See Also
+SceneField Class
+MyDungeon.Utilities Namespace
+
+SceneField.SceneName Property 
+[Missing <summary> documentation for "P:MyDungeon.Utilities.SceneField.SceneName"]
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public string SceneName { get; }
+
+Property Value
+Type: String
+See Also
+SceneField Class
+MyDungeon.Utilities Namespace
+
+SceneField.SceneField Type Conversions
+The SceneField type exposes the following members.
+Operators
+	Name	Description
+  	Implicit(SceneField to String)	
+
+See Also
+SceneField Class
+MyDungeon.Utilities Namespace
+
+SceneField Implicit Conversion (SceneField to String)
+[Missing <summary> documentation for "M:MyDungeon.Utilities.SceneField.op_Implicit(MyDungeon.Utilities.SceneField)~System.String"]
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public static implicit operator string (
+	SceneField sceneField
+)
+
+Parameters
+sceneField
+Type: MyDungeon.Utilities.SceneField
+[Missing <param name="sceneField"/> documentation for "M:MyDungeon.Utilities.SceneField.op_Implicit(MyDungeon.Utilities.SceneField)~System.String"]
+Return Value
+Type: String
+[Missing <returns> documentation for "M:MyDungeon.Utilities.SceneField.op_Implicit(MyDungeon.Utilities.SceneField)~System.String"]
+See Also
+SceneField Class
+MyDungeon.Utilities Namespace
+
+SceneFieldPropertyDrawer Class
+[Missing <summary> documentation for "T:MyDungeon.Utilities.SceneFieldPropertyDrawer"]
+Inheritance Hierarchy
+System.Object
+  GUIDrawer
+    PropertyDrawer
+      MyDungeon.Utilities.SceneFieldPropertyDrawer
+
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public class SceneFieldPropertyDrawer : PropertyDrawer
+
+The SceneFieldPropertyDrawer type exposes the following members.
+Constructors
+	Name	Description
+ 	SceneFieldPropertyDrawer	Initializes a new instance of the SceneFieldPropertyDrawer class
+
+Properties
+	Name	Description
+ 	attribute	The PropertyAttribute for the property. Not applicable for custom class drawers. (Read Only)
+ (Inherited from PropertyDrawer.)
+ 	fieldInfo	The reflection FieldInfo for the member this property represents. (Read Only)
+ (Inherited from PropertyDrawer.)
+
+Methods
+	Name	Description
+ 	GetPropertyHeight	Override this method to specify how tall the GUI for this field is in pixels.
+ (Inherited from PropertyDrawer.)
+ 	OnGUI	 (Overrides PropertyDrawer.OnGUI(Rect, SerializedProperty, GUIContent).)
+
+See Also
+MyDungeon.Utilities Namespace
+
+SceneFieldPropertyDrawer Constructor 
+Initializes a new instance of the SceneFieldPropertyDrawer class
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public SceneFieldPropertyDrawer()
+
+See Also
+SceneFieldPropertyDrawer Class
+MyDungeon.Utilities Namespace
+
+SceneFieldPropertyDrawer.SceneFieldPropertyDrawer Properties
+The SceneFieldPropertyDrawer type exposes the following members.
+Properties
+	Name	Description
+ 	attribute	The PropertyAttribute for the property. Not applicable for custom class drawers. (Read Only)
+ (Inherited from PropertyDrawer.)
+ 	fieldInfo	The reflection FieldInfo for the member this property represents. (Read Only)
+ (Inherited from PropertyDrawer.)
+
+See Also
+SceneFieldPropertyDrawer Class
+MyDungeon.Utilities Namespace
+
+SceneFieldPropertyDrawer.SceneFieldPropertyDrawer Methods
+The SceneFieldPropertyDrawer type exposes the following members.
+Methods
+	Name	Description
+ 	GetPropertyHeight	Override this method to specify how tall the GUI for this field is in pixels.
+ (Inherited from PropertyDrawer.)
+ 	OnGUI	 (Overrides PropertyDrawer.OnGUI(Rect, SerializedProperty, GUIContent).)
+
+See Also
+SceneFieldPropertyDrawer Class
+MyDungeon.Utilities Namespace
+
+SceneFieldPropertyDrawer.OnGUI Method 
+[Missing <summary> documentation for "M:MyDungeon.Utilities.SceneFieldPropertyDrawer.OnGUI(UnityEngine.Rect,UnityEditor.SerializedProperty,UnityEngine.GUIContent)"]
+Namespace: MyDungeon.Utilities
+Assembly: Assembly-CSharp (in Assembly-CSharp.dll) Version: 0.0.0.0
+Syntax
+C#
+public override void OnGUI(
+	Rect position,
+	SerializedProperty property,
+	GUIContent label
+)
+
+Parameters
+position
+Type: Rect
+[Missing <param name="position"/> documentation for "M:MyDungeon.Utilities.SceneFieldPropertyDrawer.OnGUI(UnityEngine.Rect,UnityEditor.SerializedProperty,UnityEngine.GUIContent)"]
+property
+Type: SerializedProperty
+[Missing <param name="property"/> documentation for "M:MyDungeon.Utilities.SceneFieldPropertyDrawer.OnGUI(UnityEngine.Rect,UnityEditor.SerializedProperty,UnityEngine.GUIContent)"]
+label
+Type: GUIContent
+[Missing <param name="label"/> documentation for "M:MyDungeon.Utilities.SceneFieldPropertyDrawer.OnGUI(UnityEngine.Rect,UnityEditor.SerializedProperty,UnityEngine.GUIContent)"]
+See Also
+SceneFieldPropertyDrawer Class
+MyDungeon.Utilities Namespace

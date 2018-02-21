@@ -1,8 +1,8 @@
-﻿using MyDungeon.Entities;
-using UnityEngine;
-
-namespace MyDungeon.Initialization
+﻿namespace MyDungeon.Initialization
 {
+    using Entities;
+    using UnityEngine;
+
     /// <summary>
     /// PlayerSpawner spawns a PlayerOverworld at the position of the PlayerSpawner
     /// </summary>

@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using MyDungeon.Entities;
-using MyDungeon.Managers;
-using UnityEngine;
-
-namespace MyDungeon.Controllers
+﻿namespace MyDungeon.Controllers
 {
+    using System.Collections;
+    using Entities;
+    using Managers;
+    using UnityEngine;
+
     /// <summary>
     /// Base class for controller for the Player in the Dungeon scenes
     /// </summary>
