@@ -14,7 +14,7 @@ Other Resources
 Welcome to the MyDungeon documentation
 
 Version 1.0.0.0
-Version 1.0.0.0 was released on 2018-02-01.
+Version 1.0.0.0 was released on 2018-02-21.
 Changes in This Release
 Initial release
 See Also
